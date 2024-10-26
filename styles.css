@@ -1,0 +1,143 @@
+            body{
+                background:  #1e1e1e;
+                color: #c5c5c5;
+                font-family: Arial, Helvetica, sans-serif, 'Times New Roman', Times, serif, 'Calibri', sans-serif;
+                margin: 0;
+                padding-left: 1%;            
+            }
+            header{
+                background: #161616;
+                /*background-image: url("images/website resources/header/skyscrapers-6990425.jpg");*/
+                background-size: 100%;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("images/website resources/header/skyscrapers-6990425.jpg");
+                color: white;
+                text-align: center;
+                padding: 1em 0;
+                font: Helvetica, sans-serif;
+                text-transform: uppercase;
+            }
+            /* heading 1 Styling */
+            h1{
+                color: #ff0f4d;
+                font-size: 4em;
+                font-weight: bold;
+                text-align: center;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            /* Make consistent without underline*/
+            h2{
+                color: #00ffe1; /* Neon cyan for cyberpunk effect*/
+                font-size: 3em;
+                font-weight: bold;
+                font-family: 'Times New Roman', Times, serif;
+                text-transform: uppercase;
+            }
+            h3{
+                color: #7b7b7b;
+                font-size: 1.2em;
+                font-weight: bold;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            }
+            p,li,strong{
+                color: #c6c6c6;
+                font-size: 1.5em;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            }
+            header p{
+                color: #00ffe1;
+                font-size: 1.2em;
+            }
+            button {
+                background-color: #ff0f4d;
+                border: none;
+                color: white;
+                padding: 15px 30px;
+                text-align: center; /* Center text in the button */
+                text-decoration: none;
+                display: inline-block;
+                font: arial, sans-serif;
+                font-size: 18px;
+                margin: 4px 10px;
+                cursor: pointer;
+                border-radius: 6px;
+            }
+            button:hover {
+                background-color: #00ffe1;
+                color: black;
+            }
+            
+            a {
+                color: #a5a5a5;
+                text-decoration: none;
+            }
+            
+            a:hover {
+                color: #0FFFC1;
+                text-decoration: underline;
+            }
+            .about {
+                background-color: #252525;
+                max-width: 800px; /* Restrict the width to keep text compact */
+                margin: 20px auto;   /* Center the section on the page */
+                padding: 20px;
+                border-left: 5px solid #ff0f4d; /* Add a left border to the section */
+                line-height: 1.4em; /* Adjust line spacing to make the text more compact */
+                text-align: left;
+                float: left;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+            }
+            .about p {
+                margin: 10px; /* Add space below each paragraph */
+                font-size: 1em;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            }
+            footer {
+                position: absolute; /* Position the footer at the bottom of the page */
+                bottom: 0px;    /* No space from the bottom */
+                height: 6%;  /* Height of the footer */
+                width: 100%;    /* Full width */;
+                background: #161616;    /* Background color */
+                color: white;   /* Text color */
+                text-align: center; /* Center text within the footer */
+                margin: 0;  /* Center the footer */
+                display: flex; /* Ensure child elements are in rows */
+                flex-direction: row; /* Ensure child elements are in rows */
+                text-decoration: none; /* Remove underline from links */
+                justify-content: center;
+                font: arial, sans-serif;
+                padding: 0;
+                margin: 0;
+
+            }
+            footer li {
+                display: flex;
+                font: arial, sans-serif;
+                list-style: none; /* Remove bullet points */
+                text-align: center; /* Center text within each list item */
+                padding: 10px 20px; /* Add space around each list item */
+                font-size: 2em;
+            }
+            /* Logo Styling */
+            .footer-nav .logo {
+                position: absolute; /* Position the logo at the bottom of the page */
+                bottom: 0px;
+                right: 10px; /* Position the logo at the bottom right of the page */
+                margin-left: auto; /* Pushes the logo to the far right */
+            }
+            .footer-nav .logo img {
+                width: 100px; /* Adjust the size of the logo */
+                height: auto;
+                border-radius: 0%;
+            }
+            /* Navigation Bar Styling */
+            .footer-nav ul {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                width: 100%; /* Ensures the nav bar takes the full width */
+            }
