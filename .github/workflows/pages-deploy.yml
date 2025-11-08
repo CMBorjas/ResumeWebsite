@@ -1,0 +1,29 @@
+name: Build and Deploy to GitHub Pages (static export)
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        run: npm ci
+      - name: Build Next
+        run: npm run build
+      - name: Export static HTML
+        run: npx next export -o out || echo "next export may fail for App Router pages; review logs"
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out
+
+# Note: The Next.js App Router is not guaranteed to be fully static-exportable. If `next export` fails,
+# consider deploying to Vercel (recommended) or migrating to pages-router and static content.
