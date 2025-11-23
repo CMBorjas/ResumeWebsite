@@ -6,9 +6,15 @@
                 margin: 0;
                 padding-left: 1%;            
             }
+            /* Remove bullets and default spacing from lists (navigation, footer, etc.) */
+            ul, ol {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
             header{
                 background: #161616;
-                /*background-image: url("images/website resources/header/skyscrapers-6990425.jpg");*/
+                background-image: url("images/website resources/header/skyscrapers-6990425.jpg");
                 background-size: 100%;
                 background-position: center;
                 background-repeat: no-repeat;
@@ -49,6 +55,7 @@
             header p{
                 color: #00ffe1;
                 font-size: 1.2em;
+                font-size: xx-large;
             }
             button {
                 background-color: #ff0f4d;
@@ -75,8 +82,8 @@
             }
             
             a:hover {
-                color: #0FFFC1;
-                text-decoration: underline;
+                color: #a5a5a5;
+                text-decoration: none;
             }
             .about {
                 background-color: #252525;
