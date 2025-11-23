@@ -1,0 +1,29 @@
+/* src/app/footer.module.css */
+.footer {
+    background: #161616;
+    color: #e6e6e6;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+.footerText {
+    font-size: 0.875rem; /* 14px */
+    margin: 0;
+}
+
+.footerLink {
+    /*font-size: 1rem !important; 14px */
+    font-size: 3rem !important;
+    line-height: 1.2;
+    color: inherit;
+    text-decoration: none;
+    margin: 1 0.5rem;
+}
+
+/* Responsive (larger on medium+ screens) */
+@media (min-width: 768px) {
+    .footerText,
+    .footerLink {
+        font-size: 1rem; /* 16px on wider screens */
+    }
+}

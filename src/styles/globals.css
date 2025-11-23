@@ -4,7 +4,20 @@
 
 html, body, #__next {
     height: 100%;
+    background-color: #1e1e1e;
+    
 }
+
+.header-bg {
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/images/header/skyscrapers-6990425.jpg');
+    background-size: cover;
+    background-position: center;
+    font-size: xx-large;
+}
+
+.body-bg { 
+    color: #c6c6c6; 
+} /* hex for slate-800 / dark text */
 
 /* Keep font and smoothing here; page background and text color are applied via body class in layout.tsx */
 body {
@@ -15,3 +28,29 @@ body {
 
 /* Simple container (avoid @apply so Tailwind doesn't need to resolve utilities here) */
 /* Any layout-specific utility classes are applied directly in the JSX using Tailwind utilities. */
+
+/* Remove bullets and default spacing from lists (navigation, footer, etc.) */
+ul, ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Make links use the surrounding text color and remove the browser default blue/underline */
+a, a:visited {
+    color: inherit;
+    text-decoration: none;
+}
+a:hover, a:active {
+    color: #00ffe1;
+    text-decoration: none;
+}
+/* Provide an accessible focus indicator for keyboard users */
+a:focus-visible {
+    outline: 2px solid #00ffe1;
+    outline-offset: 2px;
+}
+
+.site-name {
+  color: #ff0f4d; /* change this hex as needed */
+}
