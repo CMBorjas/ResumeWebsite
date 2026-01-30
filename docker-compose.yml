@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  resume-website:
+    build: .
+    container_name: resume-website
+    ports:
+      - "3000:80"
+    restart: always
