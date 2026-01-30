@@ -1,13 +1,48 @@
-import { projects } from '../../lib/projects'
+import { projects as manualProjects } from '../../lib/projects'
 import ProjectCard from '../../components/ProjectCard'
 
-export default function ProjectsPage() {
+type GitHubRepo = {
+  id: number
+  name: string
+  description: string | null
+  html_url: string
+  language: string | null
+  updated_at: string
+}
+
+async function getRepos() {
+  const res = await fetch('https://api.github.com/users/CMBorjas/repos?sort=updated&per_page=100', {
+    next: { revalidate: 3600 }
+  })
+
+  if (!res.ok) {
+    console.error('Failed to fetch repos')
+    return []
+  }
+
+  const repos: GitHubRepo[] = await res.json()
+  return repos
+}
+
+export default async function ProjectsPage() {
+  const repos = await getRepos()
+
+  const githubProjects = repos.map(repo => ({
+    title: repo.name,
+    description: repo.description || 'No description available',
+    repoUrl: repo.html_url,
+    techStack: repo.language ? [repo.language] : [],
+    // You could add a default image or conditional logic here
+  }))
+
+  const allProjects = [...manualProjects, ...githubProjects]
+
   return (
-    <section>
-      <h2 className="text-2xl font-bold mb-4 text-brand-pink">Projects</h2>
-      <div className="grid md:grid-cols-2 gap-4">
-        {projects.map((p) => (
-          <ProjectCard key={p.title} project={p} />
+    <section className="max-w-2xl mx-auto">
+      <h2 className="text-2xl font-bold mb-6 text-brand-pink text-center">Projects Feed</h2>
+      <div className="flex flex-col gap-8">
+        {allProjects.map((p) => (
+          <ProjectCard key={p.title + p.repoUrl} project={p} />
         ))}
       </div>
     </section>

@@ -8,19 +8,27 @@ type Project = {
 
 export default function ProjectCard({ project }: { project: Project }) {
   return (
-    <article className="bg-slate-800 rounded-lg p-4 shadow-sm">
-      <h3 className="text-xl font-semibold">{project.title}</h3>
-      <p className="mt-2 text-sm text-slate-300">{project.description}</p>
-      <div className="mt-3 flex gap-2 flex-wrap">
+    <article className="bg-slate-800 rounded-lg p-6 shadow-md border border-slate-700/50 hover:border-brand-pink/30 transition-colors">
+      <div className="flex justify-between items-start mb-3">
+        <h3 className="text-xl font-bold text-white">{project.title}</h3>
+        {project.repoUrl && (
+          <a className="text-xs text-brand-cyan hover:underline" href={project.repoUrl} target="_blank" rel="noreferrer">
+            Source
+          </a>
+        )}
+      </div>
+
+      <p className="text-slate-300 leading-relaxed mb-4">{project.description}</p>
+
+      <div className="flex gap-2 flex-wrap">
         {project.techStack?.map((t) => (
-          <span key={t} className="text-xs px-2 py-1 bg-slate-700 rounded">{t}</span>
+          <span key={t} className="text-xs font-medium px-2.5 py-1 bg-slate-700/50 text-slate-200 rounded-full border border-slate-600">
+            {t}
+          </span>
         ))}
       </div>
-      {project.repoUrl && (
-        <div className="mt-3">
-          <a className="text-brand-pink" href={project.repoUrl} target="_blank" rel="noreferrer">View Repo</a>
-        </div>
-      )}
+
+      {/* Optional: Add image here if available in the future for clearer "post" look */}
     </article>
   )
 }
