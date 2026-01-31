@@ -8,12 +8,12 @@ type Project = {
 
 export default function ProjectCard({ project }: { project: Project }) {
   return (
-    <article className="bg-slate-800 rounded-lg p-5 shadow-sm border border-slate-700/50 hover:border-brand-pink/50 transition-colors h-full flex flex-col">
+    <article className="bg-slate-800 rounded-lg p-5 shadow-sm border border-slate-700/50 hover:border-brand-pink/50 transition-colors aspect-square flex flex-col justify-between overflow-hidden relative group">
       <div className="flex justify-between items-start mb-2">
-        <h3 className="text-lg font-bold text-white leading-tight">{project.title}</h3>
+        <h3 className="text-lg font-bold text-white leading-tight group-hover:text-brand-pink transition-colors">{project.title}</h3>
       </div>
 
-      <p className="text-sm text-slate-300 mb-4 flex-grow line-clamp-3 leading-snug">{project.description}</p>
+      <p className="text-sm text-slate-300 mb-4 flex-grow line-clamp-4 leading-snug">{project.description}</p>
 
       <div className="flex flex-col gap-3 mt-auto">
         <div className="flex gap-1.5 flex-wrap">
