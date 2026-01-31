@@ -8,6 +8,8 @@ type GitHubRepo = {
   html_url: string
   language: string | null
   updated_at: string
+  stargazers_count: number
+  forks_count: number
 }
 
 async function getRepos() {
@@ -32,6 +34,8 @@ export default async function ProjectsPage() {
     description: repo.description || 'No description available',
     repoUrl: repo.html_url,
     techStack: repo.language ? [repo.language] : [],
+    stars: repo.stargazers_count,
+    forks: repo.forks_count,
     // You could add a default image or conditional logic here
   }))
 
