@@ -1,7 +1,7 @@
 export default function ContactPage() {
   return (
-    <section>
-  <div className="bg-slate-800/95 rounded-lg p-4 shadow-sm">
+    <section className="max-w-4xl mx-auto">
+      <div className="bg-slate-800/95 rounded-lg p-4 shadow-sm">
         <h2 className="text-2xl font-bold text-brand-pink">Contact</h2>
         <p className="mt-3">Email: <a className="text-brand-cyan underline" href="mailto:Christian.MandujanoBorjas@ucdenver.edu">Christian.MandujanoBorjas@ucdenver.edu</a></p>
         <div className="mt-4 flex gap-3">

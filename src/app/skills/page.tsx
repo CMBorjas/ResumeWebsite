@@ -1,7 +1,7 @@
 export default function SkillsPage() {
   return (
-    <section>
-  <div className="bg-slate-800/95 rounded-lg p-4 shadow-sm">
+    <section className="max-w-4xl mx-auto">
+      <div className="bg-slate-800/95 rounded-lg p-4 shadow-sm">
         <h2 className="text-2xl font-bold text-brand-pink">Skills</h2>
         <ul className="mt-3 list-disc list-inside space-y-2">
           <li><strong>Programming Languages:</strong> Python, Java, C++, MySQL, Bash</li>

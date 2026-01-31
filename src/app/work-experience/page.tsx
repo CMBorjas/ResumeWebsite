@@ -1,7 +1,7 @@
 export default function WorkExperiencePage() {
   return (
-    <section>
-  <div className="bg-slate-800/95 rounded-lg p-4 shadow-sm">
+    <section className="max-w-4xl mx-auto">
+      <div className="bg-slate-800/95 rounded-lg p-4 shadow-sm">
         <h2 className="text-2xl font-bold text-brand-pink">Work Experience</h2>
 
         <h3 className="mt-4 font-semibold">The Monarch Casino - Black Hawk, Colorado, USA</h3>
