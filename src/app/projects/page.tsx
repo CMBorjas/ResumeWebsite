@@ -43,7 +43,7 @@ export default async function ProjectsPage() {
 
   return (
     <section className="max-w-7xl mx-auto px-4">
-      <h2 className="text-2xl font-bold mb-6 text-brand-pink text-center">Projects Feed</h2>
+      <h2 className="text-2xl font-bold mb-6 text-[#0F38FF] text-center">Projects Feed</h2>
 
       {/* Scrollable Container with Fade Mask - "Slot Machine" feel */}
       <div className="relative bg-slate-900/50 p-4 rounded-xl border border-slate-800 shadow-inner">
