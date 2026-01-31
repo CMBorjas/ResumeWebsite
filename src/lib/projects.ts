@@ -4,6 +4,8 @@ export type Project = {
   imageUrl?: string
   repoUrl?: string
   techStack?: string[]
+  stars?: number
+  forks?: number
 }
 
 export const projects: Project[] = [
