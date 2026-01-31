@@ -38,12 +38,21 @@ export default async function ProjectsPage() {
   const allProjects = [...manualProjects, ...githubProjects]
 
   return (
-    <section className="max-w-2xl mx-auto">
+    <section className="max-w-6xl mx-auto">
       <h2 className="text-2xl font-bold mb-6 text-brand-pink text-center">Projects Feed</h2>
-      <div className="flex flex-col gap-8">
-        {allProjects.map((p) => (
-          <ProjectCard key={p.title + p.repoUrl} project={p} />
-        ))}
+
+      {/* Scrollable Container with Fade Mask */}
+      <div className="relative">
+        <div className="max-h-[600px] overflow-y-auto pr-2 custom-scrollbar pb-12">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {allProjects.map((p) => (
+              <ProjectCard key={p.title + p.repoUrl} project={p} />
+            ))}
+          </div>
+        </div>
+
+        {/* Bottom Fade Gradient */}
+        <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-slate-900 to-transparent"></div>
       </div>
     </section>
   )
