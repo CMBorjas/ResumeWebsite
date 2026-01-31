@@ -16,6 +16,9 @@ export default function ProjectCard({ project }: { project: Project }) {
   const mainLang = project.techStack?.[0] || 'other'
   const langColor = languageColors[mainLang] || languageColors['other']
 
+  // Selected single color for uniformity
+  const titleColor = '#ff2a6d'
+
   return (
     <article className="bg-[#0d1117] border border-slate-700/50 rounded-md p-3 flex flex-col h-full hover:border-slate-500 transition-colors aspect-[1.9/1]">
       <div className="flex justify-between items-start mb-2">
@@ -23,7 +26,8 @@ export default function ProjectCard({ project }: { project: Project }) {
           href={project.repoUrl}
           target="_blank"
           rel="noreferrer"
-          className="text-blue-400 font-semibold text-sm hover:underline truncate mr-2"
+          className="font-semibold text-sm hover:underline truncate mr-2"
+          style={{ color: titleColor }}
         >
           {project.title}
         </a>
