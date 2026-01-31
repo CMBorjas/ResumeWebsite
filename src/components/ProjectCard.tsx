@@ -32,9 +32,11 @@ export default function ProjectCard({ project }: { project: Project }) {
         </span>
       </div>
 
-      <p className="text-xs text-slate-300 mb-3 flex-grow line-clamp-2 leading-relaxed">
-        {project.description}
-      </p>
+      <div className="flex-grow overflow-y-auto mb-3 custom-scrollbar pr-1">
+        <p className="text-xs text-slate-300 leading-relaxed">
+          {project.description}
+        </p>
+      </div>
 
       <div className="flex items-center gap-4 text-xs text-slate-400 mt-auto">
         <div className="flex items-center gap-1.5">
