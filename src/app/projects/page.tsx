@@ -44,7 +44,7 @@ export default async function ProjectsPage() {
       {/* Scrollable Container with Fade Mask */}
       <div className="relative">
         <div className="max-h-[600px] overflow-y-auto pr-2 custom-scrollbar pb-12">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {allProjects.map((p) => (
               <ProjectCard key={p.title + p.repoUrl} project={p} />
             ))}
