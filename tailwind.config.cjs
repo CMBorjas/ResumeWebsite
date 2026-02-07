@@ -14,6 +14,29 @@ module.exports = {
         brand: {
           pink: '#ff0f4d',
           cyan: '#00ffe1'
+        },
+        cp: {
+          yellow: '#FCEE0A',
+          cyan: '#00F0FF',
+          red: '#FF003C',
+          black: '#000000',
+          dark: '#121212',
+          gray: '#2d2d2d'
+        }
+      },
+      fontFamily: {
+        sans: ['Rajdhani', 'ui-sans-serif', 'system-ui'],
+        mono: ['Roboto Mono', 'ui-monospace', 'monospace']
+      },
+      animation: {
+        'glitch': 'glitch 1s linear infinite',
+        'pulse-fast': 'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+      },
+      keyframes: {
+        glitch: {
+          '2%, 64%': { transform: 'translate(2px,0) skew(0deg)' },
+          '4%, 60%': { transform: 'translate(-2px,0) skew(0deg)' },
+          '62%': { transform: 'translate(0,0) skew(5deg)' },
         }
       }
     },

@@ -1,21 +1,78 @@
+import Image from 'next/image'
 import Link from 'next/link'
-import styles from './page.module.css'
+import CyberButton from '@/components/CyberButton'
+import CyberCard from '@/components/CyberCard'
 
 export default function Home() {
   return (
-    <section className="max-w-4xl mx-auto">
-      <div className="bg-slate-800/95 rounded-lg p-4 shadow-sm">
-        <h2 className={`text-3xl font-bold ${styles.aboutTitle}`}>ABOUT ME</h2>
-        <p className="mt-4">I am Christian Mandujano Borjas, an aspiring software engineer currently pursuing a degree in Computer Science at the University of Colorado Denver. With a strong foundation in programming languages like Python, Java, and C++, I have a passion for solving complex problems and building efficient systems.</p>
-        <p className="mt-3">I am currently working on a full stack web development project using HTML, CSS, and JavaScript. I have experience with database management using MySQL and SQLite, and I am familiar with cloud services like Google firebase and Amazon Web Services. I am also interested in cybersecurity and have experience with virus protection, firewall management, and backup & recovery.</p>
-        <p className="mt-3">My experience as an I.T. Technician at The Monarch Casino and as a CIS Lab Assistant at the Community College of Denver has given me hands-on experience in hardware maintenance, networking, and team collaboration. I have worked with technologies such as Docker, Git, and cloud services like Google Cloud.</p>
-        <p className="mt-3">In addition to my technical skills, I am passionate about model building, playing guitar, and Android development. I enjoy hiking and teaching self-defense as part of my diverse interests. I'm constantly learning and seeking new opportunities to improve both my technical and interpersonal skills.</p>
+    <main className="flex flex-col items-center justify-center min-h-screen p-4 md:p-24 relative overflow-hidden">
 
-        <div className="mt-6 flex gap-4">
-          <Link className="px-4 py-2 bg-brand-pink rounded text-white" href="/projects">View Projects</Link>
-          <Link className="px-4 py-2 border rounded" href="/contact">Contact</Link>
+      {/* Glitch Overlay Effect */}
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-0 opacity-10 bg-[url('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3B4cnh4cnh4cnh4cnh4cnh4cnh4cnh4cnh4cnh4cnh4/oEI9uBVPHeP1tH1R31/giphy.gif')] bg-cover mix-blend-overlay"></div>
+
+      <div className="z-10 max-w-5xl w-full items-center justify-between text-sm lg:flex">
+        <div className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-800 bg-black/50 pb-6 pt-8 backdrop-blur-2xl lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-gray-900/40 lg:p-4">
+          <code className="font-mono font-bold text-cp-cyan">/// SYSTEM_READY</code>
+        </div>
+        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-black via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
+          <span className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0 font-mono text-cp-red animate-pulse">
+            NET_STATUS: ONLINE
+          </span>
         </div>
       </div>
-    </section>
+
+      <div className="relative flex flex-col place-items-center z-10 mt-12 mb-12">
+        <h1 className="text-6xl md:text-8xl font-black text-center tracking-tighter relative cyber-glitch-effect mb-4">
+          CHRISTIAN<br />
+          <span className="text-cp-cyan">MANDUJANO</span>
+        </h1>
+        <p className="text-xl md:text-2xl text-cp-red font-mono tracking-[0.2em] mb-8">
+          FULL_STACK_NETRUNNER
+        </p>
+
+        <div className="flex gap-6 mt-8">
+          <Link href="/about">
+            <CyberButton variant="primary">Initialize</CyberButton>
+          </Link>
+          <Link href="/projects">
+            <CyberButton variant="outline">View Ops</CyberButton>
+          </Link>
+        </div>
+      </div>
+
+      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left gap-4">
+        <CyberCard title="BIO_DATA" borderColor="yellow" className="h-full">
+          <p className="text-sm opacity-80">
+            Data verification and history logs.
+            <br /><br />
+            <Link href="/about" className="text-cp-cyan hover:underline">/// READ_LOGS</Link>
+          </p>
+        </CyberCard>
+
+        <CyberCard title="SKILL_SET" borderColor="cyan" className="h-full">
+          <p className="text-sm opacity-80">
+            Available daemons and subroutines.
+            <br /><br />
+            <Link href="/skills" className="text-cp-yellow hover:underline">/// SCAN_WETWARE</Link>
+          </p>
+        </CyberCard>
+
+        <CyberCard title="OPERATIONS" borderColor="red" className="h-full">
+          <p className="text-sm opacity-80">
+            Past mission reports and deployed code.
+            <br /><br />
+            <Link href="/projects" className="text-cp-red hover:underline">/// VIEW_OPS</Link>
+          </p>
+        </CyberCard>
+
+        <CyberCard title="COMMS" borderColor="cyan" className="h-full">
+          <p className="text-sm opacity-80">
+            Secure frequency for contract offers.
+            <br /><br />
+            <Link href="/contact" className="text-white hover:underline">/// OPEN_CHANNEL</Link>
+          </p>
+        </CyberCard>
+      </div>
+    </main>
   )
 }

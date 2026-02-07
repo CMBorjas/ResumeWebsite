@@ -1,6 +1,8 @@
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
+import CyberCard from '@/components/CyberCard';
+import CyberButton from '@/components/CyberButton';
 
 interface AppService {
     name: string;
@@ -65,26 +67,21 @@ export default async function VaultPage() {
     }
 
     return (
-        <div className="min-h-screen bg-slate-950 text-slate-200 p-8">
-            <header className="flex justify-between items-center mb-12 border-b border-slate-800 pb-4">
+        <div className="min-h-screen bg-cp-black text-cp-yellow p-4 md:p-8">
+            <header className="flex flex-col md:flex-row justify-between items-center mb-12 border-b border-cp-gray pb-4 gap-4">
                 <div>
-                    <h1 className="text-3xl font-bold bg-gradient-to-r from-brand-pink to-brand-cyan bg-clip-text text-transparent">
-                        THE VAULT
+                    <h1 className="text-4xl font-black cyber-glitch-effect text-cp-yellow">
+                        VAULT_ACCESS
                     </h1>
-                    <p className="text-slate-500 font-mono text-sm">ANTARES-BOX NETWORK // SECURE ZONE</p>
+                    <p className="text-cp-cyan font-mono text-sm tracking-widest">/// ANTARES-BOX NETWORK</p>
                 </div>
                 <div className="flex items-center gap-4">
-                    <div className="flex items-center gap-2 px-3 py-1 bg-green-950/30 border border-green-900 rounded-full">
-                        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                        <span className="text-xs font-mono text-green-400">SYSTEM OPTIMAL</span>
+                    <div className="flex items-center gap-2 px-3 py-1 bg-green-950/30 border border-green-900 clip-corner-br">
+                        <div className="w-2 h-2 bg-green-500 animate-pulse" />
+                        <span className="text-xs font-mono text-green-400">SYS_OPTIMAL</span>
                     </div>
-                    {/* Logout is handled via server action in a client component usually, 
-                but for simplicity we'll just link home or have a form button */}
-                    <Link
-                        href="/"
-                        className="text-sm text-slate-400 hover:text-white transition-colors"
-                    >
-                        EXIT
+                    <Link href="/">
+                        <CyberButton variant="outline" className="px-4 py-2 text-xs">LOGOUT</CyberButton>
                     </Link>
                 </div>
             </header>
@@ -96,32 +93,34 @@ export default async function VaultPage() {
                         href={service.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="block group relative bg-slate-900/50 border border-slate-800 rounded-xl p-6 hover:border-brand-cyan/50 transition-all duration-300 hover:bg-slate-900 hover:shadow-lg hover:shadow-brand-cyan/10"
+                        className="group block"
                     >
-                        <div className="absolute top-4 right-4 flex items-center gap-2">
-                            <span className={`w-2 h-2 rounded-full ${service.status === 'online' ? 'bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]' :
-                                    service.status === 'maintenance' ? 'bg-yellow-500' : 'bg-red-500'
-                                }`} />
-                        </div>
+                        <CyberCard borderColor={service.status === 'maintenance' ? 'yellow' : 'cyan'} className="h-full hover:bg-cp-dark/100 transition-colors duration-300">
+                            <div className="absolute top-4 right-4 flex items-center gap-2">
+                                <span className={`w-2 h-2 ${service.status === 'online' ? 'bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]' :
+                                        service.status === 'maintenance' ? 'bg-cp-yellow' : 'bg-cp-red'
+                                    }`} />
+                            </div>
 
-                        <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300 transform-origin-left">
-                            {service.icon}
-                        </div>
+                            <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300 transform-origin-left text-cp-yellow group-hover:text-cp-cyan">
+                                {service.icon}
+                            </div>
 
-                        <h2 className="text-xl font-bold text-slate-100 mb-2 group-hover:text-brand-cyan transition-colors">
-                            {service.name}
-                        </h2>
+                            <h2 className="text-2xl font-bold text-white mb-2 group-hover:text-cp-yellow transition-colors font-mono">
+                                {service.name}
+                            </h2>
 
-                        <p className="text-sm text-slate-400 mb-4 h-10 line-clamp-2">
-                            {service.description}
-                        </p>
+                            <p className="text-sm text-gray-400 mb-6 h-10 line-clamp-2 font-mono">
+                                {service.description}
+                            </p>
 
-                        <div className="flex items-center text-xs font-mono text-slate-600 group-hover:text-brand-pink transition-colors mt-auto">
-                            <span>ACCESS TERMINAL</span>
-                            <svg className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                            </svg>
-                        </div>
+                            <div className="flex items-center text-xs font-mono text-cp-cyan group-hover:text-cp-pink transition-colors mt-auto border-t border-gray-800 pt-4">
+                                <span>/// ACCESS_TERMINAL</span>
+                                <svg className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </div>
+                        </CyberCard>
                     </a>
                 ))}
             </div>
