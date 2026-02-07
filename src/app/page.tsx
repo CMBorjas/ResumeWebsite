@@ -40,7 +40,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left gap-4">
+      <div className="mb-32 grid text-center lg:mb-0 grid-cols-1 md:grid-cols-4 gap-4 w-full max-w-5xl text-left">
         <CyberCard title="BIO_DATA" borderColor="yellow" className="h-full">
           <p className="text-sm opacity-80">
             Data verification and history logs.
