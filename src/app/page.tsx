@@ -10,12 +10,12 @@ export default function Home() {
       {/* Glitch Overlay Effect */}
       {/* Background Decor */}
 
-      <div className="z-10 max-w-5xl w-full items-center justify-between text-sm lg:flex">
-        <div className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-800 bg-black/50 pb-6 pt-8 backdrop-blur-2xl lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-gray-900/40 lg:p-4">
+      <div className="fixed top-0 left-0 w-full p-4 flex justify-between items-start z-50 pointer-events-none">
+        <div className="bg-black/50 border border-gray-800 backdrop-blur-md p-2 rounded-lg pointer-events-auto">
           <code className="font-mono font-bold text-cp-cyan">/// SYSTEM_READY</code>
         </div>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-black via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <span className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0 font-mono text-cp-red animate-pulse">
+        <div className="bg-black/50 border border-gray-800 backdrop-blur-md p-2 rounded-lg pointer-events-auto">
+          <span className="font-mono text-cp-red animate-pulse">
             NET_STATUS: ONLINE
           </span>
         </div>
