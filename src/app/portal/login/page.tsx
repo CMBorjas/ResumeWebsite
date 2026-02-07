@@ -1,25 +1,36 @@
 'use client'
 
-import { useActionState } from 'react';
+import { useActionState, useState, useEffect } from 'react';
 import { loginAction } from '@/app/actions/auth';
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
 import CyberButton from '@/components/CyberButton';
 import CyberCard from '@/components/CyberCard';
-
-// QR Code for Demo (generated from lib/auth logic)
-// otpauth://totp/Antares%20Box:admin@antares-box.com?secret=KVKFKTCPNZQXE2LJN54E6TRQJ5KFKTCP&issuer=Antares%20Box
-const DEMO_QR = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAYAAAB1PADUAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIlSURBVHhe7dzhTcQgEABhW6lAaZSWoQU4j/1xA+cxh2c34/2ZZ5LdTvLw25sEPhHqI0J9RKiPCfUxoT4i1EeE+ohQHxHqY0J9RKiPCfUxoT4i1EeE+ohQHxHqY0J9RKiPCfUxoT4i1EeE+ohQHxHqY0J9RKiPCfUxoT4i1EeE+ohQHxHqY0J9RKiPCfUxoT4i1EeE+ohQHxHqY0J9RKiPCfUxoT4i1EeE+ohQHxHqY0J9RKiPCfUxoT4i1EeE+ohQHxHqY0J9RKiPCfUxoT4i1EeE+ohQHxHqY0J9RKiPCfUxoT4i1EeE+ohQHxHqY0J9RKiPCfUxoT4i1EeE+ohQHxHqY0J9RKiPCfUxoT4i1EeE+ohQHxHqY0J9RKiPCfUxoT4i1EeE+ohQHxHqY0J9RKiPCfUxoT4i1EeE+ohQHxHqY0J9RKiPCfUxoT4i1EeE+ohQHxHqY0J9RKiPCfUxoT4i1EeE+ohQHxHqY0J9RKiPCfUxoT4i1EeE+ohQHxHqY0J9RKiPCfUxoT4i1EeE+ohQHxHqY0J9RKiPCfUxoT4i1EeE+ohQHxHqY0J9RKiPCfUxoT4i1EeE+ohQH2eE+vj9/QO1w05M+K1u9AAAAABJRU5ErkJggg==";
+import QRCode from 'qrcode';
 
 export default function LoginPage() {
     const [state, formAction, isPending] = useActionState(loginAction, null);
     const router = useRouter();
+    const [qrCodeUrl, setQrCodeUrl] = useState<string>('');
 
     useEffect(() => {
         if (state?.success) {
             router.push('/portal/vault');
         }
     }, [state, router]);
+
+    useEffect(() => {
+        const generateQR = async () => {
+            try {
+                const secret = 'KVKFKTCPNZQXE2LJN54E6TRQJ5KFKTCP';
+                const otpAuthUrl = `otpauth://totp/Antares%20Box:admin@antares-box.com?secret=${secret}&issuer=Antares%20Box`;
+                const url = await QRCode.toDataURL(otpAuthUrl);
+                setQrCodeUrl(url);
+            } catch (err) {
+                console.error('Failed to generate QR code', err);
+            }
+        };
+        generateQR();
+    }, []);
 
     return (
         <div className="min-h-screen bg-cp-black flex flex-col items-center justify-center p-4 relative overflow-hidden text-cp-yellow">
@@ -32,8 +43,14 @@ export default function LoginPage() {
             <CyberCard borderColor="yellow" className="max-w-md w-full z-10" title="ARASAKA_AUTH_PROTOCOL">
 
                 <div className="mb-6 p-4 bg-black/50 border border-cp-yellow/20">
-                    <div className="flex justify-center bg-white p-2 mb-4">
-                        <img src={DEMO_QR} alt="2FA QR Code" className="w-32 h-32" />
+                    <div className="flex justify-center bg-white p-2 mb-4 min-h-[148px]">
+                        {qrCodeUrl ? (
+                            <img src={qrCodeUrl} alt="2FA QR Code" className="w-32 h-32" />
+                        ) : (
+                            <div className="w-32 h-32 flex items-center justify-center text-black font-mono text-xs animate-pulse">
+                                GENERATING_KEY...
+                            </div>
+                        )}
                     </div>
                     <p className="text-[10px] text-cp-cyan mt-2 text-center font-mono">/// SECRET: KVKFKTCPNZQXE2LJN54E6TRQJ5KFKTCP</p>
                     <p className="text-[10px] text-cp-cyan text-center font-mono mt-1">/// CREDENTIAL: admin123</p>
