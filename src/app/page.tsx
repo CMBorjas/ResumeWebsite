@@ -8,7 +8,7 @@ export default function Home() {
     <main className="flex flex-col items-center justify-center min-h-screen p-4 md:p-24 relative overflow-hidden">
 
       {/* Glitch Overlay Effect */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-0 opacity-10 bg-[url('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3B4cnh4cnh4cnh4cnh4cnh4cnh4cnh4cnh4cnh4cnh4/oEI9uBVPHeP1tH1R31/giphy.gif')] bg-cover mix-blend-overlay"></div>
+      {/* Background Decor */}
 
       <div className="z-10 max-w-5xl w-full items-center justify-between text-sm lg:flex">
         <div className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-800 bg-black/50 pb-6 pt-8 backdrop-blur-2xl lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-gray-900/40 lg:p-4">
@@ -40,7 +40,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="mb-32 grid text-center lg:mb-0 grid-cols-1 md:grid-cols-4 gap-4 w-full max-w-5xl text-left">
+      <div className="mb-32 grid text-center lg:mb-0 grid-cols-4 gap-4 w-full max-w-5xl text-left">
         <CyberCard title="BIO_DATA" borderColor="yellow" className="h-full">
           <p className="text-sm opacity-80">
             Data verification and history logs.
