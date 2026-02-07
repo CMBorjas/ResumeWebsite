@@ -60,6 +60,17 @@ To run this website locally on your machine, follow these steps:
 3. **Open index.html in Your Browser**
     Simply open the index.html file in your preferred web browser to view the website locally.
 
+## Development & Demo Mode
+
+### Running with Mock Data (Cold Storage Demo)
+To simulate the Raspberry Pi's storage capabilities without the actual hardware:
+1. Ensure dependencies are installed: `npm install`
+2. Run the demo script:
+   ```bash
+   npm run dev:demo
+   ```
+3. Visit `http://localhost:3000/about` to see the storage visualization using the local `demo_media` folder.
+
 ## How to View the Website
 
 The website is hosted on GitHub Pages. You can view it live by visiting:

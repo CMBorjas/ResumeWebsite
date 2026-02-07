@@ -1,4 +1,4 @@
-# Stage 1: Build the static site
+# Stage 1: Build the application
 FROM node:20.9.0-alpine AS builder
 
 WORKDIR /app
@@ -9,14 +9,28 @@ RUN npm ci
 COPY . .
 RUN npm run build
 
-# Stage 2: Serve with Nginx
-FROM nginx:alpine
+# Stage 2: Production Server
+FROM node:20.9.0-alpine AS runner
 
-# Copy the static output from builder to Nginx html directory
-COPY --from=builder /app/out /usr/share/nginx/html
+WORKDIR /app
 
-# Expose port 80
-EXPOSE 80
+# Don't run as root
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
 
-# Start Nginx
-CMD ["nginx", "-g", "daemon off;"]
+# Copy necessary files
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
+
+# Set correct permissions
+RUN chown -R nextjs:nodejs /app
+
+USER nextjs
+
+EXPOSE 3000
+
+ENV PORT 3000
+ENV HOSTNAME "0.0.0.0"
+
+CMD ["node", "server.js"]

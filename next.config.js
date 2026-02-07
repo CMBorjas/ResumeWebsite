@@ -1,8 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  output: 'export',
-  basePath: '/ResumeWebsite',
+  // output: 'export',
+  output: 'standalone',
+  // basePath: '/ResumeWebsite',
   images: {
     unoptimized: true,
   },

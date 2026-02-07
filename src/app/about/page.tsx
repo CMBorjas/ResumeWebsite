@@ -1,3 +1,5 @@
+import StorageStats from "@/components/StorageStats";
+
 export default function About() {
   return (
     <section className="max-w-4xl mx-auto">
@@ -8,6 +10,8 @@ export default function About() {
         <p className="mt-3">My experience as an I.T. Technician at The Monarch Casino and as a CIS Lab Assistant at the Community College of Denver has given me hands-on experience in hardware maintenance, networking, and team collaboration. I have worked with technologies such as Docker, Git, and cloud services like Google Cloud.</p>
         <p className="mt-3">In addition to my technical skills, I am passionate about model building, playing guitar, and Android development. I enjoy hiking and teaching self-defense as part of my diverse interests. I'm constantly learning and seeking new opportunities to improve both my technical and interpersonal skills.</p>
       </div>
+
+      <StorageStats />
     </section>
   )
 }
