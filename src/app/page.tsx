@@ -5,7 +5,7 @@ import CyberCard from '@/components/CyberCard'
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen p-4 md:p-24 relative overflow-hidden">
+    <main className="flex flex-col items-center min-h-screen p-4 md:p-24 relative overflow-hidden pt-32 md:pt-40 gap-12">
 
       {/* Glitch Overlay Effect */}
       {/* Background Decor */}
@@ -21,7 +21,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="relative flex flex-col place-items-center z-10 mt-12 mb-12">
+      <div className="relative flex flex-col place-items-center z-10">
         <h1 className="text-6xl md:text-8xl font-black text-center tracking-tighter relative cyber-glitch-effect mb-4">
           CHRISTIAN<br />
           <span className="text-cp-cyan">MANDUJANO</span>
