@@ -1,8 +1,8 @@
-# 🚀 Antigravity IDE Deployment Guide
+# Antigravity IDE Deployment Guide
 
-### **Environment: Local Laptop ➔ Raspberry Pi (192.168.1.241)**
+### **Environment: Local Laptop → Raspberry Pi (192.168.1.241)**
 
-## ⚠️ Connectivity & Sync Warning
+## Connectivity & Sync Warning
 
 The **Antigravity IDE** operating on the local laptop does not have a "live-link" or "agent-load" capability when connected via SSH to the Raspberry Pi. Changes made in the IDE interface **will not** automatically reflect on the server.
 
@@ -10,7 +10,7 @@ To see updates, you must follow the **Commit-Pull-Build** workflow.
 
 ---
 
-## 🛠 Deployment Workflow
+## Deployment Workflow
 
 Because the Pi hosts the live Docker containers, all code changes must be synchronized through GitHub.
 
@@ -44,7 +44,7 @@ docker compose up -d --build
 
 ---
 
-## 📂 Server Inventory (Reference)
+## Server Inventory (Reference)
 
 * **Host IP:** `192.168.1.241`
 * **Path:** `~/docker-stacks/resume-website/`
@@ -54,7 +54,7 @@ docker compose up -d --build
 
 ---
 
-## 🔐 Future Security Implementation
+## Future Security Implementation
 
 The **Cloudflare Tunnel** connector is staged in `~/docker-stacks/management`.
 
@@ -63,7 +63,7 @@ The **Cloudflare Tunnel** connector is staged in `~/docker-stacks/management`.
 
 ---
 
-## 📝 Maintenance Commands
+## Maintenance Commands
 
 | Action | Command |
 | --- | --- |
@@ -74,7 +74,7 @@ The **Cloudflare Tunnel** connector is staged in `~/docker-stacks/management`.
 
 ---
 
-## 🐳 Docker Configuration Reference
+## Docker Configuration Reference
 
 ### Current `docker-compose.yml` Setup
 
@@ -111,7 +111,7 @@ TOTP_SECRET=KVKFKTCPNZQXE2LJN54E6TRQJ5KFKTCP
 
 ---
 
-## 🔍 Verification Steps
+## Verification Steps
 
 After deploying changes, verify the application is running correctly:
 
@@ -138,7 +138,7 @@ After deploying changes, verify the application is running correctly:
 
 ---
 
-## 🌐 Cloudflare Zero Trust Setup (Future)
+## Cloudflare Zero Trust Setup (Future)
 
 When ready to expose the site publicly:
 
@@ -151,7 +151,7 @@ When ready to expose the site publicly:
 
 ---
 
-## 🧠 Agent Notes
+## Agent Notes
 
 ### For Future Antigravity Sessions:
 
@@ -163,14 +163,14 @@ When ready to expose the site publicly:
 
 ### Common Pitfalls:
 
-* ❌ Editing files in AG IDE and expecting immediate changes on Pi
-* ❌ Forgetting to rebuild Docker after pulling changes
-* ❌ Working on `main` branch instead of `aeon-deployment`
-* ❌ Not checking Docker logs after deployment
+* Editing files in AG IDE and expecting immediate changes on Pi
+* Forgetting to rebuild Docker after pulling changes
+* Working on `main` branch instead of `aeon-deployment`
+* Not checking Docker logs after deployment
 
 ---
 
-## 📚 Additional Resources
+## Additional Resources
 
 * **Project Repository:** [CMBorjas/ResumeWebsite](https://github.com/CMBorjas/ResumeWebsite)
 * **Branch:** `aeon-deployment`
