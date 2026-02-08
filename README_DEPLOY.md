@@ -1,86 +1,178 @@
-#  Anti-Gravity Deployment Instructions: Resume-to-Pi
+# 🚀 Antigravity IDE Deployment Guide
 
-This document outlines the procedure for transitioning the **ResumeWebsite** from GitHub Pages to a self-hosted Docker environment on the Raspberry Pi 4 (Argon EON / Cold Storage Node).
+### **Environment: Local Laptop ➔ Raspberry Pi (192.168.1.241)**
 
-## Prerequisites
+## ⚠️ Connectivity & Sync Warning
 
-* **Hardware:** Raspberry Pi 4 (8GB preferred) running Ubuntu/Debian.
-* **Storage:** `/mnt/Lampadas` mounted and accessible.
-* **Networking:** Cloudflare account with a managed domain.
-* **Architecture:** Multi-arch builds required (Target: `linux/arm64`).
+The **Antigravity IDE** operating on the local laptop does not have a "live-link" or "agent-load" capability when connected via SSH to the Raspberry Pi. Changes made in the IDE interface **will not** automatically reflect on the server.
 
----
-
-## Phase 1: The Multi-Arch Build (Gaming PC)
-
-*To avoid thermal throttling on the Pi, we build on the Gaming PC and push to Docker Hub.*
-
-1. **Initialize Buildx:**
-```bash
-docker buildx create --name gravity-builder --use
-```
-
-2. **Build and Push:**
-Replace `your-docker-user` with your actual Docker Hub handle.
-```bash
-docker buildx build --platform linux/amd64,linux/arm64 \
-  -t your-docker-user/resume-website:latest --push .
-```
+To see updates, you must follow the **Commit-Pull-Build** workflow.
 
 ---
 
-## Phase 2: Server-Side Configuration (Raspberry Pi)
+## 🛠 Deployment Workflow
 
-Create a directory at `~/projects/resume-site` and initialize the following `docker-compose.yml`:
+Because the Pi hosts the live Docker containers, all code changes must be synchronized through GitHub.
+
+### **1. On Local Laptop (AG IDE)**
+
+1. Apply your UI changes (Red theme, click-counter logic, alignment).
+2. **Commit** your changes to the `aeon-deployment` branch.
+3. **Push** to GitHub:
+```bash
+git add .
+git commit -m "Update: UI Red theme and secret bio entrance"
+git push origin aeon-deployment
+```
+
+### **2. On Raspberry Pi (Terminal via SSH)**
+
+Navigate to the project directory and synchronize the local files with the repository:
+
+```bash
+cd ~/docker-stacks/resume-website
+git pull origin aeon-deployment
+```
+
+### **3. Rebuild & Refresh**
+
+Since the container runs a compiled Next.js build, you must trigger a rebuild to see the changes:
+
+```bash
+docker compose up -d --build
+```
+
+---
+
+## 📂 Server Inventory (Reference)
+
+* **Host IP:** `192.168.1.241`
+* **Path:** `~/docker-stacks/resume-website/`
+* **Port:** `3000` (Local)
+* **Storage (OS/SSD):** `917G Total / 663G Avail`
+* **Storage (Data/HDD):** `/mnt/Lampadas` (Reserved for Arr Suite Media)
+
+---
+
+## 🔐 Future Security Implementation
+
+The **Cloudflare Tunnel** connector is staged in `~/docker-stacks/management`.
+
+* **Goal:** Map `resume.yourdomain.com` to `192.168.1.241:3000`.
+* **Access Policy:** MFA will be handled via Cloudflare Zero Trust to protect the `/dashboard` route hidden behind the **10-click Bio-Data JPEG** trigger.
+
+---
+
+## 📝 Maintenance Commands
+
+| Action | Command |
+| --- | --- |
+| **Check Health** | `docker ps` |
+| **View Logs** | `docker logs -f resume-website` |
+| **Clean Build** | `docker system prune -f` |
+| **Switch Branch** | `git checkout aeon-deployment` |
+
+---
+
+## 🐳 Docker Configuration Reference
+
+### Current `docker-compose.yml` Setup
 
 ```yaml
 services:
-  # The Resume Website Application
-  resume:
-    image: your-docker-user/resume-website:latest
-    container_name: resume_app
+  resume-website:
+    build: .
+    container_name: resume-website
     restart: unless-stopped
     ports:
       - "3000:3000"
     volumes:
-      - /mnt/Lampadas:/media_data:ro # Proof of storage integration
-    environment:
-      - NODE_ENV=production
-      - STORAGE_PATH=/media_data
+      - /mnt/Lampadas:/media_data:ro  # Mount your NAS storage here
+    env_file: .env
+```
 
-  # Cloudflare Tunnel for secure bedroom-to-web access
-  tunnel:
-    image: cloudflare/cloudflared:latest
-    container_name: cloudflare_tunnel
-    restart: always
-    command: tunnel --no-autoupdate run --token ${CF_TUNNEL_TOKEN}
+### Environment Variables (`.env`)
+
+```env
+# Node Environment
+NODE_ENV=production
+
+# Storage Mount (Argon EON / Lampadas)
+STORAGE_PATH=/media_data
+
+# Security Secrets (Admin access)
+# In production, change these!
+ADMIN_PASSWORD=admin123
+TOTP_SECRET=KVKFKTCPNZQXE2LJN54E6TRQJ5KFKTCP
+
+# Cloudflare Tunnel Token (Get this from Zero Trust Dashboard)
+# CF_TUNNEL_TOKEN=eyJhIjoi...
 ```
 
 ---
 
-##  Phase 3: Cloudflare Zero Trust Setup
+## 🔍 Verification Steps
 
-1. **Create Tunnel:** Generate a new tunnel in the Cloudflare Dashboard named `Pi-Resume-Tunnel`.
-2. **Public Hostname:**
-   * "TBD."
-   * **Domain:** `resume.yourdomain.com`
-   * **Service:** `http://resume_app:3000` (Internal Docker network routing).
+After deploying changes, verify the application is running correctly:
 
-3. **Environment Variable:** Create a `.env` file on the Pi containing `CF_TUNNEL_TOKEN=your_token_here`.
+1. **Check Container Status:**
+   ```bash
+   docker ps
+   ```
+   *The `resume-website` container should show as `Up`.*
+
+2. **View Application Logs:**
+   ```bash
+   docker logs -f resume-website
+   ```
+   *Look for "Ready in XXXms" message from Next.js.*
+
+3. **Test Local Access:**
+   ```bash
+   curl http://localhost:3000
+   ```
+   *Should return HTML content.*
+
+4. **Test Network Access:**
+   From your laptop, visit `http://192.168.1.241:3000` in a browser.
 
 ---
 
-## Phase 4: Showcasing the "Cold Storage"
+## 🌐 Cloudflare Zero Trust Setup (Future)
 
-To prove the "Storage" skill, the application should pull metadata from the volume mount.
+When ready to expose the site publicly:
 
-* **Goal:** Display total capacity of the **Lampadas** drives on the "About" or "Skills" page.
-* **Verification:** Run `docker exec -it resume_app ls /media_data` to ensure the container sees the NAS storage.
+1. Go to **Cloudflare Zero Trust Dashboard** > **Access** > **Tunnels**.
+2. Select your tunnel (or create a new one).
+3. **Public Hostname** tab > **Add Public Hostname**.
+   * **Subdomain:** `resume` (e.g., `resume.yourdomain.com`)
+   * **Service:** `http://192.168.1.241:3000`
+4. Save and test access from external network.
 
 ---
 
-## Maintenance & Monitoring
+## 🧠 Agent Notes
 
-* **Logs:** `docker compose logs -f`
-* **Update:** `docker compose pull && docker compose up -d`
-* **Thermal Check:** Monitor the Argon EON OLED to ensure the resume site isn't spiking bedroom temperatures.
+### For Future Antigravity Sessions:
+
+* **Always check current branch** before making changes: `git branch`
+* **Verify you're on `aeon-deployment`** for production deployments
+* **Never edit files directly on the Pi** - always use the Git workflow
+* **Test locally first** if possible, then deploy to Pi
+* **Document breaking changes** in commit messages
+
+### Common Pitfalls:
+
+* ❌ Editing files in AG IDE and expecting immediate changes on Pi
+* ❌ Forgetting to rebuild Docker after pulling changes
+* ❌ Working on `main` branch instead of `aeon-deployment`
+* ❌ Not checking Docker logs after deployment
+
+---
+
+## 📚 Additional Resources
+
+* **Project Repository:** [CMBorjas/ResumeWebsite](https://github.com/CMBorjas/ResumeWebsite)
+* **Branch:** `aeon-deployment`
+* **Framework:** Next.js 16.0.1
+* **Deployment:** Docker + Raspberry Pi 5 (Argon EON)
