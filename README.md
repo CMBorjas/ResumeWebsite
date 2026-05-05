@@ -26,6 +26,7 @@ The website is hosted using GitHub Pages and can be viewed live.
 - **GitHub Pages**: Hosting.
 
 ## File Structure
+```
 ResumeWebsite/ 
 ├── index.html 
 ### Homepage with main overview 
@@ -44,7 +45,7 @@ ResumeWebsite/
 ├── styles.css 
 ### CSS file for styling 
 └── README.md # Project documentation
-
+```
 ## Getting Started
 
 To run this website locally on your machine, follow these steps:
