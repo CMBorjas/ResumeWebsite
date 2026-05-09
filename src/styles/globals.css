@@ -1,6 +1,9 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+    --color-brand-pink: #ff0f4d;
+    --color-brand-cyan: #00ffe1;
+}
 
 html, body, #__next {
     height: 100%;
@@ -9,7 +12,7 @@ html, body, #__next {
 }
 
 .header-bg {
-    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/images/header/skyscrapers-6990425.jpg');
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/ResumeWebsite/images/header/skyscrapers-6990425.jpg');
     background-size: cover;
     background-position: center;
     font-size: xx-large;
@@ -72,4 +75,27 @@ a:focus-visible {
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: #64748b; 
+}
+
+/* Glassmorphism panel for side columns */
+.glass-panel {
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(148, 163, 184, 0.12);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Stats card accent bar */
+.stat-card {
+    background: rgba(30, 41, 59, 0.6);
+    border: 1px solid rgba(148, 163, 184, 0.1);
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    text-align: center;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+.stat-card:hover {
+    border-color: rgba(0, 255, 225, 0.25);
+    background: rgba(30, 41, 59, 0.8);
 }

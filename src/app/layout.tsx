@@ -14,6 +14,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
                 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet" />
+                {/* Devicon – language / tool SVG icons */}
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
             </head>
             <body className="body-bg bg-slate-900 text-slate-100 antialiased min-h-screen flex flex-col">
                 <header className="header-bg text-white">
