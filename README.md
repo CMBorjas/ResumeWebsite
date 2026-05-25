@@ -28,9 +28,7 @@ The website is hosted using GitHub Pages and can be viewed live.
 ## File Structure
 ```
 ResumeWebsite/
-```
 ├── index.html 
-```
 ### Homepage with main overview 
 ├── pages/ │ ├── education.html 
 ### Education page 

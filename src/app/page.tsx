@@ -41,8 +41,10 @@ export default function Home() {
   }, [fullText]);
 
   return (
-    <section className="max-w-4xl mx-auto mt-4">
-      <h2 className={`mb-6 ${styles.aboutTitle} font-bold tracking-widest drop-shadow-[0_0_8px_rgba(0,255,225,0.8)]`}>ABOUT ME</h2>
+    <div className="relative w-full">
+
+      <section className="max-w-4xl mx-auto mt-4">
+        <h2 className={`mb-6 ${styles.aboutTitle} font-bold tracking-widest drop-shadow-[0_0_8px_rgba(0,255,225,0.8)]`}>ABOUT ME</h2>
       
       {/* DOS Terminal Window */}
       <div className="bg-black/85 rounded-sm p-6 shadow-[0_0_20px_rgba(0,255,225,0.15)] border border-brand-cyan/40 font-mono text-brand-cyan/90 min-h-[400px] relative overflow-hidden flex flex-col">
@@ -68,5 +70,6 @@ export default function Home() {
         </div>
       </div>
     </section>
+    </div>
   )
 }
