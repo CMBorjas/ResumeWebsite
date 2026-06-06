@@ -71,7 +71,7 @@ export default function ProjectFeedClient({ allProjects }: { allProjects: Projec
             </div>
           </div>
 
-          <div className="flex-1 overflow-y-auto pr-2 custom-scrollbar pb-12">
+          <div className="flex-1 overflow-y-scroll pr-2 custom-scrollbar pb-12">
             {filteredProjects.length === 0 ? (
               <div className="text-center text-slate-400 py-10 flex flex-col items-center">
                 <svg className="w-12 h-12 mb-3 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>

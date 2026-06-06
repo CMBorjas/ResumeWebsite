@@ -2,16 +2,23 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 export default function HexagonMenu() {
     const [isHovered, setIsHovered] = useState(false)
     const [isLocked, setIsLocked] = useState(false)
     const [hoveredHex, setHoveredHex] = useState<number | null>(null)
+    const pathname = usePathname()
 
     const isOpen = isHovered || isLocked
 
-    const getTransform = (index: number) => {
-        if (!isOpen) return `translateX(0px) scale(1.5)`;
+    const isActive = (path: string) => pathname === path
+
+    const getTransform = (index: number, active: boolean) => {
+        if (!isOpen) {
+            if (active) return `translateX(66px) scale(1.5)`;
+            return `translateX(0px) scale(1.5)`;
+        }
         let x = (index - 1) * 66;
         if (isLocked) {
             if (index > 2) x += 80;
@@ -54,7 +61,7 @@ export default function HexagonMenu() {
                 {/* Hexagon 5 (Contact) */}
                 <div
                     className={`absolute left-0 transition-all duration-[600ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] ${hoveredHex === 5 ? 'z-20' : 'z-10'}`}
-                    style={{ transform: getTransform(5) }}
+                    style={{ transform: getTransform(5, isActive('/contact')) }}
                 >
                     <Link href="/contact" className={`block relative group hover-pop-once cursor-pointer`} onMouseEnter={() => setHoveredHex(5)} onMouseLeave={() => setHoveredHex(null)}>
                         <svg width="48" height="48" viewBox="0 0 24 24" fill="rgba(0,255,225,0.2)" stroke="rgba(0,255,225,0.5)" strokeWidth="2" className="drop-shadow-[0_0_10px_rgba(0,255,225,0.4)] group-hover:fill-brand-cyan/40 group-hover:drop-shadow-[0_0_15px_rgba(0,255,225,0.8)] transition-all relative z-10">
@@ -64,7 +71,7 @@ export default function HexagonMenu() {
                             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                             <polyline points="22,6 12,13 2,6"></polyline>
                         </svg>
-                        <span className={`absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 transition-all duration-300 text-[10px] font-bold text-[#00ffe1] group-hover:text-white tracking-widest drop-shadow-[0_2px_4px_rgba(0,0,0,1)] z-20 whitespace-nowrap ${isLocked ? 'opacity-100 translate-x-[calc(-50%_+_55px)]' : 'opacity-0 group-hover:translate-x-[calc(-50%_+_55px)] group-hover:opacity-100'}`}>
+                        <span className={`absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 transition-all duration-300 text-[10px] font-bold text-[#00ffe1] group-hover:text-white tracking-widest drop-shadow-[0_2px_4px_rgba(0,0,0,1)] z-20 whitespace-nowrap ${isLocked || (!isOpen && isActive('/contact')) ? 'opacity-100 translate-x-[calc(-50%_+_55px)]' : 'opacity-0 group-hover:translate-x-[calc(-50%_+_55px)] group-hover:opacity-100'}`}>
                             CONTACT
                         </span>
                     </Link>
@@ -73,7 +80,7 @@ export default function HexagonMenu() {
                 {/* Hexagon 4 (Resume) */}
                 <div
                     className={`absolute left-0 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${hoveredHex === 4 ? 'z-20' : 'z-10'}`}
-                    style={{ transform: getTransform(4) }}
+                    style={{ transform: getTransform(4, isActive('/resume')) }}
                 >
                     <Link href="/resume" className={`block relative group hover-pop-once cursor-pointer`} onMouseEnter={() => setHoveredHex(4)} onMouseLeave={() => setHoveredHex(null)}>
                         <svg width="48" height="48" viewBox="0 0 24 24" fill="rgba(0,255,225,0.2)" stroke="rgba(0,255,225,0.5)" strokeWidth="2" className="drop-shadow-[0_0_10px_rgba(0,255,225,0.4)] group-hover:fill-brand-cyan/40 group-hover:drop-shadow-[0_0_15px_rgba(0,255,225,0.8)] transition-all relative z-10">
@@ -86,7 +93,7 @@ export default function HexagonMenu() {
                             <line x1="16" y1="17" x2="8" y2="17"></line>
                             <polyline points="10 9 9 9 8 9"></polyline>
                         </svg>
-                        <span className={`absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 transition-all duration-300 text-[10px] font-bold text-[#00ffe1] group-hover:text-white tracking-widest drop-shadow-[0_2px_4px_rgba(0,0,0,1)] z-20 whitespace-nowrap ${isLocked ? 'opacity-100 translate-x-[calc(-50%_+_55px)]' : 'opacity-0 group-hover:translate-x-[calc(-50%_+_55px)] group-hover:opacity-100'}`}>
+                        <span className={`absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 transition-all duration-300 text-[10px] font-bold text-[#00ffe1] group-hover:text-white tracking-widest drop-shadow-[0_2px_4px_rgba(0,0,0,1)] z-20 whitespace-nowrap ${isLocked || (!isOpen && isActive('/resume')) ? 'opacity-100 translate-x-[calc(-50%_+_55px)]' : 'opacity-0 group-hover:translate-x-[calc(-50%_+_55px)] group-hover:opacity-100'}`}>
                             RESUME
                         </span>
                     </Link>
@@ -95,7 +102,7 @@ export default function HexagonMenu() {
                 {/* Hexagon 3 (Projects) */}
                 <div
                     className={`absolute left-0 transition-all duration-400 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${hoveredHex === 3 ? 'z-20' : 'z-10'}`}
-                    style={{ transform: getTransform(3) }}
+                    style={{ transform: getTransform(3, isActive('/projects')) }}
                 >
                     <Link href="/projects" className={`block relative group hover-pop-once cursor-pointer`} onMouseEnter={() => setHoveredHex(3)} onMouseLeave={() => setHoveredHex(null)}>
                         <svg width="48" height="48" viewBox="0 0 24 24" fill="rgba(0,255,225,0.2)" stroke="rgba(0,255,225,0.5)" strokeWidth="2" className="drop-shadow-[0_0_10px_rgba(0,255,225,0.4)] group-hover:fill-brand-cyan/40 group-hover:drop-shadow-[0_0_15px_rgba(0,255,225,0.8)] transition-all relative z-10">
@@ -106,7 +113,7 @@ export default function HexagonMenu() {
                             <polyline points="2 12 12 17 22 12"></polyline>
                             <polyline points="2 17 12 22 22 17"></polyline>
                         </svg>
-                        <span className={`absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 transition-all duration-300 text-[10px] font-bold text-[#00ffe1] group-hover:text-white tracking-widest drop-shadow-[0_2px_4px_rgba(0,0,0,1)] z-20 whitespace-nowrap ${isLocked ? 'opacity-100 translate-x-[calc(-50%_+_55px)]' : 'opacity-0 group-hover:translate-x-[calc(-50%_+_55px)] group-hover:opacity-100'}`}>
+                        <span className={`absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 transition-all duration-300 text-[10px] font-bold text-[#00ffe1] group-hover:text-white tracking-widest drop-shadow-[0_2px_4px_rgba(0,0,0,1)] z-20 whitespace-nowrap ${isLocked || (!isOpen && isActive('/projects')) ? 'opacity-100 translate-x-[calc(-50%_+_55px)]' : 'opacity-0 group-hover:translate-x-[calc(-50%_+_55px)] group-hover:opacity-100'}`}>
                             PROJECTS
                         </span>
                     </Link>
@@ -115,7 +122,7 @@ export default function HexagonMenu() {
                 {/* Hexagon 2 (Home) */}
                 <div
                     className={`absolute left-0 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${hoveredHex === 2 ? 'z-20' : 'z-10'}`}
-                    style={{ transform: getTransform(2) }}
+                    style={{ transform: getTransform(2, isActive('/')) }}
                 >
                     <Link href="/" className={`block relative group hover-pop-once cursor-pointer`} onMouseEnter={() => setHoveredHex(2)} onMouseLeave={() => setHoveredHex(null)}>
                         <svg width="48" height="48" viewBox="0 0 24 24" fill="rgba(0,255,225,0.2)" stroke="rgba(0,255,225,0.5)" strokeWidth="2" className="drop-shadow-[0_0_10px_rgba(0,255,225,0.4)] group-hover:fill-brand-cyan/40 group-hover:drop-shadow-[0_0_15px_rgba(0,255,225,0.8)] transition-all relative z-10">
@@ -125,7 +132,7 @@ export default function HexagonMenu() {
                             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                             <polyline points="9 22 9 12 15 12 15 22"></polyline>
                         </svg>
-                        <span className={`absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 transition-all duration-300 text-[10px] font-bold text-[#00ffe1] group-hover:text-white tracking-widest drop-shadow-[0_2px_4px_rgba(0,0,0,1)] z-20 whitespace-nowrap ${isLocked ? 'opacity-100 translate-x-[calc(-50%_+_45px)]' : 'opacity-0 group-hover:translate-x-[calc(-50%_+_45px)] group-hover:opacity-100'}`}>
+                        <span className={`absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 transition-all duration-300 text-[10px] font-bold text-[#00ffe1] group-hover:text-white tracking-widest drop-shadow-[0_2px_4px_rgba(0,0,0,1)] z-20 whitespace-nowrap ${isLocked || (!isOpen && isActive('/')) ? 'opacity-100 translate-x-[calc(-50%_+_45px)]' : 'opacity-0 group-hover:translate-x-[calc(-50%_+_45px)] group-hover:opacity-100'}`}>
                             HOME
                         </span>
                     </Link>
