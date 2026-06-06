@@ -10,10 +10,9 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    title: 'Example Project',
-    description: 'A short summary about an example project. Replace with real content.',
-    imageUrl: '/images/projects/example.png',
-    repoUrl: 'https://github.com/CMBorjas',
-    techStack: ['Next.js', 'TypeScript']
+    title: 'ResumeWebsite',
+    description: 'A cyberpunk-themed interactive developer portfolio and resume site built with Next.js.',
+    repoUrl: 'https://github.com/CMBorjas/ResumeWebsite',
+    techStack: ['Next.js', 'React', 'TypeScript', 'Tailwind', 'Node.js']
   }
 ]

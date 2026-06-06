@@ -38,30 +38,57 @@ const techIcons: { [key: string]: string } = {
   'Node.js': 'devicon-nodejs-plain colored',
 }
 
-const fallbackColors: { [key: string]: string } = {
-  TypeScript: 'bg-blue-500',
-  JavaScript: 'bg-yellow-400',
-  Python: 'bg-green-500',
-  HTML: 'bg-orange-500',
-  CSS: 'bg-purple-500',
-  Java: 'bg-red-500',
-  Go: 'bg-cyan-500',
-  Shell: 'bg-gray-500',
-  other: 'bg-slate-500'
+const techColors: { [key: string]: string } = {
+  Python:             '#FFD43B',
+  Java:               '#ED8B00',
+  'C++':              '#00599C',
+  C:                  '#A8B9CC',
+  'C#':               '#9B4F96',
+  JavaScript:         '#F7DF1E',
+  TypeScript:         '#3178C6',
+  HTML:               '#E34F26',
+  CSS:                '#1572B6',
+  Bash:               '#4EAA25',
+  Shell:              '#4EAA25',
+  MySQL:              '#4479A1',
+  Docker:             '#2496ED',
+  Git:                '#F05032',
+  'VS Code':          '#007ACC',
+  Anaconda:           '#44A833',
+  'Android Studio':   '#3DDC84',
+  AWS:                '#FF9900',
+  'Google Cloud':     '#4285F4',
+  Firebase:           '#FFCA28',
+  SQLite:             '#44B4C1',
+  Linux:              '#FCC624',
+  Windows:            '#0078D6',
+  Android:            '#3DDC84',
+  'Jupyter Notebook': '#F37626',
+  Rust:               '#DEA584',
+  Go:                 '#00ADD8',
+  PHP:                '#777BB4',
+  Ruby:               '#CC342D',
+  Swift:              '#FA7343',
+  Kotlin:             '#7F52FF',
+  'Next.js':          '#FFFFFF',
+  React:              '#61DAFB',
+  Node:               '#339933',
+  'Node.js':          '#339933',
+  Vue:                '#4FC08D',
+  Tailwind:           '#38BDF8',
+  TailwindCSS:        '#38BDF8',
 }
 
 export default function ProjectCard({ project }: { project: Project }) {
-  const titleColor = '#ff2a6d'
 
   return (
-    <article className="min-w-0 bg-[#0d1117] border border-[#00ffe1]/50 shadow-[0_0_8px_rgba(0,255,225,0.3)] rounded-md p-3 flex flex-col h-full hover:border-[#00ffe1]/80 hover:shadow-[0_0_15px_rgba(0,255,225,0.6)] transition-all duration-300 aspect-[1.9/1]">
+    <article className="project-card min-w-0 bg-[#0d1117] border border-[#00ffe1]/50 shadow-[0_0_8px_rgba(0,255,225,0.3)] rounded-md p-3 flex flex-col h-full hover:border-[#00ffe1]/80 hover:shadow-[0_0_15px_rgba(0,255,225,0.6)] transition-all duration-300 min-h-[180px]">
       <div className="flex justify-between items-start mb-2 w-full min-w-0 gap-2">
         <a
           href={project.repoUrl}
           target="_blank"
           rel="noreferrer"
-          className="font-semibold text-sm hover:underline truncate flex-1 min-w-0 max-w-full"
-          style={{ color: titleColor }}
+          className="project-title font-semibold text-sm hover:underline truncate flex-1 min-w-0 max-w-full"
         >
           {project.title}
         </a>
@@ -80,26 +107,58 @@ export default function ProjectCard({ project }: { project: Project }) {
         <div className="flex flex-wrap items-center gap-3">
           {project.techStack && project.techStack.length > 0 ? (
             project.techStack.map(tech => {
-              const iconClass = techIcons[tech]
+              // Case-insensitive lookup and common GitHub topic aliases
+              const getIconClass = (t: string) => {
+                const lower = t.toLowerCase()
+                for (const [key, val] of Object.entries(techIcons)) {
+                  if (key.toLowerCase() === lower) return val
+                }
+                if (lower === 'nextjs' || lower === 'next-js') return techIcons['Next.js']
+                if (lower === 'reactjs') return techIcons['React']
+                if (lower === 'nodejs' || lower === 'node') return techIcons['Node.js']
+                if (lower === 'cpp') return techIcons['C++']
+                if (lower === 'csharp') return techIcons['C#']
+                if (lower === 'vuejs') return 'devicon-vuejs-plain colored'
+                if (lower === 'tailwindcss') return 'devicon-tailwindcss-plain colored'
+                return undefined
+              }
+
+              const getColor = (t: string) => {
+                const lower = t.toLowerCase()
+                for (const [key, val] of Object.entries(techColors)) {
+                  if (key.toLowerCase() === lower) return val
+                }
+                if (lower === 'nextjs' || lower === 'next-js') return techColors['Next.js']
+                if (lower === 'reactjs') return techColors['React']
+                if (lower === 'nodejs' || lower === 'node') return techColors['Node.js']
+                if (lower === 'cpp') return techColors['C++']
+                if (lower === 'csharp') return techColors['C#']
+                if (lower === 'vuejs') return techColors['Vue']
+                if (lower === 'tailwindcss') return techColors['TailwindCSS']
+                return '#94a3b8' // slate-400 fallback
+              }
+
+              const iconClass = getIconClass(tech)
+              const color = getColor(tech)
+
               if (iconClass) {
                 return (
-                  <div key={tech} className="flex items-center gap-1 hover:text-brand-cyan transition-colors" title={tech}>
+                  <div key={tech} className="flex items-center gap-1 transition-opacity hover:opacity-80" title={tech}>
                     <i className={`${iconClass} text-[13px]`} aria-hidden="true" />
-                    <span>{tech}</span>
+                    <span style={{ color }}>{tech}</span>
                   </div>
                 )
               }
-              // Fallback
-              const fallbackColor = fallbackColors[tech] || fallbackColors['other']
+              // Fallback dot with matching color
               return (
-                <div key={tech} className="flex items-center gap-1.5 hover:text-brand-cyan transition-colors">
-                  <span className={`w-2 h-2 rounded-full ${fallbackColor}`}></span>
-                  <span>{tech}</span>
+                <div key={tech} className="flex items-center gap-1.5 transition-opacity hover:opacity-80">
+                  <span className="w-2 h-2 rounded-full" style={{ backgroundColor: color }}></span>
+                  <span style={{ color }}>{tech}</span>
                 </div>
               )
             })
           ) : (
-            <div className="flex items-center gap-1.5 hover:text-brand-cyan transition-colors">
+            <div className="flex items-center gap-1.5 text-slate-400">
               <span className="w-2 h-2 rounded-full bg-slate-500"></span>
               <span>other</span>
             </div>

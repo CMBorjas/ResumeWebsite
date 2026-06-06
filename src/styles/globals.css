@@ -69,12 +69,14 @@ a:focus-visible {
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: #475569; 
+    background: #00ffe1;
     border-radius: 4px;
+    box-shadow: 0 0 6px rgba(0,255,225,0.6);
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #64748b; 
+    background: #7ffff4;
+    box-shadow: 0 0 10px rgba(0,255,225,0.9);
 }
 
 /* Glassmorphism panel for side columns */
@@ -86,18 +88,27 @@ a:focus-visible {
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
 }
 
-/* Stats card accent bar */
+/* Stats card base */
 .stat-card {
     background: rgba(30, 41, 59, 0.6);
-    border: 2px solid rgba(0, 255, 225, 0.5);
-    box-shadow: 0 0 10px rgba(0, 255, 225, 0.4);
+    border-width: 2px;
+    border-style: solid;
+    border-color: transparent;
     border-radius: 0.5rem;
     padding: 0.75rem;
     text-align: center;
-    transition: border-color 0.2s, background-color 0.2s, box-shadow 0.2s;
+    transition: all 0.2s;
 }
 .stat-card:hover {
-    border-color: rgba(0, 255, 225, 0.8);
-    box-shadow: 0 0 15px rgba(0, 255, 225, 0.6);
     background: rgba(30, 41, 59, 0.8);
+}
+
+/* Project card title: red by default, yellow glow on card hover */
+a.project-title {
+    color: #ff2a6d;
+    transition: color 0.25s ease, filter 0.25s ease;
+}
+.project-card:hover a.project-title {
+    color: #facc15;
+    filter: drop-shadow(0 0 8px rgba(250,204,21,0.85));
 }
