@@ -89,13 +89,15 @@ a:focus-visible {
 /* Stats card accent bar */
 .stat-card {
     background: rgba(30, 41, 59, 0.6);
-    border: 1px solid rgba(148, 163, 184, 0.1);
+    border: 2px solid rgba(0, 255, 225, 0.5);
+    box-shadow: 0 0 10px rgba(0, 255, 225, 0.4);
     border-radius: 0.5rem;
     padding: 0.75rem;
     text-align: center;
-    transition: border-color 0.2s, background-color 0.2s;
+    transition: border-color 0.2s, background-color 0.2s, box-shadow 0.2s;
 }
 .stat-card:hover {
-    border-color: rgba(0, 255, 225, 0.25);
+    border-color: rgba(0, 255, 225, 0.8);
+    box-shadow: 0 0 15px rgba(0, 255, 225, 0.6);
     background: rgba(30, 41, 59, 0.8);
 }

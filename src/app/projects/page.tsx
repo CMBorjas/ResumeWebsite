@@ -1,6 +1,5 @@
 import { projects as manualProjects } from '../../lib/projects'
-import ProjectCard from '../../components/ProjectCard'
-import TechStackPanel from '../../components/TechStackPanel'
+import ProjectFeedClient from '../../components/ProjectFeedClient'
 
 type GitHubRepo = {
   id: number
@@ -61,7 +60,7 @@ export default async function ProjectsPage() {
 
         {/* ── Left Panel: GitHub Profile Stats ── */}
         <aside className="order-2 lg:order-1">
-          <div className="glass-panel rounded-xl p-4 h-fit lg:sticky lg:top-8">
+          <div className="bg-slate-900/70 backdrop-blur-md rounded-xl p-4 h-fit lg:sticky lg:top-8 border-2 border-[#00ffe1]/50 shadow-[0_0_10px_rgba(0,255,225,0.4)]">
             {/* Avatar + name */}
             <div className="flex flex-col items-center mb-4">
               <img
@@ -69,7 +68,7 @@ export default async function ProjectsPage() {
                 alt="GitHub avatar"
                 width={80}
                 height={80}
-                className="rounded-full border-2 border-brand-cyan/30 mb-2"
+                className="rounded-full border-2 border-[#00ffe1]/50 shadow-[0_0_10px_rgba(0,255,225,0.4)] mb-2"
               />
               <p className="font-semibold text-sm text-slate-100">CMBorjas</p>
               <p className="text-[11px] text-slate-400">github.com/CMBorjas</p>
@@ -149,29 +148,7 @@ export default async function ProjectsPage() {
           </div>
         </aside>
 
-        {/* ── Center: Projects Feed ── */}
-        <section className="order-1 lg:order-2">
-          <h2 className="text-2xl font-bold mb-6 text-[#0F38FF] text-center">Projects Feed</h2>
-
-          {/* Scrollable Container with Fade Mask */}
-          <div className="relative bg-slate-900/50 p-4 rounded-xl border border-slate-800 shadow-inner">
-            <div className="max-h-[600px] overflow-y-auto pr-2 custom-scrollbar pb-12">
-              <div className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-4">
-                {allProjects.map((p) => (
-                  <ProjectCard key={p.title + p.repoUrl} project={p} />
-                ))}
-              </div>
-            </div>
-
-            {/* Bottom Fade Gradient */}
-            <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-slate-900 to-transparent"></div>
-          </div>
-        </section>
-
-        {/* ── Right Panel: Tech Stack ── */}
-        <aside className="order-3">
-          <TechStackPanel />
-        </aside>
+        <ProjectFeedClient allProjects={allProjects} />
 
       </div>
     </div>

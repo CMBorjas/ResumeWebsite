@@ -9,8 +9,10 @@ const techCategories = [
       { name: 'TypeScript', icon: 'devicon-typescript-plain colored' },
       { name: 'HTML',       icon: 'devicon-html5-plain colored' },
       { name: 'CSS',        icon: 'devicon-css3-plain colored' },
-      { name: 'Bash',       icon: 'devicon-bash-plain colored' },
+      { name: 'Bash',       icon: 'devicon-bash-plain text-white' },
+      { name: 'Rust',       icon: 'devicon-rust-plain text-orange-500', hoverGlow: 'group-hover:drop-shadow-[0_0_8px_#ffffff]', selectedGlow: 'drop-shadow-[0_0_8px_#ffffff]' },
       { name: 'MySQL',      icon: 'devicon-mysql-plain colored' },
+      { name: 'Jupyter Notebook', icon: 'devicon-jupyter-plain colored' },
     ],
   },
   {
@@ -35,16 +37,22 @@ const techCategories = [
   {
     label: 'Operating Systems',
     items: [
-      { name: 'Linux',   icon: 'devicon-linux-plain colored' },
+      { name: 'Linux',   icon: 'devicon-linux-plain text-white' },
       { name: 'Windows', icon: 'devicon-windows11-plain colored' },
       { name: 'Android', icon: 'devicon-android-plain colored' },
     ],
   },
 ]
 
-export default function TechStackPanel() {
+export default function TechStackPanel({
+  selectedTechs = [],
+  onToggleTech = () => {}
+}: {
+  selectedTechs?: string[]
+  onToggleTech?: (tech: string) => void
+}) {
   return (
-    <div className="glass-panel rounded-xl p-4 h-fit lg:sticky lg:top-8">
+    <div className="bg-slate-900/70 backdrop-blur-md rounded-xl p-4 h-fit lg:sticky lg:top-8 border-2 border-[#00ffe1]/50 shadow-[0_0_10px_rgba(0,255,225,0.4)]">
       <h3 className="text-lg font-bold text-brand-cyan mb-4 text-center">Tech Stack</h3>
 
       {techCategories.map((cat) => (
@@ -53,21 +61,28 @@ export default function TechStackPanel() {
             {cat.label}
           </p>
           <div className="grid grid-cols-3 gap-2">
-            {cat.items.map((item) => (
-              <div
-                key={item.name}
-                className="tech-logo-item flex flex-col items-center gap-1 p-2 rounded-lg
-                           hover:bg-slate-700/40 transition-all duration-200 cursor-default group"
-              >
-                <i
-                  className={`${item.icon} text-2xl transition-all duration-200 group-hover:scale-110 group-hover:drop-shadow-[0_0_8px_currentColor]`}
-                  aria-hidden="true"
-                />
-                <span className="text-[10px] text-slate-400 group-hover:text-slate-200 text-center leading-tight transition-colors">
-                  {item.name}
-                </span>
-              </div>
-            ))}
+            {cat.items.map((item) => {
+              const isSelected = selectedTechs.includes(item.name)
+              return (
+                <div
+                  key={item.name}
+                  onClick={() => onToggleTech(item.name)}
+                  className={`tech-logo-item flex flex-col items-center gap-1 p-2 rounded-lg
+                             transition-all duration-200 cursor-pointer group border
+                             ${isSelected 
+                                ? 'bg-brand-cyan/20 border-[#00ffe1]/80 shadow-[0_0_15px_rgba(0,255,225,0.6)] scale-105' 
+                                : 'border-transparent hover:bg-brand-cyan/10 hover:border-[#00ffe1]/50 hover:shadow-[0_0_10px_rgba(0,255,225,0.4)]'}`}
+                >
+                  <i
+                    className={`${item.icon} text-2xl transition-all duration-200 ${isSelected ? `scale-110 ${(item as any).selectedGlow || 'drop-shadow-[0_0_8px_currentColor]'}` : `group-hover:scale-110 ${(item as any).hoverGlow || 'group-hover:drop-shadow-[0_0_8px_currentColor]'}`}`}
+                    aria-hidden="true"
+                  />
+                  <span className={`text-[10px] text-center leading-tight transition-colors ${isSelected ? 'text-brand-cyan font-bold' : 'text-slate-400 group-hover:text-slate-200'}`}>
+                    {item.name}
+                  </span>
+                </div>
+              )
+            })}
           </div>
         </div>
       ))}

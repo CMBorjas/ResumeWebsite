@@ -1,6 +1,7 @@
 import '../styles/globals.css'
 import Link from 'next/link'
 import styles from './footer.module.css'
+import HexagonMenu from '../components/HexagonMenu'
 
 export const metadata = {
     title: 'Christian Mandujano Borjas — Portfolio',
@@ -18,35 +19,30 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
             </head>
             <body className="body-bg bg-slate-900 text-slate-100 antialiased min-h-screen flex flex-col">
-                <header className="header-bg text-white">
-                    <div className="container flex flex-col md:flex-row items-center justify-between gap-2">
-                        <div>
+                <header className="header-bg text-white py-8">
+                    <div className="container mx-auto flex flex-col items-center justify-center gap-2">
+                        <div className="text-center">
                             <h1 className="text-3xl font-extrabold site-name">Christian Mandujano Borjas</h1>
-                            <p className="text-sm text-brand-cyan text-left mt-1">
+                            <p className="text-sm text-brand-cyan mt-1">
                                 <a
-                                    href="mailto:Christian.MandujanoBorjas@ucdenver.edu"
+                                    href="mailto:C.Mandujano.Borjas@gmail.edu"
                                     className="text-brand-cyan hover:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-brand-cyan"
                                 >
-                                    Christian.MandujanoBorjas@ucdenver.edu
+                                    C.Mandujano.Borjas@gmail.edu
                                 </a>
                             </p>
                         </div>
                     </div>
                 </header>
+                
+                <HexagonMenu />
 
                 <main className="flex-1 w-full px-4 py-8">
-                    <div className="flex mb-6 items-center justify-start">
-                        {[1, 2, 3].map((i) => (
-                            <svg key={i} width="48" height="48" viewBox="0 0 24 24" fill="#FDE047" stroke="#EAB308" strokeWidth="2" className="drop-shadow-[0_0_5px_rgba(253,224,71,0.8)] -ml-2 first:ml-0">
-                                <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
-                            </svg>
-                        ))}
-                    </div>
                     {children}
                 </main>
 
                 <footer className={styles.footer}>
-                    <div className="container py-6">
+                    <div className="container mx-auto py-6 flex flex-col items-center">
                         <nav>
                             <ul className="flex justify-center gap-6 mb-4">
                                 <li><Link href="/" className={styles.footerLink}>Home</Link></li>
