@@ -1,4 +1,4 @@
-import { projects as manualProjects } from '../../lib/projects'
+import { projects as manualProjects, type Project } from '../../lib/projects'
 import ProjectFeedClient from '../../components/ProjectFeedClient'
 
 type GitHubRepo = {
