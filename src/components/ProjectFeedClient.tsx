@@ -7,6 +7,7 @@ import TechStackPanel from './TechStackPanel'
 
 export default function ProjectFeedClient({ allProjects }: { allProjects: Project[] }) {
   const [selectedTechs, setSelectedTechs] = useState<string[]>([])
+  const [sortBy, setSortBy] = useState<'default' | 'stars' | 'forks'>('default')
 
   const toggleTech = (tech: string) => {
     setSelectedTechs(prev =>
@@ -27,6 +28,12 @@ export default function ProjectFeedClient({ allProjects }: { allProjects: Projec
     })
   })
 
+  const sortedProjects = [...filteredProjects].sort((a, b) => {
+    if (sortBy === 'stars') return (b.stars || 0) - (a.stars || 0)
+    if (sortBy === 'forks') return (b.forks || 0) - (a.forks || 0)
+    return 0
+  })
+
   return (
     <>
       {/* ── Center: Projects Feed ── */}
@@ -34,16 +41,34 @@ export default function ProjectFeedClient({ allProjects }: { allProjects: Projec
         {/* Scrollable Container with Fade Mask */}
         <div className="relative bg-slate-900/70 backdrop-blur-md p-4 rounded-xl border-2 border-[#00ffe1]/50 shadow-[0_0_10px_rgba(0,255,225,0.4)] flex flex-col h-full max-h-[700px]">
           
-          <div className="relative mb-4 text-center shrink-0">
-            <h2 className="text-2xl font-bold text-brand-cyan inline-block">Projects Feed</h2>
-            {selectedTechs.length > 0 && (
-              <button 
-                onClick={() => setSelectedTechs([])}
-                className="absolute right-0 bottom-1 text-xs text-brand-cyan hover:underline bg-slate-800/50 px-2 py-1 rounded transition-colors hover:bg-slate-700/50"
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end mb-4 shrink-0 pb-3 border-b border-[#00ffe1]/20 gap-3">
+            <h2 className="text-2xl font-bold text-brand-cyan">Projects Feed</h2>
+            
+            <div className="flex flex-wrap items-center sm:justify-end gap-2">
+              {selectedTechs.map(tech => (
+                <span key={tech} className="text-[10px] bg-brand-cyan/10 border border-[#00ffe1]/50 text-[#00ffe1] px-2 py-1 rounded-full flex items-center gap-1 shadow-[0_0_5px_rgba(0,255,225,0.3)]">
+                  {tech}
+                  <button onClick={() => toggleTech(tech)} className="hover:text-white font-bold ml-1 transition-colors">×</button>
+                </span>
+              ))}
+              {selectedTechs.length > 0 && (
+                <button 
+                  onClick={() => setSelectedTechs([])}
+                  className="text-xs text-slate-400 hover:text-white underline mx-1"
+                >
+                  Clear All
+                </button>
+              )}
+              <select 
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value as any)}
+                className="bg-[#0d1117] border border-[#00ffe1]/50 text-brand-cyan text-xs rounded px-2 py-1.5 outline-none focus:shadow-[0_0_8px_rgba(0,255,225,0.4)] transition-all cursor-pointer"
               >
-                Clear Filters
-              </button>
-            )}
+                <option value="default">Sort: Default</option>
+                <option value="stars">Sort: Stars</option>
+                <option value="forks">Sort: Forks</option>
+              </select>
+            </div>
           </div>
 
           <div className="flex-1 overflow-y-auto pr-2 custom-scrollbar pb-12">
@@ -60,7 +85,7 @@ export default function ProjectFeedClient({ allProjects }: { allProjects: Projec
               </div>
             ) : (
               <div className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-4">
-                {filteredProjects.map((p) => (
+                {sortedProjects.map((p) => (
                   <ProjectCard key={p.title + (p.repoUrl || '')} project={p} />
                 ))}
               </div>

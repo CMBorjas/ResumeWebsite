@@ -54,24 +54,24 @@ export default function ProjectCard({ project }: { project: Project }) {
   const titleColor = '#ff2a6d'
 
   return (
-    <article className="bg-[#0d1117] border border-slate-700/50 rounded-md p-3 flex flex-col h-full hover:border-slate-500 transition-colors aspect-[1.9/1]">
-      <div className="flex justify-between items-start mb-2">
+    <article className="min-w-0 bg-[#0d1117] border border-[#00ffe1]/50 shadow-[0_0_8px_rgba(0,255,225,0.3)] rounded-md p-3 flex flex-col h-full hover:border-[#00ffe1]/80 hover:shadow-[0_0_15px_rgba(0,255,225,0.6)] transition-all duration-300 aspect-[1.9/1]">
+      <div className="flex justify-between items-start mb-2 w-full min-w-0 gap-2">
         <a
           href={project.repoUrl}
           target="_blank"
           rel="noreferrer"
-          className="font-semibold text-sm hover:underline truncate mr-2"
+          className="font-semibold text-sm hover:underline truncate flex-1 min-w-0 max-w-full"
           style={{ color: titleColor }}
         >
           {project.title}
         </a>
-        <span className="text-[10px] border border-slate-600 text-slate-400 px-1.5 rounded-full">
+        <span className="text-[10px] border border-green-500/50 text-green-400 shadow-[0_0_8px_rgba(74,222,128,0.4)] px-2 py-0.5 rounded-full shrink-0">
           Public
         </span>
       </div>
 
       <div className="flex-grow overflow-y-auto mb-3 custom-scrollbar pr-1">
-        <p className="text-xs text-slate-300 leading-relaxed">
+        <p className="text-xs text-slate-300 leading-relaxed break-words">
           {project.description}
         </p>
       </div>
@@ -108,7 +108,7 @@ export default function ProjectCard({ project }: { project: Project }) {
 
         <div className="flex items-center gap-3 ml-auto">
           {(project.stars ?? 0) > 0 && (
-            <div className="flex items-center gap-1 hover:text-blue-400 cursor-default">
+            <div className="flex items-center gap-1 text-yellow-400 drop-shadow-[0_0_5px_rgba(250,204,21,0.4)] hover:text-yellow-300 hover:drop-shadow-[0_0_8px_rgba(250,204,21,0.8)] transition-all cursor-default">
               <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" className="fill-current w-3.5 h-3.5">
                 <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"></path>
               </svg>
