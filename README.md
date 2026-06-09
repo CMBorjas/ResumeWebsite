@@ -36,7 +36,10 @@ The next phase of development focuses on polishing the portfolio to demonstrate 
 - **Interactive Canvas Background**: Replace static backgrounds with a custom HTML5 `<canvas>` component that renders an interactive, subtle particle network or glowing grid that reacts to the user's cursor.
 - **The "Bento Box" Layout**: Restructure the 'About Me' and 'Skills' pages using advanced CSS Grid to create a responsive, glassmorphic "Bento Box" layout with sophisticated hover micro-interactions.
 
-### Detailed Explanations
+<details>
+<summary><b>View Detailed Explanations</b></summary>
+
+<br>
 
 **Dynamic Theme Engine**
 To support the planned Cyberpunk, Forestpunk, and Corporate themes, a robust `<ThemeProvider>` will be implemented. This engine will utilize React Context and CSS custom properties (variables) to control the entire color palette, typography, and border styles. This approach ensures that the application can instantly hot-swap themes on the client side without any performance penalty or page reloads, showcasing an advanced understanding of modern CSS architecture and React state management.
@@ -49,6 +52,8 @@ To elevate the visual appeal beyond static dark mode backgrounds, a custom React
 
 **The "Bento Box" Layout**
 The current linear layouts will be upgraded to the highly modern "Bento Box" design trend, popularised by top-tier tech companies. This involves creating a complex, responsive CSS Grid architecture where information is compartmentalized into glassmorphic cards of varying sizes. These cards will seamlessly reflow on mobile devices and feature advanced CSS hover states (such as magnetic borders or dynamic glows) to encourage user interaction and showcase high-level UI/UX implementation skills.
+
+</details>
 
 ## Technologies Used
 
