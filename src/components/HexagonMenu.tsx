@@ -76,13 +76,13 @@ export default function HexagonMenu() {
 
     const getTextClasses = (path: string) => {
         // When horizontal, left/right is 45.3px to achieve a 2px visual gap.
-        // When rotated 90deg, the center shifts. A 60x24 box needs 18px of compensation. 45.3 - 18 = 27.3px.
+        // When rotated 90deg, the center shifts. A 48x12 box needs 18px of compensation (24 - 6 = 18). 45.3 - 18 = 27.3px.
         const positionClass = navPosition === 'left' 
             ? (isLocked ? 'right-[27.3px] group-hover:right-[45.3px]' : 'right-[45.3px]')
             : (isLocked ? 'left-[27.3px] group-hover:left-[45.3px]' : 'left-[45.3px]');
             
-        // Text is a fixed box to ensure perfect centering when rotated.
-        const rotationClass = `w-[60px] h-[24px] flex items-center justify-center bg-[#0a0a0a]/90 backdrop-blur-sm rounded border border-[#00ffe1]/20 ${isLocked ? 'rotate-90 group-hover:rotate-0' : 'rotate-0'}`;
+        // Text is a transparent box, perfectly sized to rotate cleanly without backgrounds.
+        const rotationClass = `w-[48px] h-[12px] flex items-center ${navPosition === 'left' ? 'justify-end' : 'justify-start'} ${isLocked ? 'rotate-90 group-hover:rotate-0' : 'rotate-0'}`;
         
         // Text is ONLY visible when menu is open (hovered or locked)
         // It slides in from the right (translate-x-4 to translate-x-0) as it fades in.
