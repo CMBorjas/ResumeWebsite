@@ -67,8 +67,8 @@ export default function HexagonMenu() {
         
         let x = 0;
         if (isOpen) {
-            // Hexagons slide inward (left for right-nav, right for left-nav) to accommodate the text
-            x = navPosition === 'left' ? 90 : -90;
+            // Hexagons slide inward (left for right-nav, right for left-nav) to accommodate the text on the edge side
+            x = navPosition === 'left' ? 120 : -120;
         }
         
         return `translate(${x}px, ${y}px) scale(1.5)`;
@@ -79,7 +79,7 @@ export default function HexagonMenu() {
         const positionClass = navPosition === 'left' ? 'right-[44px]' : 'left-[44px]';
             
         // Text is always horizontal.
-        const rotationClass = `w-[80px] ${navPosition === 'left' ? 'text-right mr-4' : 'text-left ml-4'}`;
+        const rotationClass = `w-[100px] ${navPosition === 'left' ? 'text-right mr-4' : 'text-left ml-4'}`;
         
         // Text is ONLY visible when menu is open (hovered or locked)
         // It slides in from the right (translate-x-4 to translate-x-0) as it fades in.
