@@ -97,10 +97,34 @@ export default function ProjectCard({ project }: { project: Project }) {
         </span>
       </div>
 
-      <div className="flex-grow overflow-y-auto mb-3 custom-scrollbar pr-1">
+      <div className="flex-grow overflow-y-auto mb-3 custom-scrollbar pr-1 flex flex-col gap-2">
         <p className="text-xs text-slate-300 leading-relaxed break-words">
           {project.description}
         </p>
+        <div className="mt-auto flex gap-3 flex-wrap">
+          {project.liveUrl && (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="text-[11px] text-[#ff003c] hover:text-[#ff003c] hover:drop-shadow-[0_0_8px_rgba(255,0,60,0.8)] transition-all inline-flex items-center gap-1 w-fit font-bold uppercase tracking-wider"
+            >
+              <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/></svg>
+              Live Demo
+            </a>
+          )}
+          {project.repoUrl && (
+            <a
+              href={project.repoUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="text-[11px] text-[#00ffe1] hover:text-white hover:underline transition-all inline-flex items-center gap-1 w-fit font-semibold"
+            >
+              View Repository
+              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+            </a>
+          )}
+        </div>
       </div>
 
       <div className="flex flex-wrap items-center justify-between gap-y-2 gap-x-4 text-xs text-slate-400 mt-auto">
