@@ -91,10 +91,11 @@ export default function HexagonMenu() {
             : 'max-w-[150px] text-center';
         
         // Text is visible if menu is open, or if it's the active closed tab.
-        // It moves smoothly with the hexagon container.
-        const visibilityClass = (isOpen || (active && !isOpen)) 
-            ? 'opacity-100' 
-            : 'opacity-0';
+        // It slides in from the right (translate-x-4 to translate-x-0) as it fades in.
+        const isVisible = isOpen || (active && !isOpen);
+        const visibilityClass = isVisible 
+            ? 'opacity-100 translate-x-0' 
+            : 'opacity-0 translate-x-4';
             
         return `absolute top-1/2 -translate-y-1/2 transition-all duration-300 text-[10px] font-bold text-[#00ffe1] group-hover:text-white tracking-widest drop-shadow-[0_2px_4px_rgba(0,0,0,1)] z-20 whitespace-nowrap overflow-hidden text-ellipsis ${positionClass} ${visibilityClass} ${rotationClass}`;
     }
