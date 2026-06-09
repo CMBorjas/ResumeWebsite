@@ -146,7 +146,7 @@ export default function HexagonMenu() {
                             <polygon points={toggleCoverPoints}></polygon>
 
                             {/* Hamburger Menu Icon / Arrow Morph */}
-                            <g className={`transition-all duration-300 origin-[10px_12px] ${isLocked ? 'opacity-0 scale-60 rotate-90' : 'opacity-100 scale-100 rotate-0'}`}>
+                            <g className={`transition-all duration-300 origin-[10px_12px] ${isLocked ? 'opacity-0 scale-60 rotate-180' : (isOpen ? 'opacity-100 scale-100 rotate-90' : 'opacity-100 scale-100 rotate-0')}`}>
                                 <line className={`origin-[14px_9px] transition-all duration-300 stroke-white ${isOpen ? 'translate-y-[3px] rotate-45' : ''}`} x1="6" y1="9" x2="14" y2="9" strokeWidth="1.5" strokeLinecap="round" />
                                 <line className={`transition-all duration-300 stroke-white`} x1="6" y1="12" x2="14" y2="12" strokeWidth="1.5" strokeLinecap="round" />
                                 <line className={`origin-[14px_15px] transition-all duration-300 stroke-white ${isOpen ? '-translate-y-[3px] -rotate-45' : ''}`} x1="6" y1="15" x2="14" y2="15" strokeWidth="1.5" strokeLinecap="round" />
