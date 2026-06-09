@@ -66,10 +66,7 @@ export default function HexagonMenu() {
         }
         
         let x = 0;
-        if (isOpen) {
-            // When open, all hexagons pull out like drawers towards the content
-            x = navPosition === 'left' ? 90 : -90;
-        } else if (active) {
+        if (!isOpen && active) {
             // When closed, only the active hexagon pushes slightly to make room for vertical tab
             x = navPosition === 'left' ? 22 : -22;
         }
@@ -81,12 +78,11 @@ export default function HexagonMenu() {
         const active = isActive(path);
         const isVertical = !isOpen && active;
         
-        // Always place the text on the EDGE-FACING side of the hexagon (the flat side).
-        // For left nav: text is on the LEFT of the hexagon (right-full).
-        // For right nav: text is on the RIGHT of the hexagon (left-full).
-        const positionClass = navPosition === 'left' 
-            ? `right-full ${isVertical ? 'mr-0' : 'mr-4'}` 
-            : `left-full ${isVertical ? 'ml-0' : 'ml-4'}`;
+        // When vertical (closed), text is seamlessly attached to the EDGE-FACING flat side.
+        // When horizontal (open), text expands into the CONTENT-FACING side.
+        const positionClass = isVertical
+            ? (navPosition === 'left' ? 'right-full mr-0' : 'left-full ml-0')
+            : (navPosition === 'left' ? 'left-full ml-4' : 'right-full mr-4');
             
         // Apply vertical writing mode when closed. The flat edge is 60px tall when scaled by 1.5.
         // We seamlessly attach it by leaving the touching border open.
