@@ -66,7 +66,10 @@ export default function HexagonMenu() {
         }
         
         let x = 0;
-        if (!isOpen && active) {
+        if (isOpen) {
+            // Hexagons slide inward (left for right-nav, right for left-nav) to accommodate the text
+            x = navPosition === 'left' ? 90 : -90;
+        } else if (active) {
             // When closed, only the active hexagon pushes slightly to make room for vertical tab
             x = navPosition === 'left' ? 22 : -22;
         }
@@ -78,17 +81,14 @@ export default function HexagonMenu() {
         const active = isActive(path);
         const isVertical = !isOpen && active;
         
-        // When vertical (closed), text is seamlessly attached to the EDGE-FACING flat side.
-        // When horizontal (open), text expands into the CONTENT-FACING side.
-        const positionClass = isVertical
-            ? (navPosition === 'left' ? 'right-full mr-0' : 'left-full ml-0')
-            : (navPosition === 'left' ? 'left-full ml-4' : 'right-full mr-4');
+        // Always place the text on the EDGE-FACING flat side.
+        const positionClass = navPosition === 'left' ? 'right-[44px]' : 'left-[44px]';
             
         // Apply vertical writing mode when closed. The flat edge is 60px tall when scaled by 1.5.
         // We seamlessly attach it by leaving the touching border open.
         const rotationClass = isVertical 
             ? `[writing-mode:vertical-rl] h-[60px] flex items-center justify-center bg-[#0a0a0a] px-1 ${navPosition === 'left' ? 'rounded-l-sm border-l border-y' : 'rounded-r-sm border-r border-y'} border-[#00ffe1]/30` 
-            : 'max-w-[150px] text-center';
+            : `w-[80px] ${navPosition === 'left' ? 'text-right mr-4' : 'text-left ml-4'}`;
         
         // Text is visible if menu is open, or if it's the active closed tab.
         // It slides in from the right (translate-x-4 to translate-x-0) as it fades in.
