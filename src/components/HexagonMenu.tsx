@@ -75,11 +75,13 @@ export default function HexagonMenu() {
     }
 
     const getTextClasses = (path: string) => {
-        // Always place the text on the EDGE-FACING flat side.
-        const positionClass = navPosition === 'left' ? 'right-[44px]' : 'left-[44px]';
+        // Place the text so there is exactly a 5px visual gap from the scaled hexagon.
+        // The visual flat edge is 30px from center. We want the text to be 35px from center.
+        // 35 / 1.5 = 23.33 local px from center. 24 + 23.33 = 47.33 local px from edge.
+        const positionClass = navPosition === 'left' ? 'right-[47px]' : 'left-[47px]';
             
         // Text rotates 90 degrees clockwise when locked, but resets to horizontal on hover.
-        const rotationClass = `w-[48px] ${navPosition === 'left' ? 'text-right mr-4' : 'text-left ml-4'} ${isLocked ? 'rotate-90 group-hover:rotate-0' : 'rotate-0'}`;
+        const rotationClass = `w-[48px] ${navPosition === 'left' ? 'text-right' : 'text-left'} ${isLocked ? 'rotate-90 group-hover:rotate-0' : 'rotate-0'}`;
         
         // Text is ONLY visible when menu is open (hovered or locked)
         // It slides in from the right (translate-x-4 to translate-x-0) as it fades in.
