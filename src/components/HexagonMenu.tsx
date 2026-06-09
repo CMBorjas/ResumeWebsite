@@ -75,14 +75,13 @@ export default function HexagonMenu() {
         const active = isActive(path);
         const isVertical = !isOpen && active;
         
-        // When vertical (closed active state), place it on the side facing the content area.
+        // When vertical (closed active state), place it in the gap between the hexagon and the edge of the screen.
+        // This is the opposite side of where the text normally expands when the menu is open.
         const positionClass = isVertical 
-            ? (navPosition === 'left' ? 'left-full ml-2' : 'right-full mr-2')
+            ? (navPosition === 'left' ? 'right-full mr-2' : 'left-full ml-2')
             : (navPosition === 'left' ? 'left-full ml-4' : 'right-full mr-4');
             
         // Apply vertical writing mode. Bounded to 65px so it does not exceed the 72px hexagon height.
-        // If on the right side, we use vertical-lr so the baseline faces the content, or just stick with vertical-rl.
-        // Actually, vertical-rl reads top-to-bottom, which looks great on both sides.
         const rotationClass = isVertical ? '[writing-mode:vertical-rl] max-h-[65px] rotate-180' : 'max-w-[150px]';
         
         const visibilityClass = (isLocked || (!isOpen && active)) 
