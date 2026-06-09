@@ -30,7 +30,10 @@ export default function HexagonMenu() {
 
     const isOpen = isHovered || isLocked
 
-    const isActive = (path: string) => pathname === path
+    const isActive = (path: string) => {
+        const normalizedPath = pathname.replace('/ResumeWebsite', '') || '/';
+        return normalizedPath === path;
+    }
 
     const isRight = navPosition === 'right';
     
@@ -63,14 +66,12 @@ export default function HexagonMenu() {
         }
         
         let x = 0;
-        if (active) {
-            if (!isOpen) {
-                // When closed, push hexagon TOWARDS THE CONTENT to make room for the vertical tab on the edge side
-                x = navPosition === 'left' ? 25 : -25;
-            } else {
-                // When open, pop out slightly towards content
-                x = navPosition === 'left' ? 10 : -10;
-            }
+        if (isOpen) {
+            // When open, all hexagons pull out like drawers towards the content
+            x = navPosition === 'left' ? 90 : -90;
+        } else if (active) {
+            // When closed, only the active hexagon pushes slightly to make room for vertical tab
+            x = navPosition === 'left' ? 22 : -22;
         }
         
         return `translate(${x}px, ${y}px) scale(1.5)`;
@@ -80,22 +81,26 @@ export default function HexagonMenu() {
         const active = isActive(path);
         const isVertical = !isOpen && active;
         
-        // When vertical (closed active state), place it on the EDGE-FACING side of the hexagon (the flat side).
-        // This is the opposite side of where the text normally expands when the menu is open.
-        const positionClass = isVertical 
-            ? (navPosition === 'left' ? 'right-full mr-1' : 'left-full ml-1')
-            : (navPosition === 'left' ? 'left-full ml-4' : 'right-full mr-4');
+        // Always place the text on the EDGE-FACING side of the hexagon (the flat side).
+        // For left nav: text is on the LEFT of the hexagon (right-full).
+        // For right nav: text is on the RIGHT of the hexagon (left-full).
+        const positionClass = navPosition === 'left' 
+            ? `right-full ${isVertical ? 'mr-0' : 'mr-4'}` 
+            : `left-full ${isVertical ? 'ml-0' : 'ml-4'}`;
             
-        // Apply vertical writing mode when closed, and add a dark background to match the reference image.
+        // Apply vertical writing mode when closed. The flat edge is 60px tall when scaled by 1.5.
+        // We seamlessly attach it by leaving the touching border open.
         const rotationClass = isVertical 
-            ? '[writing-mode:vertical-rl] max-h-[65px] bg-[#0a0a0a] py-2 px-1 border-y border-[#00ffe1]/30 rounded-sm' 
-            : 'max-w-[150px]';
+            ? `[writing-mode:vertical-rl] h-[60px] flex items-center justify-center bg-[#0a0a0a] px-1 ${navPosition === 'left' ? 'rounded-l-sm border-l border-y' : 'rounded-r-sm border-r border-y'} border-[#00ffe1]/30` 
+            : 'max-w-[150px] text-center';
         
-        const visibilityClass = (isLocked || (!isOpen && active)) 
-            ? 'opacity-100 translate-x-0' 
-            : `opacity-0 group-hover:opacity-100 ${navPosition === 'left' ? '-translate-x-4 group-hover:translate-x-0' : 'translate-x-4 group-hover:translate-x-0'}`;
+        // Text is visible if menu is open, or if it's the active closed tab.
+        // It moves smoothly with the hexagon container.
+        const visibilityClass = (isOpen || (active && !isOpen)) 
+            ? 'opacity-100' 
+            : 'opacity-0';
             
-        return `absolute top-1/2 -translate-y-1/2 transition-all duration-300 text-[10px] font-bold text-[#00ffe1] group-hover:text-white tracking-widest drop-shadow-[0_2px_4px_rgba(0,0,0,1)] z-20 whitespace-nowrap pointer-events-none overflow-hidden text-ellipsis ${positionClass} ${visibilityClass} ${rotationClass}`;
+        return `absolute top-1/2 -translate-y-1/2 transition-all duration-300 text-[10px] font-bold text-[#00ffe1] group-hover:text-white tracking-widest drop-shadow-[0_2px_4px_rgba(0,0,0,1)] z-20 whitespace-nowrap overflow-hidden text-ellipsis ${positionClass} ${visibilityClass} ${rotationClass}`;
     }
 
     return (
