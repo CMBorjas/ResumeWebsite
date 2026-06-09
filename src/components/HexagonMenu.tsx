@@ -75,13 +75,14 @@ export default function HexagonMenu() {
     }
 
     const getTextClasses = (path: string) => {
-        // Place the text so there is exactly a 2px visual gap from the scaled hexagon.
-        // The visual flat edge is 30px from center. We want the text to be 32px from center.
-        // 32 / 1.5 = 21.33 local px from center. 24 + 21.33 = 45.33 local px from edge.
-        const positionClass = navPosition === 'left' ? 'right-[45.3px]' : 'left-[45.3px]';
+        // When horizontal, left/right is 45.3px to achieve a 2px visual gap.
+        // When rotated 90deg, the center shifts. A 60x24 box needs 18px of compensation. 45.3 - 18 = 27.3px.
+        const positionClass = navPosition === 'left' 
+            ? (isLocked ? 'right-[27.3px] group-hover:right-[45.3px]' : 'right-[45.3px]')
+            : (isLocked ? 'left-[27.3px] group-hover:left-[45.3px]' : 'left-[45.3px]');
             
-        // Text rotates 90 degrees clockwise when locked, but resets to horizontal on hover.
-        const rotationClass = `w-[48px] ${navPosition === 'left' ? 'text-right' : 'text-left'} ${isLocked ? 'rotate-90 group-hover:rotate-0' : 'rotate-0'}`;
+        // Text is a fixed box to ensure perfect centering when rotated.
+        const rotationClass = `w-[60px] h-[24px] flex items-center justify-center bg-[#0a0a0a]/90 backdrop-blur-sm rounded border border-[#00ffe1]/20 ${isLocked ? 'rotate-90 group-hover:rotate-0' : 'rotate-0'}`;
         
         // Text is ONLY visible when menu is open (hovered or locked)
         // It slides in from the right (translate-x-4 to translate-x-0) as it fades in.
