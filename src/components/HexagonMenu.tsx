@@ -75,19 +75,21 @@ export default function HexagonMenu() {
         const active = isActive(path);
         const isVertical = !isOpen && active;
         
-        // When vertical (closed active state), force it to the right of the hexagon.
+        // When vertical (closed active state), place it on the side facing the content area.
         const positionClass = isVertical 
-            ? 'left-full ml-2' 
+            ? (navPosition === 'left' ? 'left-full ml-2' : 'right-full mr-2')
             : (navPosition === 'left' ? 'left-full ml-4' : 'right-full mr-4');
             
-        // Apply 90-degree rotation. Bounded to 65px so it does not exceed the 72px hexagon height.
-        const rotationClass = isVertical ? 'rotate-90 max-w-[65px]' : 'rotate-0 max-w-[150px]';
+        // Apply vertical writing mode. Bounded to 65px so it does not exceed the 72px hexagon height.
+        // If on the right side, we use vertical-lr so the baseline faces the content, or just stick with vertical-rl.
+        // Actually, vertical-rl reads top-to-bottom, which looks great on both sides.
+        const rotationClass = isVertical ? '[writing-mode:vertical-rl] max-h-[65px] rotate-180' : 'max-w-[150px]';
         
         const visibilityClass = (isLocked || (!isOpen && active)) 
             ? 'opacity-100 translate-x-0' 
             : `opacity-0 group-hover:opacity-100 ${navPosition === 'left' ? '-translate-x-4 group-hover:translate-x-0' : 'translate-x-4 group-hover:translate-x-0'}`;
             
-        return `absolute top-1/2 -translate-y-1/2 transition-all duration-300 text-[10px] font-bold text-[#00ffe1] group-hover:text-white tracking-widest drop-shadow-[0_2px_4px_rgba(0,0,0,1)] z-20 whitespace-nowrap pointer-events-none origin-center overflow-hidden text-ellipsis ${positionClass} ${visibilityClass} ${rotationClass}`;
+        return `absolute top-1/2 -translate-y-1/2 transition-all duration-300 text-[10px] font-bold text-[#00ffe1] group-hover:text-white tracking-widest drop-shadow-[0_2px_4px_rgba(0,0,0,1)] z-20 whitespace-nowrap pointer-events-none overflow-hidden text-ellipsis ${positionClass} ${visibilityClass} ${rotationClass}`;
     }
 
     return (

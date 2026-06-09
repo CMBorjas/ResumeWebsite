@@ -54,9 +54,6 @@ a:focus-visible {
     outline-offset: 2px;
 }
 
-.site-name {
-  color: #ff0f4d; /* change this hex as needed */
-}
 
 /* Custom Scrollbar Styling */
 .custom-scrollbar::-webkit-scrollbar {
