@@ -79,7 +79,7 @@ export default function HexagonMenu() {
         const positionClass = navPosition === 'left' ? 'right-[44px]' : 'left-[44px]';
             
         // Text rotates 90 degrees clockwise when locked, but resets to horizontal on hover.
-        const rotationClass = `w-[100px] ${navPosition === 'left' ? 'text-right mr-4' : 'text-left ml-4'} ${isLocked ? 'rotate-90 group-hover:rotate-0' : 'rotate-0'}`;
+        const rotationClass = `w-[48px] ${navPosition === 'left' ? 'text-right mr-4' : 'text-left ml-4'} ${isLocked ? 'rotate-90 group-hover:rotate-0' : 'rotate-0'}`;
         
         // Text is ONLY visible when menu is open (hovered or locked)
         // It slides in from the right (translate-x-4 to translate-x-0) as it fades in.
