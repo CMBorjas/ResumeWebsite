@@ -67,8 +67,11 @@ export default function HexagonMenu() {
         
         let x = 0;
         if (isOpen) {
-            // Hexagons slide inward (left for right-nav, right for left-nav) to accommodate the text on the edge side
-            x = navPosition === 'left' ? 120 : -120;
+            // When hovered, text is horizontal (needs 50px local room).
+            // When only locked, text is vertical (needs 14px local room).
+            const isHorizontal = isHovered;
+            const slideAmount = isHorizontal ? 50 : 14;
+            x = navPosition === 'left' ? slideAmount : -slideAmount;
         }
         
         return `translate(${x}px, ${y}px) scale(1.5)`;
@@ -110,7 +113,7 @@ export default function HexagonMenu() {
             <div className={`fixed top-0 bottom-0 w-24 bg-gradient-to-b from-[#0a0a0a]/80 via-[#0a0a0a]/40 to-transparent pointer-events-none z-40 transition-all duration-700 ${navPosition === 'left' ? 'left-0 border-r border-[#00ffe1]/10' : 'right-0 border-l border-[#00ffe1]/10'} ${isOpen ? 'translate-x-0 opacity-100' : (navPosition === 'left' ? '-translate-x-full opacity-0' : 'translate-x-full opacity-0')}`}></div>
 
             <div
-                className={`fixed top-[15vh] z-50 flex flex-col items-center transition-all duration-700 ${navPosition === 'left' ? 'left-6' : 'right-6'}`}
+                className={`fixed top-[15vh] z-50 flex flex-col items-center transition-all duration-700 ${navPosition === 'left' ? 'left-[6px]' : 'right-[6px]'}`}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
             >
