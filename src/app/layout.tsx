@@ -37,7 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 
                 <HexagonMenu />
 
-                <main className="flex-1 w-full px-4 py-8">
+                <main className="flex-1 w-full px-4 md:px-28 py-8">
                     {children}
                 </main>
 
