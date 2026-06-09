@@ -64,8 +64,13 @@ export default function HexagonMenu() {
         
         let x = 0;
         if (active) {
-            // Active hexagon pops out slightly
-            x = navPosition === 'left' ? 10 : -10;
+            if (!isOpen) {
+                // When closed, push hexagon TOWARDS THE CONTENT to make room for the vertical tab on the edge side
+                x = navPosition === 'left' ? 25 : -25;
+            } else {
+                // When open, pop out slightly towards content
+                x = navPosition === 'left' ? 10 : -10;
+            }
         }
         
         return `translate(${x}px, ${y}px) scale(1.5)`;
@@ -75,14 +80,16 @@ export default function HexagonMenu() {
         const active = isActive(path);
         const isVertical = !isOpen && active;
         
-        // When vertical (closed active state), place it in the gap between the hexagon and the edge of the screen.
+        // When vertical (closed active state), place it on the EDGE-FACING side of the hexagon (the flat side).
         // This is the opposite side of where the text normally expands when the menu is open.
         const positionClass = isVertical 
-            ? (navPosition === 'left' ? 'right-full mr-2' : 'left-full ml-2')
+            ? (navPosition === 'left' ? 'right-full mr-1' : 'left-full ml-1')
             : (navPosition === 'left' ? 'left-full ml-4' : 'right-full mr-4');
             
-        // Apply vertical writing mode. Bounded to 65px so it does not exceed the 72px hexagon height.
-        const rotationClass = isVertical ? '[writing-mode:vertical-rl] max-h-[65px] rotate-180' : 'max-w-[150px]';
+        // Apply vertical writing mode when closed, and add a dark background to match the reference image.
+        const rotationClass = isVertical 
+            ? '[writing-mode:vertical-rl] max-h-[65px] bg-[#0a0a0a] py-2 px-1 border-y border-[#00ffe1]/30 rounded-sm' 
+            : 'max-w-[150px]';
         
         const visibilityClass = (isLocked || (!isOpen && active)) 
             ? 'opacity-100 translate-x-0' 
