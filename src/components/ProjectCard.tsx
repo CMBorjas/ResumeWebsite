@@ -78,6 +78,7 @@ const techColors: { [key: string]: string } = {
   Vue:                '#4FC08D',
   Tailwind:           '#38BDF8',
   TailwindCSS:        '#38BDF8',
+  'Data Parsing':     '#10B981',
 }
 
 export default function ProjectCard({ project }: { project: Project }) {
@@ -162,7 +163,7 @@ export default function ProjectCard({ project }: { project: Project }) {
                 if (lower === 'cpp') return techIcons['C++']
                 if (lower === 'csharp') return techIcons['C#']
                 if (lower === 'vuejs') return 'devicon-vuejs-plain colored'
-                if (lower === 'tailwindcss') return 'devicon-tailwindcss-plain colored'
+                if (lower === 'tailwindcss' || lower === 'tailwind') return 'devicon-tailwindcss-plain colored'
                 return undefined
               }
 
