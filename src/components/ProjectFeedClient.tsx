@@ -34,6 +34,8 @@ export default function ProjectFeedClient({ allProjects }: { allProjects: Projec
     return 0
   })
 
+  const availableTechs = Array.from(new Set(allProjects.flatMap(p => p.techStack || [])))
+
   return (
     <>
       {/* ── Center: Projects Feed ── */}
@@ -99,7 +101,7 @@ export default function ProjectFeedClient({ allProjects }: { allProjects: Projec
 
       {/* ── Right Panel: Tech Stack ── */}
       <aside className="order-3">
-        <TechStackPanel selectedTechs={selectedTechs} onToggleTech={toggleTech} />
+        <TechStackPanel selectedTechs={selectedTechs} onToggleTech={toggleTech} availableTechs={availableTechs} />
       </aside>
     </>
   )
