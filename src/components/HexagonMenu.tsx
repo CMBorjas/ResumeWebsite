@@ -95,7 +95,7 @@ export default function HexagonMenu() {
         return 0;
     }
 
-    const getTextClasses = (path: string, index: number, label: string) => {
+    const getTextClasses = (path: string, index: number) => {
         const isHoveredItem = hoveredHex === index;
         const isActiveItem = isActive(path);
         const isYellowArrowMode = !isLocked && isOpen;
@@ -109,20 +109,13 @@ export default function HexagonMenu() {
             ? (isRotated ? 'right-[27.3px]' : 'right-[45.3px]')
             : (isRotated ? 'left-[27.3px]' : 'left-[45.3px]');
             
-        const isTooLong = label.length > 7;
-        
         // h-[12px] is restored to ensure the mathematical center of rotation is exact, maintaining the perfect 2px gap.
-        // A symmetrical gradient mask is applied when long titles are scrolling back and forth.
+        // A symmetrical gradient mask is applied when titles are scrolling back and forth.
         const maskClass = isRotated 
-            ? (isTooLong
-                ? '[mask-image:linear-gradient(to_right,transparent_0%,black_15%,black_85%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_15%,black_85%,transparent_100%)]'
-                : (navPosition === 'left' 
-                    ? '[mask-image:linear-gradient(to_left,black_60%,transparent_90%)] [-webkit-mask-image:linear-gradient(to_left,black_60%,transparent_90%)]' 
-                    : '[mask-image:linear-gradient(to_right,black_60%,transparent_90%)] [-webkit-mask-image:linear-gradient(to_right,black_60%,transparent_90%)]')
-            )
+            ? '[mask-image:linear-gradient(to_right,transparent_0%,black_15%,black_85%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_15%,black_85%,transparent_100%)]'
             : '';
             
-        const justifyClass = isTooLong ? 'justify-start' : (navPosition === 'left' ? 'justify-end' : 'justify-start');
+        const justifyClass = 'justify-start';
             
         const rotationClass = `w-[48px] h-[12px] flex items-center ${justifyClass} ${isRotated ? 'rotate-90' : 'rotate-0'} ${maskClass}`;
         
@@ -135,12 +128,12 @@ export default function HexagonMenu() {
         return `absolute top-1/2 -translate-y-1/2 transition-all duration-300 text-[10px] font-bold text-[#00ffe1] group-hover:text-white tracking-widest drop-shadow-[0_2px_4px_rgba(0,0,0,1)] z-20 whitespace-nowrap overflow-visible ${positionClass} ${visibilityClass} ${rotationClass}`;
     }
 
-    const getInnerMarqueeClasses = (path: string, index: number, label: string) => {
+    const getInnerMarqueeClasses = (path: string, index: number) => {
         const isHoveredItem = hoveredHex === index;
         const isActiveItem = isActive(path);
         const isRotated = (isLocked || isActiveItem) && !isHoveredItem;
         
-        if (isRotated && label.length > 7) {
+        if (isRotated) {
             return 'animate-marquee-left inline-block w-max';
         }
         return 'inline-block w-max';
@@ -325,8 +318,8 @@ export default function HexagonMenu() {
                                         </svg>
                                         {item.innerSvg}
                                         {item.index !== 6 ? (
-                                            <span className={getTextClasses(item.path, item.index, item.label)}>
-                                                <span className={getInnerMarqueeClasses(item.path, item.index, item.label)}>
+                                            <span className={getTextClasses(item.path, item.index)}>
+                                                <span className={getInnerMarqueeClasses(item.path, item.index)}>
                                                     {item.label}
                                                 </span>
                                             </span>
