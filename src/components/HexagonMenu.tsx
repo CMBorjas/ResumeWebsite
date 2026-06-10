@@ -86,7 +86,14 @@ export default function HexagonMenu() {
             : (isRotated ? 'left-[27.3px]' : 'left-[45.3px]');
             
         // h-[12px] is restored to ensure the mathematical center of rotation is exact, maintaining the perfect 2px gap.
-        const rotationClass = `w-[48px] h-[12px] flex items-center ${navPosition === 'left' ? 'justify-end' : 'justify-start'} ${isRotated ? 'rotate-90' : 'rotate-0'}`;
+        // A gradient mask is applied when rotated to smoothly fade out long titles (like "PROJECTS") before they overlap the next icon.
+        const maskClass = isRotated 
+            ? (navPosition === 'left' 
+                ? '[mask-image:linear-gradient(to_left,black_60%,transparent_90%)] [-webkit-mask-image:linear-gradient(to_left,black_60%,transparent_90%)]' 
+                : '[mask-image:linear-gradient(to_right,black_60%,transparent_90%)] [-webkit-mask-image:linear-gradient(to_right,black_60%,transparent_90%)]')
+            : '';
+            
+        const rotationClass = `w-[48px] h-[12px] flex items-center ${navPosition === 'left' ? 'justify-end' : 'justify-start'} ${isRotated ? 'rotate-90' : 'rotate-0'} ${maskClass}`;
         
         // Text is visible if locked OR if it is specifically the hovered item.
         const isVisible = isLocked || isHoveredItem;
