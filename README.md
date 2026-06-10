@@ -189,6 +189,36 @@ The next phase of development focuses on polishing the portfolio to showcase arc
       The current linear layouts will be upgraded to the highly modern "Bento Box" design trend, popularised by top-tier tech companies. This involves creating a complex, responsive CSS Grid architecture where information is compartmentalized into glassmorphic cards of varying sizes. These cards will seamlessly reflow on mobile devices and feature advanced CSS hover states (such as magnetic borders or dynamic glows) to encourage user interaction and showcase high-level UI/UX implementation skills. The use of framer-motion will allow us to create these micro-interactions and animations. This should show our understanding of modern CSS and React state management.
       
       </details>
+
+- ~~[x]**Tool tip ui**: Tool tips are used to display additional information about an element when the user hovers over it.~~
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      Implemented a dynamic tool tip UI for the website's project feed.
+      </details>
+
+- ~~[x]**Restricted textarea**: A textarea is a form element that allows users to enter multiple lines of text.~~
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      Implemented a reusable textarea component with character counting.
+      </details>
+
+- ~~[x]**Accordion**: An accordion is a UI component that allows users to display content in a collapsible format.~~
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      Implemented an accordion for the website, used in the FAQ section.
+      </details>
+
+- ~~[x]**Cookie consent**: Cookie consent is a banner that is displayed on a website to inform users about the use of cookies and to obtain their consent.~~
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      Implemented a fully functional, animated cookie consent banner.
+      </details>
+
+- ~~[x]**Contact page reform**: A contact form is a crucial component of any website, providing a direct channel for users to communicate with the site owner.~~
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      Replaced the existing contact section with an interactive, validated React form, complete with simulated submission states.
+      </details>
 </details>
 <details>
 <summary><b>Current Goals</b></summary>
@@ -203,11 +233,6 @@ The next phase of development focuses on polishing the portfolio to showcase arc
       <summary><b>Detailed Explanation</b></summary>
       Photo showcases are a common UI pattern used on marketing and SaaS websites to display photos in a grid layout. The photo showcase should display a grid of photos that can be clicked to view a larger version of the photo. We try to source these from the social media pages of the owner of the website, so that the photos are relevant to the website.
       </details>
-- [] **Contact page reform section addition** - A contact form is a crucial component of any website, providing a direct channel for users to communicate with the site owner. This section will replace the existing contact section on the contact page. 
-   - <details>
-      <summary><b>Detailed Explanation</b></summary>
-      An accessible HTML form. Form controls, labels, validation attributes, and proper grouping.
-      </details>
 - [] **Testimonial Cards** - Testimonials are quotes or statements from satisfied customers or users, often used on websites to build credibility and trust.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
@@ -217,26 +242,6 @@ The next phase of development focuses on polishing the portfolio to showcase arc
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement the changelog of the website, which is currently stored in a JSON file. These changelogs should be displayed in a list format, with each changelog having its own card.
-      </details>
-- [] **Tool tip ui** - Tool tip are used to display additional information about a element when the user hovers over it.
-   - <details>
-      <summary><b>Detailed Explanation</b></summary>
-      We will need to implement tool tip ui for the website, which will display additional information about a element when the user hovers over it.
-      </details>
-- [] **Cookie consent** - Cookie consent is a banner that is displayed on a website to inform users about the use of cookies and to obtain their consent.
-   - <details>
-      <summary><b>Detailed Explanation</b></summary>
-      We will need to implement cookie consent for the website, which will display a banner to inform users about the use of cookies and to obtain their consent.
-      </details>
-- [] **Retrited textarea** - A textarea is a form element that allows users to enter multiple lines of text.
-   - <details>
-      <summary><b>Detailed Explanation</b></summary>
-      We will need to implement a textarea for the website, which will allow users to enter multiple lines of text.
-      </details>
-- [] **Accordion** - An accordion is a UI component that allows users to display content in a collapsible format.
-   - <details>
-      <summary><b>Detailed Explanation</b></summary>
-      We will need to implement an accordion for the website, which will allow users to display content in a collapsible format.
       </details>
 - [] **Personal Blog page** - A blog page is a page that displays a list of blog posts.
    - <details>
