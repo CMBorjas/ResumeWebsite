@@ -85,16 +85,35 @@ export default function ProjectCard({ project }: { project: Project }) {
     <article className="project-card min-w-0 bg-[#0d1117] border border-brand-cyan/50 shadow-[0_0_8px_color-mix(in srgb, var(--color-brand-cyan) 30%, transparent)] rounded-md p-3 flex flex-col h-full hover:border-brand-cyan/80 hover:shadow-[0_0_15px_color-mix(in srgb, var(--color-brand-cyan) 60%, transparent)] transition-all duration-300 min-h-[180px]">
       <div className="flex justify-between items-start mb-2 w-full min-w-0 gap-2">
         <a
-          href={project.repoUrl}
+          href={project.liveUrl || project.repoUrl}
           target="_blank"
           rel="noreferrer"
           className="project-title font-semibold text-sm hover:underline truncate flex-1 min-w-0 max-w-full"
         >
           {project.title}
         </a>
-        <span className="text-[10px] border border-green-500/50 text-green-400 shadow-[0_0_8px_rgba(74,222,128,0.4)] px-2 py-0.5 rounded-full shrink-0">
-          Public
-        </span>
+        <div className="flex items-center gap-2 shrink-0">
+          {project.liveUrl && (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="group/demo flex items-center bg-[#ff003c]/10 border border-[#ff003c]/30 rounded-full px-2 py-0.5 transition-all hover:bg-[#ff003c]/20 hover:border-[#ff003c]/50 hover:shadow-[0_0_10px_rgba(255,0,60,0.4)]"
+            >
+              <span className="flex h-2.5 w-2.5 relative items-center justify-center shrink-0">
+                <span className="animate-[ping_3s_ease-in-out_infinite] absolute inline-flex h-full w-full rounded-full bg-[#ff003c] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#ff003c] shadow-[0_0_8px_rgba(255,0,60,1)]"></span>
+              </span>
+              <span className="max-w-0 overflow-hidden group-hover/demo:max-w-[100px] group-hover/demo:ml-1.5 transition-all duration-300 ease-in-out flex items-center gap-1 text-[10px] text-[#ff003c] font-bold uppercase tracking-wider whitespace-nowrap opacity-0 group-hover/demo:opacity-100">
+                <svg className="w-3 h-3 shrink-0" fill="currentColor" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/></svg>
+                Live Demo
+              </span>
+            </a>
+          )}
+          <span className="text-[10px] border border-green-500/50 text-green-400 shadow-[0_0_8px_rgba(74,222,128,0.4)] px-2 py-0.5 rounded-full">
+            Public
+          </span>
+        </div>
       </div>
 
       <div className="flex-grow overflow-y-auto mb-3 custom-scrollbar pr-1 flex flex-col gap-2">
@@ -102,26 +121,19 @@ export default function ProjectCard({ project }: { project: Project }) {
           {project.description}
         </p>
         <div className="mt-auto flex gap-3 flex-wrap">
-          {project.liveUrl && (
-            <a
-              href={project.liveUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="text-[11px] text-[#ff003c] hover:text-[#ff003c] hover:drop-shadow-[0_0_8px_rgba(255,0,60,0.8)] transition-all inline-flex items-center gap-1 w-fit font-bold uppercase tracking-wider"
-            >
-              <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/></svg>
-              Live Demo
-            </a>
-          )}
+
           {project.repoUrl && (
             <a
               href={project.repoUrl}
               target="_blank"
               rel="noreferrer"
-              className="text-[11px] text-brand-cyan hover:text-white hover:underline transition-all inline-flex items-center gap-1 w-fit font-semibold"
+              className="group/repo flex items-center bg-brand-cyan/10 border border-brand-cyan/30 rounded-full px-2 py-0.5 transition-all hover:bg-brand-cyan/20 hover:border-brand-cyan/50 hover:shadow-[0_0_10px_color-mix(in srgb, var(--color-brand-cyan) 40%, transparent)] text-brand-cyan hover:text-white w-fit"
             >
-              View Repository
-              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+              <svg className="w-4 h-4 shrink-0 transition-all group-hover/repo:text-white" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+              <span className="max-w-0 overflow-hidden group-hover/repo:max-w-[120px] group-hover/repo:ml-1.5 transition-all duration-300 ease-in-out flex items-center text-[10px] font-bold uppercase tracking-wider whitespace-nowrap opacity-0 group-hover/repo:opacity-100">
+                View Repository
+                <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+              </span>
             </a>
           )}
         </div>

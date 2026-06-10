@@ -9,6 +9,8 @@ const techCategories = [
       { name: 'TypeScript', icon: 'devicon-typescript-plain colored' },
       { name: 'HTML',       icon: 'devicon-html5-plain colored' },
       { name: 'CSS',        icon: 'devicon-css3-plain colored' },
+      { name: 'React',      icon: 'devicon-react-original colored' },
+      { name: 'Node.js',    icon: 'devicon-nodejs-plain colored' },
       { name: 'Bash',       icon: 'devicon-bash-plain text-white' },
       { name: 'Rust',       icon: 'devicon-rust-plain text-orange-500', hoverGlow: 'group-hover:drop-shadow-[0_0_8px_#ffffff]', selectedGlow: 'drop-shadow-[0_0_8px_#ffffff]' },
       { name: 'MySQL',      icon: 'devicon-mysql-plain colored' },
@@ -23,6 +25,8 @@ const techCategories = [
       { name: 'VS Code',        icon: 'devicon-vscode-plain colored' },
       { name: 'Anaconda',       icon: 'devicon-anaconda-plain colored' },
       { name: 'Android Studio', icon: 'devicon-androidstudio-plain colored' },
+      { name: 'PDF.js',         icon: 'devicon-javascript-plain colored' },
+      { name: 'pdf-lib',        icon: 'devicon-javascript-plain colored' },
     ],
   },
   {
