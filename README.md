@@ -50,7 +50,7 @@ ResumeWebsite/
 │   │   │   └── skyscrapers-6990425.jpg            # Header background image
 │   │   └── website.png                            # Website / brand logo
 │   └── resume/
-│       └── Christian_manduano_borjas_Resume.pdf   # Downloadable resume PDF
+│       └── Christian_Mandujano_Borjas_Resume.pdf  # Downloadable resume PDF
 ├── src/
 │   ├── app/                                       # Next.js App Router pages
 │   │   ├── layout.tsx                             # Root layout & global nav

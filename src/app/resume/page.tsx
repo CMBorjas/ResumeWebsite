@@ -6,7 +6,7 @@ export default function ResumePage() {
           <span className="text-white mr-2">&gt;</span> RESUME.pdf
         </h2>
         <a 
-          href="/ResumeWebsite/resume/Christian_manduano_borjas_Resume.pdf" 
+          href="/ResumeWebsite/resume/Christian_Mandujano_Borjas_Resume.pdf" 
           download="Christian_Mandujano_Borjas_Resume.pdf"
           className="bg-brand-cyan/10 border border-brand-cyan/50 text-brand-cyan px-4 py-2 rounded-lg hover:bg-brand-cyan/20 hover:shadow-[0_0_10px_color-mix(in srgb, var(--color-brand-cyan) 40%, transparent)] transition-all flex items-center gap-2 font-semibold tracking-wide text-sm"
         >
@@ -20,7 +20,7 @@ export default function ResumePage() {
         <div className="absolute inset-0 border-2 border-brand-cyan opacity-0 group-hover:opacity-20 transition-opacity pointer-events-none rounded-xl"></div>
         
         <iframe 
-          src="/ResumeWebsite/resume/Christian_manduano_borjas_Resume.pdf" 
+          src="/ResumeWebsite/resume/Christian_Mandujano_Borjas_Resume.pdf" 
           className="w-full h-full rounded-lg bg-slate-800"
           title="Resume PDF Viewer"
         />
