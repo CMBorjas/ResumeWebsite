@@ -36,5 +36,12 @@ export const projects: Project[] = [
     repoUrl: 'https://github.com/CMBorjas/pdf_splitter',
     liveUrl: '/ResumeWebsite/projects/pdf-splitter',
     techStack: ['React', 'PDF.js', 'pdf-lib', 'Node.js', 'CSS']
+  },
+  {
+    title: 'social_sent_score',
+    description: 'A Sentiment Score Analyzer that evaluates text using the Stanford SocialSent dictionary, originally built in Rust and ported to the web.',
+    repoUrl: 'https://github.com/CMBorjas/CSCI_3415-Homework004',
+    liveUrl: '/ResumeWebsite/projects/social-sent-score',
+    techStack: ['Rust', 'TypeScript', 'Next.js', 'Tailwind', 'Data Parsing']
   }
 ]
