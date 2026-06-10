@@ -63,7 +63,7 @@ export default function HexagonMenu() {
         return (index - 1) * 66; 
     }
 
-    const getTransformX = (index: number) => {
+    const getTransformX = (index: number, active: boolean) => {
         if (!isOpen) return 0;
         
         const isHoveredItem = hoveredHex === index;
@@ -74,6 +74,12 @@ export default function HexagonMenu() {
             return navPosition === 'left' ? slideAmount : -slideAmount;
         } else if (isOpen && index > 1) {
             // Yellow arrow mode (Unlocked, but Menu is Hovered)
+            
+            // The active page should not have its title taken away, it remains in the column
+            if (active && !isHoveredItem) {
+                return 0;
+            }
+            
             // Non-hovered items push themselves to the edge of the screen so their horizontal text is hidden outside the viewport.
             // Hovered items slide into view, pulling their text mechanically from behind the screen edge.
             const hideOffScreenX = 36;
@@ -94,8 +100,8 @@ export default function HexagonMenu() {
         const isActiveItem = isActive(path);
         const isYellowArrowMode = !isLocked && isOpen;
         
-        // Text is rotated if it's in the locked column, OR if it's the active page indicator in closed state, AND it's not currently being hovered, AND we're not in yellow arrow mode (where all items are horizontal).
-        const isRotated = (isLocked || (isActiveItem && !isOpen)) && !isHoveredItem;
+        // Text is rotated if it's in the locked column, OR if it's the active page indicator, AND it's not currently being hovered.
+        const isRotated = (isLocked || isActiveItem) && !isHoveredItem;
         
         // When horizontal, left/right is 45.3px to achieve a 2px visual gap.
         // When rotated 90deg, the center shifts. A 48x12 box needs 18px of compensation. 45.3 - 18 = 27.3px.
