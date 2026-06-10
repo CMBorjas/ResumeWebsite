@@ -363,5 +363,25 @@ The next phase of development focuses on polishing the portfolio to showcase arc
       We will need to implement a markdown editor for the website, which will allow users to edit markdown.
       </details>
 ---
+### Prioritized Goal Roadmap:
+---
+1. Tool Tip UI
+2. Restricted Textarea
+3. Accordion
+4. Cookie Consent Banner
+5. Contact Page Reform
+6. Changelog Component
+7. Testimonial Cards
+8. Pricing Cards
+9. Photo Showcase 
+10. QR Code Generator 
+11. Random GitHub Repo Shoutout 
+12. Weather Widget 
+13. Pomodoro Timer 
+14. Personal Blog Page 
+15. Markdown Note Taking App 
+16. Photo Gallery 24hr Story Feature 
+17. URL Shortener 
+---
 
-# Thank you for visiting my resume website repository!
+# Thank you for your time and consideration! 
