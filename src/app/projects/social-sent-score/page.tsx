@@ -102,6 +102,41 @@ export default function SocialSentScorePage() {
     })
   }
 
+  const clearAll = () => {
+    setInputText('')
+    setResults(null)
+  }
+
+  const loadPositive = () => {
+    setInputText("I am absolutely thrilled and excited about this wonderful product! It makes me so incredibly happy and joyous to see such brilliant innovation.")
+    setResults(null)
+  }
+
+  const loadNegative = () => {
+    setInputText("This is a terrible and awful mistake. I am extremely disappointed and angry about this horrible failure.")
+    setResults(null)
+  }
+
+  const renderHighlightedText = () => {
+    if (!results) return null;
+    const words = inputText.split(/(\s+)/); // keep whitespace
+    return words.map((word, idx) => {
+      if (!word.trim()) return <span key={idx}>{word}</span>;
+      
+      const cleaned = word.toLowerCase().replace(/[^a-z]/g, '');
+      const scoreObj = results.wordScores.find(w => w.word === cleaned);
+      
+      if (scoreObj) {
+        if (scoreObj.score > 0) {
+          return <span key={idx} className="text-green-400 font-bold bg-green-400/10 px-0.5 rounded" title={`Score: ${scoreObj.score}`}>{word}</span>;
+        } else if (scoreObj.score < 0) {
+          return <span key={idx} className="text-red-400 font-bold bg-red-400/10 px-0.5 rounded" title={`Score: ${scoreObj.score}`}>{word}</span>;
+        }
+      }
+      return <span key={idx} className="text-slate-400">{word}</span>;
+    });
+  }
+
   return (
     <div className="w-full max-w-4xl mx-auto px-4 py-8">
       <motion.div
@@ -123,19 +158,28 @@ export default function SocialSentScorePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Input Section */}
             <div className="space-y-4">
+              <div className="flex items-center gap-2 mb-2">
+                <button onClick={loadPositive} className="text-xs px-2 py-1 bg-green-500/10 text-green-400 border border-green-500/30 rounded hover:bg-green-500/20 transition-colors">
+                  Load Positive
+                </button>
+                <button onClick={loadNegative} className="text-xs px-2 py-1 bg-red-500/10 text-red-400 border border-red-500/30 rounded hover:bg-red-500/20 transition-colors">
+                  Load Negative
+                </button>
+              </div>
+
               <div>
                 <label className="block text-sm font-semibold text-brand-cyan mb-2 uppercase tracking-wider">
                   Input Text or Upload File
                 </label>
                 <textarea
-                  className="w-full h-48 bg-slate-800/80 text-slate-200 border border-slate-700 rounded-md p-3 focus:outline-none focus:border-brand-cyan focus:ring-1 focus:ring-brand-cyan transition-colors"
+                  className="w-full h-40 bg-slate-800/80 text-slate-200 border border-slate-700 rounded-md p-3 focus:outline-none focus:border-brand-cyan focus:ring-1 focus:ring-brand-cyan transition-colors"
                   placeholder="Paste review text here..."
                   value={inputText}
                   onChange={handleTextChange}
                 />
               </div>
 
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-3 flex-wrap">
                 <input
                   type="file"
                   accept=".txt"
@@ -145,15 +189,23 @@ export default function SocialSentScorePage() {
                 />
                 <button
                   onClick={() => fileInputRef.current?.click()}
-                  className="px-4 py-2 bg-slate-800 text-slate-300 rounded hover:bg-slate-700 hover:text-white transition-colors border border-slate-700 font-mono text-sm"
+                  className="px-3 py-2 bg-slate-800 text-slate-300 rounded hover:bg-slate-700 hover:text-white transition-colors border border-slate-700 font-mono text-xs whitespace-nowrap"
                 >
                   [ Upload .txt ]
                 </button>
 
                 <button
+                  onClick={clearAll}
+                  disabled={!inputText}
+                  className="px-3 py-2 bg-slate-800/50 text-slate-400 rounded hover:bg-slate-700 hover:text-red-400 transition-colors border border-slate-700 font-mono text-xs disabled:opacity-50"
+                >
+                  Clear
+                </button>
+
+                <button
                   onClick={analyzeSentiment}
                   disabled={!inputText.trim()}
-                  className="flex-1 px-4 py-2 bg-brand-cyan/20 text-brand-cyan border border-brand-cyan/50 rounded hover:bg-brand-cyan/40 transition-all font-mono font-bold tracking-wide disabled:opacity-50 disabled:cursor-not-allowed uppercase"
+                  className="flex-1 min-w-[140px] px-4 py-2 bg-brand-cyan/20 text-brand-cyan border border-brand-cyan/50 rounded hover:bg-brand-cyan/40 transition-all font-mono font-bold tracking-wide disabled:opacity-50 disabled:cursor-not-allowed uppercase text-sm"
                 >
                   Analyze Sentiment
                 </button>
@@ -191,9 +243,17 @@ export default function SocialSentScorePage() {
                     </div>
                   </div>
 
-                  <div className="flex-1 overflow-auto pr-2 custom-scrollbar max-h-[250px]">
+                  <div className="flex-1 overflow-auto pr-2 custom-scrollbar max-h-[150px] mb-4">
+                    <p className="text-xs text-slate-400 uppercase tracking-widest mb-2">Sentiment Map</p>
+                    <div className="bg-slate-900/80 p-3 rounded border border-slate-700/50 text-sm leading-relaxed">
+                      {renderHighlightedText()}
+                    </div>
+                  </div>
+
+                  <div className="flex-1 overflow-auto pr-2 custom-scrollbar max-h-[150px]">
+                    <p className="text-xs text-slate-400 uppercase tracking-widest mb-2">Scored Words</p>
                     <table className="w-full text-sm font-mono text-left">
-                      <thead className="sticky top-0 bg-slate-800 border-b border-slate-700 text-slate-400 text-xs uppercase">
+                      <thead className="sticky top-0 bg-slate-800 border-b border-slate-700 text-slate-400 text-xs uppercase z-10">
                         <tr>
                           <th className="py-2 px-2">Word</th>
                           <th className="py-2 px-2 text-right">Score</th>
