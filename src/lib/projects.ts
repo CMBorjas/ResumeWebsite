@@ -43,5 +43,12 @@ export const projects: Project[] = [
     repoUrl: 'https://github.com/CMBorjas/CSCI_3415-Homework004',
     liveUrl: '/ResumeWebsite/projects/social-sent-score',
     techStack: ['Rust', 'TypeScript', 'Next.js', 'Tailwind', 'Data Parsing']
+  },
+  {
+    title: 'neuron_from_scratch_vz',
+    description: 'A faithful, from-scratch implementation of a 2-2-1 neural network described by Victor Zhou. This project features a full Python testing and documentation suite alongside an interactive web port demonstrating real-time training and inference.',
+    repoUrl: 'https://github.com/CMBorjas/neuron-from-scratch-vz',
+    liveUrl: '/ResumeWebsite/projects/neuron-from-scratch',
+    techStack: ['Python', 'Numpy', 'TypeScript', 'React', 'Next.js']
   }
 ]
