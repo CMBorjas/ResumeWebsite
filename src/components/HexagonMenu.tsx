@@ -210,7 +210,7 @@ export default function HexagonMenu() {
             >
                 {/* Hexagon 1 (Main Menu Toggle) */}
                 <div
-                    className="absolute z-30 origin-center transition-all duration-300"
+                    className="absolute z-40 origin-center transition-all duration-300"
                     style={{ transform: `scale(1.5)`, top: 0 }}
                 >
                     <div
@@ -250,15 +250,17 @@ export default function HexagonMenu() {
                     const isLink = item.index !== 6;
                     const ContentWrapper = isLink ? Link : 'div';
                     const wrapperProps = isLink ? { href: item.path } : { onClick: item.onClick };
+                    const active = isActive(item.path);
+                    const isVisibleTab = isOpen || active;
                     
                     return (
                         <div
                             key={item.index}
-                            className={`absolute ease-[cubic-bezier(0.34,1.56,0.64,1)] ${hoveredHex === item.index ? 'z-20' : 'z-10'}`}
+                            className={`absolute ease-[cubic-bezier(0.34,1.56,0.64,1)] ${hoveredHex === item.index ? 'z-30' : (active ? 'z-20' : 'z-10')} ${isVisibleTab ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
                             style={{ 
                                 transitionProperty: 'all',
                                 transitionDuration: `${300 + (item.index - 2) * 100}ms`,
-                                transform: `translate(0px, ${getTransformY(item.index, isActive(item.path))}px)`,
+                                transform: `translate(0px, ${getTransformY(item.index, active)}px)`,
                                 width: '200px', 
                                 height: '72px', 
                                 left: '50%',
