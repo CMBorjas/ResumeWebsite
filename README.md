@@ -161,227 +161,236 @@ For questions, suggestions, or collaboration, please reach out:
 
 The next phase of development focuses on polishing the portfolio to showcase architecture, UX, and animations.
 
-- ~~**Dynamic Theme Engine**: Build a robust React Context provider to hot-swap CSS variables, instantly switching between Cyberpunk, Forestpunk, and Corporate themes without reloading.~~
+<details>
+<summary><b>Past Goals</b></summary>
+
+-~~[x]**Dynamic Theme Engine**: Build a robust React Context provider to hot-swap CSS variables, instantly switching between Cyberpunk, Forestpunk, and Corporate themes without reloading.~~
    - <details>
       <summary><b>Detailed Explanation</b></summary>
-      To support the planned Cyberpunk, furthur in the future we will add more themes such as Forestpunk, and Corporate, a robust `<ThemeProvider>` needs to be implemented to hold the current, future theme colors, styles and animations for each theme. This engine will allow the user to switch between themes on the client side, in order to switch between themes we will use React Context and CSS custom properties (variables) to control the entire color palette, typography, and border styles. This approach will ensure that the application can instantly switch between themes on the client side without any performance penalty or page reloads.Hopefully it shows an understanding of modern CSS architecture and React state management.
+      To support the planned Cyberpunk, furthur in the future we will add more themes such as Forestpunk, and Corporate, a robust `<ThemeProvider>` needs to be implemented to hold the current, future theme colors, styles and animations for each theme. This engine will allow the user to switch between themes on the client side, in order to switch between themes we will use React Context and CSS custom properties (variables) to control the entire color palette, typography, and border styles. This approach will ensure that the application can instantly switch between themes on the client side without any performance penalty or page reloads. Hopefully it shows an understanding of modern CSS architecture and React state management.
       </details>
 
-- ~~**Fluid Page Transitions**: Integrate `framer-motion` to wrap the Next.js application in an `<AnimatePresence>`, creating seamless desktop-like fade and slide animations when navigating between routes.~~
+- ~~[x]**Fluid Page Transitions**: Integrate `framer-motion` to wrap the Next.js application in an `<AnimatePresence>`, creating seamless desktop-like fade and slide animations when navigating between routes.~~
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       Currently, Next.js performs hard cuts between route changes. By integrating `framer-motion`, the application should integrate a feature that will bring smooth, fluid page transitions. An `<AnimatePresence>` wrapper should orchestrate exit animations for the current page and entrance animations for the new page. Hopefully making the website feel more cohesive, native application like rather than a collection of static web pages, which should significantly enhance the user experience.
       </details>
 
-- ~~**Interactive Canvas Background**: Replace static backgrounds with a custom HTML5 `<canvas>` component that renders an interactive, subtle particle network or glowing grid that reacts to the user's cursor.~~
+- ~~[x]**Interactive Canvas Background**: Replace static backgrounds with a custom HTML5 `<canvas>` component that renders an interactive, subtle particle network or glowing grid that reacts to the user's cursor.~~
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       To elevate the visual appeal beyond static dark mode backgrounds, a custom React component using the HTML5 <-canvas-> API will need to be developed. This background should likely feature a lightweight, interactive particle system or glowing geometry that subtly responds to mouse movement and clicks. Versions for website on a desktop and a mobile device will need to be considered, the implementation on a mobile device will likely be simpler than that on a desktop device. Hopefully this will demonstrate proficiency in graphics programming and performance optimization, ensuring the animation runs smoothly at 60 FPS without draining device batteries too much. We will need to use a library like `react-tsparticles` or `react-canvas-confetti` to achieve this effect, along with some custom styling to match the cyberpunk theme and future themes. We will need to come up with a way to show the cost of running the animation on different devices and how it will impact the battery life of mobile devices, and possibly come up with a way to optimize the animation for different devices. 
 
       </details>
 
-- ~~**The "Bento Box" Layout**: Restructure the 'About Me' and 'Skills' pages using advanced CSS Grid to create a responsive, glassmorphic "Bento Box" layout with sophisticated hover micro-interactions.~~
+- ~~[x]**The "Bento Box" Layout**: Restructure the 'About Me' and 'Skills' pages using advanced CSS Grid to create a responsive, glassmorphic "Bento Box" layout with sophisticated hover micro-interactions.~~
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       The current linear layouts will be upgraded to the highly modern "Bento Box" design trend, popularised by top-tier tech companies. This involves creating a complex, responsive CSS Grid architecture where information is compartmentalized into glassmorphic cards of varying sizes. These cards will seamlessly reflow on mobile devices and feature advanced CSS hover states (such as magnetic borders or dynamic glows) to encourage user interaction and showcase high-level UI/UX implementation skills. The use of framer-motion will allow us to create these micro-interactions and animations. This should show our understanding of modern CSS and React state management.
       
       </details>
-- **Pricing cards for users to send money** - In this project, you are required to create a row of pricing cards using only HTML and CSS. 
+</details>
+<details>
+<summary><b>Current Goals</b></summary>
+
+- []**Pricing cards for users to send money** - In this project, you are required to create a row of pricing cards using only HTML and CSS. 
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       Pricing cards are a common UI pattern used on marketing and SaaS websites to compare plans side by side and guide users to the right tier. The pricing page should display three distinct pricing plans: Thumbs up, dollar, and 5 bucks. Each plan should have its own card with a clear title, price, list of features, and a call-to-action (CTA) button. The three cards should share a base style and the middle one should stand out as the recommended plan, slightly larger and visually emphasized. Each card has a plan name, a price, a short tagline, a list of included features, and a button.
       </details>
-- **Photo showcase** - In this project, you are required to create a photo showcase using only HTML and CSS. The photo showcase should display a grid of photos that can be clicked to view a larger version of the photo. 
+- [] **Photo showcase** - In this project, you are required to create a photo showcase using only HTML and CSS. The photo showcase should display a grid of photos that can be clicked to view a larger version of the photo. 
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       Photo showcases are a common UI pattern used on marketing and SaaS websites to display photos in a grid layout. The photo showcase should display a grid of photos that can be clicked to view a larger version of the photo. We try to source these from the social media pages of the owner of the website, so that the photos are relevant to the website.
-
       </details>
-- **Contact page reform section addition** - A contact form is a crucial component of any website, providing a direct channel for users to communicate with the site owner. This section will replace the existing contact section on the contact page. 
+- [] **Contact page reform section addition** - A contact form is a crucial component of any website, providing a direct channel for users to communicate with the site owner. This section will replace the existing contact section on the contact page. 
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       An accessible HTML form. Form controls, labels, validation attributes, and proper grouping.
       </details>
-- **Testimonial Cards** - Testimonials are quotes or statements from satisfied customers or users, often used on websites to build credibility and trust.
+- [] **Testimonial Cards** - Testimonials are quotes or statements from satisfied customers or users, often used on websites to build credibility and trust.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement the testimonials of the website, which are currently stored in a JSON file. These testimonials should be displayed in a carousel or grid format, with each testimonial having its own card.
       </details>
-- **Changelog component** - Changelog are records of changes that have been made to a website or application.
+- [] **Changelog component** - Changelog are records of changes that have been made to a website or application.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement the changelog of the website, which is currently stored in a JSON file. These changelogs should be displayed in a list format, with each changelog having its own card.
       </details>
-- **Tool tip ui** - Tool tip are used to display additional information about a element when the user hovers over it.
+- [] **Tool tip ui** - Tool tip are used to display additional information about a element when the user hovers over it.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement tool tip ui for the website, which will display additional information about a element when the user hovers over it.
       </details>
-- **Cookie consent** - Cookie consent is a banner that is displayed on a website to inform users about the use of cookies and to obtain their consent.
+- [] **Cookie consent** - Cookie consent is a banner that is displayed on a website to inform users about the use of cookies and to obtain their consent.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement cookie consent for the website, which will display a banner to inform users about the use of cookies and to obtain their consent.
       </details>
-- **Retrited textarea** - A textarea is a form element that allows users to enter multiple lines of text.
+- [] **Retrited textarea** - A textarea is a form element that allows users to enter multiple lines of text.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement a textarea for the website, which will allow users to enter multiple lines of text.
       </details>
-- **Accordion** - An accordion is a UI component that allows users to display content in a collapsible format.
+- [] **Accordion** - An accordion is a UI component that allows users to display content in a collapsible format.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement an accordion for the website, which will allow users to display content in a collapsible format.
       </details>
-- **Personal Blog page** - A blog page is a page that displays a list of blog posts.
+- [] **Personal Blog page** - A blog page is a page that displays a list of blog posts.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement a blog page for the website, which will display a list of blog posts.
       </details>
-- **Random github repo shoutout** - Random github repo shoutout is a section that displays a list of random github repositories.
+- [] **Random github repo shoutout** - Random github repo shoutout is a section that displays a list of random github repositories.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement a random github repo shoutout section for the website, which will display a list of random github repositories.
       </details>
-- **Weather widget** - Weather widget is a widget that displays the current weather conditions for a specific location.
+- [] **Weather widget** - Weather widget is a widget that displays the current weather conditions for a specific location.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement a weather widget for the website, which will display the current weather conditions for a specific location.
       </details>
-- **Photo gallery 24hr story feature** - 
+- [] **Photo gallery 24hr story feature** - 
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement a photo gallery 24hr story feature for the website, which will display a list of photos.
       </details>
-- **Pomodoro timer** - A pomodoro timer is a timer that is used to keep track of time while working on a task.
+- [] **Pomodoro timer** - A pomodoro timer is a timer that is used to keep track of time while working on a task.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement a pomodoro timer for the website, which will keep track of time while working on a task.
       </details>
-- **URL Shortener** - A URL shortener is a tool that shortens long URLs to shorter, more manageable ones.
+- [] **URL Shortener** - A URL shortener is a tool that shortens long URLs to shorter, more manageable ones.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement a URL shortener for the website, which will shorten long URLs to shorter, more manageable ones.
       </details>
-- **QR Code Generator** - A QR code generator is a tool that generates QR codes for a given URL or text.
+- [] **QR Code Generator** - A QR code generator is a tool that generates QR codes for a given URL or text.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement a QR code generator for the website, which will generate QR codes for a given URL or text.
       </details>
-- **Markdown Note taking app** - A markdown note taking app is a app that allows users to take notes in markdown format.
+- [] **Markdown Note taking app** - A markdown note taking app is a app that allows users to take notes in markdown format.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement a markdown note taking app for the website, which will allow users to take notes in markdown format.
       </details>
-- **Currency converter** - A currency converter is a tool that converts currencies from one currency to another.
+- [] **Currency converter** - A currency converter is a tool that converts currencies from one currency to another.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement a currency converter for the website, which will convert currencies from one currency to another.
       </details>
-- **Unit Converter** - A unit converter is a tool that converts units from one unit to another.
+- [] **Unit Converter** - A unit converter is a tool that converts units from one unit to another.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement a unit converter for the website, which will convert units from one unit to another.
       </details>
-- **Numberguessing game** - A numberguessing game is a game that allows users to guess a random number.
+- [] **Numberguessing game** - A numberguessing game is a game that allows users to guess a random number.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement a numberguessing game for the website, which will allow users to guess a random number.
       </details>
-- **Github user activity** - A github user activity is a section that displays a list of github user activities.
+- [] **Github user activity** - A github user activity is a section that displays a list of github user activities.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement a github user activity section for the website, which will display a list of github user activities.
       </details>
-- **Job list scraper** - A job list scraper is a tool that scrapes job listings from a website.
+- [] **Job list scraper** - A job list scraper is a tool that scrapes job listings from a website.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement a job list scraper for the website, which will scrape job listings from a website.
       </details>
-- **Data Visualization** - Data visualization is the representation of data in a graphical format.
+- [] **Data Visualization** - Data visualization is the representation of data in a graphical format.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement data visualization for the website, which will display data in a graphical format.
       </details>
-- **Stock Price Analysis** - Stock price analysis is the process of analyzing stock prices to determine their value.
+- [] **Stock Price Analysis** - Stock price analysis is the process of analyzing stock prices to determine their value.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement stock price analysis for the website, which will analyze stock prices to determine their value.
       </details>
-- **Crypto Price Analysis** - Crypto price analysis is the process of analyzing crypto prices to determine their value.
+- [] **Crypto Price Analysis** - Crypto price analysis is the process of analyzing crypto prices to determine their value.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement crypto price analysis for the website, which will analyze crypto prices to determine their value.
       </details>
-- **File integretiy Checker** - A file integretiy checker is a tool that checks the integrity of a file.
+- [] **File integretiy Checker** - A file integretiy checker is a tool that checks the integrity of a file.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement a file integretiy checker for the website, which will check the integrity of a file.
       </details>
-- **Image processing services** - Image processing services are a set of tools that allow users to process images.
+- [] **Image processing services** - Image processing services are a set of tools that allow users to process images.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement image processing services for the website, which will allow users to process images.
       </details>
-- **Real-time leaderboard** - Real-time leaderboard is a leaderboard that displays the scores of users in real-time.
+- [] **Real-time leaderboard** - Real-time leaderboard is a leaderboard that displays the scores of users in real-time.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement a real-time leaderboard for the website, which will display the scores of users in real-time.
       </details>
-- **Movie Scraper and Resevation system** - Movie scraper and reservation system is a system that allows users to reserve movies.
+- [] **Movie Scraper and Resevation system** - Movie scraper and reservation system is a system that allows users to reserve movies.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement a movie scraper and reservation system for the website, which will allow users to reserve movies.
       </details>
-- **Server performance statistics** - 
+- [] **Server performance statistics** - 
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement a server performance statistics system for the website, which will display the performance statistics of a server.
       </details>
-- **Tool to Clean Csv files** - 
+- [] **Tool to Clean Csv files** - 
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement a tool to clean csv files for the website, which will clean csv files.
       </details>
-- **Flash Cards** - 
+- [] **Flash Cards** - 
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement a flash card system for the website, which will display flash cards.
       </details>
-- **Flash Card Editor** - 
+- [] **Flash Card Editor** - 
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement a flash card editor for the website, which will allow users to edit flash cards.
       </details>
-- **Quiz App** - 
+- [] **Quiz App** - 
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement a quiz app for the website, which will allow users to take quizzes.
       </details>
-- **Markdown Editor** - 
+- [] **Markdown Editor** - 
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement a markdown editor for the website, which will allow users to edit markdown.
       </details>
+
+</details>
+
 ---
 ### Prioritized Goal Roadmap:
 ---
-1. Tool Tip UI
-2. Restricted Textarea
-3. Accordion
-4. Cookie Consent Banner
-5. Contact Page Reform
-6. Changelog Component
-7. Testimonial Cards
-8. Pricing Cards
-9. Photo Showcase 
-10. QR Code Generator 
-11. Random GitHub Repo Shoutout 
-12. Weather Widget 
-13. Pomodoro Timer 
-14. Personal Blog Page 
-15. Markdown Note Taking App 
-16. Photo Gallery 24hr Story Feature 
-17. URL Shortener 
+* [] 1. Tool Tip UI
+* [] 2. Restricted Textarea
+* [] 3. Accordion
+* [] 4. Cookie Consent Banner
+* [] 5. Contact Page Reform
+* [] 6. Changelog Component
+* [] 7. Testimonial Cards
+* [] 8. Pricing Cards
+* [] 9. Photo Showcase 
+* [] 10. QR Code Generator 
+* [] 11. Random GitHub Repo Shoutout 
+* [] 12. Weather Widget 
+* [] 13. Pomodoro Timer 
+* [] 14. Personal Blog Page 
+* [] 15. Markdown Note Taking App 
+* [] 16. Photo Gallery 24hr Story Feature 
+* [] 17. URL Shortener 
 ---
 
 # Thank you for your time and consideration! 

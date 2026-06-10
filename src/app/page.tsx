@@ -83,7 +83,7 @@ export default function Home() {
         {/* Intro Box */}
         <BentoBox className="order-1 md:order-1 md:col-span-2 md:row-span-1 !p-0 !bg-black/80" delay={0.1}>
           <div className="w-full h-10 bg-brand-cyan/10 border-b border-brand-cyan/30 flex items-center px-4 justify-between backdrop-blur-md font-mono shrink-0">
-            <span className="text-[11px] text-brand-cyan tracking-widest font-bold">~/welcome</span>
+            <span className="text-[11px] text-brand-cyan tracking-widest font-bold">~/Welcome</span>
             <div className="flex gap-2">
               <div className="w-3 h-3 rounded-full bg-slate-700 hover:bg-slate-500 transition-colors cursor-pointer"></div>
               <div className="w-3 h-3 rounded-full bg-slate-700 hover:bg-slate-500 transition-colors cursor-pointer"></div>
