@@ -1,7 +1,7 @@
 'use client'
 
-import React, { useState, useCallback } from 'react'
-import { LuUpload, LuFileText, LuSettings, LuLayers, LuSquareSplitHorizontal, LuDownload, LuEye } from 'react-icons/lu'
+import React from 'react'
+import { useTheme } from '../../../components/ThemeProvider'
 
 // Simple tooltip wrapper component
 const Tooltip = ({ children, text }: { children: React.ReactNode, text: string }) => {
@@ -20,6 +20,9 @@ const Tooltip = ({ children, text }: { children: React.ReactNode, text: string }
 }
 
 export default function PdfSplitterPage() {
+  const { theme } = useTheme()
+  const liveUrl = `https://cmborjas.github.io/pdf_splitter/?theme=${theme}`
+
   return (
     <div className="w-full max-w-[1200px] mx-auto px-4 py-8 h-[calc(100vh-100px)] min-h-[800px]">
       <div className="bg-slate-900/70 backdrop-blur-md rounded-xl border-2 border-brand-cyan/50 shadow-[0_0_15px_color-mix(in srgb, var(--color-brand-cyan) 40%, transparent)] w-full h-full overflow-hidden flex flex-col">
@@ -33,7 +36,7 @@ export default function PdfSplitterPage() {
             <span className="text-xs text-slate-300 font-medium uppercase tracking-wider">Live Demo Environment</span>
           </div>
           <a 
-            href="https://cmborjas.github.io/pdf_splitter/" 
+            href={liveUrl} 
             target="_blank" 
             rel="noreferrer"
             className="text-xs text-brand-cyan hover:text-brand-pink transition-colors flex items-center gap-1"
@@ -45,7 +48,7 @@ export default function PdfSplitterPage() {
         
         {/* Embedded Application */}
         <iframe 
-          src="https://cmborjas.github.io/pdf_splitter/"
+          src={liveUrl}
           className="w-full flex-1 border-none bg-[#0d1117]"
           title="PDF Splitter Pro"
           allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

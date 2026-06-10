@@ -1,4 +1,5 @@
 import { Project } from '../lib/projects'
+import { useTheme } from './ThemeProvider'
 
 const techIcons: { [key: string]: string } = {
   Python: 'devicon-python-plain colored',
@@ -80,12 +81,18 @@ const techColors: { [key: string]: string } = {
 }
 
 export default function ProjectCard({ project }: { project: Project }) {
+  const { theme } = useTheme()
+
+  let resolvedLiveUrl = project.liveUrl
+  if (resolvedLiveUrl && resolvedLiveUrl.includes('cmborjas.github.io/pdf_splitter')) {
+    resolvedLiveUrl = `${resolvedLiveUrl}?theme=${theme}`
+  }
 
   return (
     <article className="project-card min-w-0 bg-[#0d1117] border border-brand-cyan/50 shadow-[0_0_8px_color-mix(in srgb, var(--color-brand-cyan) 30%, transparent)] rounded-md p-3 flex flex-col h-full hover:border-brand-cyan/80 hover:shadow-[0_0_15px_color-mix(in srgb, var(--color-brand-cyan) 60%, transparent)] transition-all duration-300 min-h-[180px]">
       <div className="flex justify-between items-start mb-2 w-full min-w-0 gap-2">
         <a
-          href={project.liveUrl || project.repoUrl}
+          href={resolvedLiveUrl || project.repoUrl}
           target="_blank"
           rel="noreferrer"
           className="project-title font-semibold text-sm hover:underline truncate flex-1 min-w-0 max-w-full"
@@ -93,9 +100,9 @@ export default function ProjectCard({ project }: { project: Project }) {
           {project.title}
         </a>
         <div className="flex items-center gap-2 shrink-0">
-          {project.liveUrl && (
+          {resolvedLiveUrl && (
             <a
-              href={project.liveUrl}
+              href={resolvedLiveUrl}
               target="_blank"
               rel="noreferrer"
               className="group/demo flex items-center bg-[#ff003c]/10 border border-[#ff003c]/30 rounded-full px-2 py-0.5 transition-all hover:bg-[#ff003c]/20 hover:border-[#ff003c]/50 hover:shadow-[0_0_10px_rgba(255,0,60,0.4)]"
