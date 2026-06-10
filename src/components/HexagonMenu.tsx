@@ -37,8 +37,9 @@ export default function HexagonMenu() {
 
     const isRight = navPosition === 'right';
     
-    // The centroid of the asymmetric hexagon is 4.5px offset from the bounding box center.
-    const iconOffsetClass = navPosition === 'left' ? '-translate-x-[4.5px]' : 'translate-x-[4.5px]';
+    // The centroid of the asymmetric hexagon is offset from the bounding box center.
+    // Increased to 6px to push them slightly more towards the flat edge.
+    const iconOffsetClass = navPosition === 'left' ? '-translate-x-[6px]' : 'translate-x-[6px]';
     
     // If on the right edge, point left. If on the left edge, point right.
     const hexPoints = isRight 
@@ -225,21 +226,23 @@ export default function HexagonMenu() {
                                 ? 'drop-shadow-[0_0_15px_rgba(253,224,71,0.8)] fill-yellow-400/30 stroke-yellow-400'
                                 : 'drop-shadow-[0_0_10px_rgba(0,255,225,0.4)] group-hover:drop-shadow-[0_0_15px_rgba(0,255,225,0.8)] fill-[#00ffe1]/20 group-hover:fill-[#00ffe1]/40 stroke-[#00ffe1]/50'
                             )
-                            } ${iconOffsetClass}`} width="48" height="48" viewBox="0 0 24 24" strokeWidth="2">
+                            }`} width="48" height="48" viewBox="0 0 24 24" strokeWidth="2">
                             <polygon points={toggleCoverPoints} className="fill-[#0a0a0a] stroke-none"></polygon>
                             <polygon points={toggleCoverPoints}></polygon>
 
-                            {/* Hamburger Menu Icon / Arrow Morph */}
-                            <g className={`transition-all duration-300 origin-center ${isLocked ? 'opacity-0 scale-60 rotate-180' : (isOpen ? 'opacity-100 scale-100 rotate-90' : 'opacity-100 scale-100 rotate-0')}`}>
-                                <line className={`origin-[16px_9px] transition-all duration-300 stroke-white ${isOpen ? 'translate-y-[3px] rotate-45' : ''}`} x1="8" y1="9" x2="16" y2="9" strokeWidth="1.5" strokeLinecap="round" />
-                                <line className={`transition-all duration-300 stroke-white`} x1="8" y1="12" x2="16" y2="12" strokeWidth="1.5" strokeLinecap="round" />
-                                <line className={`origin-[16px_15px] transition-all duration-300 stroke-white ${isOpen ? '-translate-y-[3px] -rotate-45' : ''}`} x1="8" y1="15" x2="16" y2="15" strokeWidth="1.5" strokeLinecap="round" />
-                            </g>
+                            <g transform={`translate(${navPosition === 'left' ? -3 : 3}, 0)`}>
+                                {/* Hamburger Menu Icon / Arrow Morph */}
+                                <g className={`transition-all duration-300 origin-center ${isLocked ? 'opacity-0 scale-60 rotate-180' : (isOpen ? 'opacity-100 scale-100 rotate-90' : 'opacity-100 scale-100 rotate-0')}`}>
+                                    <line className={`origin-[16px_9px] transition-all duration-300 stroke-white ${isOpen ? 'translate-y-[3px] rotate-45' : ''}`} x1="8" y1="9" x2="16" y2="9" strokeWidth="1.5" strokeLinecap="round" />
+                                    <line className={`transition-all duration-300 stroke-white`} x1="8" y1="12" x2="16" y2="12" strokeWidth="1.5" strokeLinecap="round" />
+                                    <line className={`origin-[16px_15px] transition-all duration-300 stroke-white ${isOpen ? '-translate-y-[3px] -rotate-45' : ''}`} x1="8" y1="15" x2="16" y2="15" strokeWidth="1.5" strokeLinecap="round" />
+                                </g>
 
-                            {/* Lock Icon */}
-                            <g className={`transition-all duration-300 origin-center ${isLocked ? 'opacity-100 scale-100 rotate-0' : 'opacity-0 scale-150 -rotate-90'}`}>
-                                <rect x="8" y="11" width="8" height="6" rx="1" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                                <path d="M 10 11 V 8.5 A 2 2 0 0 1 14 8.5 V 11" stroke="white" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+                                {/* Lock Icon */}
+                                <g className={`transition-all duration-300 origin-center ${isLocked ? 'opacity-100 scale-100 rotate-0' : 'opacity-0 scale-150 -rotate-90'}`}>
+                                    <rect x="8" y="11" width="8" height="6" rx="1" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                                    <path d="M 10 11 V 8.5 A 2 2 0 0 1 14 8.5 V 11" stroke="white" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+                                </g>
                             </g>
                         </svg>
                     </div>
