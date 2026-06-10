@@ -49,17 +49,6 @@ export default function HexagonMenu() {
         ? "12 2 2 8.5 2 15.5 12 22 2000 22 2000 2"
         : "12 2 22 8.5 22 15.5 12 22 -2000 22 -2000 2";
 
-    const getTitleWidth = (index: number) => {
-        switch (index) {
-            case 2: return 32; // HOME
-            case 3: return 60; // PROJECTS
-            case 4: return 46; // RESUME
-            case 5: return 56; // CONTACT
-            case 6: return 66; // TOGGLE
-            default: return 36;
-        }
-    };
-
     const getTransform = (index: number, active: boolean) => {
         if (!isOpen) {
             // When closed, stack them all behind the toggle, except the active page indicator
@@ -70,23 +59,26 @@ export default function HexagonMenu() {
         
         // Tabs should be edge-touching in the y axis. 
         // Hexagon height is 60px visually, plus 3px stroke on top/bottom = 66px total height.
-        const y = (index - 1) * 66; 
+        let y = (index - 1) * 66; 
+        
         let x = 0;
         const isHoveredItem = hoveredHex === index;
         
         if (isLocked) {
             // When locked, they form a perfect vertical column at x=0.
-            const slideAmount = (isHoveredItem && index > 1) ? getTitleWidth(index) : 0;
+            const slideAmount = (isHoveredItem && index > 1) ? 36 : 0;
             x = navPosition === 'left' ? slideAmount : -slideAmount;
         } else if (isOpen && index > 1) {
-            // Yellow arrow mode
-            // Hexagon 6 (Toggle) remains stacked unless specifically hovered.
-            if (index === 6 && !isHoveredItem) {
-                x = 0;
+            // Yellow arrow mode (Unlocked, but Menu is Hovered)
+            // Non-hovered items push themselves to the edge of the screen so their horizontal text is hidden outside the viewport.
+            // Hovered items slide into view, pulling their text mechanically from behind the screen edge.
+            const hideOffScreenX = 36;
+            const slideIntoViewX = 36;
+            
+            if (isHoveredItem) {
+                x = navPosition === 'left' ? slideIntoViewX : -slideIntoViewX;
             } else {
-                // All other tabs dynamically stagger slide to create a flush right edge for their text
-                const slideAmount = getTitleWidth(index);
-                x = navPosition === 'left' ? slideAmount : -slideAmount;
+                x = navPosition === 'left' ? -hideOffScreenX : hideOffScreenX;
             }
         }
         
@@ -96,9 +88,10 @@ export default function HexagonMenu() {
     const getTextClasses = (path: string, index: number) => {
         const isHoveredItem = hoveredHex === index;
         const isActiveItem = isActive(path);
+        const isYellowArrowMode = !isLocked && isOpen;
         
-        // Text is rotated if it's in the locked column, OR if it's the active page indicator when the menu is fully closed.
-        const isRotated = isLocked ? !isHoveredItem : (!isHovered && isActiveItem);
+        // Text is rotated if it's in the locked column, OR if it's the active page indicator in closed state, AND it's not currently being hovered, AND we're not in yellow arrow mode (where all items are horizontal).
+        const isRotated = (isLocked || (isActiveItem && !isOpen)) && !isHoveredItem;
         
         // When horizontal, left/right is 45.3px to achieve a 2px visual gap.
         // When rotated 90deg, the center shifts. A 48x12 box needs 18px of compensation. 45.3 - 18 = 27.3px.
@@ -116,8 +109,8 @@ export default function HexagonMenu() {
             
         const rotationClass = `w-[48px] h-[12px] flex items-center ${navPosition === 'left' ? 'justify-end' : 'justify-start'} ${isRotated ? 'rotate-90' : 'rotate-0'} ${maskClass}`;
         
-        // Text is visible if locked, hovered globally (yellow arrow mode), OR if it's the active page indicator.
-        const isVisible = isLocked || isHovered || isActiveItem;
+        // Text is visible if locked, hovered, active item, OR if we are in yellow arrow mode (so it can mechanically slide in fully opaque)
+        const isVisible = isLocked || isHoveredItem || isActiveItem || (isYellowArrowMode && index > 1);
         const visibilityClass = isVisible 
             ? 'opacity-100 translate-x-0' 
             : 'opacity-0 translate-x-4';
