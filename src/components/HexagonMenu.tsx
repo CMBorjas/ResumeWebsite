@@ -53,43 +53,41 @@ export default function HexagonMenu() {
             return `translateY(0px) scale(1.5)`;
         }
         
-        let y = (index - 1) * 66; // Base vertical spacing
-        
-        if (isLocked) {
-            // Add a little breathing room when locked
-            y += (index - 1) * 12;
-        } else if (hoveredHex !== null && hoveredHex !== 1) {
-            // Push hexagons below the hovered one down slightly
-            if (index > hoveredHex) {
-                y += 20;
-            }
-        }
+        // Tabs should be edge-touching in the y axis (visual height of hexagon is 60px)
+        let y = (index - 1) * 60; 
         
         let x = 0;
-        if (isOpen) {
-            // When hovered, text is horizontal (needs 50px local room).
-            // When only locked, text is vertical (needs 14px local room).
-            const isHorizontal = isHovered;
-            const slideAmount = isHorizontal ? 50 : 14;
+        const isHoveredItem = hoveredHex === index;
+        
+        if (isLocked) {
+            // When locked, they form a column at 14px slide. Only the hovered text item slides out to 50px.
+            const slideAmount = (isHoveredItem && index > 1) ? 50 : 14;
+            x = navPosition === 'left' ? slideAmount : -slideAmount;
+        } else if (isHoveredItem && index > 1) {
+            // Not locked: only the hovered item slides out to 50px.
+            const slideAmount = 50;
             x = navPosition === 'left' ? slideAmount : -slideAmount;
         }
         
         return `translate(${x}px, ${y}px) scale(1.5)`;
     }
 
-    const getTextClasses = (path: string) => {
+    const getTextClasses = (path: string, index: number) => {
+        const isHoveredItem = hoveredHex === index;
+        const isRotated = isLocked && !isHoveredItem;
+        
         // When horizontal, left/right is 45.3px to achieve a 2px visual gap.
         // When rotated 90deg, the center shifts. A 48x12 box needs 18px of compensation (24 - 6 = 18). 45.3 - 18 = 27.3px.
         const positionClass = navPosition === 'left' 
-            ? (isLocked ? 'right-[27.3px] group-hover:right-[45.3px]' : 'right-[45.3px]')
-            : (isLocked ? 'left-[27.3px] group-hover:left-[45.3px]' : 'left-[45.3px]');
+            ? (isRotated ? 'right-[27.3px]' : 'right-[45.3px]')
+            : (isRotated ? 'left-[27.3px]' : 'left-[45.3px]');
             
         // Text is a transparent box, perfectly sized to rotate cleanly without backgrounds.
-        const rotationClass = `w-[48px] h-[12px] flex items-center ${navPosition === 'left' ? 'justify-end' : 'justify-start'} ${isLocked ? 'rotate-90 group-hover:rotate-0' : 'rotate-0'}`;
+        const rotationClass = `w-[48px] h-[12px] flex items-center ${navPosition === 'left' ? 'justify-end' : 'justify-start'} ${isRotated ? 'rotate-90' : 'rotate-0'}`;
         
-        // Text is ONLY visible when menu is open (hovered or locked)
-        // It slides in from the right (translate-x-4 to translate-x-0) as it fades in.
-        const visibilityClass = isOpen 
+        // Text is visible if locked OR if it is specifically the hovered item.
+        const isVisible = isLocked || isHoveredItem;
+        const visibilityClass = isVisible 
             ? 'opacity-100 translate-x-0' 
             : 'opacity-0 translate-x-4';
             
@@ -167,7 +165,7 @@ export default function HexagonMenu() {
                             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                             <polyline points="9 22 9 12 15 12 15 22"></polyline>
                         </svg>
-                        <span className={getTextClasses('/')}>HOME</span>
+                        <span className={getTextClasses('/', 2)}>HOME</span>
                     </Link>
                 </div>
 
@@ -185,7 +183,7 @@ export default function HexagonMenu() {
                             <polyline points="2 12 12 17 22 12"></polyline>
                             <polyline points="2 17 12 22 22 17"></polyline>
                         </svg>
-                        <span className={getTextClasses('/projects')}>PROJECTS</span>
+                        <span className={getTextClasses('/projects', 3)}>PROJECTS</span>
                     </Link>
                 </div>
 
@@ -205,7 +203,7 @@ export default function HexagonMenu() {
                             <line x1="16" y1="17" x2="8" y2="17"></line>
                             <polyline points="10 9 9 9 8 9"></polyline>
                         </svg>
-                        <span className={getTextClasses('/resume')}>RESUME</span>
+                        <span className={getTextClasses('/resume', 4)}>RESUME</span>
                     </Link>
                 </div>
 
@@ -222,7 +220,7 @@ export default function HexagonMenu() {
                             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                             <polyline points="22,6 12,13 2,6"></polyline>
                         </svg>
-                        <span className={getTextClasses('/contact')}>CONTACT</span>
+                        <span className={getTextClasses('/contact', 5)}>CONTACT</span>
                     </Link>
                 </div>
 
