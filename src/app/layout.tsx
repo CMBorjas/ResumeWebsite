@@ -6,6 +6,7 @@ import InteractiveCanvas from '../components/InteractiveCanvas'
 import PageTransition from '../components/PageTransition'
 import { ThemeProvider } from '../components/ThemeProvider'
 import ThemeSwitcher from '../components/ThemeSwitcher'
+import CookieConsent from '../components/CookieConsent'
 
 export const metadata = {
     title: 'Christian Mandujano Borjas — Portfolio',
@@ -103,6 +104,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                         <p className="text-xs text-slate-500 tracking-wider">© {new Date().getFullYear()} <span translate="no" className="notranslate">Christian Mandujano Borjas</span></p>
                     </div>
                 </footer>
+                <CookieConsent />
                 </ThemeProvider>
             </body>
         </html>
