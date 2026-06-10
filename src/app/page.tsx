@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaPython, FaJava, FaReact, FaNodeJs, FaDocker, FaAws, FaLinux } from 'react-icons/fa';
 import { SiCplusplus, SiTypescript, SiNextdotjs, SiTailwindcss, SiMysql } from 'react-icons/si';
+import Tooltip from '../components/Tooltip';
 
 const paragraphs = [
   "I am Christian Mandujano Borjas, an aspiring software engineer currently pursuing a degree in Computer Science at the University of Colorado Denver. With a strong foundation in programming languages like Python, Java, and C++, I have a passion for solving complex problems and building efficient systems.",
@@ -35,7 +36,7 @@ const SkillBadge = ({ children, icon: Icon, color = '#00ffe1' }: { children: Rea
     <span
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-full border transition-all duration-300 cursor-default"
+      className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-full border transition-all duration-300 cursor-pointer"
       style={{
         backgroundColor: isHovered ? `${color}33` : 'rgba(0, 255, 225, 0.1)',
         borderColor: isHovered ? `${color}80` : 'rgba(0, 255, 225, 0.2)',
@@ -103,7 +104,7 @@ export default function Home() {
         {/* Location/Status Box */}
         <BentoBox className="order-4 md:order-2 md:col-span-1 md:row-span-1 !p-0 !bg-black/80" delay={0.2}>
           <div className="w-full h-10 bg-brand-cyan/10 border-b border-brand-cyan/30 flex items-center px-4 justify-between backdrop-blur-md font-mono shrink-0">
-            <span className="text-[11px] text-brand-cyan tracking-widest font-bold">~/Graduted</span>
+            <span className="text-[11px] text-brand-cyan tracking-widest font-bold">~/Graduated</span>
             <div className="flex gap-2">
               <div className="w-3 h-3 rounded-full bg-slate-700 hover:bg-slate-500 transition-colors cursor-pointer"></div>
               <div className="w-3 h-3 rounded-full bg-slate-700 hover:bg-slate-500 transition-colors cursor-pointer"></div>
@@ -166,7 +167,7 @@ export default function Home() {
           <div className="p-6 flex-grow overflow-y-auto custom-scrollbar h-[300px]">
             <p className="whitespace-pre-wrap leading-relaxed text-sm text-brand-cyan/90">
               <span className="text-brand-pink mr-2 font-bold">&gt;</span>
-              {displayedText.split(/(Christian Mandujano Borjas)/).map((part, i) => 
+              {displayedText.split(/(Christian Mandujano Borjas)/).map((part, i) =>
                 part === "Christian Mandujano Borjas" ? <span key={i} translate="no" className="notranslate text-brand-cyan">{part}</span> : part
               )}
               <span className={`${isTypingDone ? 'animate-pulse' : ''} inline-block w-2.5 h-4 bg-brand-cyan align-middle ml-1 shadow-[0_0_8px_color-mix(in srgb, var(--color-brand-cyan) 80%, transparent)]`}></span>
@@ -189,20 +190,24 @@ export default function Home() {
               <svg className="w-4 h-4 text-brand-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
               Core Tech Stack
             </h3>
-            <div className="flex flex-wrap gap-2.5">
-              <SkillBadge icon={FaPython} color="#FFD43B">Python</SkillBadge>
-              <SkillBadge icon={FaJava} color="#ED8B00">Java</SkillBadge>
-              <SkillBadge icon={SiCplusplus} color="#00599C">C++</SkillBadge>
-              <SkillBadge icon={SiTypescript} color="#3178C6">TypeScript</SkillBadge>
-              <SkillBadge icon={SiNextdotjs} color="#FFFFFF">Next.js</SkillBadge>
-              <SkillBadge icon={FaReact} color="#61DAFB">React</SkillBadge>
-              <SkillBadge icon={SiTailwindcss} color="#38BDF8">Tailwind CSS</SkillBadge>
-              <SkillBadge icon={FaNodeJs} color="#339933">Node.js</SkillBadge>
-              <SkillBadge icon={SiMysql} color="#4479A1">MySQL</SkillBadge>
-              <SkillBadge icon={FaDocker} color="#2496ED">Docker</SkillBadge>
-              <SkillBadge icon={FaAws} color="#FF9900">AWS</SkillBadge>
-              <SkillBadge icon={FaLinux} color="#FCC624">Linux</SkillBadge>
-            </div>
+            <Tooltip text="Filter the projects by skill" position="top" align="right">
+              <Link href="/projects" className="block">
+                <div className="flex flex-wrap gap-2.5 cursor-pointer">
+                  <SkillBadge icon={FaPython} color="#FFD43B">Python</SkillBadge>
+                  <SkillBadge icon={FaJava} color="#ED8B00">Java</SkillBadge>
+                  <SkillBadge icon={SiCplusplus} color="#00599C">C++</SkillBadge>
+                  <SkillBadge icon={SiTypescript} color="#3178C6">TypeScript</SkillBadge>
+                  <SkillBadge icon={SiNextdotjs} color="#FFFFFF">Next.js</SkillBadge>
+                  <SkillBadge icon={FaReact} color="#61DAFB">React</SkillBadge>
+                  <SkillBadge icon={SiTailwindcss} color="#38BDF8">Tailwind CSS</SkillBadge>
+                  <SkillBadge icon={FaNodeJs} color="#339933">Node.js</SkillBadge>
+                  <SkillBadge icon={SiMysql} color="#4479A1">MySQL</SkillBadge>
+                  <SkillBadge icon={FaDocker} color="#2496ED">Docker</SkillBadge>
+                  <SkillBadge icon={FaAws} color="#FF9900">AWS</SkillBadge>
+                  <SkillBadge icon={FaLinux} color="#FCC624">Linux</SkillBadge>
+                </div>
+              </Link>
+            </Tooltip>
           </div>
         </BentoBox>
 
