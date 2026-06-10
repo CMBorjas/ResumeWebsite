@@ -1,8 +1,23 @@
 @import "tailwindcss";
 
-@theme {
+:root, [data-theme="cyberpunk"] {
     --color-brand-pink: #ff0f4d;
     --color-brand-cyan: #00ffe1;
+}
+
+[data-theme="forestpunk"] {
+    --color-brand-pink: #ff9900;
+    --color-brand-cyan: #00ff88;
+}
+
+[data-theme="corporate"] {
+    --color-brand-pink: #666666;
+    --color-brand-cyan: #0066cc;
+}
+
+@theme {
+    --color-brand-pink: var(--color-brand-pink);
+    --color-brand-cyan: var(--color-brand-cyan);
 }
 
 html, body, #__next {
@@ -68,12 +83,12 @@ a:focus-visible {
 .custom-scrollbar::-webkit-scrollbar-thumb {
     background: #00ffe1;
     border-radius: 4px;
-    box-shadow: 0 0 6px rgba(0,255,225,0.6);
+    box-shadow: 0 0 6px color-mix(in srgb, var(--color-brand-cyan) 60%, transparent);
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: #7ffff4;
-    box-shadow: 0 0 10px rgba(0,255,225,0.9);
+    box-shadow: 0 0 10px color-mix(in srgb, var(--color-brand-cyan) 90%, transparent);
 }
 
 /* Glassmorphism panel for side columns */

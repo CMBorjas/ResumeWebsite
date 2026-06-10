@@ -39,14 +39,14 @@ export default function ProjectFeedClient({ allProjects }: { allProjects: Projec
       {/* ── Center: Projects Feed ── */}
       <section className="order-1 lg:order-2">
         {/* Scrollable Container with Fade Mask */}
-        <div className="relative bg-slate-900/70 backdrop-blur-md p-4 rounded-xl border-2 border-[#00ffe1]/50 shadow-[0_0_10px_rgba(0,255,225,0.4)] flex flex-col h-full max-h-[700px]">
+        <div className="relative bg-slate-900/70 backdrop-blur-md p-4 rounded-xl border-2 border-brand-cyan/50 shadow-[0_0_10px_color-mix(in srgb, var(--color-brand-cyan) 40%, transparent)] flex flex-col h-full max-h-[700px]">
           
-          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end mb-4 shrink-0 pb-3 border-b border-[#00ffe1]/20 gap-3">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end mb-4 shrink-0 pb-3 border-b border-brand-cyan/20 gap-3">
             <h2 className="text-2xl font-bold text-brand-cyan">Projects Feed</h2>
             
             <div className="flex flex-wrap items-center sm:justify-end gap-2">
               {selectedTechs.map(tech => (
-                <span key={tech} className="text-[10px] bg-brand-cyan/10 border border-[#00ffe1]/50 text-[#00ffe1] px-2 py-1 rounded-full flex items-center gap-1 shadow-[0_0_5px_rgba(0,255,225,0.3)]">
+                <span key={tech} className="text-[10px] bg-brand-cyan/10 border border-brand-cyan/50 text-brand-cyan px-2 py-1 rounded-full flex items-center gap-1 shadow-[0_0_5px_color-mix(in srgb, var(--color-brand-cyan) 30%, transparent)]">
                   {tech}
                   <button onClick={() => toggleTech(tech)} className="hover:text-white font-bold ml-1 transition-colors">×</button>
                 </span>
@@ -62,7 +62,7 @@ export default function ProjectFeedClient({ allProjects }: { allProjects: Projec
               <select 
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as any)}
-                className="bg-[#0d1117] border border-[#00ffe1]/50 text-brand-cyan text-xs rounded px-2 py-1.5 outline-none focus:shadow-[0_0_8px_rgba(0,255,225,0.4)] transition-all cursor-pointer"
+                className="bg-[#0d1117] border border-brand-cyan/50 text-brand-cyan text-xs rounded px-2 py-1.5 outline-none focus:shadow-[0_0_8px_color-mix(in srgb, var(--color-brand-cyan) 40%, transparent)] transition-all cursor-pointer"
               >
                 <option value="default">Sort: Default</option>
                 <option value="stars">Sort: Stars</option>

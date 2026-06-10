@@ -82,7 +82,7 @@ const techColors: { [key: string]: string } = {
 export default function ProjectCard({ project }: { project: Project }) {
 
   return (
-    <article className="project-card min-w-0 bg-[#0d1117] border border-[#00ffe1]/50 shadow-[0_0_8px_rgba(0,255,225,0.3)] rounded-md p-3 flex flex-col h-full hover:border-[#00ffe1]/80 hover:shadow-[0_0_15px_rgba(0,255,225,0.6)] transition-all duration-300 min-h-[180px]">
+    <article className="project-card min-w-0 bg-[#0d1117] border border-brand-cyan/50 shadow-[0_0_8px_color-mix(in srgb, var(--color-brand-cyan) 30%, transparent)] rounded-md p-3 flex flex-col h-full hover:border-brand-cyan/80 hover:shadow-[0_0_15px_color-mix(in srgb, var(--color-brand-cyan) 60%, transparent)] transition-all duration-300 min-h-[180px]">
       <div className="flex justify-between items-start mb-2 w-full min-w-0 gap-2">
         <a
           href={project.repoUrl}
@@ -118,7 +118,7 @@ export default function ProjectCard({ project }: { project: Project }) {
               href={project.repoUrl}
               target="_blank"
               rel="noreferrer"
-              className="text-[11px] text-[#00ffe1] hover:text-white hover:underline transition-all inline-flex items-center gap-1 w-fit font-semibold"
+              className="text-[11px] text-brand-cyan hover:text-white hover:underline transition-all inline-flex items-center gap-1 w-fit font-semibold"
             >
               View Repository
               <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>

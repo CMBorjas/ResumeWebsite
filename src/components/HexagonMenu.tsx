@@ -125,7 +125,7 @@ export default function HexagonMenu() {
             ? 'opacity-100 translate-x-0' 
             : 'opacity-0 translate-x-4';
             
-        return `absolute top-1/2 -translate-y-1/2 transition-all duration-300 text-[10px] font-bold text-[#00ffe1] group-hover:text-white tracking-widest drop-shadow-[0_2px_4px_rgba(0,0,0,1)] z-20 whitespace-nowrap overflow-visible ${positionClass} ${visibilityClass} ${rotationClass}`;
+        return `absolute top-1/2 -translate-y-1/2 transition-all duration-300 text-[10px] font-bold text-brand-cyan group-hover:text-white tracking-widest drop-shadow-[0_2px_4px_rgba(0,0,0,1)] z-20 whitespace-nowrap overflow-visible ${positionClass} ${visibilityClass} ${rotationClass}`;
     }
 
     const getInnerMarqueeClasses = (path: string, index: number) => {
@@ -134,9 +134,9 @@ export default function HexagonMenu() {
         const isRotated = (isLocked || isActiveItem) && !isHoveredItem;
         
         if (isRotated) {
-            return 'animate-marquee-left inline-block w-max';
+            return 'animate-marquee-left flex w-max';
         }
-        return 'inline-block w-max';
+        return 'flex w-max';
     }
 
     const menuItems = [
@@ -145,7 +145,7 @@ export default function HexagonMenu() {
             path: '/',
             label: 'HOME',
             innerSvg: (
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`absolute inset-0 m-auto text-[#00ffe1] group-hover:text-white transition-all duration-300 drop-shadow-[0_0_5px_rgba(0,255,225,0.8)] z-20 pointer-events-none ${iconOffsetClass}`}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`absolute inset-0 m-auto text-brand-cyan group-hover:text-white transition-all duration-300 drop-shadow-[0_0_5px_color-mix(in srgb, var(--color-brand-cyan) 80%, transparent)] z-20 pointer-events-none ${iconOffsetClass}`}>
                     <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                     <polyline points="9 22 9 12 15 12 15 22"></polyline>
                 </svg>
@@ -156,7 +156,7 @@ export default function HexagonMenu() {
             path: '/projects',
             label: 'PROJECTS',
             innerSvg: (
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`absolute inset-0 m-auto text-[#00ffe1] group-hover:text-white transition-all duration-300 drop-shadow-[0_0_5px_rgba(0,255,225,0.8)] z-20 pointer-events-none ${iconOffsetClass}`}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`absolute inset-0 m-auto text-brand-cyan group-hover:text-white transition-all duration-300 drop-shadow-[0_0_5px_color-mix(in srgb, var(--color-brand-cyan) 80%, transparent)] z-20 pointer-events-none ${iconOffsetClass}`}>
                     <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
                     <polyline points="2 12 12 17 22 12"></polyline>
                     <polyline points="2 17 12 22 22 17"></polyline>
@@ -168,7 +168,7 @@ export default function HexagonMenu() {
             path: '/resume',
             label: 'RESUME',
             innerSvg: (
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`absolute inset-0 m-auto text-[#00ffe1] group-hover:text-white transition-all duration-300 drop-shadow-[0_0_5px_rgba(0,255,225,0.8)] z-20 pointer-events-none ${iconOffsetClass}`}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`absolute inset-0 m-auto text-brand-cyan group-hover:text-white transition-all duration-300 drop-shadow-[0_0_5px_color-mix(in srgb, var(--color-brand-cyan) 80%, transparent)] z-20 pointer-events-none ${iconOffsetClass}`}>
                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                     <polyline points="14 2 14 8 20 8"></polyline>
                     <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -182,7 +182,7 @@ export default function HexagonMenu() {
             path: '/contact',
             label: 'CONTACT',
             innerSvg: (
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`absolute inset-0 m-auto text-[#00ffe1] group-hover:text-white transition-all duration-300 drop-shadow-[0_0_5px_rgba(0,255,225,0.8)] z-20 pointer-events-none ${iconOffsetClass}`}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`absolute inset-0 m-auto text-brand-cyan group-hover:text-white transition-all duration-300 drop-shadow-[0_0_5px_color-mix(in srgb, var(--color-brand-cyan) 80%, transparent)] z-20 pointer-events-none ${iconOffsetClass}`}>
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                     <polyline points="22,6 12,13 2,6"></polyline>
                 </svg>
@@ -194,7 +194,7 @@ export default function HexagonMenu() {
             label: '',
             onClick: toggleNavPosition,
             innerSvg: (
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`absolute inset-0 m-auto text-[#00ffe1] group-hover:text-white transition-all duration-300 drop-shadow-[0_0_5px_rgba(0,255,225,0.8)] z-20 pointer-events-none ${iconOffsetClass}`}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`absolute inset-0 m-auto text-brand-cyan group-hover:text-white transition-all duration-300 drop-shadow-[0_0_5px_color-mix(in srgb, var(--color-brand-cyan) 80%, transparent)] z-20 pointer-events-none ${iconOffsetClass}`}>
                     {navPosition === 'left' ? (
                         <path d="M5 12h14M12 5l7 7-7 7"/>
                     ) : (
@@ -217,16 +217,16 @@ export default function HexagonMenu() {
                     animation: popBounce 0.5s cubic-bezier(0.34,1.56,0.64,1) forwards;
                 }
                 @keyframes marquee-left {
-                    0%, 15% { transform: translateX(0); }
-                    85%, 100% { transform: translateX(calc(48px - 100%)); }
+                    0% { transform: translateX(0); }
+                    100% { transform: translateX(-50%); }
                 }
                 .animate-marquee-left {
-                    animation: marquee-left 4s ease-in-out infinite alternate;
+                    animation: marquee-left 4s linear infinite;
                 }
             `}</style>
 
             {/* Vertical ribbon effect */}
-            <div className={`fixed top-0 bottom-0 w-24 bg-gradient-to-b from-[#0a0a0a]/80 via-[#0a0a0a]/40 to-transparent pointer-events-none z-40 transition-all duration-700 ${navPosition === 'left' ? 'left-0 border-r border-[#00ffe1]/10' : 'right-0 border-l border-[#00ffe1]/10'} ${isOpen ? 'translate-x-0 opacity-100' : (navPosition === 'left' ? '-translate-x-full opacity-0' : 'translate-x-full opacity-0')}`}></div>
+            <div className={`fixed top-0 bottom-0 w-24 bg-gradient-to-b from-[#0a0a0a]/80 via-[#0a0a0a]/40 to-transparent pointer-events-none z-40 transition-all duration-700 ${navPosition === 'left' ? 'left-0 border-r border-brand-cyan/10' : 'right-0 border-l border-brand-cyan/10'} ${isOpen ? 'translate-x-0 opacity-100' : (navPosition === 'left' ? '-translate-x-full opacity-0' : 'translate-x-full opacity-0')}`}></div>
 
             <div
                 className={`fixed top-[15vh] z-50 flex flex-col items-center transition-all duration-700 ${navPosition === 'left' ? 'left-[60px]' : 'right-[60px]'}`}
@@ -248,7 +248,7 @@ export default function HexagonMenu() {
                             ? 'drop-shadow-[0_0_15px_rgba(74,222,128,0.8)] fill-green-400/30 stroke-green-400'
                             : (isOpen
                                 ? 'drop-shadow-[0_0_15px_rgba(253,224,71,0.8)] fill-yellow-400/30 stroke-yellow-400'
-                                : 'drop-shadow-[0_0_10px_rgba(0,255,225,0.4)] group-hover:drop-shadow-[0_0_15px_rgba(0,255,225,0.8)] fill-[#00ffe1]/20 group-hover:fill-[#00ffe1]/40 stroke-[#00ffe1]/50'
+                                : 'drop-shadow-[0_0_10px_color-mix(in srgb, var(--color-brand-cyan) 40%, transparent)] group-hover:drop-shadow-[0_0_15px_color-mix(in srgb, var(--color-brand-cyan) 80%, transparent)] fill-brand-cyan/20 group-hover:fill-brand-cyan/40 stroke-brand-cyan/50'
                             )
                             }`} width="48" height="48" viewBox="0 0 24 24" strokeWidth="2">
                             <polygon points={toggleCoverPoints} className="fill-[#0a0a0a] stroke-none"></polygon>
@@ -313,18 +313,21 @@ export default function HexagonMenu() {
                                     }}
                                 >
                                     <div className="hover-pop-once relative w-[48px] h-[48px]">
-                                        <svg width="48" height="48" viewBox="0 0 24 24" fill="rgba(0,255,225,0.2)" stroke="rgba(0,255,225,0.5)" strokeWidth="2" className="absolute inset-0 drop-shadow-[0_0_10px_rgba(0,255,225,0.4)] group-hover:fill-brand-cyan/40 group-hover:drop-shadow-[0_0_15px_rgba(0,255,225,0.8)] transition-all z-10">
+                                        <svg width="48" height="48" viewBox="0 0 24 24" fill="color-mix(in srgb, var(--color-brand-cyan) 20%, transparent)" stroke="color-mix(in srgb, var(--color-brand-cyan) 50%, transparent)" strokeWidth="2" className="absolute inset-0 drop-shadow-[0_0_10px_color-mix(in srgb, var(--color-brand-cyan) 40%, transparent)] group-hover:fill-brand-cyan/40 group-hover:drop-shadow-[0_0_15px_color-mix(in srgb, var(--color-brand-cyan) 80%, transparent)] transition-all z-10">
                                             <polygon points={hexPoints}></polygon>
                                         </svg>
                                         {item.innerSvg}
                                         {item.index !== 6 ? (
                                             <span className={getTextClasses(item.path, item.index)}>
                                                 <span className={getInnerMarqueeClasses(item.path, item.index)}>
-                                                    {item.label}
+                                                    <span className={((isLocked || active) && hoveredHex !== item.index) ? "pr-8" : ""}>{item.label}</span>
+                                                    {((isLocked || active) && hoveredHex !== item.index) && (
+                                                        <span className="pr-8" aria-hidden="true">{item.label}</span>
+                                                    )}
                                                 </span>
                                             </span>
                                         ) : (
-                                            <span className={`absolute top-1/2 -translate-y-1/2 transition-all duration-300 text-[10px] font-bold text-[#00ffe1] group-hover:text-white tracking-widest drop-shadow-[0_2px_4px_rgba(0,0,0,1)] z-20 whitespace-nowrap pointer-events-none ${navPosition === 'left' ? 'left-full ml-4' : 'right-full mr-4'} opacity-0 group-hover:opacity-100 ${navPosition === 'left' ? '-translate-x-4 group-hover:translate-x-0' : 'translate-x-4 group-hover:translate-x-0'}`}>
+                                            <span className={`absolute top-1/2 -translate-y-1/2 transition-all duration-300 text-[10px] font-bold text-brand-cyan group-hover:text-white tracking-widest drop-shadow-[0_2px_4px_rgba(0,0,0,1)] z-20 whitespace-nowrap pointer-events-none ${navPosition === 'left' ? 'left-full ml-4' : 'right-full mr-4'} opacity-0 group-hover:opacity-100 ${navPosition === 'left' ? '-translate-x-4 group-hover:translate-x-0' : 'translate-x-4 group-hover:translate-x-0'}`}>
                                                 {navPosition === 'left' ? 'MOVE RIGHT' : 'MOVE LEFT'}
                                             </span>
                                         )}

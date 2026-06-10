@@ -52,7 +52,7 @@ export default function TechStackPanel({
   onToggleTech?: (tech: string) => void
 }) {
   return (
-    <div className="bg-slate-900/70 backdrop-blur-md rounded-xl p-4 h-fit lg:sticky lg:top-8 border-2 border-[#00ffe1]/50 shadow-[0_0_10px_rgba(0,255,225,0.4)]">
+    <div className="bg-slate-900/70 backdrop-blur-md rounded-xl p-4 h-fit lg:sticky lg:top-8 border-2 border-brand-cyan/50 shadow-[0_0_10px_color-mix(in srgb, var(--color-brand-cyan) 40%, transparent)]">
       <h3 className="text-lg font-bold text-brand-cyan mb-4 text-center">Tech Stack</h3>
 
       {techCategories.map((cat) => (
@@ -70,8 +70,8 @@ export default function TechStackPanel({
                   className={`tech-logo-item flex flex-col items-center gap-1 p-2 rounded-lg
                              transition-all duration-200 cursor-pointer group border
                              ${isSelected 
-                                ? 'bg-brand-cyan/20 border-[#00ffe1]/80 shadow-[0_0_15px_rgba(0,255,225,0.6)] scale-105' 
-                                : 'border-transparent hover:bg-brand-cyan/10 hover:border-[#00ffe1]/50 hover:shadow-[0_0_10px_rgba(0,255,225,0.4)]'}`}
+                                ? 'bg-brand-cyan/20 border-brand-cyan/80 shadow-[0_0_15px_color-mix(in srgb, var(--color-brand-cyan) 60%, transparent)] scale-105' 
+                                : 'border-transparent hover:bg-brand-cyan/10 hover:border-brand-cyan/50 hover:shadow-[0_0_10px_color-mix(in srgb, var(--color-brand-cyan) 40%, transparent)]'}`}
                 >
                   <i
                     className={`${item.icon} text-2xl transition-all duration-200 ${isSelected ? `scale-110 ${(item as any).selectedGlow || 'drop-shadow-[0_0_8px_currentColor]'}` : `group-hover:scale-110 ${(item as any).hoverGlow || 'group-hover:drop-shadow-[0_0_8px_currentColor]'}`}`}

@@ -115,7 +115,7 @@ export default async function ProjectsPage() {
       <style>{`
         a.quick-link {
           color: #00ffe1;
-          filter: drop-shadow(0 0 5px rgba(0,255,225,0.6));
+          filter: drop-shadow(0 0 5px color-mix(in srgb, var(--color-brand-cyan) 60%, transparent));
         }
         a.quick-link:hover {
           color: #ffffff;
@@ -134,18 +134,18 @@ export default async function ProjectsPage() {
         .custom-scrollbar::-webkit-scrollbar-thumb {
           background: #00ffe1 !important;
           border-radius: 4px;
-          box-shadow: 0 0 6px rgba(0,255,225,0.8);
+          box-shadow: 0 0 6px color-mix(in srgb, var(--color-brand-cyan) 80%, transparent);
         }
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
           background: #7ffff4 !important;
-          box-shadow: 0 0 10px rgba(0,255,225,1);
+          box-shadow: 0 0 10px color-mix(in srgb, var(--color-brand-cyan) 100%, transparent);
         }
       `}</style>
       <div className="grid grid-cols-1 lg:grid-cols-[260px_1fr_260px] gap-6">
 
         {/* ── Left Panel: GitHub Profile Stats ── */}
         <aside className="order-2 lg:order-1">
-          <div className="bg-slate-900/70 backdrop-blur-md rounded-xl p-4 h-fit lg:sticky lg:top-8 border-2 border-[#00ffe1]/50 shadow-[0_0_10px_rgba(0,255,225,0.4)]">
+          <div className="bg-slate-900/70 backdrop-blur-md rounded-xl p-4 h-fit lg:sticky lg:top-8 border-2 border-brand-cyan/50 shadow-[0_0_10px_color-mix(in srgb, var(--color-brand-cyan) 40%, transparent)]">
             {/* Avatar + name */}
             <div className="flex flex-col items-center mb-4">
               <img
@@ -153,7 +153,7 @@ export default async function ProjectsPage() {
                 alt="GitHub avatar"
                 width={80}
                 height={80}
-                className="rounded-full border-2 border-[#00ffe1]/50 shadow-[0_0_10px_rgba(0,255,225,0.4)] mb-2"
+                className="rounded-full border-2 border-brand-cyan/50 shadow-[0_0_10px_color-mix(in srgb, var(--color-brand-cyan) 40%, transparent)] mb-2"
               />
               <p className="font-semibold text-sm text-brand-cyan">CMBorjas</p>
               <a href="https://github.com/CMBorjas" target="_blank" rel="noreferrer" className="text-[11px] text-slate-400 hover:text-slate-200 transition-colors">github.com/CMBorjas</a>
@@ -165,7 +165,7 @@ export default async function ProjectsPage() {
                 href="https://github.com/CMBorjas" 
                 target="_blank" 
                 rel="noreferrer" 
-                className="stat-card group block border-[#00ffe1]/50 shadow-[0_0_10px_rgba(0,255,225,0.4)] hover:border-[#00ffe1]/80 hover:shadow-[0_0_15px_rgba(0,255,225,0.6)]"
+                className="stat-card group block border-brand-cyan/50 shadow-[0_0_10px_color-mix(in srgb, var(--color-brand-cyan) 40%, transparent)] hover:border-brand-cyan/80 hover:shadow-[0_0_15px_color-mix(in srgb, var(--color-brand-cyan) 60%, transparent)]"
               >
                 <p className="text-lg font-bold text-brand-cyan group-hover:text-white transition-colors">{totalRepos}</p>
                 <p className="text-[10px] text-slate-400 uppercase tracking-wide group-hover:text-white transition-colors">Repos</p>
