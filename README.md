@@ -186,108 +186,182 @@ The next phase of development focuses on polishing the portfolio to showcase arc
       The current linear layouts will be upgraded to the highly modern "Bento Box" design trend, popularised by top-tier tech companies. This involves creating a complex, responsive CSS Grid architecture where information is compartmentalized into glassmorphic cards of varying sizes. These cards will seamlessly reflow on mobile devices and feature advanced CSS hover states (such as magnetic borders or dynamic glows) to encourage user interaction and showcase high-level UI/UX implementation skills. The use of framer-motion will allow us to create these micro-interactions and animations. This should show our understanding of modern CSS and React state management.
       
       </details>
-- **Tool Tip UI** *(Estimate: 15 mins)*
+- **Pricing cards for users to send money** - In this project, you are required to create a row of pricing cards using only HTML and CSS. 
    - <details>
       <summary><b>Detailed Explanation</b></summary>
-      We will need to implement tool tip ui for the website, which will display additional information about an element when the user hovers over it. This is a quick win using simple CSS positioning and hover states.
+      Pricing cards are a common UI pattern used on marketing and SaaS websites to compare plans side by side and guide users to the right tier. The pricing page should display three distinct pricing plans: Thumbs up, dollar, and 5 bucks. Each plan should have its own card with a clear title, price, list of features, and a call-to-action (CTA) button. The three cards should share a base style and the middle one should stand out as the recommended plan, slightly larger and visually emphasized. Each card has a plan name, a price, a short tagline, a list of included features, and a button.
       </details>
-
-- **Restricted Textarea** *(Estimate: 15 mins)*
+- **Photo showcase** - In this project, you are required to create a photo showcase using only HTML and CSS. The photo showcase should display a grid of photos that can be clicked to view a larger version of the photo. 
    - <details>
       <summary><b>Detailed Explanation</b></summary>
-      A textarea is a form element that allows users to enter multiple lines of text. This task will involve implementing a custom, accessible textarea (potentially with character limits or auto-resizing) to improve form UX.
-      </details>
+      Photo showcases are a common UI pattern used on marketing and SaaS websites to display photos in a grid layout. The photo showcase should display a grid of photos that can be clicked to view a larger version of the photo. We try to source these from the social media pages of the owner of the website, so that the photos are relevant to the website.
 
-- **Accordion** *(Estimate: 20 mins)*
+      </details>
+- **Contact page reform section addition** - A contact form is a crucial component of any website, providing a direct channel for users to communicate with the site owner. This section will replace the existing contact section on the contact page. 
    - <details>
       <summary><b>Detailed Explanation</b></summary>
-      We will need to implement an accordion for the website, which will allow users to display content in a collapsible format. This involves building a reusable React component with smooth height transitions.
+      An accessible HTML form. Form controls, labels, validation attributes, and proper grouping.
       </details>
-
-- **Cookie Consent Banner** *(Estimate: 20 mins)*
+- **Testimonial Cards** - Testimonials are quotes or statements from satisfied customers or users, often used on websites to build credibility and trust.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
-      We will need to implement cookie consent for the website, which will display a banner to inform users about the use of cookies and to obtain their consent. This will utilize browser `localStorage` to remember the user's choice.
+      We will need to implement the testimonials of the website, which are currently stored in a JSON file. These testimonials should be displayed in a carousel or grid format, with each testimonial having its own card.
       </details>
-
-- **Contact Page Reform** *(Estimate: 30 mins)*
+- **Changelog component** - Changelog are records of changes that have been made to a website or application.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
-      A contact form is a crucial component of any website, providing a direct channel for users to communicate with the site owner. This section will replace the existing contact section on the contact page. It will feature an accessible HTML form with form controls, labels, and validation attributes.
+      We will need to implement the changelog of the website, which is currently stored in a JSON file. These changelogs should be displayed in a list format, with each changelog having its own card.
       </details>
-
-- **Changelog Component** *(Estimate: 30 mins)*
+- **Tool tip ui** - Tool tip are used to display additional information about a element when the user hovers over it.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
-      We will need to implement the changelog of the website, which is currently stored in a JSON file. These changelogs should be displayed in a list format, with each changelog having its own card to track updates over time.
+      We will need to implement tool tip ui for the website, which will display additional information about a element when the user hovers over it.
       </details>
-
-- **Testimonial Cards** *(Estimate: 45 mins)*
+- **Cookie consent** - Cookie consent is a banner that is displayed on a website to inform users about the use of cookies and to obtain their consent.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
-      We will need to implement the testimonials of the website, which are currently stored in a JSON file. These testimonials should be displayed in a carousel or grid format, with each testimonial having its own glassmorphic card to build credibility.
+      We will need to implement cookie consent for the website, which will display a banner to inform users about the use of cookies and to obtain their consent.
       </details>
-
-- **Pricing Cards** *(Estimate: 45 mins)*
+- **Retrited textarea** - A textarea is a form element that allows users to enter multiple lines of text.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
-      Create a row of pricing cards using HTML and CSS. The pricing page should display three distinct plans (Thumbs up, dollar, and 5 bucks) with the middle one standing out. Each card needs a plan name, a price, a short tagline, a list of included features, and a CTA button.
+      We will need to implement a textarea for the website, which will allow users to enter multiple lines of text.
       </details>
-
-- **Photo Showcase** *(Estimate: 1 hour)*
+- **Accordion** - An accordion is a UI component that allows users to display content in a collapsible format.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
-      Create a photo showcase using a CSS grid. The grid will feature photos sourced from the owner's social media. Clicking a photo will trigger a lightbox or modal to view a larger, high-resolution version of the photo.
+      We will need to implement an accordion for the website, which will allow users to display content in a collapsible format.
       </details>
-
-- **QR Code Generator** *(Estimate: 1 hour)*
+- **Personal Blog page** - A blog page is a page that displays a list of blog posts.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
-      We will need to implement a QR code generator for the website, which will dynamically generate QR codes for a given URL or text input using a React library.
+      We will need to implement a blog page for the website, which will display a list of blog posts.
       </details>
-
-- **Random GitHub Repo Shoutout** *(Estimate: 1 hour)*
+- **Random github repo shoutout** - Random github repo shoutout is a section that displays a list of random github repositories.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
-      A section that displays a list of random GitHub repositories. This requires integrating with the GitHub API, handling fetch states (loading/error), and rendering the data into cards.
+      We will need to implement a random github repo shoutout section for the website, which will display a list of random github repositories.
       </details>
-
-- **Weather Widget** *(Estimate: 1.5 hours)*
+- **Weather widget** - Weather widget is a widget that displays the current weather conditions for a specific location.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
-      A widget that displays the current weather conditions for a specific location (like Denver, CO). This will require integrating a 3rd-party weather API and designing a sleek UI for the forecast.
+      We will need to implement a weather widget for the website, which will display the current weather conditions for a specific location.
       </details>
-
-- **Pomodoro Timer** *(Estimate: 1.5 hours)*
+- **Photo gallery 24hr story feature** - 
    - <details>
       <summary><b>Detailed Explanation</b></summary>
-      We will need to implement a pomodoro timer for the website to keep track of time while working. This involves complex React state management for play/pause/reset functionality and accurate JavaScript timing intervals.
+      We will need to implement a photo gallery 24hr story feature for the website, which will display a list of photos.
       </details>
-
-- **Personal Blog Page** *(Estimate: 2 hours)*
+- **Pomodoro timer** - A pomodoro timer is a timer that is used to keep track of time while working on a task.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
-      We will need to implement a blog page that displays a list of blog posts. This requires setting up dynamic routing in Next.js and writing a parser to render local Markdown (`.md`) files into stylized HTML articles.
+      We will need to implement a pomodoro timer for the website, which will keep track of time while working on a task.
       </details>
-
-- **Markdown Note Taking App** *(Estimate: 2.5 hours)*
+- **URL Shortener** - A URL shortener is a tool that shortens long URLs to shorter, more manageable ones.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
-      An app that allows users to take notes in markdown format. It requires a split-pane layout: a raw text editor on one side and a live Markdown preview on the other, saving the data to `localStorage`.
+      We will need to implement a URL shortener for the website, which will shorten long URLs to shorter, more manageable ones.
       </details>
-
-- **Photo Gallery 24hr Story Feature** *(Estimate: 3 hours)*
+- **QR Code Generator** - A QR code generator is a tool that generates QR codes for a given URL or text.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
-      We will need to implement an Instagram-like 24hr story feature. This is highly complex, requiring auto-advancing progress bars, tap-to-skip interactions, and complex modal state management.
+      We will need to implement a QR code generator for the website, which will generate QR codes for a given URL or text.
       </details>
-
-- **URL Shortener** *(Estimate: 4 hours)*
+- **Markdown Note taking app** - A markdown note taking app is a app that allows users to take notes in markdown format.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
-      A URL shortener is a tool that shortens long URLs. This is the hardest feature as it requires full-stack development, including setting up a backend database (like Firebase or Supabase) to map short slugs to long URLs, and building Next.js API routes to handle the redirects.
+      We will need to implement a markdown note taking app for the website, which will allow users to take notes in markdown format.
       </details>
-
+- **Currency converter** - A currency converter is a tool that converts currencies from one currency to another.
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      We will need to implement a currency converter for the website, which will convert currencies from one currency to another.
+      </details>
+- **Unit Converter** - A unit converter is a tool that converts units from one unit to another.
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      We will need to implement a unit converter for the website, which will convert units from one unit to another.
+      </details>
+- **Numberguessing game** - A numberguessing game is a game that allows users to guess a random number.
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      We will need to implement a numberguessing game for the website, which will allow users to guess a random number.
+      </details>
+- **Github user activity** - A github user activity is a section that displays a list of github user activities.
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      We will need to implement a github user activity section for the website, which will display a list of github user activities.
+      </details>
+- **Job list scraper** - A job list scraper is a tool that scrapes job listings from a website.
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      We will need to implement a job list scraper for the website, which will scrape job listings from a website.
+      </details>
+- **Data Visualization** - Data visualization is the representation of data in a graphical format.
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      We will need to implement data visualization for the website, which will display data in a graphical format.
+      </details>
+- **Stock Price Analysis** - Stock price analysis is the process of analyzing stock prices to determine their value.
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      We will need to implement stock price analysis for the website, which will analyze stock prices to determine their value.
+      </details>
+- **Crypto Price Analysis** - Crypto price analysis is the process of analyzing crypto prices to determine their value.
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      We will need to implement crypto price analysis for the website, which will analyze crypto prices to determine their value.
+      </details>
+- **File integretiy Checker** - A file integretiy checker is a tool that checks the integrity of a file.
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      We will need to implement a file integretiy checker for the website, which will check the integrity of a file.
+      </details>
+- **Image processing services** - Image processing services are a set of tools that allow users to process images.
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      We will need to implement image processing services for the website, which will allow users to process images.
+      </details>
+- **Real-time leaderboard** - Real-time leaderboard is a leaderboard that displays the scores of users in real-time.
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      We will need to implement a real-time leaderboard for the website, which will display the scores of users in real-time.
+      </details>
+- **Movie Scraper and Resevation system** - Movie scraper and reservation system is a system that allows users to reserve movies.
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      We will need to implement a movie scraper and reservation system for the website, which will allow users to reserve movies.
+      </details>
+- **Server performance statistics** - 
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      We will need to implement a server performance statistics system for the website, which will display the performance statistics of a server.
+      </details>
+- **Tool to Clean Csv files** - 
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      We will need to implement a tool to clean csv files for the website, which will clean csv files.
+      </details>
+- **Flash Cards** - 
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      We will need to implement a flash card system for the website, which will display flash cards.
+      </details>
+- **Flash Card Editor** - 
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      We will need to implement a flash card editor for the website, which will allow users to edit flash cards.
+      </details>
+- **Quiz App** - 
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      We will need to implement a quiz app for the website, which will allow users to take quizzes.
+      </details>
+- **Markdown Editor** - 
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      We will need to implement a markdown editor for the website, which will allow users to edit markdown.
+      </details>
 ---
 
 # Thank you for visiting my resume website repository!
