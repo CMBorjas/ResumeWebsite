@@ -12,12 +12,31 @@ export default function HexagonMenu() {
     const [navPosition, setNavPosition] = useState<'left' | 'right'>('right')
     const pathname = usePathname()
 
+    const [scrollbarWidth, setScrollbarWidth] = useState(0)
+
     // Restore saved position on mount
     useEffect(() => {
         const savedPos = localStorage.getItem('navPosition') as 'left' | 'right'
         if (savedPos === 'left' || savedPos === 'right') {
             setNavPosition(savedPos)
         }
+        
+        // Setup scrollbar width detection
+        const updateScrollbarWidth = () => {
+            const width = window.innerWidth - document.documentElement.clientWidth;
+            setScrollbarWidth(Math.max(0, width));
+        };
+        
+        updateScrollbarWidth();
+        window.addEventListener('resize', updateScrollbarWidth);
+        
+        const observer = new ResizeObserver(updateScrollbarWidth);
+        observer.observe(document.documentElement);
+        
+        return () => {
+            window.removeEventListener('resize', updateScrollbarWidth);
+            observer.disconnect();
+        };
     }, [])
 
     const toggleNavPosition = () => {
@@ -94,6 +113,10 @@ export default function HexagonMenu() {
         return `absolute top-1/2 -translate-y-1/2 transition-all duration-300 text-[10px] font-bold text-[#00ffe1] group-hover:text-white tracking-widest drop-shadow-[0_2px_4px_rgba(0,0,0,1)] z-20 whitespace-nowrap overflow-hidden text-ellipsis ${positionClass} ${visibilityClass} ${rotationClass}`;
     }
 
+    const containerStyle = navPosition === 'left' 
+        ? { left: '6px', right: 'auto' } 
+        : { right: `${scrollbarWidth + 6}px`, left: 'auto' };
+
     return (
         <>
             <style>{`
@@ -111,7 +134,8 @@ export default function HexagonMenu() {
             <div className={`fixed top-0 bottom-0 w-24 bg-gradient-to-b from-[#0a0a0a]/80 via-[#0a0a0a]/40 to-transparent pointer-events-none z-40 transition-all duration-700 ${navPosition === 'left' ? 'left-0 border-r border-[#00ffe1]/10' : 'right-0 border-l border-[#00ffe1]/10'} ${isOpen ? 'translate-x-0 opacity-100' : (navPosition === 'left' ? '-translate-x-full opacity-0' : 'translate-x-full opacity-0')}`}></div>
 
             <div
-                className={`fixed top-[15vh] z-50 flex flex-col items-center transition-all duration-700 ${navPosition === 'left' ? 'left-[6px]' : 'right-[24px]'}`}
+                className={`fixed top-[15vh] z-50 flex flex-col items-center transition-all duration-700`}
+                style={containerStyle}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
             >
