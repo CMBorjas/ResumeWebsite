@@ -161,30 +161,131 @@ For questions, suggestions, or collaboration, please reach out:
 
 The next phase of development focuses on polishing the portfolio to showcase architecture, UX, and animations.
 
-- **Dynamic Theme Engine**: Build a robust React Context provider to hot-swap CSS variables, instantly switching between Cyberpunk, Forestpunk, and Corporate themes without reloading.
+- ~~**Dynamic Theme Engine**: Build a robust React Context provider to hot-swap CSS variables, instantly switching between Cyberpunk, Forestpunk, and Corporate themes without reloading.~~
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       To support the planned Cyberpunk, furthur in the future we will add more themes such as Forestpunk, and Corporate, a robust `<ThemeProvider>` needs to be implemented to hold the current, future theme colors, styles and animations for each theme. This engine will allow the user to switch between themes on the client side, in order to switch between themes we will use React Context and CSS custom properties (variables) to control the entire color palette, typography, and border styles. This approach will ensure that the application can instantly switch between themes on the client side without any performance penalty or page reloads.Hopefully it shows an understanding of modern CSS architecture and React state management.
       </details>
 
-- **Fluid Page Transitions**: Integrate `framer-motion` to wrap the Next.js application in an `<AnimatePresence>`, creating seamless desktop-like fade and slide animations when navigating between routes.
+- ~~**Fluid Page Transitions**: Integrate `framer-motion` to wrap the Next.js application in an `<AnimatePresence>`, creating seamless desktop-like fade and slide animations when navigating between routes.~~
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       Currently, Next.js performs hard cuts between route changes. By integrating `framer-motion`, the application should integrate a feature that will bring smooth, fluid page transitions. An `<AnimatePresence>` wrapper should orchestrate exit animations for the current page and entrance animations for the new page. Hopefully making the website feel more cohesive, native application like rather than a collection of static web pages, which should significantly enhance the user experience.
       </details>
 
-- **Interactive Canvas Background**: Replace static backgrounds with a custom HTML5 `<canvas>` component that renders an interactive, subtle particle network or glowing grid that reacts to the user's cursor.
+- ~~**Interactive Canvas Background**: Replace static backgrounds with a custom HTML5 `<canvas>` component that renders an interactive, subtle particle network or glowing grid that reacts to the user's cursor.~~
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       To elevate the visual appeal beyond static dark mode backgrounds, a custom React component using the HTML5 <-canvas-> API will need to be developed. This background should likely feature a lightweight, interactive particle system or glowing geometry that subtly responds to mouse movement and clicks. Versions for website on a desktop and a mobile device will need to be considered, the implementation on a mobile device will likely be simpler than that on a desktop device. Hopefully this will demonstrate proficiency in graphics programming and performance optimization, ensuring the animation runs smoothly at 60 FPS without draining device batteries too much. We will need to use a library like `react-tsparticles` or `react-canvas-confetti` to achieve this effect, along with some custom styling to match the cyberpunk theme and future themes. We will need to come up with a way to show the cost of running the animation on different devices and how it will impact the battery life of mobile devices, and possibly come up with a way to optimize the animation for different devices. 
 
       </details>
 
-- **The "Bento Box" Layout**: Restructure the 'About Me' and 'Skills' pages using advanced CSS Grid to create a responsive, glassmorphic "Bento Box" layout with sophisticated hover micro-interactions.
+- ~~**The "Bento Box" Layout**: Restructure the 'About Me' and 'Skills' pages using advanced CSS Grid to create a responsive, glassmorphic "Bento Box" layout with sophisticated hover micro-interactions.~~
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       The current linear layouts will be upgraded to the highly modern "Bento Box" design trend, popularised by top-tier tech companies. This involves creating a complex, responsive CSS Grid architecture where information is compartmentalized into glassmorphic cards of varying sizes. These cards will seamlessly reflow on mobile devices and feature advanced CSS hover states (such as magnetic borders or dynamic glows) to encourage user interaction and showcase high-level UI/UX implementation skills. The use of framer-motion will allow us to create these micro-interactions and animations. This should show our understanding of modern CSS and React state management.
       
+      </details>
+- **Tool Tip UI** *(Estimate: 15 mins)*
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      We will need to implement tool tip ui for the website, which will display additional information about an element when the user hovers over it. This is a quick win using simple CSS positioning and hover states.
+      </details>
+
+- **Restricted Textarea** *(Estimate: 15 mins)*
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      A textarea is a form element that allows users to enter multiple lines of text. This task will involve implementing a custom, accessible textarea (potentially with character limits or auto-resizing) to improve form UX.
+      </details>
+
+- **Accordion** *(Estimate: 20 mins)*
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      We will need to implement an accordion for the website, which will allow users to display content in a collapsible format. This involves building a reusable React component with smooth height transitions.
+      </details>
+
+- **Cookie Consent Banner** *(Estimate: 20 mins)*
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      We will need to implement cookie consent for the website, which will display a banner to inform users about the use of cookies and to obtain their consent. This will utilize browser `localStorage` to remember the user's choice.
+      </details>
+
+- **Contact Page Reform** *(Estimate: 30 mins)*
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      A contact form is a crucial component of any website, providing a direct channel for users to communicate with the site owner. This section will replace the existing contact section on the contact page. It will feature an accessible HTML form with form controls, labels, and validation attributes.
+      </details>
+
+- **Changelog Component** *(Estimate: 30 mins)*
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      We will need to implement the changelog of the website, which is currently stored in a JSON file. These changelogs should be displayed in a list format, with each changelog having its own card to track updates over time.
+      </details>
+
+- **Testimonial Cards** *(Estimate: 45 mins)*
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      We will need to implement the testimonials of the website, which are currently stored in a JSON file. These testimonials should be displayed in a carousel or grid format, with each testimonial having its own glassmorphic card to build credibility.
+      </details>
+
+- **Pricing Cards** *(Estimate: 45 mins)*
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      Create a row of pricing cards using HTML and CSS. The pricing page should display three distinct plans (Thumbs up, dollar, and 5 bucks) with the middle one standing out. Each card needs a plan name, a price, a short tagline, a list of included features, and a CTA button.
+      </details>
+
+- **Photo Showcase** *(Estimate: 1 hour)*
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      Create a photo showcase using a CSS grid. The grid will feature photos sourced from the owner's social media. Clicking a photo will trigger a lightbox or modal to view a larger, high-resolution version of the photo.
+      </details>
+
+- **QR Code Generator** *(Estimate: 1 hour)*
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      We will need to implement a QR code generator for the website, which will dynamically generate QR codes for a given URL or text input using a React library.
+      </details>
+
+- **Random GitHub Repo Shoutout** *(Estimate: 1 hour)*
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      A section that displays a list of random GitHub repositories. This requires integrating with the GitHub API, handling fetch states (loading/error), and rendering the data into cards.
+      </details>
+
+- **Weather Widget** *(Estimate: 1.5 hours)*
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      A widget that displays the current weather conditions for a specific location (like Denver, CO). This will require integrating a 3rd-party weather API and designing a sleek UI for the forecast.
+      </details>
+
+- **Pomodoro Timer** *(Estimate: 1.5 hours)*
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      We will need to implement a pomodoro timer for the website to keep track of time while working. This involves complex React state management for play/pause/reset functionality and accurate JavaScript timing intervals.
+      </details>
+
+- **Personal Blog Page** *(Estimate: 2 hours)*
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      We will need to implement a blog page that displays a list of blog posts. This requires setting up dynamic routing in Next.js and writing a parser to render local Markdown (`.md`) files into stylized HTML articles.
+      </details>
+
+- **Markdown Note Taking App** *(Estimate: 2.5 hours)*
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      An app that allows users to take notes in markdown format. It requires a split-pane layout: a raw text editor on one side and a live Markdown preview on the other, saving the data to `localStorage`.
+      </details>
+
+- **Photo Gallery 24hr Story Feature** *(Estimate: 3 hours)*
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      We will need to implement an Instagram-like 24hr story feature. This is highly complex, requiring auto-advancing progress bars, tap-to-skip interactions, and complex modal state management.
+      </details>
+
+- **URL Shortener** *(Estimate: 4 hours)*
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      A URL shortener is a tool that shortens long URLs. This is the hardest feature as it requires full-stack development, including setting up a backend database (like Firebase or Supabase) to map short slugs to long URLs, and building Next.js API routes to handle the redirects.
       </details>
 
 ---

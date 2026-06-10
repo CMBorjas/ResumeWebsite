@@ -29,7 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     <header className="header-bg text-white py-8 relative z-10">
                     <div className="container mx-auto flex flex-col items-center justify-center gap-2">
                         <div className="text-center">
-                            <h1 translate="no" className="text-3xl font-extrabold text-yellow-400 drop-shadow-[0_0_10px_rgba(250,204,21,0.8)] transition-all duration-300 notranslate">Christian Mandujano Borjas</h1>
+                            <h1 translate="no" className="text-3xl font-extrabold text-[#B2153C] drop-shadow-[0_0_12px_#C7F2E5] hover:text-[#DFCCC8] hover:drop-shadow-[0_0_15px_#C7F2E5] selection:bg-[#DFCCC8] selection:text-[#B2153C] transition-all duration-300 notranslate cursor-default">Christian Mandujano Borjas</h1>
                             <p className="text-sm text-brand-cyan mt-1">
                                 <a
                                     href="mailto:C.mandujano.borjas@gmail.com"
