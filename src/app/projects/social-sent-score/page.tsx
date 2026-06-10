@@ -13,7 +13,7 @@ export default function SocialSentScorePage() {
 
   useEffect(() => {
     // Load the CSV data
-    fetch('/data/socialsent.csv')
+    fetch('/ResumeWebsite/data/socialsent.csv')
       .then(res => res.text())
       .then(csvText => {
         const map = new Map<string, number>()
