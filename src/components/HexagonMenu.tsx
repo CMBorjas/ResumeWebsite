@@ -81,12 +81,13 @@ export default function HexagonMenu() {
         const isHoveredItem = hoveredHex === index;
         
         if (isLocked) {
-            // When locked, they form a column at 14px slide. Only the hovered text item slides out to 50px.
-            const slideAmount = (isHoveredItem && index > 1) ? 50 : 14;
+            // When locked, they form a column at 13.33px slide. 
+            // 13.33 local = 20px visual, which perfectly fits the 18px rotated text + 2px gap against the scrollbar.
+            const slideAmount = (isHoveredItem && index > 1) ? 49.33 : 13.33;
             x = navPosition === 'left' ? slideAmount : -slideAmount;
         } else if (isHoveredItem && index > 1) {
-            // Not locked: only the hovered item slides out to 50px.
-            const slideAmount = 50;
+            // Not locked: only the hovered item slides out to 49.33px to fit the horizontal text.
+            const slideAmount = 49.33;
             x = navPosition === 'left' ? slideAmount : -slideAmount;
         }
         
