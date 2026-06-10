@@ -23,6 +23,11 @@ export default function CookieConsent() {
     setIsVisible(false);
   };
 
+  const handleNecessary = () => {
+    localStorage.setItem('cookie-consent', 'necessary-only');
+    setIsVisible(false);
+  };
+
   const handleDecline = () => {
     localStorage.setItem('cookie-consent', 'declined');
     setIsVisible(false);
@@ -57,18 +62,24 @@ export default function CookieConsent() {
               </p>
             </div>
             
-            <div className="flex flex-row gap-3 w-full md:w-auto shrink-0 relative z-10">
+            <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0 relative z-10">
               <button 
                 onClick={handleDecline}
-                className="flex-1 md:flex-none px-6 py-2 border border-slate-600 text-slate-400 hover:text-white hover:border-slate-400 rounded transition-colors text-sm font-bold tracking-wide"
+                className="flex-1 sm:flex-none px-4 py-2 border border-slate-600 text-slate-400 hover:text-white hover:border-slate-400 rounded transition-colors text-xs font-bold tracking-wide whitespace-nowrap"
               >
                 DECLINE
               </button>
               <button 
-                onClick={handleAccept}
-                className="flex-1 md:flex-none px-6 py-2 bg-brand-cyan/20 border border-brand-cyan text-brand-cyan hover:bg-brand-cyan/30 hover:shadow-[0_0_15px_color-mix(in_srgb,var(--color-brand-cyan)_50%,transparent)] rounded transition-all text-sm font-bold tracking-wide"
+                onClick={handleNecessary}
+                className="flex-1 sm:flex-none px-4 py-2 border border-brand-cyan/50 text-brand-cyan/80 hover:text-brand-cyan hover:border-brand-cyan hover:bg-brand-cyan/10 rounded transition-colors text-xs font-bold tracking-wide whitespace-nowrap"
               >
-                AUTHORIZE
+                ESSENTIALS ONLY
+              </button>
+              <button 
+                onClick={handleAccept}
+                className="flex-1 sm:flex-none px-6 py-2 bg-brand-cyan/20 border border-brand-cyan text-brand-cyan hover:bg-brand-cyan/30 hover:shadow-[0_0_15px_color-mix(in_srgb,var(--color-brand-cyan)_50%,transparent)] rounded transition-all text-xs font-bold tracking-wide whitespace-nowrap"
+              >
+                AUTHORIZE ALL
               </button>
             </div>
             
