@@ -49,25 +49,28 @@ export default function HexagonMenu() {
         ? "12 2 2 8.5 2 15.5 12 22 2000 22 2000 2"
         : "12 2 22 8.5 22 15.5 12 22 -2000 22 -2000 2";
 
-    const getTransform = (index: number, active: boolean) => {
+    const getTransformY = (index: number, active: boolean) => {
         if (!isOpen) {
             // When closed, stack them all behind the toggle, except the active page indicator
             // 66px ensures it perfectly touches the bottom of the main toggle (lock bar)
-            if (active) return `translate(0px, 66px) scale(1.5)`;
-            return `translate(0px, 0px) scale(1.5)`;
+            if (active) return 66;
+            return 0;
         }
         
         // Tabs should be edge-touching in the y axis. 
         // Hexagon height is 60px visually, plus 3px stroke on top/bottom = 66px total height.
-        let y = (index - 1) * 66; 
+        return (index - 1) * 66; 
+    }
+
+    const getTransformX = (index: number) => {
+        if (!isOpen) return 0;
         
-        let x = 0;
         const isHoveredItem = hoveredHex === index;
         
         if (isLocked) {
             // When locked, they form a perfect vertical column at x=0.
             const slideAmount = (isHoveredItem && index > 1) ? 36 : 0;
-            x = navPosition === 'left' ? slideAmount : -slideAmount;
+            return navPosition === 'left' ? slideAmount : -slideAmount;
         } else if (isOpen && index > 1) {
             // Yellow arrow mode (Unlocked, but Menu is Hovered)
             // Non-hovered items push themselves to the edge of the screen so their horizontal text is hidden outside the viewport.
@@ -76,13 +79,13 @@ export default function HexagonMenu() {
             const slideIntoViewX = 36;
             
             if (isHoveredItem) {
-                x = navPosition === 'left' ? slideIntoViewX : -slideIntoViewX;
+                return navPosition === 'left' ? slideIntoViewX : -slideIntoViewX;
             } else {
-                x = navPosition === 'left' ? -hideOffScreenX : hideOffScreenX;
+                return navPosition === 'left' ? -hideOffScreenX : hideOffScreenX;
             }
         }
         
-        return `translate(${x}px, ${y}px) scale(1.5)`;
+        return 0;
     }
 
     const getTextClasses = (path: string, index: number) => {
@@ -118,6 +121,72 @@ export default function HexagonMenu() {
         return `absolute top-1/2 -translate-y-1/2 transition-all duration-300 text-[10px] font-bold text-[#00ffe1] group-hover:text-white tracking-widest drop-shadow-[0_2px_4px_rgba(0,0,0,1)] z-20 whitespace-nowrap overflow-visible ${positionClass} ${visibilityClass} ${rotationClass}`;
     }
 
+    const menuItems = [
+        {
+            index: 2,
+            path: '/',
+            label: 'HOME',
+            innerSvg: (
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`absolute inset-0 m-auto text-[#00ffe1] group-hover:text-white transition-all duration-300 drop-shadow-[0_0_5px_rgba(0,255,225,0.8)] z-20 pointer-events-none ${iconOffsetClass}`}>
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+            )
+        },
+        {
+            index: 3,
+            path: '/projects',
+            label: 'PROJECTS',
+            innerSvg: (
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`absolute inset-0 m-auto text-[#00ffe1] group-hover:text-white transition-all duration-300 drop-shadow-[0_0_5px_rgba(0,255,225,0.8)] z-20 pointer-events-none ${iconOffsetClass}`}>
+                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                    <polyline points="2 12 12 17 22 12"></polyline>
+                    <polyline points="2 17 12 22 22 17"></polyline>
+                </svg>
+            )
+        },
+        {
+            index: 4,
+            path: '/resume',
+            label: 'RESUME',
+            innerSvg: (
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`absolute inset-0 m-auto text-[#00ffe1] group-hover:text-white transition-all duration-300 drop-shadow-[0_0_5px_rgba(0,255,225,0.8)] z-20 pointer-events-none ${iconOffsetClass}`}>
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+            )
+        },
+        {
+            index: 5,
+            path: '/contact',
+            label: 'CONTACT',
+            innerSvg: (
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`absolute inset-0 m-auto text-[#00ffe1] group-hover:text-white transition-all duration-300 drop-shadow-[0_0_5px_rgba(0,255,225,0.8)] z-20 pointer-events-none ${iconOffsetClass}`}>
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+            )
+        },
+        {
+            index: 6,
+            path: '',
+            label: '',
+            onClick: toggleNavPosition,
+            innerSvg: (
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`absolute inset-0 m-auto text-[#00ffe1] group-hover:text-white transition-all duration-300 drop-shadow-[0_0_5px_rgba(0,255,225,0.8)] z-20 pointer-events-none ${iconOffsetClass}`}>
+                    {navPosition === 'left' ? (
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    ) : (
+                        <path d="M19 12H5M12 5l-7 7 7 7"/>
+                    )}
+                </svg>
+            )
+        }
+    ];
+
     return (
         <>
             <style>{`
@@ -141,8 +210,8 @@ export default function HexagonMenu() {
             >
                 {/* Hexagon 1 (Main Menu Toggle) */}
                 <div
-                    className="absolute top-0 z-30 origin-center transition-all duration-300"
-                    style={{ transform: `scale(1.5)` }}
+                    className="absolute z-30 origin-center transition-all duration-300"
+                    style={{ transform: `scale(1.5)`, top: 0 }}
                 >
                     <div
                         className={`block relative group hover-pop-once cursor-pointer`}
@@ -176,104 +245,62 @@ export default function HexagonMenu() {
                     </div>
                 </div>
 
-                {/* Hexagon 2 (Home) */}
-                <div
-                    className={`absolute top-0 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${hoveredHex === 2 ? 'z-20' : 'z-10'}`}
-                    style={{ transform: getTransform(2, isActive('/')) }}
-                >
-                    <Link href="/" className={`block relative group hover-pop-once cursor-pointer`} onMouseEnter={() => setHoveredHex(2)} onMouseLeave={() => setHoveredHex(null)}>
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="rgba(0,255,225,0.2)" stroke="rgba(0,255,225,0.5)" strokeWidth="2" className="drop-shadow-[0_0_10px_rgba(0,255,225,0.4)] group-hover:fill-brand-cyan/40 group-hover:drop-shadow-[0_0_15px_rgba(0,255,225,0.8)] transition-all relative z-10">
-                            <polygon points={hexPoints}></polygon>
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`absolute inset-0 m-auto text-[#00ffe1] group-hover:text-white transition-all duration-300 drop-shadow-[0_0_5px_rgba(0,255,225,0.8)] z-20 pointer-events-none ${iconOffsetClass}`}>
-                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                        </svg>
-                        <span className={getTextClasses('/', 2)}>HOME</span>
-                    </Link>
-                </div>
-
-                {/* Hexagon 3 (Projects) */}
-                <div
-                    className={`absolute top-0 transition-all duration-400 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${hoveredHex === 3 ? 'z-20' : 'z-10'}`}
-                    style={{ transform: getTransform(3, isActive('/projects')) }}
-                >
-                    <Link href="/projects" className={`block relative group hover-pop-once cursor-pointer`} onMouseEnter={() => setHoveredHex(3)} onMouseLeave={() => setHoveredHex(null)}>
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="rgba(0,255,225,0.2)" stroke="rgba(0,255,225,0.5)" strokeWidth="2" className="drop-shadow-[0_0_10px_rgba(0,255,225,0.4)] group-hover:fill-brand-cyan/40 group-hover:drop-shadow-[0_0_15px_rgba(0,255,225,0.8)] transition-all relative z-10">
-                            <polygon points={hexPoints}></polygon>
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`absolute inset-0 m-auto text-[#00ffe1] group-hover:text-white transition-all duration-300 drop-shadow-[0_0_5px_rgba(0,255,225,0.8)] z-20 pointer-events-none ${iconOffsetClass}`}>
-                            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                            <polyline points="2 12 12 17 22 12"></polyline>
-                            <polyline points="2 17 12 22 22 17"></polyline>
-                        </svg>
-                        <span className={getTextClasses('/projects', 3)}>PROJECTS</span>
-                    </Link>
-                </div>
-
-                {/* Hexagon 4 (Resume) */}
-                <div
-                    className={`absolute top-0 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${hoveredHex === 4 ? 'z-20' : 'z-10'}`}
-                    style={{ transform: getTransform(4, isActive('/resume')) }}
-                >
-                    <Link href="/resume" className={`block relative group hover-pop-once cursor-pointer`} onMouseEnter={() => setHoveredHex(4)} onMouseLeave={() => setHoveredHex(null)}>
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="rgba(0,255,225,0.2)" stroke="rgba(0,255,225,0.5)" strokeWidth="2" className="drop-shadow-[0_0_10px_rgba(0,255,225,0.4)] group-hover:fill-brand-cyan/40 group-hover:drop-shadow-[0_0_15px_rgba(0,255,225,0.8)] transition-all relative z-10">
-                            <polygon points={hexPoints}></polygon>
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`absolute inset-0 m-auto text-[#00ffe1] group-hover:text-white transition-all duration-300 drop-shadow-[0_0_5px_rgba(0,255,225,0.8)] z-20 pointer-events-none ${iconOffsetClass}`}>
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                            <polyline points="14 2 14 8 20 8"></polyline>
-                            <line x1="16" y1="13" x2="8" y2="13"></line>
-                            <line x1="16" y1="17" x2="8" y2="17"></line>
-                            <polyline points="10 9 9 9 8 9"></polyline>
-                        </svg>
-                        <span className={getTextClasses('/resume', 4)}>RESUME</span>
-                    </Link>
-                </div>
-
-                {/* Hexagon 5 (Contact) */}
-                <div
-                    className={`absolute top-0 transition-all duration-[600ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] ${hoveredHex === 5 ? 'z-20' : 'z-10'}`}
-                    style={{ transform: getTransform(5, isActive('/contact')) }}
-                >
-                    <Link href="/contact" className={`block relative group hover-pop-once cursor-pointer`} onMouseEnter={() => setHoveredHex(5)} onMouseLeave={() => setHoveredHex(null)}>
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="rgba(0,255,225,0.2)" stroke="rgba(0,255,225,0.5)" strokeWidth="2" className="drop-shadow-[0_0_10px_rgba(0,255,225,0.4)] group-hover:fill-brand-cyan/40 group-hover:drop-shadow-[0_0_15px_rgba(0,255,225,0.8)] transition-all relative z-10">
-                            <polygon points={hexPoints}></polygon>
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`absolute inset-0 m-auto text-[#00ffe1] group-hover:text-white transition-all duration-300 drop-shadow-[0_0_5px_rgba(0,255,225,0.8)] z-20 pointer-events-none ${iconOffsetClass}`}>
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                            <polyline points="22,6 12,13 2,6"></polyline>
-                        </svg>
-                        <span className={getTextClasses('/contact', 5)}>CONTACT</span>
-                    </Link>
-                </div>
-
-                {/* Hexagon 6 (Position Toggle Switch) */}
-                <div
-                    className={`absolute top-0 transition-all duration-[700ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] ${hoveredHex === 6 ? 'z-20' : 'z-10'}`}
-                    style={{ transform: getTransform(6, false) }}
-                >
-                    <div 
-                        className={`block relative group hover-pop-once cursor-pointer`} 
-                        onMouseEnter={() => setHoveredHex(6)} 
-                        onMouseLeave={() => setHoveredHex(null)}
-                        onClick={toggleNavPosition}
-                    >
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="rgba(0,255,225,0.2)" stroke="rgba(0,255,225,0.5)" strokeWidth="2" className="drop-shadow-[0_0_10px_rgba(0,255,225,0.4)] group-hover:fill-brand-cyan/40 group-hover:drop-shadow-[0_0_15px_rgba(0,255,225,0.8)] transition-all relative z-10">
-                            <polygon points={hexPoints}></polygon>
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`absolute inset-0 m-auto text-[#00ffe1] group-hover:text-white transition-all duration-300 drop-shadow-[0_0_5px_rgba(0,255,225,0.8)] z-20 pointer-events-none ${iconOffsetClass}`}>
-                            {navPosition === 'left' ? (
-                                <path d="M5 12h14M12 5l7 7-7 7"/>
-                            ) : (
-                                <path d="M19 12H5M12 5l-7 7 7 7"/>
-                            )}
-                        </svg>
-                        <span className={`absolute top-1/2 -translate-y-1/2 transition-all duration-300 text-[10px] font-bold text-[#00ffe1] group-hover:text-white tracking-widest drop-shadow-[0_2px_4px_rgba(0,0,0,1)] z-20 whitespace-nowrap pointer-events-none ${navPosition === 'left' ? 'left-full ml-4' : 'right-full mr-4'} opacity-0 group-hover:opacity-100 ${navPosition === 'left' ? '-translate-x-4 group-hover:translate-x-0' : 'translate-x-4 group-hover:translate-x-0'}`}>
-                            {navPosition === 'left' ? 'MOVE RIGHT' : 'MOVE LEFT'}
-                        </span>
-                    </div>
-                </div>
+                {/* Sub-menu Hexagons */}
+                {menuItems.map((item) => {
+                    const isLink = item.index !== 6;
+                    const ContentWrapper = isLink ? Link : 'div';
+                    const wrapperProps = isLink ? { href: item.path } : { onClick: item.onClick };
+                    
+                    return (
+                        <div
+                            key={item.index}
+                            className={`absolute ease-[cubic-bezier(0.34,1.56,0.64,1)] ${hoveredHex === item.index ? 'z-20' : 'z-10'}`}
+                            style={{ 
+                                transitionProperty: 'all',
+                                transitionDuration: `${300 + (item.index - 2) * 100}ms`,
+                                transform: `translate(0px, ${getTransformY(item.index, isActive(item.path))}px)`,
+                                width: '200px', 
+                                height: '72px', 
+                                left: '50%',
+                                marginLeft: '-100px',
+                                top: '-12px'
+                            }}
+                        >
+                            <ContentWrapper 
+                                {...wrapperProps as any}
+                                className={`block w-full h-full group cursor-pointer`} 
+                                onMouseEnter={() => setHoveredHex(item.index)} 
+                                onMouseLeave={() => setHoveredHex(null)}
+                            >
+                                <div 
+                                    className={`absolute ease-[cubic-bezier(0.34,1.56,0.64,1)]`}
+                                    style={{ 
+                                        transitionProperty: 'all',
+                                        transitionDuration: '300ms',
+                                        top: '12px', 
+                                        left: '100px', 
+                                        marginLeft: '-24px', 
+                                        transform: `translate(${getTransformX(item.index)}px, 0px) scale(1.5)` 
+                                    }}
+                                >
+                                    <div className="hover-pop-once relative w-[48px] h-[48px]">
+                                        <svg width="48" height="48" viewBox="0 0 24 24" fill="rgba(0,255,225,0.2)" stroke="rgba(0,255,225,0.5)" strokeWidth="2" className="absolute inset-0 drop-shadow-[0_0_10px_rgba(0,255,225,0.4)] group-hover:fill-brand-cyan/40 group-hover:drop-shadow-[0_0_15px_rgba(0,255,225,0.8)] transition-all z-10">
+                                            <polygon points={hexPoints}></polygon>
+                                        </svg>
+                                        {item.innerSvg}
+                                        {item.index !== 6 ? (
+                                            <span className={getTextClasses(item.path, item.index)}>{item.label}</span>
+                                        ) : (
+                                            <span className={`absolute top-1/2 -translate-y-1/2 transition-all duration-300 text-[10px] font-bold text-[#00ffe1] group-hover:text-white tracking-widest drop-shadow-[0_2px_4px_rgba(0,0,0,1)] z-20 whitespace-nowrap pointer-events-none ${navPosition === 'left' ? 'left-full ml-4' : 'right-full mr-4'} opacity-0 group-hover:opacity-100 ${navPosition === 'left' ? '-translate-x-4 group-hover:translate-x-0' : 'translate-x-4 group-hover:translate-x-0'}`}>
+                                                {navPosition === 'left' ? 'MOVE RIGHT' : 'MOVE LEFT'}
+                                            </span>
+                                        )}
+                                    </div>
+                                </div>
+                            </ContentWrapper>
+                        </div>
+                    );
+                })}
             </div>
         </>
     )
