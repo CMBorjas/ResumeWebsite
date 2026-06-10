@@ -80,13 +80,13 @@ export default function HexagonMenu() {
         const isRotated = isLocked && !isHoveredItem;
         
         // When horizontal, left/right is 45.3px to achieve a 2px visual gap.
-        // When rotated 90deg, the center shifts. A 48x12 box needs 18px of compensation (24 - 6 = 18). 45.3 - 18 = 27.3px.
+        // When rotated 90deg, the center shifts. A 48px wide box needs 18px of compensation. 45.3 - 18 = 27.3px.
         const positionClass = navPosition === 'left' 
             ? (isRotated ? 'right-[27.3px]' : 'right-[45.3px]')
             : (isRotated ? 'left-[27.3px]' : 'left-[45.3px]');
             
-        // Text is a transparent box, perfectly sized to rotate cleanly without backgrounds.
-        const rotationClass = `w-[48px] h-[12px] flex items-center ${navPosition === 'left' ? 'justify-end' : 'justify-start'} ${isRotated ? 'rotate-90' : 'rotate-0'}`;
+        // Removed fixed height and overflow clipping so text can safely render its full line-height without disappearing
+        const rotationClass = `w-[48px] flex items-center ${navPosition === 'left' ? 'justify-end' : 'justify-start'} ${isRotated ? 'rotate-90' : 'rotate-0'}`;
         
         // Text is visible if locked OR if it is specifically the hovered item.
         const isVisible = isLocked || isHoveredItem;
@@ -94,7 +94,7 @@ export default function HexagonMenu() {
             ? 'opacity-100 translate-x-0' 
             : 'opacity-0 translate-x-4';
             
-        return `absolute top-1/2 -translate-y-1/2 transition-all duration-300 text-[10px] font-bold text-[#00ffe1] group-hover:text-white tracking-widest drop-shadow-[0_2px_4px_rgba(0,0,0,1)] z-20 whitespace-nowrap overflow-hidden text-ellipsis ${positionClass} ${visibilityClass} ${rotationClass}`;
+        return `absolute top-1/2 -translate-y-1/2 transition-all duration-300 text-[10px] font-bold text-[#00ffe1] group-hover:text-white tracking-widest drop-shadow-[0_2px_4px_rgba(0,0,0,1)] z-20 whitespace-nowrap ${positionClass} ${visibilityClass} ${rotationClass}`;
     }
 
     return (
@@ -114,7 +114,7 @@ export default function HexagonMenu() {
             <div className={`fixed top-0 bottom-0 w-24 bg-gradient-to-b from-[#0a0a0a]/80 via-[#0a0a0a]/40 to-transparent pointer-events-none z-40 transition-all duration-700 ${navPosition === 'left' ? 'left-0 border-r border-[#00ffe1]/10' : 'right-0 border-l border-[#00ffe1]/10'} ${isOpen ? 'translate-x-0 opacity-100' : (navPosition === 'left' ? '-translate-x-full opacity-0' : 'translate-x-full opacity-0')}`}></div>
 
             <div
-                className={`fixed top-[15vh] z-50 flex flex-col items-center transition-all duration-700 ${navPosition === 'left' ? 'left-[26px]' : 'right-[26px]'}`}
+                className={`fixed top-[15vh] z-50 flex flex-col items-center transition-all duration-700 ${navPosition === 'left' ? 'left-[40px]' : 'right-[40px]'}`}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
             >
