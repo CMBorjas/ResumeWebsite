@@ -1,10 +1,10 @@
 1:"$Sreact.fragment"
-2:I[97367,["/ResumeWebsite/_next/static/chunks/0f07ff9c9dbf6dab.js","/ResumeWebsite/_next/static/chunks/247eb132b7f7b574.js"],"ViewportBoundary"]
-4:I[97367,["/ResumeWebsite/_next/static/chunks/0f07ff9c9dbf6dab.js","/ResumeWebsite/_next/static/chunks/247eb132b7f7b574.js"],"MetadataBoundary"]
+2:I[97367,["/ResumeWebsite/_next/static/chunks/56e2152e7477ca68.js","/ResumeWebsite/_next/static/chunks/247eb132b7f7b574.js"],"ViewportBoundary"]
+4:I[97367,["/ResumeWebsite/_next/static/chunks/56e2152e7477ca68.js","/ResumeWebsite/_next/static/chunks/247eb132b7f7b574.js"],"MetadataBoundary"]
 5:"$Sreact.suspense"
-:HL["/ResumeWebsite/_next/static/chunks/5d260916d0859006.css","style"]
+:HL["/ResumeWebsite/_next/static/chunks/5a399eaf6b172218.css","style"]
 :HL["https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap","style"]
 :HL["https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css","style"]
-0:{"buildId":"sSlAsXXE5XChKKpO4xU82","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"/_not-found","paramType":null,"paramKey":"/_not-found","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"head":["$","$1","h",{"children":[["$","meta",null,{"name":"robots","content":"noindex"}],["$","$L2",null,{"children":"$@3"}],["$","div",null,{"hidden":true,"children":["$","$L4",null,{"children":["$","$5",null,{"name":"Next.Metadata","children":"$@6"}]}]}],null]}],"isHeadPartial":false,"staleTime":300}
+0:{"buildId":"Da_rtj2u-jYz1atNE-M5p","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"/_not-found","paramType":null,"paramKey":"/_not-found","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"head":["$","$1","h",{"children":[["$","meta",null,{"name":"robots","content":"noindex"}],["$","$L2",null,{"children":"$@3"}],["$","div",null,{"hidden":true,"children":["$","$L4",null,{"children":["$","$5",null,{"name":"Next.Metadata","children":"$@6"}]}]}],null]}],"isHeadPartial":false,"staleTime":300}
 3:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
 6:[["$","title","0",{"children":"Christian Mandujano Borjas — Portfolio"}],["$","meta","1",{"name":"description","content":"Portfolio and resume site"}]]
