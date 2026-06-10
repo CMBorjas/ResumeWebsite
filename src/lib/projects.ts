@@ -39,7 +39,7 @@ export const projects: Project[] = [
   },
   {
     title: 'social_sent_score',
-    description: 'A Sentiment Score Analyzer that evaluates text using the Stanford SocialSent dictionary, originally built in Rust and ported to the web.',
+    description: 'A robust sentiment analysis engine that parses the Stanford SocialSent dataset to evaluate user-uploaded texts. Originally engineered in Rust for memory-safe CLI processing, and subsequently ported to a serverless Next.js architecture with a dynamic, cyberpunk-themed UI.',
     repoUrl: 'https://github.com/CMBorjas/CSCI_3415-Homework004',
     liveUrl: '/ResumeWebsite/projects/social-sent-score',
     techStack: ['Rust', 'TypeScript', 'Next.js', 'Tailwind', 'Data Parsing']
