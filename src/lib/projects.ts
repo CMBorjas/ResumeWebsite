@@ -34,6 +34,7 @@ export const projects: Project[] = [
     title: 'pdf_splitter',
     description: 'A web-based PDF splitting tool that allows users to upload a PDF, preview its pages, and extract or split specific pages into separate files.',
     repoUrl: 'https://github.com/CMBorjas/pdf_splitter',
+    liveUrl: '/ResumeWebsite/projects/pdf-splitter',
     techStack: ['React', 'PDF.js', 'pdf-lib', 'Node.js', 'CSS']
   }
 ]
