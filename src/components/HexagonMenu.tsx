@@ -291,7 +291,7 @@ export default function HexagonMenu() {
                                         top: '12px', 
                                         left: '100px', 
                                         marginLeft: '-24px', 
-                                        transform: `translate(${getTransformX(item.index)}px, 0px) scale(1.5)` 
+                                        transform: `translate(${getTransformX(item.index, active)}px, 0px) scale(1.5)` 
                                     }}
                                 >
                                     <div className="hover-pop-once relative w-[48px] h-[48px]">
