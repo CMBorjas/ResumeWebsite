@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useCallback } from 'react'
-import { LuUpload, LuFileText, LuSettings, LuLayers, LuSplitSquareHorizontal, LuDownload, LuEye } from 'react-icons/lu'
+import { LuUpload, LuFileText, LuSettings, LuLayers, LuSquareSplitHorizontal, LuDownload, LuEye } from 'react-icons/lu'
 
 // Simple tooltip wrapper component
 const Tooltip = ({ children, text }: { children: React.ReactNode, text: string }) => {
@@ -104,7 +104,7 @@ export default function PdfSplitterPage() {
               }`}
             >
               <div className={`p-4 rounded-full mb-4 transition-all ${isDragActive ? 'bg-brand-cyan/20 shadow-[0_0_15px_color-mix(in srgb, var(--color-brand-cyan) 40%, transparent)]' : 'bg-slate-800'}`}>
-                <LuUploadCloud size={48} className={isDragActive ? 'text-brand-cyan' : 'text-slate-400'} />
+                <LuUpload size={48} className={isDragActive ? 'text-brand-cyan' : 'text-slate-400'} />
               </div>
               <h3 className="text-xl font-bold text-slate-200 mb-2">Drag & Drop your PDF here</h3>
               <p className="text-slate-500 mb-6">Or click to browse from your device</p>
@@ -152,7 +152,7 @@ export default function PdfSplitterPage() {
                 
                 <Tooltip text="Extract All (Pending): Converts every selected page into its own separate PDF document.">
                   <button className="w-full flex items-center gap-3 p-3 rounded bg-slate-800 hover:bg-slate-700 border border-slate-700 hover:border-brand-cyan/50 transition-colors text-left group">
-                    <LuSplitSquareHorizontal className="text-brand-pink group-hover:text-brand-cyan transition-colors" size={20} />
+                    <LuSquareSplitHorizontal className="text-brand-pink group-hover:text-brand-cyan transition-colors" size={20} />
                     <div>
                       <p className="font-medium text-slate-200 text-sm">Extract All</p>
                       <p className="text-xs text-slate-500">Each page into a file</p>

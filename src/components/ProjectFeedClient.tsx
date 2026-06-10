@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { Project } from '../lib/projects'
 import ProjectCard from './ProjectCard'
 import TechStackPanel from './TechStackPanel'
@@ -34,7 +34,7 @@ export default function ProjectFeedClient({ allProjects }: { allProjects: Projec
     return 0
   })
 
-  const availableTechs = Array.from(new Set(allProjects.flatMap(p => p.techStack || [])))
+  const availableTechs = React.useMemo(() => Array.from(new Set(allProjects.flatMap(p => p.techStack || []))), [allProjects])
 
   return (
     <>
