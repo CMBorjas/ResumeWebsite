@@ -95,7 +95,7 @@ export default function HexagonMenu() {
         return 0;
     }
 
-    const getTextClasses = (path: string, index: number) => {
+    const getTextClasses = (path: string, index: number, label: string) => {
         const isHoveredItem = hoveredHex === index;
         const isActiveItem = isActive(path);
         const isYellowArrowMode = !isLocked && isOpen;
@@ -109,15 +109,22 @@ export default function HexagonMenu() {
             ? (isRotated ? 'right-[27.3px]' : 'right-[45.3px]')
             : (isRotated ? 'left-[27.3px]' : 'left-[45.3px]');
             
+        const isTooLong = label.length > 7;
+        
         // h-[12px] is restored to ensure the mathematical center of rotation is exact, maintaining the perfect 2px gap.
-        // A gradient mask is applied when rotated to smoothly fade out long titles (like "PROJECTS") before they overlap the next icon.
+        // A symmetrical gradient mask is applied when long titles are scrolling back and forth.
         const maskClass = isRotated 
-            ? (navPosition === 'left' 
-                ? '[mask-image:linear-gradient(to_left,black_60%,transparent_90%)] [-webkit-mask-image:linear-gradient(to_left,black_60%,transparent_90%)]' 
-                : '[mask-image:linear-gradient(to_right,black_60%,transparent_90%)] [-webkit-mask-image:linear-gradient(to_right,black_60%,transparent_90%)]')
+            ? (isTooLong
+                ? '[mask-image:linear-gradient(to_right,transparent_0%,black_15%,black_85%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_15%,black_85%,transparent_100%)]'
+                : (navPosition === 'left' 
+                    ? '[mask-image:linear-gradient(to_left,black_60%,transparent_90%)] [-webkit-mask-image:linear-gradient(to_left,black_60%,transparent_90%)]' 
+                    : '[mask-image:linear-gradient(to_right,black_60%,transparent_90%)] [-webkit-mask-image:linear-gradient(to_right,black_60%,transparent_90%)]')
+            )
             : '';
             
-        const rotationClass = `w-[48px] h-[12px] flex items-center ${navPosition === 'left' ? 'justify-end' : 'justify-start'} ${isRotated ? 'rotate-90' : 'rotate-0'} ${maskClass}`;
+        const justifyClass = isTooLong ? 'justify-start' : (navPosition === 'left' ? 'justify-end' : 'justify-start');
+            
+        const rotationClass = `w-[48px] h-[12px] flex items-center ${justifyClass} ${isRotated ? 'rotate-90' : 'rotate-0'} ${maskClass}`;
         
         // Text is visible if locked, hovered, active item, OR if we are in yellow arrow mode (so it can mechanically slide in fully opaque)
         const isVisible = isLocked || isHoveredItem || isActiveItem || (isYellowArrowMode && index > 1);
@@ -126,6 +133,17 @@ export default function HexagonMenu() {
             : 'opacity-0 translate-x-4';
             
         return `absolute top-1/2 -translate-y-1/2 transition-all duration-300 text-[10px] font-bold text-[#00ffe1] group-hover:text-white tracking-widest drop-shadow-[0_2px_4px_rgba(0,0,0,1)] z-20 whitespace-nowrap overflow-visible ${positionClass} ${visibilityClass} ${rotationClass}`;
+    }
+
+    const getInnerMarqueeClasses = (path: string, index: number, label: string) => {
+        const isHoveredItem = hoveredHex === index;
+        const isActiveItem = isActive(path);
+        const isRotated = (isLocked || isActiveItem) && !isHoveredItem;
+        
+        if (isRotated && label.length > 7) {
+            return 'animate-marquee-left inline-block w-max';
+        }
+        return 'inline-block w-max';
     }
 
     const menuItems = [
@@ -204,6 +222,13 @@ export default function HexagonMenu() {
                 }
                 .hover-pop-once:hover {
                     animation: popBounce 0.5s cubic-bezier(0.34,1.56,0.64,1) forwards;
+                }
+                @keyframes marquee-left {
+                    0%, 15% { transform: translateX(0); }
+                    85%, 100% { transform: translateX(calc(48px - 100%)); }
+                }
+                .animate-marquee-left {
+                    animation: marquee-left 4s ease-in-out infinite alternate;
                 }
             `}</style>
 
@@ -300,7 +325,11 @@ export default function HexagonMenu() {
                                         </svg>
                                         {item.innerSvg}
                                         {item.index !== 6 ? (
-                                            <span className={getTextClasses(item.path, item.index)}>{item.label}</span>
+                                            <span className={getTextClasses(item.path, item.index, item.label)}>
+                                                <span className={getInnerMarqueeClasses(item.path, item.index, item.label)}>
+                                                    {item.label}
+                                                </span>
+                                            </span>
                                         ) : (
                                             <span className={`absolute top-1/2 -translate-y-1/2 transition-all duration-300 text-[10px] font-bold text-[#00ffe1] group-hover:text-white tracking-widest drop-shadow-[0_2px_4px_rgba(0,0,0,1)] z-20 whitespace-nowrap pointer-events-none ${navPosition === 'left' ? 'left-full ml-4' : 'right-full mr-4'} opacity-0 group-hover:opacity-100 ${navPosition === 'left' ? '-translate-x-4 group-hover:translate-x-0' : 'translate-x-4 group-hover:translate-x-0'}`}>
                                                 {navPosition === 'left' ? 'MOVE RIGHT' : 'MOVE LEFT'}
