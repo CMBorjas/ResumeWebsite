@@ -68,8 +68,9 @@ export default function HexagonMenu() {
     const getTransform = (index: number, active: boolean) => {
         if (!isOpen) {
             // When closed, stack them all behind the toggle, except the active page indicator
-            if (active) return `translateY(70px) scale(1.5)`;
-            return `translateY(0px) scale(1.5)`;
+            // 60px ensures it perfectly touches the bottom of the main toggle (lock bar)
+            if (active) return `translate(0px, 60px) scale(1.5)`;
+            return `translate(0px, 0px) scale(1.5)`;
         }
         
         // Tabs should be edge-touching in the y axis (visual height of hexagon is 60px)
