@@ -77,7 +77,10 @@ export default function HexagonMenu() {
 
     const getTextClasses = (path: string, index: number) => {
         const isHoveredItem = hoveredHex === index;
-        const isRotated = isLocked && !isHoveredItem;
+        const isActiveItem = isActive(path);
+        
+        // Text is rotated if it's in the locked column, OR if it's the active page indicator, AND it's not currently being hovered.
+        const isRotated = (isLocked || isActiveItem) && !isHoveredItem;
         
         // When horizontal, left/right is 45.3px to achieve a 2px visual gap.
         // When rotated 90deg, the center shifts. A 48x12 box needs 18px of compensation. 45.3 - 18 = 27.3px.
@@ -95,8 +98,8 @@ export default function HexagonMenu() {
             
         const rotationClass = `w-[48px] h-[12px] flex items-center ${navPosition === 'left' ? 'justify-end' : 'justify-start'} ${isRotated ? 'rotate-90' : 'rotate-0'} ${maskClass}`;
         
-        // Text is visible if locked OR if it is specifically the hovered item.
-        const isVisible = isLocked || isHoveredItem;
+        // Text is visible if locked, hovered, OR if it's the active page indicator (which acts as a permanent label).
+        const isVisible = isLocked || isHoveredItem || isActiveItem;
         const visibilityClass = isVisible 
             ? 'opacity-100 translate-x-0' 
             : 'opacity-0 translate-x-4';
