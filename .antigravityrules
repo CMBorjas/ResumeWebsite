@@ -1,0 +1,38 @@
+# Antigravity IDE Workspace Profile for ResumeWebsite
+
+## 1. Project Overview
+- **Name:** ResumeWebsite
+- **Description:** A cyberpunk-themed personal portfolio and digital resume for Christian Mandujano Borjas.
+- **Goal:** Showcase architecture, UX, animations, and live GitHub project feeds while adhering to a strict, highly polished "Bento Box" cyberpunk layout.
+
+## 2. Technology Stack
+- **Framework:** Next.js (^16.0.1) with App Router
+- **UI Library:** React (^19.2.0)
+- **Styling:** Tailwind CSS (^4.0.0)
+- **Language:** TypeScript (^5.0.4)
+- **Animations:** framer-motion (^12.40.0)
+- **Containerization:** Docker & Docker Compose (Nginx for static serving)
+- **Deployment:** GitHub Pages (Static Export via `out/` directory)
+
+## 3. Design & Aesthetic Guidelines (Cyberpunk Theme)
+- **Visuals:** High-contrast neon accents, glassmorphic "Bento Box" UI panels, and dark mode base.
+- **Animations:** Fluid route transitions via `framer-motion` `<AnimatePresence>`, magnetic borders, and interactive hover states.
+- **Responsiveness:** Fluid grid layouts that gracefully collapse on mobile devices while preserving the bento box structure.
+- **Backgrounds:** Complex, interactive HTML5 `<canvas>` backgrounds (e.g., particle networks) rather than flat static colors.
+
+## 4. Coding Standards & Best Practices
+- **TypeScript:** Enforce strict typing across all components, lib functions, and state interfaces.
+- **Component Architecture:** Build highly reusable, modular components placed in `src/components/`. Use Client Components (`"use client"`) only when hooks (`useState`, `useEffect`) or interactions are required.
+- **State Management:** Use React Context for global state (e.g., Theme Engine) and `localStorage` for persistent component states (e.g., timers, note drafts, url history).
+- **Non-Destructive Integration:** When adding new features to the project feed or layout, seamlessly integrate them without disrupting existing components or layout alignment.
+
+## 5. Development Workflow
+- **Package Manager:** `npm` (run `npm run dev` for local testing on port 3000).
+- **Environment:** Node.js >=20.9.0.
+- **Documentation:** Always keep the `README.md` "Current Goals" and "Prioritized Goal Roadmap" updated as tasks are completed.
+- **Testing:** Verify all animated transitions and interactive elements across different viewport sizes.
+
+## 6. Antigravity Agent Directives
+- **Aesthetic First:** If asked to build a new component, prioritize visual excellence and micro-interactions. "Simple" or "basic" aesthetics are unacceptable.
+- **File Edits:** Maintain all existing comments and docstrings unless specified otherwise.
+- **Awareness:** Continuously cross-reference `lib/projects.ts` for data mapping and ensure global layout integrity when modifying the hex menu or navigation panels.
