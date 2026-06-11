@@ -14,7 +14,7 @@ export const projects: Project[] = [
     title: 'ResumeWebsite',
     description: 'A cyberpunk-themed interactive developer portfolio and resume site built with Next.js.',
     repoUrl: 'https://github.com/CMBorjas/ResumeWebsite',
-    liveUrl: 'https://cchristian-mandujano.vercel.app',
+    liveUrl: 'https://cmborjas.github.io/ResumeWebsite',
     techStack: ['Next.js', 'React', 'TypeScript', 'Tailwind', 'Node.js']
   },
   {
@@ -71,5 +71,11 @@ export const projects: Project[] = [
     repoUrl: 'https://github.com/CMBorjas/ResumeWebsite',
     liveUrl: '/projects/url-shortener',
     techStack: ['React', 'Next.js', 'Tailwind', 'Framer Motion', 'REST API']
+  },
+  {
+    title: 'Rust-Mini-redis-server',
+    description: 'A hands-on implementation of asynchronous programming in Rust using the powerful Tokio runtime. Demonstrates modern Rust patterns for building high-performance, concurrent network applications.',
+    repoUrl: 'https://github.com/CMBorjas/Rust-Mini-redis-server',
+    techStack: ['Rust', 'Tokio', 'Async/Await', 'TCP']
   }
 ]
