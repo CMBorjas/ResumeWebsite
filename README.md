@@ -230,6 +230,11 @@ The next phase of development focuses on polishing the portfolio to showcase arc
       <summary><b>Detailed Explanation</b></summary>
       Pricing cards are a common UI pattern used on marketing and SaaS websites to compare plans side by side and guide users to the right tier. The pricing page should display three distinct pricing plans: Thumbs up, dollar, and 5 bucks. Each plan should have its own card with a clear title, price, list of features, and a call-to-action (CTA) button. The three cards should share a base style and the middle one should stand out as the recommended plan, slightly larger and visually emphasized. Each card has a plan name, a price, a short tagline, a list of included features, and a button.
       </details>
+- ~~[x] **Changelog component** - Changelog are records of changes that have been made to a website or application.~~
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      We will need to implement the changelog of the website, which is currently stored in a JSON file. These changelogs should be displayed in a list format, with each changelog having its own card.
+      </details>
 </details>
 <details>
 <summary><b>Current Goals</b></summary>
@@ -245,11 +250,7 @@ The next phase of development focuses on polishing the portfolio to showcase arc
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement the testimonials of the website, which are currently stored in a JSON file. These testimonials should be displayed in a carousel or grid format, with each testimonial having its own card.
       </details>
-- [] **Changelog component** - Changelog are records of changes that have been made to a website or application.
-   - <details>
-      <summary><b>Detailed Explanation</b></summary>
-      We will need to implement the changelog of the website, which is currently stored in a JSON file. These changelogs should be displayed in a list format, with each changelog having its own card.
-      </details>
+
 - [] **Personal Blog page** - A blog page is a page that displays a list of blog posts.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
@@ -393,7 +394,7 @@ The next phase of development focuses on polishing the portfolio to showcase arc
 * [x] 5. Contact Page Reform
 * [x] 6. Homescreen Three Dots Menu
 * [x] 7. Pricing Cards
-* [ ] 8. Changelog Component
+* [x] 8. Changelog Component
 * [ ] 9. Testimonial Cards
 * [ ] 10. Photo Showcase 
 * [ ] 11. QR Code Generator 

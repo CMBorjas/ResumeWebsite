@@ -200,6 +200,20 @@ export default function HexagonMenu() {
         },
         {
             index: 7,
+            path: '/changelog',
+            label: 'CHANGELOG',
+            innerSvg: (
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`absolute inset-0 m-auto text-brand-cyan group-hover:text-white transition-all duration-300 drop-shadow-[0_0_5px_color-mix(in srgb, var(--color-brand-cyan) 80%, transparent)] z-20 pointer-events-none ${iconOffsetClass}`}>
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+            )
+        },
+        {
+            index: 8,
             path: '/settings',
             label: 'SETTINGS',
             innerSvg: (
@@ -210,7 +224,7 @@ export default function HexagonMenu() {
             )
         },
         {
-            index: 8,
+            index: 9,
             path: '',
             label: '',
             onClick: toggleNavPosition,
@@ -298,7 +312,7 @@ export default function HexagonMenu() {
 
                 {/* Sub-menu Hexagons */}
                 {menuItems.map((item) => {
-                    const isLink = item.index !== 8;
+                    const isLink = item.index !== 9;
                     const ContentWrapper = isLink ? Link : 'div';
                     const wrapperProps = isLink ? { href: item.path } : { onClick: item.onClick };
                     const active = isActive(item.path);
@@ -341,7 +355,7 @@ export default function HexagonMenu() {
                                             <polygon points={hexPoints}></polygon>
                                         </svg>
                                         {item.innerSvg}
-                                        {item.index !== 8 ? (
+                                        {item.index !== 9 ? (
                                             <span className={getTextClasses(item.path, item.index)}>
                                                 <span className={getInnerMarqueeClasses(item.path, item.index)}>
                                                     <span className={((isLocked || active) && hoveredHex !== item.index) ? "pr-8" : ""}>{item.label}</span>

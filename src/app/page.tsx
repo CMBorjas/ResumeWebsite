@@ -15,20 +15,48 @@ const paragraphs = [
 
 let hasPlayedAnimation = false;
 
-const BentoBox = ({ children, className, delay = 0 }: { children: React.ReactNode, className?: string, delay?: number }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.5, delay }}
-    whileHover={{ scale: 1.02, zIndex: 10 }}
-    className={`bg-[#0a0f18]/80 backdrop-blur-xl border border-brand-cyan/20 rounded-3xl p-6 shadow-[0_4px_30px_rgba(0,0,0,0.5)] hover:shadow-[0_0_30px_color-mix(in srgb, var(--color-brand-cyan) 15%, transparent)] hover:border-brand-cyan/40 overflow-hidden relative group transition-colors duration-300 flex flex-col ${className}`}
-  >
-    <div className="absolute inset-0 bg-gradient-to-br from-brand-cyan/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-    <div className="relative z-10 w-full h-full flex flex-col">
-      {children}
-    </div>
-  </motion.div>
-);
+const BentoBox = ({ children, className, delay = 0, title }: { children: React.ReactNode, className?: string, delay?: number, title?: string }) => {
+  const [isVisible, setIsVisible] = useState(true);
+  const [isMinimized, setIsMinimized] = useState(false);
+  const [isMaximized, setIsMaximized] = useState(false);
+
+  if (!isVisible) return null;
+
+  return (
+    <>
+      {isMaximized && <div className={className} style={{ opacity: 0 }} />}
+      <motion.div
+        layout
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: isMaximized ? 0 : delay }}
+        whileHover={!isMaximized ? { scale: 1.02, zIndex: 10 } : undefined}
+        className={`bg-[#0a0f18]/80 backdrop-blur-xl border border-brand-cyan/20 rounded-3xl p-6 shadow-[0_4px_30px_rgba(0,0,0,0.5)] overflow-hidden group transition-all duration-300 flex flex-col 
+        ${!isMaximized ? 'hover:shadow-[0_0_30px_color-mix(in srgb, var(--color-brand-cyan) 15%, transparent)] hover:border-brand-cyan/40' : ''} 
+        ${isMaximized ? '!fixed !inset-4 md:!inset-10 !z-[100] !bg-[#0a0f18] !scale-100 !h-auto !w-auto' : className}
+        ${isMinimized ? '!h-10 !min-h-[40px] !p-0' : ''}
+        `}
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-brand-cyan/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+        <div className="relative z-10 w-full h-full flex flex-col">
+          {title && (
+            <div className="w-full h-10 bg-brand-cyan/10 border-b border-brand-cyan/30 flex items-center px-4 justify-between backdrop-blur-md font-mono shrink-0">
+              <span className="text-[11px] text-brand-cyan tracking-widest font-bold">{title}</span>
+              <div className="flex gap-2">
+                <div onClick={(e) => { e.stopPropagation(); setIsVisible(false); }} className="w-3 h-3 rounded-full bg-red-500/80 hover:bg-red-500 transition-colors cursor-pointer" title="Close"></div>
+                <div onClick={(e) => { e.stopPropagation(); setIsMinimized(!isMinimized); setIsMaximized(false); }} className="w-3 h-3 rounded-full bg-yellow-500/80 hover:bg-yellow-500 transition-colors cursor-pointer" title={isMinimized ? "Restore" : "Minimize"}></div>
+                <div onClick={(e) => { e.stopPropagation(); setIsMaximized(!isMaximized); setIsMinimized(false); }} className="w-3 h-3 rounded-full bg-green-500/80 hover:bg-green-500 hover:shadow-[0_0_8px_color-mix(in srgb, var(--color-green-500) 80%, transparent)] transition-all cursor-pointer" title={isMaximized ? "Restore" : "Maximize"}></div>
+              </div>
+            </div>
+          )}
+          <div className={`flex-1 overflow-y-auto custom-scrollbar relative flex flex-col ${isMinimized ? 'hidden' : ''}`}>
+            {children}
+          </div>
+        </div>
+      </motion.div>
+    </>
+  );
+};
 
 const SkillBadge = ({ children, icon: Icon, color = '#00ffe1' }: { children: React.ReactNode, icon?: React.ElementType, color?: string }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -81,15 +109,7 @@ export default function Home() {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-[1200px] w-full auto-rows-[minmax(180px,auto)]">
 
         {/* Intro Box */}
-        <BentoBox className="order-1 md:order-1 md:col-span-2 md:row-span-1 !p-0 !bg-black/80" delay={0.1}>
-          <div className="w-full h-10 bg-brand-cyan/10 border-b border-brand-cyan/30 flex items-center px-4 justify-between backdrop-blur-md font-mono shrink-0">
-            <span className="text-[11px] text-brand-cyan tracking-widest font-bold">~/Welcome</span>
-            <div className="flex gap-2">
-              <div className="w-3 h-3 rounded-full bg-slate-700 hover:bg-slate-500 transition-colors cursor-pointer"></div>
-              <div className="w-3 h-3 rounded-full bg-slate-700 hover:bg-slate-500 transition-colors cursor-pointer"></div>
-              <div className="w-3 h-3 rounded-full bg-brand-pink/80 hover:bg-brand-pink hover:shadow-[0_0_8px_color-mix(in srgb, var(--color-brand-pink) 80%, transparent)] transition-all cursor-pointer"></div>
-            </div>
-          </div>
+        <BentoBox className="order-1 md:order-1 md:col-span-2 md:row-span-1 !p-0 !bg-black/80" delay={0.1} title="~/Welcome">
           <div className="p-6 flex flex-col justify-center h-full">
             <p className="text-brand-cyan text-xs font-mono tracking-widest mb-3 uppercase flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-brand-cyan animate-pulse"></span>
@@ -102,15 +122,7 @@ export default function Home() {
         </BentoBox>
 
         {/* Location/Status Box */}
-        <BentoBox className="order-4 md:order-2 md:col-span-1 md:row-span-1 !p-0 !bg-black/80" delay={0.2}>
-          <div className="w-full h-10 bg-brand-cyan/10 border-b border-brand-cyan/30 flex items-center px-4 justify-between backdrop-blur-md font-mono shrink-0">
-            <span className="text-[11px] text-brand-cyan tracking-widest font-bold">~/Graduated</span>
-            <div className="flex gap-2">
-              <div className="w-3 h-3 rounded-full bg-slate-700 hover:bg-slate-500 transition-colors cursor-pointer"></div>
-              <div className="w-3 h-3 rounded-full bg-slate-700 hover:bg-slate-500 transition-colors cursor-pointer"></div>
-              <div className="w-3 h-3 rounded-full bg-brand-pink/80 hover:bg-brand-pink hover:shadow-[0_0_8px_color-mix(in srgb, var(--color-brand-pink) 80%, transparent)] transition-all cursor-pointer"></div>
-            </div>
-          </div>
+        <BentoBox className="order-4 md:order-2 md:col-span-1 md:row-span-1 !p-0 !bg-black/80" delay={0.2} title="~/Graduated">
           <div className="p-6 flex flex-col items-center justify-center text-center h-full">
             <div className="w-16 h-16 rounded-full bg-gradient-to-br from-brand-cyan/20 to-brand-pink/20 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 border border-brand-cyan/30">
               <svg className="w-8 h-8 text-brand-cyan drop-shadow-[0_0_5px_color-mix(in srgb, var(--color-brand-cyan) 80%, transparent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -124,15 +136,7 @@ export default function Home() {
         </BentoBox>
 
         {/* Quick Contact Box */}
-        <BentoBox className="order-6 md:order-3 md:col-span-1 md:row-span-1 !p-0 !bg-black/80" delay={0.3}>
-          <div className="w-full h-10 bg-brand-cyan/10 border-b border-brand-cyan/30 flex items-center px-4 justify-between backdrop-blur-md font-mono shrink-0">
-            <span className="text-[11px] text-brand-cyan tracking-widest font-bold">~/CONTACT</span>
-            <div className="flex gap-2">
-              <div className="w-3 h-3 rounded-full bg-slate-700 hover:bg-slate-500 transition-colors cursor-pointer"></div>
-              <div className="w-3 h-3 rounded-full bg-slate-700 hover:bg-slate-500 transition-colors cursor-pointer"></div>
-              <div className="w-3 h-3 rounded-full bg-brand-pink/80 hover:bg-brand-pink hover:shadow-[0_0_8px_color-mix(in srgb, var(--color-brand-pink) 80%, transparent)] transition-all cursor-pointer"></div>
-            </div>
-          </div>
+        <BentoBox className="order-6 md:order-3 md:col-span-1 md:row-span-1 !p-0 !bg-black/80" delay={0.3} title="~/CONTACT">
           <div className="p-6 flex flex-col justify-between h-full bg-gradient-to-br hover:from-brand-pink/5 hover:to-transparent transition-colors duration-500">
             <div className="flex justify-between items-start">
               <div className="w-12 h-12 rounded-full bg-brand-pink/10 border border-brand-pink/30 flex items-center justify-center group-hover:shadow-[0_0_15px_color-mix(in srgb, var(--color-brand-pink) 40%, transparent)] transition-all duration-300">
@@ -155,15 +159,7 @@ export default function Home() {
         </BentoBox>
 
         {/* Terminal / About Me Box */}
-        <BentoBox className="order-5 md:order-4 md:col-span-2 md:row-span-2 !p-0 !bg-black/80 font-mono" delay={0.4}>
-          <div className="w-full h-10 bg-brand-cyan/10 border-b border-brand-cyan/30 flex items-center px-4 justify-between backdrop-blur-md">
-            <span className="text-[11px] text-brand-cyan tracking-widest font-bold">~/ABOUT_ME</span>
-            <div className="flex gap-2">
-              <div className="w-3 h-3 rounded-full bg-slate-700 hover:bg-slate-500 transition-colors cursor-pointer"></div>
-              <div className="w-3 h-3 rounded-full bg-slate-700 hover:bg-slate-500 transition-colors cursor-pointer"></div>
-              <div className="w-3 h-3 rounded-full bg-brand-pink/80 hover:bg-brand-pink hover:shadow-[0_0_8px_color-mix(in srgb, var(--color-brand-pink) 80%, transparent)] transition-all cursor-pointer"></div>
-            </div>
-          </div>
+        <BentoBox className="order-5 md:order-4 md:col-span-2 md:row-span-2 !p-0 !bg-black/80 font-mono" delay={0.4} title="~/ABOUT_ME">
           <div className="p-6 flex-grow overflow-y-auto custom-scrollbar h-[300px]">
             <p className="whitespace-pre-wrap leading-relaxed text-sm text-brand-cyan/90">
               <span className="text-brand-pink mr-2 font-bold">&gt;</span>
@@ -176,15 +172,7 @@ export default function Home() {
         </BentoBox>
 
         {/* Skills Box */}
-        <BentoBox className="order-2 md:order-5 md:col-span-2 md:row-span-1 !p-0 !bg-black/80" delay={0.5}>
-          <div className="w-full h-10 bg-brand-cyan/10 border-b border-brand-cyan/30 flex items-center px-4 justify-between backdrop-blur-md font-mono shrink-0">
-            <span className="text-[11px] text-brand-cyan tracking-widest font-bold">~/SKILLS</span>
-            <div className="flex gap-2">
-              <div className="w-3 h-3 rounded-full bg-slate-700 hover:bg-slate-500 transition-colors cursor-pointer"></div>
-              <div className="w-3 h-3 rounded-full bg-slate-700 hover:bg-slate-500 transition-colors cursor-pointer"></div>
-              <div className="w-3 h-3 rounded-full bg-brand-pink/80 hover:bg-brand-pink hover:shadow-[0_0_8px_color-mix(in srgb, var(--color-brand-pink) 80%, transparent)] transition-all cursor-pointer"></div>
-            </div>
-          </div>
+        <BentoBox className="order-2 md:order-5 md:col-span-2 md:row-span-1 !p-0 !bg-black/80" delay={0.5} title="~/SKILLS">
           <div className="p-6 h-full flex flex-col justify-center">
             <h3 className="text-xs font-bold text-white mb-4 uppercase tracking-widest flex items-center gap-2">
               <svg className="w-4 h-4 text-brand-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
@@ -212,15 +200,7 @@ export default function Home() {
         </BentoBox>
 
         {/* Roles/Experience Box */}
-        <BentoBox className="order-3 md:order-6 md:col-span-2 md:row-span-1 !p-0 !bg-black/80" delay={0.6}>
-          <div className="w-full h-10 bg-brand-cyan/10 border-b border-brand-cyan/30 flex items-center px-4 justify-between backdrop-blur-md font-mono shrink-0">
-            <span className="text-[11px] text-brand-cyan tracking-widest font-bold">~/EXPERIENCE</span>
-            <div className="flex gap-2">
-              <div className="w-3 h-3 rounded-full bg-slate-700 hover:bg-slate-500 transition-colors cursor-pointer"></div>
-              <div className="w-3 h-3 rounded-full bg-slate-700 hover:bg-slate-500 transition-colors cursor-pointer"></div>
-              <div className="w-3 h-3 rounded-full bg-brand-pink/80 hover:bg-brand-pink hover:shadow-[0_0_8px_color-mix(in srgb, var(--color-brand-pink) 80%, transparent)] transition-all cursor-pointer"></div>
-            </div>
-          </div>
+        <BentoBox className="order-3 md:order-6 md:col-span-2 md:row-span-1 !p-0 !bg-black/80" delay={0.6} title="~/EXPERIENCE">
           <div className="p-6 h-full flex flex-col justify-center">
             <h3 className="text-xs font-bold text-white mb-4 uppercase tracking-widest flex items-center gap-2">
               <svg className="w-4 h-4 text-brand-pink" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>

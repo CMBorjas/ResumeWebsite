@@ -1,0 +1,38 @@
+[
+  {
+    "version": "v1.5.0",
+    "date": "2026-06-11",
+    "title": "Interactive Menus & Contribute Cards",
+    "description": "Added dynamic interactions to the homescreen layout and introduced a dedicated contribution page.",
+    "changes": [
+      "Implemented functional Three Dots menu on the homescreen BentoBox components (Minimize, Maximize, Close).",
+      "Created a new interactive Contribute page showcasing three distinct tier cards.",
+      "Updated the Hexagon menu to include the new Contribute route."
+    ],
+    "type": "feature"
+  },
+  {
+    "version": "v1.4.0",
+    "date": "2026-06-08",
+    "title": "UI Components Polish",
+    "description": "Introduced multiple new reusable UI components to enhance user interaction and site functionality.",
+    "changes": [
+      "Added a Tool tip UI for better context on project feeds.",
+      "Implemented a Restricted textarea with character counting capabilities.",
+      "Built an Accordion component for collapsible content.",
+      "Introduced a new Cookie Consent banner with animated transitions."
+    ],
+    "type": "enhancement"
+  },
+  {
+    "version": "v1.3.0",
+    "date": "2026-06-01",
+    "title": "Bento Box Layout & Contact Reform",
+    "description": "Completely revamped the site layout and communication channels.",
+    "changes": [
+      "Restructured 'About Me' and 'Skills' into a responsive, glassmorphic 'Bento Box' layout.",
+      "Reformed the Contact page with an interactive, validated React form."
+    ],
+    "type": "feature"
+  }
+]
