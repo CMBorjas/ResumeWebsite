@@ -80,6 +80,54 @@ export default function MarkdownEditor() {
           ))}
         </div>
 
+        {/* Templates Toolbar */}
+        <div className="bg-black/80 px-4 py-2 flex gap-2 overflow-x-auto custom-scrollbar border-b border-brand-cyan/20 shrink-0">
+          <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest mr-2 flex items-center">Templates:</span>
+          {[
+            { 
+              label: "Daily Log", 
+              value: "\n## 📅 Daily Log: [Date]\n\n### 🎯 Top 3 Objectives\n- [ ] \n- [ ] \n- [ ] \n\n### ⏱️ Schedule\n- 08:00 : \n- 10:00 : \n- 12:00 : \n- 14:00 : \n- 16:00 : \n- 18:00 : \n\n### 📝 Notes & Brain Dump\n- - \n" 
+            },
+            { 
+              label: "Weekly Log", 
+              value: "\n## 🗓️ Weekly Planner: [Week of ...]\n\n### 🎯 Weekly Goals\n- [ ] \n- [ ] \n\n### 📅 Daily Overview\n**Monday**\n- [ ] \n\n**Tuesday**\n- [ ] \n\n**Wednesday**\n- [ ] \n\n**Thursday**\n- [ ] \n\n**Friday**\n- [ ] \n\n**Saturday**\n- [ ] \n\n**Sunday**\n- [ ] \n" 
+            },
+            { 
+              label: "Monthly Log", 
+              value: "\n## 🌔 Monthly Log: [Month]\n\n### 🏆 Key Goals\n- [ ] \n- [ ] \n\n### 📅 Important Dates\n- ○ [Date]: [Event]\n- ○ [Date]: [Event]\n\n### 📈 Review & Retrospective\n- - \n" 
+            },
+            { 
+              label: "Habit Tracker", 
+              value: "\n## 🔄 Habit Tracker: [Month]\n\n| Habit | 1 | 2 | 3 | 4 | 5 | 6 | 7 |\n|-------|---|---|---|---|---|---|---|\n| Meditate | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |\n| Exercise | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |\n| Read 20p | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |\n| Code | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |\n" 
+            },
+            {
+              label: "SMART Goals",
+              value: "\n## 🎯 SMART Goal: [Goal Name]\n\n**Specific**: What exactly do I want to accomplish?\n- - \n\n**Measurable**: How will I track progress?\n- - \n\n**Achievable**: What resources do I need?\n- - \n\n**Relevant**: Why is this important right now?\n- - \n\n**Time-bound**: When will I achieve this?\n- - \n"
+            },
+            {
+              label: "Budget",
+              value: "\n## 💰 Monthly Budget: [Month]\n\n### 📥 Income\n| Source | Amount | Date |\n|--------|--------|------|\n| Salary | $0.00 | |\n| Side Hustle | $0.00 | |\n\n### 📤 Expenses\n| Category | Budget | Actual | Diff |\n|----------|--------|--------|------|\n| Rent/Mortgage | $0.00 | $0.00 | $0.00 |\n| Groceries | $0.00 | $0.00 | $0.00 |\n| Utilities | $0.00 | $0.00 | $0.00 |\n| Entertainment| $0.00 | $0.00 | $0.00 |\n"
+            },
+            {
+              label: "Meal Plan",
+              value: "\n## 🥑 Meal Plan: [Week of ...]\n\n| Day | Breakfast | Lunch | Dinner | Snacks |\n|-----|-----------|-------|--------|--------|\n| Mon | | | | |\n| Tue | | | | |\n| Wed | | | | |\n| Thu | | | | |\n| Fri | | | | |\n| Sat | | | | |\n| Sun | | | | |\n\n### 🛒 Grocery List\n- [ ] \n- [ ] \n- [ ] \n"
+            },
+            {
+              label: "Checklist",
+              value: "\n## ✅ Master Checklist\n\n- [ ] \n- [ ] \n- [ ] \n- [ ] \n- [ ] \n"
+            }
+          ].map(btn => (
+            <button
+              key={btn.label}
+              onClick={() => insertText(btn.value)}
+              className="text-[10px] font-mono text-brand-pink hover:text-white hover:bg-brand-pink/20 px-2 py-1 rounded transition-colors whitespace-nowrap border border-brand-pink/20"
+              title={`Insert ${btn.label}`}
+            >
+              + {btn.label}
+            </button>
+          ))}
+        </div>
+
         <textarea
           ref={textareaRef}
           value={markdown}
