@@ -12,22 +12,44 @@ export default function ProjectFeedClient({ allProjects }: { allProjects: Projec
 
   const [isMinimized, setIsMinimized] = useState(false)
   const [isMaximized, setIsMaximized] = useState(false)
-  
+  const [searchQuery, setSearchQuery] = useState('')
+  const [isTechStackMinimized, setIsTechStackMinimized] = useState(false)
+  const [isTechStackClosed, setIsTechStackClosed] = useState(false)
+  const [isTechStackClosing, setIsTechStackClosing] = useState(false)
+
+  const handleCloseTechStack = () => {
+    setIsTechStackClosing(true)
+    setTimeout(() => {
+      setIsTechStackClosed(true)
+      setIsTechStackClosing(false)
+    }, 400) // 400ms to match the genie animation duration
+  }
+
+  const handleOpenTechStack = () => {
+    setIsTechStackClosed(false)
+    setIsTechStackMinimized(false)
+  }
+
   const toggleTech = (tech: string) => {
     setSelectedTechs(prev =>
       prev.includes(tech) ? prev.filter(t => t !== tech) : [...prev, tech]
     )
   }
 
-  const projectsMatchingLiveFilter = allProjects.filter(project => {
+  const baseFilteredProjects = allProjects.filter(project => {
     if (liveFilter === 'live' && !project.liveUrl) return false;
     if (liveFilter === 'non-live' && project.liveUrl) return false;
+    if (searchQuery.trim() !== '') {
+      if (!project.title.toLowerCase().includes(searchQuery.toLowerCase())) {
+        return false;
+      }
+    }
     return true;
   });
 
-  const filteredProjects = projectsMatchingLiveFilter.filter(project => {
+  const filteredProjects = baseFilteredProjects.filter(project => {
     if (selectedTechs.length === 0) return true
-    
+
     // Check if the project matches ALL selected techs
     return selectedTechs.every(tech => {
       const t = tech.toLowerCase()
@@ -45,18 +67,18 @@ export default function ProjectFeedClient({ allProjects }: { allProjects: Projec
   })
 
   const availableTechs = React.useMemo(() => Array.from(new Set(allProjects.flatMap(p => p.techStack || []))), [allProjects])
-  const activeTechs = React.useMemo(() => Array.from(new Set(projectsMatchingLiveFilter.flatMap(p => p.techStack || []))), [projectsMatchingLiveFilter])
+  const activeTechs = React.useMemo(() => Array.from(new Set(baseFilteredProjects.flatMap(p => p.techStack || []))), [baseFilteredProjects])
 
   return (
     <>
       {isMaximized && <div className="order-1 lg:order-2" style={{ opacity: 0 }} />}
       {/* ── Center: Projects Feed ── */}
-      <section className={`order-1 lg:order-2 transition-all duration-300 ${isMaximized ? '!fixed !inset-4 md:!inset-10 !z-[100] !bg-[#0a0f18] !scale-100 !h-auto !w-auto' : ''}`}>
+      <section className={`order-1 lg:order-2 transition-all duration-300 ${isTechStackClosed ? 'lg:col-span-2' : ''} ${isMaximized ? '!fixed !inset-4 md:!inset-10 !z-[100] !bg-[#0a0f18] !scale-100 !h-auto !w-auto' : ''}`}>
         {/* Scrollable Container with Fade Mask */}
         <div className={`relative bg-slate-900/70 backdrop-blur-md rounded-xl border-2 border-brand-cyan/50 shadow-[0_0_10px_color-mix(in srgb, var(--color-brand-cyan) 40%, transparent)] flex flex-col h-full overflow-hidden transition-all duration-300 ${isMaximized ? 'max-h-none' : 'max-h-[700px]'} ${isMinimized ? '!h-10 !min-h-[40px]' : ''}`}>
-          
+
           <div className="w-full h-10 bg-brand-cyan/10 border-b border-brand-cyan/30 flex items-center px-4 justify-between backdrop-blur-md font-mono shrink-0">
-            <span className="text-[11px] text-brand-cyan tracking-widest font-bold">~/PROJECTS_FEED</span>
+            <span className="text-[11px] text-brand-cyan tracking-widest font-bold">~/GIT_HUB_REPOS</span>
             <div className="flex gap-2">
               <div className="w-3 h-3 rounded-full bg-red-500/80 hover:bg-red-500 transition-colors cursor-not-allowed" title="Close (Disabled)"></div>
               <div onClick={(e) => { e.stopPropagation(); setIsMinimized(!isMinimized); setIsMaximized(false); }} className="w-3 h-3 rounded-full bg-yellow-500/80 hover:bg-yellow-500 transition-colors cursor-pointer" title={isMinimized ? "Restore" : "Minimize"}></div>
@@ -65,9 +87,30 @@ export default function ProjectFeedClient({ allProjects }: { allProjects: Projec
           </div>
 
           <div className={`flex-1 p-4 flex flex-col overflow-hidden relative ${isMinimized ? 'hidden' : ''}`}>
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end mb-4 shrink-0 pb-3 border-b border-brand-cyan/20 gap-3">
-              <h2 className="text-2xl font-bold text-brand-cyan">Projects Feed</h2>
-              
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 shrink-0 pb-3 border-b border-brand-cyan/20 gap-3">
+              <div className="relative w-full sm:w-auto shrink-0 flex gap-2">
+                <div className="relative w-full sm:w-64">
+                  <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-cyan/50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                  <input
+                    type="text"
+                    placeholder="Search projects..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full bg-[#0d1117] border border-brand-cyan/50 text-brand-cyan text-sm rounded-md pl-9 pr-3 py-1.5 outline-none focus:shadow-[0_0_10px_color-mix(in srgb, var(--color-brand-cyan) 40%, transparent)] hover:border-brand-cyan/80 transition-all placeholder:text-brand-cyan/30"
+                  />
+                </div>
+                <button
+                  onClick={handleOpenTechStack}
+                  className={`border border-brand-cyan/50 text-[10px] font-bold uppercase tracking-wide rounded px-3 py-1.5 focus:shadow-[0_0_8px_color-mix(in srgb, var(--color-brand-cyan) 40%, transparent)] hover:shadow-[0_0_8px_color-mix(in srgb, var(--color-brand-cyan) 40%, transparent)] transition-all flex items-center gap-1.5 whitespace-nowrap ${isTechStackClosed ? 'bg-brand-cyan/20 text-white shadow-[0_0_10px_color-mix(in srgb, var(--color-brand-cyan) 50%, transparent)] animate-pulse' : 'bg-[#0d1117] text-brand-cyan hover:bg-brand-cyan/10'}`}
+                  title="Open Tech Stack Panel"
+                >
+                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" /></svg>
+                  Filters
+                </button>
+              </div>
+
               <div className="flex flex-wrap items-center sm:justify-end gap-2">
                 {selectedTechs.map(tech => (
                   <span key={tech} className="text-[10px] bg-brand-cyan/10 border border-brand-cyan/50 text-brand-cyan px-2 py-1 rounded-full flex items-center gap-1 shadow-[0_0_5px_color-mix(in srgb, var(--color-brand-cyan) 30%, transparent)]">
@@ -76,14 +119,14 @@ export default function ProjectFeedClient({ allProjects }: { allProjects: Projec
                   </span>
                 ))}
                 {selectedTechs.length > 0 && (
-                  <button 
+                  <button
                     onClick={() => setSelectedTechs([])}
                     className="text-xs text-slate-400 hover:text-white underline mx-1"
                   >
                     Clear All
                   </button>
                 )}
-                <select 
+                <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value as any)}
                   className="bg-[#0d1117] border border-brand-cyan/50 text-brand-cyan text-[10px] font-bold uppercase tracking-wide rounded px-2 py-1 outline-none focus:shadow-[0_0_8px_color-mix(in srgb, var(--color-brand-cyan) 40%, transparent)] hover:shadow-[0_0_8px_color-mix(in srgb, var(--color-brand-cyan) 40%, transparent)] transition-all cursor-pointer"
@@ -100,7 +143,7 @@ export default function ProjectFeedClient({ allProjects }: { allProjects: Projec
                 <div className="text-center text-slate-400 py-10 flex flex-col items-center">
                   <svg className="w-12 h-12 mb-3 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                   <p>No projects match the selected filters.</p>
-                  <button 
+                  <button
                     onClick={() => setSelectedTechs([])}
                     className="mt-4 text-sm text-brand-cyan hover:underline"
                   >
@@ -123,14 +166,17 @@ export default function ProjectFeedClient({ allProjects }: { allProjects: Projec
       </section>
 
       {/* ── Right Panel: Tech Stack ── */}
-      <aside className="order-3">
-        <TechStackPanel 
-          selectedTechs={selectedTechs} 
-          onToggleTech={toggleTech} 
-          availableTechs={availableTechs} 
+      <aside className={`order-3 transition-all duration-400 ease-in-out lg:origin-top-left ${isTechStackClosing ? 'scale-0 opacity-0 -translate-x-[20vw] translate-y-20' : ''} ${isTechStackClosed ? 'hidden' : ''}`}>
+        <TechStackPanel
+          selectedTechs={selectedTechs}
+          onToggleTech={toggleTech}
+          availableTechs={availableTechs}
           activeTechs={activeTechs}
           liveFilter={liveFilter}
           setLiveFilter={setLiveFilter}
+          isMinimizedProp={isTechStackMinimized}
+          setIsMinimizedProp={setIsTechStackMinimized}
+          onClose={handleCloseTechStack}
         />
       </aside>
     </>

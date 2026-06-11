@@ -47,7 +47,10 @@ export default function TechStackPanel({
   activeTechs = [],
   onToggleTech = () => {},
   liveFilter = 'all',
-  setLiveFilter = () => {}
+  setLiveFilter = () => {},
+  isMinimizedProp,
+  setIsMinimizedProp,
+  onClose
 }: {
   selectedTechs?: string[]
   availableTechs?: string[]
@@ -55,8 +58,13 @@ export default function TechStackPanel({
   onToggleTech?: (tech: string) => void
   liveFilter?: 'all' | 'live' | 'non-live'
   setLiveFilter?: (filter: 'all' | 'live' | 'non-live') => void
+  isMinimizedProp?: boolean
+  setIsMinimizedProp?: (val: boolean) => void
+  onClose?: () => void
 }) {
-  const [isMinimized, setIsMinimized] = useState(false)
+  const [localIsMinimized, setLocalIsMinimized] = useState(false)
+  const isMinimized = isMinimizedProp !== undefined ? isMinimizedProp : localIsMinimized
+  const setIsMinimized = setIsMinimizedProp || setLocalIsMinimized
   const [isMaximized, setIsMaximized] = useState(false)
 
   const techsToShow = availableTechs && availableTechs.length > 0 
@@ -82,7 +90,7 @@ export default function TechStackPanel({
         <div className="w-full h-10 bg-brand-cyan/10 border-b border-brand-cyan/30 flex items-center px-4 justify-between backdrop-blur-md font-mono shrink-0">
           <span className="text-[11px] text-brand-cyan tracking-widest font-bold">~/TECH_STACK</span>
           <div className="flex gap-2">
-            <div className="w-3 h-3 rounded-full bg-red-500/80 hover:bg-red-500 transition-colors cursor-not-allowed" title="Close (Disabled)"></div>
+            <div onClick={(e) => { e.stopPropagation(); if (onClose) onClose(); }} className={`w-3 h-3 rounded-full ${onClose ? 'bg-red-500/80 hover:bg-red-500 hover:shadow-[0_0_8px_color-mix(in srgb,var(--color-red-500)_80%,transparent)] cursor-pointer' : 'bg-red-500/80 hover:bg-red-500 cursor-not-allowed'} transition-all`} title={onClose ? "Close" : "Close (Disabled)"}></div>
             <div onClick={(e) => { e.stopPropagation(); setIsMinimized(!isMinimized); setIsMaximized(false); }} className="w-3 h-3 rounded-full bg-yellow-500/80 hover:bg-yellow-500 transition-colors cursor-pointer" title={isMinimized ? "Restore" : "Minimize"}></div>
             <div onClick={(e) => { e.stopPropagation(); setIsMaximized(!isMaximized); setIsMinimized(false); }} className="w-3 h-3 rounded-full bg-green-500/80 hover:bg-green-500 hover:shadow-[0_0_8px_color-mix(in srgb, var(--color-green-500) 80%, transparent)] transition-all cursor-pointer" title={isMaximized ? "Restore" : "Maximize"}></div>
           </div>

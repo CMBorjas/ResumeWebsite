@@ -38,14 +38,14 @@ export const projects: Project[] = [
     techStack: ['Next.js', 'React', 'TypeScript', 'Tailwind', 'PDF.js']
   },
   {
-    title: 'social_sent_score',
+    title: 'CSCI_3415-Homework004',
     description: 'A robust sentiment analysis engine that parses the Stanford SocialSent dataset to evaluate user-uploaded texts. Originally engineered in Rust for memory-safe CLI processing, and subsequently ported to a serverless Next.js architecture with a dynamic, cyberpunk-themed UI.',
     repoUrl: 'https://github.com/CMBorjas/CSCI_3415-Homework004',
     liveUrl: '/projects/social-sent-score',
     techStack: ['Rust', 'TypeScript', 'Next.js', 'React', 'Tailwind', 'Data Parsing']
   },
   {
-    title: 'neuron_from_scratch_vz',
+    title: 'neuron-from-scratch-vz',
     description: 'A faithful, from-scratch implementation of a 2-2-1 neural network described by Victor Zhou. This project features a full Python testing and documentation suite alongside an interactive web port demonstrating real-time training and inference.',
     repoUrl: 'https://github.com/CMBorjas/neuron-from-scratch-vz',
     liveUrl: '/projects/neuron-from-scratch',
