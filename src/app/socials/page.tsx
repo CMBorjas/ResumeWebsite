@@ -7,11 +7,6 @@ const upcomingGoals = [
   { id: 'g2', title: 'Photo Showcase', status: 'PENDING', desc: 'Instagram/Facebook imported gallery via GitHub API.' },
   { id: 'g3', title: 'Personal Blog', status: 'PENDING', desc: 'Dedicated space for articles and tutorials.' },
   { id: 'g4', title: 'Photo Gallery 24hr Story', status: 'PENDING', desc: 'Ephemeral 24-hour photo updates.' },
-  { id: 'g5', title: 'Currency & Unit Converters', status: 'PLANNED', desc: 'Real-time conversion utility widgets.' },
-  { id: 'g6', title: 'Data Visualization', status: 'PLANNED', desc: 'Graphical representation of complex datasets.' },
-  { id: 'g7', title: 'Stock & Crypto Analysis', status: 'PLANNED', desc: 'Financial market tracking and analysis tools.' },
-  { id: 'g8', title: 'Real-time Leaderboard', status: 'PLANNED', desc: 'Live scoring system for interactive components.' },
-  { id: 'g9', title: 'Quiz & Flash Cards', status: 'PLANNED', desc: 'Educational tools for learning and memory retention.' },
 ];
 
 export default function SocialsPage() {

@@ -77,5 +77,30 @@ export const projects: Project[] = [
     description: 'A hands-on implementation of asynchronous programming in Rust using the powerful Tokio runtime. Demonstrates modern Rust patterns for building high-performance, concurrent network applications.',
     repoUrl: 'https://github.com/CMBorjas/Rust-Mini-redis-server',
     techStack: ['Rust', 'Tokio', 'Async/Await', 'TCP']
+  },
+  {
+    title: 'Currency & Unit Converters',
+    description: 'Real-time conversion utility widgets. (Planned for deployment)',
+    techStack: ['React', 'Next.js', 'Tailwind']
+  },
+  {
+    title: 'Data Visualization',
+    description: 'Graphical representation of complex datasets. (Planned for deployment)',
+    techStack: ['React', 'D3.js', 'Tailwind']
+  },
+  {
+    title: 'Stock & Crypto Analysis',
+    description: 'Financial market tracking and analysis tools. (Planned for deployment)',
+    techStack: ['React', 'Next.js', 'WebSockets']
+  },
+  {
+    title: 'Real-time Leaderboard',
+    description: 'Live scoring system for interactive components. (Planned for deployment)',
+    techStack: ['React', 'Node.js', 'Redis']
+  },
+  {
+    title: 'Quiz & Flash Cards',
+    description: 'Educational tools for learning and memory retention. (Planned for deployment)',
+    techStack: ['React', 'Next.js', 'PostgreSQL']
   }
 ]
