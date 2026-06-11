@@ -1,5 +1,6 @@
 import { Project } from '../lib/projects'
 import { useTheme } from './ThemeProvider'
+import Link from 'next/link'
 
 const techIcons: { [key: string]: string } = {
   Python: 'devicon-python-plain colored',
@@ -38,6 +39,7 @@ const techIcons: { [key: string]: string } = {
   Node: 'devicon-nodejs-plain colored',
   'Node.js': 'devicon-nodejs-plain colored',
   Numpy: 'devicon-numpy-original colored',
+  Flask: 'devicon-flask-original text-white',
 }
 
 const techColors: { [key: string]: string } = {
@@ -82,6 +84,8 @@ const techColors: { [key: string]: string } = {
   'Data Parsing':     '#10B981',
   Numpy:              '#4DABCF',
   'PDF.js':           '#FF0000',
+  Flask:              '#FFFFFF',
+  LangChain:          '#10B981',
 }
 
 export default function ProjectCard({ project }: { project: Project }) {
@@ -95,17 +99,17 @@ export default function ProjectCard({ project }: { project: Project }) {
   return (
     <article className="project-card min-w-0 bg-[#0d1117] border border-brand-cyan/50 shadow-[0_0_8px_color-mix(in srgb, var(--color-brand-cyan) 30%, transparent)] rounded-md p-3 flex flex-col h-full hover:border-brand-cyan/80 hover:shadow-[0_0_15px_color-mix(in srgb, var(--color-brand-cyan) 60%, transparent)] transition-all duration-300 min-h-[180px]">
       <div className="flex justify-between items-start mb-2 w-full min-w-0 gap-2">
-        <a
-          href={resolvedLiveUrl || project.repoUrl}
+        <Link
+          href={resolvedLiveUrl || project.repoUrl || '#'}
           target="_blank"
           rel="noreferrer"
           className="project-title font-semibold text-sm hover:underline truncate flex-1 min-w-0 max-w-full"
         >
           {project.title}
-        </a>
+        </Link>
         <div className="flex items-center gap-2 shrink-0">
           {resolvedLiveUrl && (
-            <a
+            <Link
               href={resolvedLiveUrl}
               target="_blank"
               rel="noreferrer"
@@ -119,7 +123,7 @@ export default function ProjectCard({ project }: { project: Project }) {
                 <svg className="w-3 h-3 shrink-0" fill="currentColor" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/></svg>
                 Live Demo
               </span>
-            </a>
+            </Link>
           )}
           <span className="text-[10px] border border-green-500/50 text-green-400 shadow-[0_0_8px_rgba(74,222,128,0.4)] px-2 py-0.5 rounded-full">
             Public

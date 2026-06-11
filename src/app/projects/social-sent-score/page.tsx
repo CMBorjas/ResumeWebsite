@@ -13,8 +13,9 @@ export default function SocialSentScorePage() {
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
+    const basePath = process.env.NODE_ENV === 'production' ? '/ResumeWebsite' : '';
     // Load the CSV data
-    fetch('/ResumeWebsite/data/socialsent.csv')
+    fetch(`${basePath}/data/socialsent.csv`)
       .then(res => res.text())
       .then(csvText => {
         const map = new Map<string, number>()

@@ -12,6 +12,8 @@ export const metadata = {
     title: 'Christian Mandujano Borjas — Portfolio',
     description: 'Portfolio and resume site',
 }
+const basePath = process.env.NODE_ENV === 'production' ? '/ResumeWebsite' : '';
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en">
@@ -27,7 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <ThemeProvider>
                     <InteractiveCanvas />
                     <ThemeSwitcher />
-                    <header className="header-bg text-white py-8 relative z-10">
+                    <header className="header-bg text-white py-8 relative z-10" style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('${basePath}/images/header/skyscrapers-6990425.jpg')` }}>
                     <div className="container mx-auto flex flex-col items-center justify-center gap-2">
                         <div className="text-center">
                             <h1 translate="no" className="text-3xl font-extrabold text-[#B2153C] drop-shadow-[0_0_12px_#C7F2E5] hover:text-[#DFCCC8] hover:drop-shadow-[0_0_15px_#C7F2E5] selection:bg-[#DFCCC8] selection:text-[#B2153C] transition-all duration-300 notranslate cursor-default">Christian Mandujano Borjas</h1>
