@@ -8,6 +8,7 @@ import { SiCplusplus, SiTypescript, SiNextdotjs, SiTailwindcss, SiMysql } from '
 import Tooltip from '../components/Tooltip';
 import RandomRepoShoutout from '../components/RandomRepoShoutout';
 import TrendingRepoShoutout from '../components/TrendingRepoShoutout';
+import WeatherWidget from '../components/WeatherWidget';
 
 const paragraphs = [
   "I am Christian Mandujano Borjas, an aspiring software engineer currently pursuing a degree in Computer Science at the University of Colorado Denver. With a strong foundation in programming languages like Python, Java, and C++, I have a passion for solving complex problems and building efficient systems.",
@@ -123,18 +124,9 @@ export default function Home() {
           </div>
         </BentoBox>
 
-        {/* Location/Status Box */}
-        <BentoBox className="order-4 md:order-2 md:col-span-1 md:row-span-1 !p-0 !bg-black/80" delay={0.2} title="~/Graduated">
-          <div className="p-6 flex flex-col items-center justify-center text-center h-full">
-            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-brand-cyan/20 to-brand-pink/20 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 border border-brand-cyan/30">
-              <svg className="w-8 h-8 text-brand-cyan drop-shadow-[0_0_5px_color-mix(in srgb, var(--color-brand-cyan) 80%, transparent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-            </div>
-            <h3 className="font-bold text-white tracking-wide">Denver, CO</h3>
-            <p className="text-slate-400 text-xs mt-1 uppercase tracking-wider font-semibold">CS @ CU Denver</p>
-          </div>
+        {/* Location/Weather Box */}
+        <BentoBox className="order-4 md:order-2 md:col-span-1 md:row-span-1 !p-0 !bg-black/80" delay={0.2} title="~/DENVER_TELEMETRY">
+          <WeatherWidget />
         </BentoBox>
 
         {/* Quick Contact Box */}
