@@ -240,20 +240,20 @@ The next phase of development focuses on polishing the portfolio to showcase arc
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement a QR code generator for the website, which will generate QR codes for a given URL or text.
       </details>
-- ~~[x] **Random github repo shoutout** - Random github repo shoutout is a section that displays a list of random github repositories.~~
+- ~~[x] **Random GitHub Repo Shoutout** - A dynamic section that highlights one of the author's personal public repositories.~~
    - <details>
       <summary><b>Detailed Explanation</b></summary>
-      We will need to implement a random github repo shoutout section for the website, which will display a list of random github repositories.
+      Developed a client component that interfaces with the GitHub REST API to fetch all public repositories for the profile. It intelligently filters out forks and the profile README, then randomly selects and elegantly displays one repository upon every page load, offering an interactive link to inspect the code.
       </details>
-- ~~[x] **Trending GitHub Repo Shoutout** - Trending GitHub Repo Shoutout is a section that displays a randomly selected trending repository from GitHub.~~
+- ~~[x] **Trending GitHub Repo Shoutout** - A carousel widget showcasing the top trending repositories on GitHub.~~
    - <details>
       <summary><b>Detailed Explanation</b></summary>
-      We will need to implement a trending github repo shoutout section for the website, which will display a list of trending github repositories updated in the last 7 days.
+      Implemented a client-side component that queries the GitHub Search API for the highest-starred repositories created within the last 7 days. It features an automated, smooth carousel that cycles through the top 10 results every 6 seconds, complete with live indicators and beautiful framer-motion transitions, fully adhering to the cyberpunk aesthetic.
       </details>
-- ~~[x] **Weather widget** - Weather widget is a widget that displays the current weather conditions for a specific location.~~
+- ~~[x] **Global Telemetry Weather Widget** - A dynamic widget that tracks live weather data for multiple global cities.~~
    - <details>
       <summary><b>Detailed Explanation</b></summary>
-      We will need to implement a weather widget for the website, which will display the current weather conditions for a specific location.
+      Implemented a robust weather widget utilizing the Open-Meteo API. The widget features a minimized view that intelligently carousels through saved cities with manual navigation arrows and smooth AnimatePresence transitions. When maximized, it expands into a full dashboard with an integrated geocoding search engine, allowing users to add and manage multiple cities worldwide with persistent state via localStorage.
       </details>
 </details>
 <details>
