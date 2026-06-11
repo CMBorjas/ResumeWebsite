@@ -85,60 +85,62 @@ export default function TrendingRepoShoutout() {
         Trending #{currentIndex + 1}
       </div>
 
-      <AnimatePresence mode="wait">
-        <motion.div 
-          key={repo.id}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          transition={{ duration: 0.4 }}
-          className="flex flex-col h-full relative z-10"
-        >
-          <div className="flex items-center mb-4 mt-2">
-            <div className="w-10 h-10 rounded-full flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 border border-yellow-400/40 overflow-hidden bg-black/50 shadow-[0_0_10px_color-mix(in_srgb,var(--color-yellow-400)_40%,transparent)] shrink-0">
-              <img src={repo.owner.avatar_url} alt={repo.owner.login} className="w-full h-full object-cover" />
-            </div>
-            <div className="flex flex-col truncate pr-20">
-              <h3 className="text-lg font-bold text-white truncate drop-shadow-[0_0_5px_color-mix(in_srgb,var(--color-yellow-400)_50%,transparent)]" title={repo.full_name}>
-                {repo.name}
-              </h3>
-              <span className="text-[10px] text-slate-400 uppercase tracking-widest truncate">{repo.owner.login}</span>
-            </div>
-          </div>
-          
-          <p className="text-slate-400 text-sm mb-6 flex-1 line-clamp-3">
-            {repo.description || "No description provided. Explore the code to discover its secrets."}
-          </p>
-          
-          <div className="flex items-center justify-between mt-auto pt-4 border-t border-yellow-400/20">
-            <div className="flex space-x-3 items-center">
-              {repo.language && (
-                <span className="flex items-center text-[10px] font-mono text-yellow-400/90 font-bold uppercase tracking-wider bg-yellow-400/10 px-2 py-0.5 rounded border border-yellow-400/20">
-                  {repo.language}
-                </span>
-              )}
-              <span className="flex items-center text-xs font-mono text-slate-300">
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1 text-yellow-400">
-                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                </svg>
-                {repo.stargazers_count.toLocaleString()}
-              </span>
+      <div className="flex-1 w-full relative z-10 min-h-[160px]">
+        <AnimatePresence mode="wait">
+          <motion.div 
+            key={repo.id}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.4 }}
+            className="flex flex-col h-full w-full"
+          >
+            <div className="flex items-center mb-4 mt-2">
+              <div className="w-10 h-10 rounded-full flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 border border-yellow-400/40 overflow-hidden bg-black/50 shadow-[0_0_10px_color-mix(in_srgb,var(--color-yellow-400)_40%,transparent)] shrink-0">
+                <img src={repo.owner.avatar_url} alt={repo.owner.login} className="w-full h-full object-cover" />
+              </div>
+              <div className="flex flex-col truncate pr-20">
+                <h3 className="text-lg font-bold text-white truncate drop-shadow-[0_0_5px_color-mix(in_srgb,var(--color-yellow-400)_50%,transparent)]" title={repo.full_name}>
+                  {repo.name}
+                </h3>
+                <span className="text-[10px] text-slate-400 uppercase tracking-widest truncate">{repo.owner.login}</span>
+              </div>
             </div>
             
-            <a 
-              href={repo.html_url} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-[10px] font-extrabold text-yellow-400 uppercase tracking-widest hover:text-white transition-colors flex items-center group-hover:underline"
-            >
-              View Repo
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-1 group-hover:translate-x-1 transition-transform">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
-            </a>
-          </div>
-        </motion.div>
-      </AnimatePresence>
+            <p className="text-slate-400 text-sm mb-6 flex-1 line-clamp-3 min-h-[60px]">
+              {repo.description || "No description provided. Explore the code to discover its secrets."}
+            </p>
+            
+            <div className="flex items-center justify-between mt-auto pt-4 border-t border-yellow-400/20">
+              <div className="flex space-x-3 items-center">
+                {repo.language && (
+                  <span className="flex items-center text-[10px] font-mono text-yellow-400/90 font-bold uppercase tracking-wider bg-yellow-400/10 px-2 py-0.5 rounded border border-yellow-400/20">
+                    {repo.language}
+                  </span>
+                )}
+                <span className="flex items-center text-xs font-mono text-slate-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1 text-yellow-400">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                  </svg>
+                  {repo.stargazers_count.toLocaleString()}
+                </span>
+              </div>
+              
+              <a 
+                href={repo.html_url} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-[10px] font-extrabold text-yellow-400 uppercase tracking-widest hover:text-white transition-colors flex items-center group-hover:underline"
+              >
+                View Repo
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-1 group-hover:translate-x-1 transition-transform">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
     </div>
   );
 }

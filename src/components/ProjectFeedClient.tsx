@@ -14,8 +14,9 @@ export default function ProjectFeedClient({ allProjects }: { allProjects: Projec
   const [isMaximized, setIsMaximized] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const [isTechStackMinimized, setIsTechStackMinimized] = useState(false)
-  const [isTechStackClosed, setIsTechStackClosed] = useState(false)
+  const [isTechStackClosed, setIsTechStackClosed] = useState(true)
   const [isTechStackClosing, setIsTechStackClosing] = useState(false)
+  const [cardSize, setCardSize] = useState<number>(250)
 
   const handleCloseTechStack = () => {
     setIsTechStackClosing(true)
@@ -126,6 +127,29 @@ export default function ProjectFeedClient({ allProjects }: { allProjects: Projec
                     Clear All
                   </button>
                 )}
+                <div className="flex items-center gap-2 border border-brand-cyan/30 rounded px-2 py-1 bg-[#0d1117] relative group" title="Adjust Card Size">
+                  <svg className="w-3.5 h-3.5 text-brand-cyan/70 group-hover:text-brand-cyan transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                  </svg>
+                  <input
+                    type="range"
+                    min="150"
+                    max="400"
+                    step="50"
+                    value={cardSize}
+                    onChange={(e) => setCardSize(Number(e.target.value))}
+                    className="w-20 sm:w-24 accent-brand-cyan h-1 bg-brand-cyan/20 rounded-lg appearance-none cursor-pointer"
+                    list="card-sizes"
+                  />
+                  <datalist id="card-sizes">
+                    <option value="150" label="S"></option>
+                    <option value="200"></option>
+                    <option value="250" label="M"></option>
+                    <option value="300"></option>
+                    <option value="350"></option>
+                    <option value="400" label="L"></option>
+                  </datalist>
+                </div>
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value as any)}
@@ -151,7 +175,7 @@ export default function ProjectFeedClient({ allProjects }: { allProjects: Projec
                   </button>
                 </div>
               ) : (
-                <div className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-4">
+                <div className="grid gap-4" style={{ gridTemplateColumns: `repeat(auto-fill, minmax(${cardSize}px, 1fr))` }}>
                   {sortedProjects.map((p) => (
                     <ProjectCard key={p.title + (p.repoUrl || '')} project={p} />
                   ))}

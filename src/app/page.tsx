@@ -219,8 +219,8 @@ export default function Home() {
           </div>
         </BentoBox>
 
-        {/* Random Repo Box */}
-        <BentoBox className="order-7 md:order-7 md:col-span-2 md:row-span-1 !p-0 !bg-black/80" delay={0.7} title="~/MY_RANDOM_REPO">
+        {/* Project Feed Box */}
+        <BentoBox className="order-7 md:order-7 md:col-span-2 md:row-span-1 !p-0 !bg-black/80" delay={0.7} title="~/PROJECT_FEED">
           <RandomRepoShoutout />
         </BentoBox>
 
