@@ -282,7 +282,19 @@ export default function NeuronFromScratchPage() {
                   <circle cx="50" cy="70" r="8" />
                   
                   {/* Output */}
-                  <circle cx="80" cy="50" r="10" className="fill-yellow-400/20 stroke-yellow-400" />
+                  <circle cx="80" cy="50" r="10" className="stroke-yellow-400 fill-transparent" />
+                  <circle 
+                    cx="80" 
+                    cy="50" 
+                    r="6" 
+                    className={`transition-colors duration-500 stroke-none ${
+                      prediction !== null 
+                        ? prediction > 0.5 
+                          ? 'fill-fuchsia-500/60' 
+                          : 'fill-cyan-400/60'
+                        : 'fill-yellow-400/40'
+                    }`} 
+                  />
                 </g>
 
                 {/* Labels/Icons */}
