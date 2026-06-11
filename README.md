@@ -388,24 +388,24 @@ The next phase of development focuses on polishing the portfolio to showcase arc
 ---
 ### Prioritized Goal Roadmap:
 ---
-* [x] 1. Tool Tip UI
-* [x] 2. Restricted Textarea
-* [x] 3. Accordion
-* [x] 4. Cookie Consent Banner
-* [x] 5. Contact Page Reform
-* [x] 6. Homescreen Three Dots Menu
-* [x] 7. Pricing Cards
-* [x] 8. Changelog Component
-* [ ] 9. Testimonial Cards
-* [ ] 10. Photo Showcase 
-* [x] 11. QR Code Generator 
-* [ ] 12. Random GitHub Repo Shoutout 
-* [ ] 13. Weather Widget 
-* [ ] 14. Pomodoro Timer 
-* [ ] 15. Personal Blog Page 
-* [ ] 16. Markdown Note Taking App 
-* [ ] 17. Photo Gallery 24hr Story Feature 
-* [ ] 18. URL Shortener 
+* [x] 1. Tool Tip UI (Blog page entry[After being deployed, the Tool Tip UI can be added])
+* [x] 2. Restricted Textarea (Blog page entry[After being deployed, the Restricted Textarea can be added])
+* [x] 3. Accordion (Blog page entry[After being deployed, the Accordion can be added])
+* [x] 4. Cookie Consent Banner (Blog page entry[After being deployed, the Cookie Consent Banner can be added])
+* [x] 5. Contact Page Reform (Blog page entry[After being deployed, the Contact Page Reform can be added])
+* [x] 6. Homescreen Three Dots Menu (Blog page entry[After being deployed, the Homescreen Three Dots Menu can be added])
+* [x] 7. Pricing Cards (Blog page entry[After being deployed, the Pricing Cards can be added])
+* [x] 8. Changelog Component (Blog page entry[After being deployed, the Changelog Component can be added])
+* [ ] 9. Testimonial Cards (home page)
+* [ ] 10. Photo Showcase (projects feed page - Github API - Imported from instagram/facebook)
+* [x] 11. QR Code Generator (projects page/Seperate repo/API)
+* [ ] 12. Random GitHub Repo Shoutout (Home page/Seperate repo)
+* [ ] 13. Weather Widget (home page/Seperate repo)
+* [ ] 14. Pomodoro Timer (Project feed/Seperate repo)
+* [ ] 15. Personal Blog Page (blog page/Seperate repo)
+* [ ] 16. Markdown Note Taking App (blog page/Seperate repo)
+* [ ] 17. Photo Gallery 24hr Story Feature (blog page/Seperate repo)
+* [ ] 18. URL Shortener (blog page/Seperate repo)
 ---
 
 # Thank you for your time and consideration! 
