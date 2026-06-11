@@ -223,6 +223,11 @@ The next phase of development focuses on polishing the portfolio to showcase arc
 <details>
 <summary><b>Current Goals</b></summary>
 
+- [] **Homescreen Three Dots Menu** - Add functionality to the three dots on the homescreen.
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      We need to implement interactive functionality for the three dots menu on the homescreen, linking it to the newly integrated centralized Settings tab or other relevant options.
+      </details>
 - []**Pricing cards for users to send money** - In this project, you are required to create a row of pricing cards using only HTML and CSS. 
    - <details>
       <summary><b>Detailed Explanation</b></summary>
@@ -384,7 +389,8 @@ The next phase of development focuses on polishing the portfolio to showcase arc
 * [x] 3. Accordion
 * [x] 4. Cookie Consent Banner
 * [x] 5. Contact Page Reform
-* [ ] 6. Changelog Component
+* [ ] 6. Homescreen Three Dots Menu
+* [ ] 7. Changelog Component
 * [ ] 7. Testimonial Cards
 * [ ] 8. Pricing Cards
 * [ ] 9. Photo Showcase 
