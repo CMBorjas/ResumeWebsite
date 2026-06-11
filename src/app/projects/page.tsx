@@ -55,12 +55,12 @@ export default async function ProjectsPage() {
   const allProjectsMap = new Map<string, typeof githubProjects[0] | Project>()
 
   githubProjects.forEach(p => {
-    const key = p.repoUrl ? p.repoUrl.toLowerCase() : p.title.toLowerCase()
+    const key = p.title.toLowerCase()
     allProjectsMap.set(key, p)
   })
 
   manualProjects.forEach(mp => {
-    const key = mp.repoUrl ? mp.repoUrl.toLowerCase() : mp.title.toLowerCase()
+    const key = mp.title.toLowerCase()
     if (allProjectsMap.has(key)) {
       const existing = allProjectsMap.get(key)!
       allProjectsMap.set(key, {
