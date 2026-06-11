@@ -223,12 +223,12 @@ The next phase of development focuses on polishing the portfolio to showcase arc
 <details>
 <summary><b>Current Goals</b></summary>
 
-- [] **Homescreen Three Dots Menu** - Add functionality to the three dots on the homescreen.
+- ~~[x] **Homescreen Three Dots Menu** - Add functionality to the three dots on the homescreen.~~
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We need to implement interactive functionality for the three dots menu on the homescreen, linking it to the newly integrated centralized Settings tab or other relevant options.
       </details>
-- []**Pricing cards for users to send money** - In this project, you are required to create a row of pricing cards using only HTML and CSS. 
+- ~~[x]**Pricing cards for users to send money** - In this project, you are required to create a row of pricing cards using only HTML and CSS.~~
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       Pricing cards are a common UI pattern used on marketing and SaaS websites to compare plans side by side and guide users to the right tier. The pricing page should display three distinct pricing plans: Thumbs up, dollar, and 5 bucks. Each plan should have its own card with a clear title, price, list of features, and a call-to-action (CTA) button. The three cards should share a base style and the middle one should stand out as the recommended plan, slightly larger and visually emphasized. Each card has a plan name, a price, a short tagline, a list of included features, and a button.
@@ -389,19 +389,19 @@ The next phase of development focuses on polishing the portfolio to showcase arc
 * [x] 3. Accordion
 * [x] 4. Cookie Consent Banner
 * [x] 5. Contact Page Reform
-* [ ] 6. Homescreen Three Dots Menu
-* [ ] 7. Changelog Component
-* [ ] 7. Testimonial Cards
-* [ ] 8. Pricing Cards
-* [ ] 9. Photo Showcase 
-* [ ] 10. QR Code Generator 
-* [ ] 11. Random GitHub Repo Shoutout 
-* [ ] 12. Weather Widget 
-* [ ] 13. Pomodoro Timer 
-* [ ] 14. Personal Blog Page 
-* [ ] 15. Markdown Note Taking App 
-* [ ] 16. Photo Gallery 24hr Story Feature 
-* [ ] 17. URL Shortener 
+* [x] 6. Homescreen Three Dots Menu
+* [x] 7. Pricing Cards
+* [ ] 8. Changelog Component
+* [ ] 9. Testimonial Cards
+* [ ] 10. Photo Showcase 
+* [ ] 11. QR Code Generator 
+* [ ] 12. Random GitHub Repo Shoutout 
+* [ ] 13. Weather Widget 
+* [ ] 14. Pomodoro Timer 
+* [ ] 15. Personal Blog Page 
+* [ ] 16. Markdown Note Taking App 
+* [ ] 17. Photo Gallery 24hr Story Feature 
+* [ ] 18. URL Shortener 
 ---
 
 # Thank you for your time and consideration! 

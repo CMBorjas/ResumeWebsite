@@ -190,6 +190,16 @@ export default function HexagonMenu() {
         },
         {
             index: 6,
+            path: '/pricing',
+            label: 'PRICING',
+            innerSvg: (
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`absolute inset-0 m-auto text-brand-cyan group-hover:text-white transition-all duration-300 drop-shadow-[0_0_5px_color-mix(in srgb, var(--color-brand-cyan) 80%, transparent)] z-20 pointer-events-none ${iconOffsetClass}`}>
+                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                </svg>
+            )
+        },
+        {
+            index: 7,
             path: '/settings',
             label: 'SETTINGS',
             innerSvg: (
@@ -200,7 +210,7 @@ export default function HexagonMenu() {
             )
         },
         {
-            index: 7,
+            index: 8,
             path: '',
             label: '',
             onClick: toggleNavPosition,
@@ -288,7 +298,7 @@ export default function HexagonMenu() {
 
                 {/* Sub-menu Hexagons */}
                 {menuItems.map((item) => {
-                    const isLink = item.index !== 7;
+                    const isLink = item.index !== 8;
                     const ContentWrapper = isLink ? Link : 'div';
                     const wrapperProps = isLink ? { href: item.path } : { onClick: item.onClick };
                     const active = isActive(item.path);
@@ -331,7 +341,7 @@ export default function HexagonMenu() {
                                             <polygon points={hexPoints}></polygon>
                                         </svg>
                                         {item.innerSvg}
-                                        {item.index !== 7 ? (
+                                        {item.index !== 8 ? (
                                             <span className={getTextClasses(item.path, item.index)}>
                                                 <span className={getInnerMarqueeClasses(item.path, item.index)}>
                                                     <span className={((isLocked || active) && hoveredHex !== item.index) ? "pr-8" : ""}>{item.label}</span>
