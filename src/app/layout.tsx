@@ -5,7 +5,6 @@ import HexagonMenu from '../components/HexagonMenu'
 import InteractiveCanvas from '../components/InteractiveCanvas'
 import PageTransition from '../components/PageTransition'
 import { ThemeProvider } from '../components/ThemeProvider'
-import ThemeSwitcher from '../components/ThemeSwitcher'
 import CookieConsent from '../components/CookieConsent'
 
 export const metadata = {
@@ -28,7 +27,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <body className="body-bg bg-slate-900 text-slate-100 antialiased min-h-screen flex flex-col relative">
                 <ThemeProvider>
                     <InteractiveCanvas />
-                    <ThemeSwitcher />
                     <header className="header-bg text-white py-8 relative z-10" style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('${basePath}/images/header/skyscrapers-6990425.jpg')` }}>
                     <div className="container mx-auto flex flex-col items-center justify-center gap-2">
                         <div className="text-center">
@@ -95,6 +93,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                                             <polyline points="22,6 12,13 2,6"></polyline>
                                         </svg>
                                         <span className="absolute text-[10px] tracking-widest font-bold uppercase text-white opacity-0 transform translate-y-4 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap drop-shadow-[0_0_8px_rgba(255,255,255,0.6)]">Contact</span>
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/settings" className="relative flex items-center justify-center w-20 h-8 group">
+                                        <svg className="absolute w-6 h-6 text-brand-cyan transition-all duration-300 transform group-hover:-translate-y-4 group-hover:opacity-0 drop-shadow-[0_0_5px_color-mix(in srgb, var(--color-brand-cyan) 50%, transparent)]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                            <circle cx="12" cy="12" r="3"></circle>
+                                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                                        </svg>
+                                        <span className="absolute text-[10px] tracking-widest font-bold uppercase text-white opacity-0 transform translate-y-4 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap drop-shadow-[0_0_8px_rgba(255,255,255,0.6)]">Settings</span>
                                     </Link>
                                 </li>
                             </ul>

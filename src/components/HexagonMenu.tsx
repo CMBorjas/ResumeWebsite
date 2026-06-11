@@ -70,7 +70,7 @@ export default function HexagonMenu() {
         
         if (isLocked) {
             // When locked, they form a perfect vertical column at x=0.
-            const slideAmount = (isHoveredItem && index > 1) ? 36 : 0;
+            const slideAmount = (isHoveredItem && index > 1) ? 80 : 0;
             return navPosition === 'left' ? slideAmount : -slideAmount;
         } else if (isOpen && index > 1) {
             // Yellow arrow mode (Unlocked, but Menu is Hovered)
@@ -83,7 +83,7 @@ export default function HexagonMenu() {
             // Non-hovered items push themselves to the edge of the screen so their horizontal text is hidden outside the viewport.
             // Hovered items slide into view, pulling their text mechanically from behind the screen edge.
             const hideOffScreenX = 36;
-            const slideIntoViewX = 36;
+            const slideIntoViewX = 80;
             
             if (isHoveredItem) {
                 return navPosition === 'left' ? slideIntoViewX : -slideIntoViewX;
@@ -115,7 +115,7 @@ export default function HexagonMenu() {
             ? '[mask-image:linear-gradient(to_right,transparent_0%,black_15%,black_85%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_15%,black_85%,transparent_100%)]'
             : '';
             
-        const justifyClass = 'justify-start';
+        const justifyClass = navPosition === 'left' ? 'justify-end' : 'justify-start';
             
         const rotationClass = `w-[48px] h-[12px] flex items-center ${justifyClass} ${isRotated ? 'rotate-90' : 'rotate-0'} ${maskClass}`;
         
@@ -190,6 +190,17 @@ export default function HexagonMenu() {
         },
         {
             index: 6,
+            path: '/settings',
+            label: 'SETTINGS',
+            innerSvg: (
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`absolute inset-0 m-auto text-brand-cyan group-hover:text-white transition-all duration-300 drop-shadow-[0_0_5px_color-mix(in srgb, var(--color-brand-cyan) 80%, transparent)] z-20 pointer-events-none ${iconOffsetClass}`}>
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                </svg>
+            )
+        },
+        {
+            index: 7,
             path: '',
             label: '',
             onClick: toggleNavPosition,
@@ -225,19 +236,22 @@ export default function HexagonMenu() {
                 }
             `}</style>
 
-            {/* Vertical ribbon effect */}
-            <div className={`fixed top-0 bottom-0 w-24 bg-gradient-to-b from-[#0a0a0a]/80 via-[#0a0a0a]/40 to-transparent pointer-events-none z-40 transition-all duration-700 ${navPosition === 'left' ? 'left-0 border-r border-brand-cyan/10' : 'right-0 border-l border-brand-cyan/10'} ${isOpen ? 'translate-x-0 opacity-100' : (navPosition === 'left' ? '-translate-x-full opacity-0' : 'translate-x-full opacity-0')}`}></div>
-
-            <div
-                className={`fixed top-[15vh] z-50 flex flex-col items-center transition-all duration-700 ${navPosition === 'left' ? 'left-[60px]' : 'right-[60px]'}`}
+            {/* Unified Menu Container (acts as the expanded hitbox) */}
+            <div 
+                className={`fixed top-0 bottom-0 w-[200px] z-40 transition-all duration-700 ${navPosition === 'left' ? 'left-0' : 'right-0'}`}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
+                style={{ pointerEvents: isOpen ? 'auto' : 'none' }}
             >
-                {/* Hexagon 1 (Main Menu Toggle) */}
-                <div
-                    className="absolute z-40 origin-center transition-all duration-300"
-                    style={{ transform: `scale(1.5)`, top: 0 }}
-                >
+                {/* Vertical ribbon effect */}
+                <div className={`absolute inset-y-0 w-[120px] bg-gradient-to-b from-[#0a0a0a]/80 via-[#0a0a0a]/40 to-transparent transition-all duration-700 ${navPosition === 'left' ? 'left-0 border-r border-brand-cyan/10' : 'right-0 border-l border-brand-cyan/10'} ${isOpen ? 'translate-x-0 opacity-100' : (navPosition === 'left' ? '-translate-x-full opacity-0' : 'translate-x-full opacity-0')}`}></div>
+
+                <div className={`absolute top-[15vh] w-[120px] z-50 flex flex-col items-center ${navPosition === 'left' ? 'left-0' : 'right-0'}`}>
+                    {/* Hexagon 1 (Main Menu Toggle) */}
+                    <div
+                        className="absolute z-40 origin-center transition-all duration-300 pointer-events-auto"
+                        style={{ transform: `scale(1.5)`, top: 0 }}
+                    >
                     <div
                         className={`block relative group hover-pop-once cursor-pointer`}
                         onClick={() => setIsLocked(!isLocked)}
@@ -274,7 +288,7 @@ export default function HexagonMenu() {
 
                 {/* Sub-menu Hexagons */}
                 {menuItems.map((item) => {
-                    const isLink = item.index !== 6;
+                    const isLink = item.index !== 7;
                     const ContentWrapper = isLink ? Link : 'div';
                     const wrapperProps = isLink ? { href: item.path } : { onClick: item.onClick };
                     const active = isActive(item.path);
@@ -317,7 +331,7 @@ export default function HexagonMenu() {
                                             <polygon points={hexPoints}></polygon>
                                         </svg>
                                         {item.innerSvg}
-                                        {item.index !== 6 ? (
+                                        {item.index !== 7 ? (
                                             <span className={getTextClasses(item.path, item.index)}>
                                                 <span className={getInnerMarqueeClasses(item.path, item.index)}>
                                                     <span className={((isLocked || active) && hoveredHex !== item.index) ? "pr-8" : ""}>{item.label}</span>
@@ -337,6 +351,7 @@ export default function HexagonMenu() {
                         </div>
                     );
                 })}
+                </div>
             </div>
         </>
     )
