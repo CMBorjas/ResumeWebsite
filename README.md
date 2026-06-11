@@ -23,6 +23,8 @@ This website serves as a digital resume and portfolio for Christian Mandujano Bo
 - **Work Experience**: Professional experience and roles held.
 - **Projects**: Live GitHub repository feed with tech stack detection.
 - **Resume**: Embedded PDF viewer with a downloadable resume.
+- **Settings**: Configuration for theme preferences and navigation behavior.
+- **Socials**: Future-facing registry of upcoming features and integrations.
 - **Contact**: Contact details and links.
 
 The site is statically exported and hosted on **GitHub Pages**.
@@ -61,12 +63,20 @@ ResumeWebsite/
 │   │   │   └── page.tsx                           # Contact page
 │   │   ├── education/
 │   │   │   └── page.tsx                           # Education page
+│   │   ├── pricing/
+│   │   │   └── page.tsx                           # Contribute page
 │   │   ├── projects/
 │   │   │   └── page.tsx                           # Projects / GitHub feed page
+│   │   ├── qr-code/
+│   │   │   └── page.tsx                           # QR Code utility
 │   │   ├── resume/
 │   │   │   └── page.tsx                           # Resume viewer page
+│   │   ├── settings/
+│   │   │   └── page.tsx                           # Settings and config page
 │   │   ├── skills/
 │   │   │   └── page.tsx                           # Skills page
+│   │   ├── socials/
+│   │   │   └── page.tsx                           # Socials roadmap page
 │   │   └── work-experience/
 │   │       └── page.tsx                           # Work experience page
 │   ├── components/                                # Reusable React components
@@ -270,6 +280,11 @@ The next phase of development focuses on polishing the portfolio to showcase arc
       <summary><b>Detailed Explanation</b></summary>
       Developed an interactive URL minimization tool that hooks into the free `is.gd` REST API to compress long URLs. Features include robust error handling, history tracking via `localStorage`, 1-click clipboard copying, and a visually engaging compression sequence.
       </details>
+- ~~[x] **Navigation Condensation & Settings Hub** - Centralized auxiliary tools into a dedicated settings page and socials registry.~~
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      Optimized the global Hexagon Navigation Menu by relocating secondary modules (QR Code, Changelog) to a new centralized Settings page and future goals to a dedicated Socials roadmap page. This significantly reduced visual clutter and improved menu legibility through staggered animation delays.
+      </details>
 </details>
 <details>
 <summary><b>Current Goals</b></summary>
@@ -385,11 +400,7 @@ The next phase of development focuses on polishing the portfolio to showcase arc
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement a quiz app for the website, which will allow users to take quizzes.
       </details>
-- [] **Markdown Editor** - 
-   - <details>
-      <summary><b>Detailed Explanation</b></summary>
-      We will need to implement a markdown editor for the website, which will allow users to edit markdown.
-      </details>
+
 
 </details>
 
