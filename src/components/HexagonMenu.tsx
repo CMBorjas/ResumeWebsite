@@ -246,7 +246,7 @@ export default function HexagonMenu() {
                 {/* Vertical ribbon effect */}
                 <div className={`absolute inset-y-0 w-[120px] bg-gradient-to-b from-[#0a0a0a]/80 via-[#0a0a0a]/40 to-transparent transition-all duration-700 ${navPosition === 'left' ? 'left-0 border-r border-brand-cyan/10' : 'right-0 border-l border-brand-cyan/10'} ${isOpen ? 'translate-x-0 opacity-100' : (navPosition === 'left' ? '-translate-x-full opacity-0' : 'translate-x-full opacity-0')}`}></div>
 
-                <div className={`absolute top-[15vh] w-[120px] z-50 flex flex-col items-center ${navPosition === 'left' ? 'left-0' : 'right-0'}`}>
+                <div className={`absolute top-6 w-[120px] z-50 flex flex-col items-center ${navPosition === 'left' ? 'left-0' : 'right-0'}`}>
                     {/* Hexagon 1 (Main Menu Toggle) */}
                     <div
                         className="absolute z-40 origin-center transition-all duration-300 pointer-events-auto"
