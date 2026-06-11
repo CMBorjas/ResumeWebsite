@@ -27,17 +27,21 @@ export default function WeatherWidget({ isMaximized = false }: { isMaximized?: b
   const [searchQuery, setSearchQuery] = useState("");
   const [isSearching, setIsSearching] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [lastInteraction, setLastInteraction] = useState(Date.now());
 
   // Cycle through cities when minimized
   useEffect(() => {
     if (isMaximized || cities.length <= 1) return;
     
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % cities.length);
-    }, 6000); // cycle every 6 seconds
+      if (Date.now() - lastInteraction >= 6000) {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % cities.length);
+        setLastInteraction(Date.now());
+      }
+    }, 1000); // Check every second
     
     return () => clearInterval(interval);
-  }, [cities.length, isMaximized]);
+  }, [cities.length, isMaximized, lastInteraction]);
 
   // Ensure valid index
   useEffect(() => {
@@ -45,6 +49,18 @@ export default function WeatherWidget({ isMaximized = false }: { isMaximized?: b
       setCurrentIndex(0);
     }
   }, [cities.length, currentIndex]);
+
+  const handlePrevCity = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentIndex((prev) => (prev - 1 + cities.length) % cities.length);
+    setLastInteraction(Date.now() + 4000); // Give it an extra 4 seconds pause
+  };
+
+  const handleNextCity = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentIndex((prev) => (prev + 1) % cities.length);
+    setLastInteraction(Date.now() + 4000); // Give it an extra 4 seconds pause
+  };
 
   // Load cities from localStorage on mount
   useEffect(() => {
@@ -179,11 +195,29 @@ export default function WeatherWidget({ isMaximized = false }: { isMaximized?: b
         <div className="absolute inset-0 bg-brand-cyan/5 group-hover:bg-brand-cyan/10 transition-colors duration-500 pointer-events-none"></div>
         
         {cities.length > 1 && (
-          <div className="absolute top-2 right-2 flex gap-1 z-20">
-            {cities.map((_, i) => (
-              <div key={i} className={`h-1 rounded-full transition-all duration-300 ${i === currentIndex ? 'w-3 bg-brand-cyan shadow-[0_0_5px_currentColor]' : 'w-1 bg-brand-cyan/30'}`} />
-            ))}
-          </div>
+          <>
+            <div className="absolute top-2 right-2 flex gap-1 z-20">
+              {cities.map((_, i) => (
+                <div key={i} className={`h-1 rounded-full transition-all duration-300 ${i === currentIndex ? 'w-3 bg-brand-cyan shadow-[0_0_5px_currentColor]' : 'w-1 bg-brand-cyan/30'}`} />
+              ))}
+            </div>
+            
+            {/* Navigation Arrows */}
+            <button 
+              onClick={handlePrevCity}
+              className="absolute left-2 top-1/2 -translate-y-1/2 z-20 p-2 text-brand-cyan/50 hover:text-brand-cyan opacity-0 group-hover:opacity-100 transition-all hover:scale-110"
+              title="Previous Node"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <button 
+              onClick={handleNextCity}
+              className="absolute right-2 top-1/2 -translate-y-1/2 z-20 p-2 text-brand-cyan/50 hover:text-brand-cyan opacity-0 group-hover:opacity-100 transition-all hover:scale-110"
+              title="Next Node"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+          </>
         )}
 
         <AnimatePresence mode="wait">
