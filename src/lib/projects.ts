@@ -50,5 +50,12 @@ export const projects: Project[] = [
     repoUrl: 'https://github.com/CMBorjas/neuron-from-scratch-vz',
     liveUrl: '/projects/neuron-from-scratch',
     techStack: ['Python', 'Numpy', 'TypeScript', 'React', 'Next.js', 'Tailwind']
+  },
+  {
+    title: 'NeuroFocus Pomodoro',
+    description: 'A cyberpunk-themed pomodoro timer featuring distinct work/rest states, interactive glowing progress rings, and a custom CSS animated UI built entirely in Next.js/Tailwind.',
+    repoUrl: 'https://github.com/CMBorjas/ResumeWebsite',
+    liveUrl: '/projects/pomodoro',
+    techStack: ['React', 'Next.js', 'Tailwind', 'Framer Motion']
   }
 ]
