@@ -198,33 +198,49 @@ export default function ProjectCard({ project }: { project: Project }) {
 
               if (tech.toLowerCase() === 'langchain') {
                 return (
-                  <div key={tech} className="flex items-center gap-1 transition-opacity hover:opacity-80" title={tech}>
-                    <SiLangchain style={{ color }} className="w-3.5 h-3.5" />
-                    <span style={{ color }}>{tech}</span>
+                  <div key={tech} className="group flex items-center bg-slate-800/40 border border-slate-700/50 rounded-full p-1 transition-all duration-300 hover:bg-slate-700/50 hover:border-slate-600 cursor-default">
+                    <div className="flex items-center justify-center w-4 h-4 shrink-0">
+                      <SiLangchain style={{ color }} className="w-3.5 h-3.5" />
+                    </div>
+                    <span className="max-w-0 overflow-hidden group-hover:max-w-[100px] group-hover:ml-1 transition-all duration-300 ease-in-out whitespace-nowrap opacity-0 group-hover:opacity-100 text-[10px] font-bold tracking-wider pr-1" style={{ color }}>
+                      {tech}
+                    </span>
                   </div>
                 )
               }
 
               if (iconClass) {
                 return (
-                  <div key={tech} className="flex items-center gap-1 transition-opacity hover:opacity-80" title={tech}>
-                    <i className={`${iconClass} text-[13px]`} aria-hidden="true" />
-                    <span style={{ color }}>{tech}</span>
+                  <div key={tech} className="group flex items-center bg-slate-800/40 border border-slate-700/50 rounded-full p-1 transition-all duration-300 hover:bg-slate-700/50 hover:border-slate-600 cursor-default">
+                    <div className="flex items-center justify-center w-4 h-4 shrink-0">
+                      <i className={`${iconClass} text-[13px]`} aria-hidden="true" />
+                    </div>
+                    <span className="max-w-0 overflow-hidden group-hover:max-w-[100px] group-hover:ml-1 transition-all duration-300 ease-in-out whitespace-nowrap opacity-0 group-hover:opacity-100 text-[10px] font-bold tracking-wider pr-1" style={{ color }}>
+                      {tech}
+                    </span>
                   </div>
                 )
               }
               // Fallback dot with matching color
               return (
-                <div key={tech} className="flex items-center gap-1.5 transition-opacity hover:opacity-80">
-                  <span className="w-2 h-2 rounded-full" style={{ backgroundColor: color }}></span>
-                  <span style={{ color }}>{tech}</span>
+                <div key={tech} className="group flex items-center bg-slate-800/40 border border-slate-700/50 rounded-full p-1 transition-all duration-300 hover:bg-slate-700/50 hover:border-slate-600 cursor-default">
+                  <div className="flex items-center justify-center w-4 h-4 shrink-0">
+                    <span className="w-2 h-2 rounded-full" style={{ backgroundColor: color }}></span>
+                  </div>
+                  <span className="max-w-0 overflow-hidden group-hover:max-w-[100px] group-hover:ml-1 transition-all duration-300 ease-in-out whitespace-nowrap opacity-0 group-hover:opacity-100 text-[10px] font-bold tracking-wider pr-1" style={{ color }}>
+                    {tech}
+                  </span>
                 </div>
               )
             })
           ) : (
-            <div className="flex items-center gap-1.5 text-slate-400">
-              <span className="w-2 h-2 rounded-full bg-slate-500"></span>
-              <span>other</span>
+            <div className="group flex items-center bg-slate-800/40 border border-slate-700/50 rounded-full p-1 transition-all duration-300 hover:bg-slate-700/50 hover:border-slate-600 cursor-default">
+              <div className="flex items-center justify-center w-4 h-4 shrink-0">
+                <span className="w-2 h-2 rounded-full bg-slate-500"></span>
+              </div>
+              <span className="max-w-0 overflow-hidden group-hover:max-w-[100px] group-hover:ml-1 transition-all duration-300 ease-in-out whitespace-nowrap opacity-0 group-hover:opacity-100 text-[10px] font-bold tracking-wider pr-1 text-slate-400">
+                other
+              </span>
             </div>
           )}
         </div>
