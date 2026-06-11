@@ -26,6 +26,25 @@ export default function WeatherWidget({ isMaximized = false }: { isMaximized?: b
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [isSearching, setIsSearching] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Cycle through cities when minimized
+  useEffect(() => {
+    if (isMaximized || cities.length <= 1) return;
+    
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % cities.length);
+    }, 6000); // cycle every 6 seconds
+    
+    return () => clearInterval(interval);
+  }, [cities.length, isMaximized]);
+
+  // Ensure valid index
+  useEffect(() => {
+    if (currentIndex >= cities.length) {
+      setCurrentIndex(0);
+    }
+  }, [cities.length, currentIndex]);
 
   // Load cities from localStorage on mount
   useEffect(() => {
@@ -146,9 +165,9 @@ export default function WeatherWidget({ isMaximized = false }: { isMaximized?: b
     );
   }
 
-  // MINIMIZED VIEW (Just shows the first city, usually Denver)
+  // MINIMIZED VIEW
   if (!isMaximized) {
-    const primaryCity = cities[0];
+    const primaryCity = cities[currentIndex] || cities[0];
     const weather = weatherMap[primaryCity.id];
     
     if (!weather) return null;
@@ -159,33 +178,45 @@ export default function WeatherWidget({ isMaximized = false }: { isMaximized?: b
       <div className="p-6 flex flex-col items-center justify-center text-center h-full relative overflow-hidden group">
         <div className="absolute inset-0 bg-brand-cyan/5 group-hover:bg-brand-cyan/10 transition-colors duration-500 pointer-events-none"></div>
         
-        <motion.div 
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ type: "spring", stiffness: 200, damping: 20 }}
-          className="flex flex-col items-center relative z-10 w-full"
-        >
-          <div className="w-16 h-16 rounded-full bg-black/50 border border-brand-cyan/30 flex items-center justify-center mb-3 group-hover:scale-110 group-hover:-translate-y-1 transition-transform duration-500 shadow-[0_0_15px_color-mix(in_srgb,var(--color-brand-cyan)_20%,transparent)]">
-            <span className="text-3xl drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">{icon}</span>
+        {cities.length > 1 && (
+          <div className="absolute top-2 right-2 flex gap-1 z-20">
+            {cities.map((_, i) => (
+              <div key={i} className={`h-1 rounded-full transition-all duration-300 ${i === currentIndex ? 'w-3 bg-brand-cyan shadow-[0_0_5px_currentColor]' : 'w-1 bg-brand-cyan/30'}`} />
+            ))}
           </div>
-          
-          <h3 className="font-extrabold text-white tracking-widest uppercase text-xs mb-1 group-hover:text-brand-cyan transition-colors truncate max-w-full px-2">{primaryCity.name}</h3>
-          <p className={`font-bold text-3xl tracking-tighter ${color} drop-shadow-[0_0_10px_currentColor] mb-2 font-mono`}>
-            {Math.round(weather.temperature)}°
-          </p>
-          
-          <div className="flex flex-col items-center gap-1.5 w-full">
-            <span className="text-[10px] font-mono uppercase tracking-widest text-slate-300 bg-black/40 px-2 py-0.5 rounded border border-brand-cyan/20 truncate max-w-full">
-              {text}
-            </span>
-            <span className="text-[10px] font-mono text-brand-cyan/60 flex items-center mt-0.5 font-bold">
-              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1">
-                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-              </svg>
-              Wind: {weather.windspeed} mph
-            </span>
-          </div>
-        </motion.div>
+        )}
+
+        <AnimatePresence mode="wait">
+          <motion.div 
+            key={primaryCity.id}
+            initial={{ scale: 0.9, opacity: 0, y: 10 }}
+            animate={{ scale: 1, opacity: 1, y: 0 }}
+            exit={{ scale: 0.9, opacity: 0, y: -10 }}
+            transition={{ type: "spring", stiffness: 200, damping: 20 }}
+            className="flex flex-col items-center relative z-10 w-full h-full justify-center"
+          >
+            <div className="w-16 h-16 rounded-full bg-black/50 border border-brand-cyan/30 flex items-center justify-center mb-3 group-hover:scale-110 group-hover:-translate-y-1 transition-transform duration-500 shadow-[0_0_15px_color-mix(in_srgb,var(--color-brand-cyan)_20%,transparent)] shrink-0">
+              <span className="text-3xl drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">{icon}</span>
+            </div>
+            
+            <h3 className="font-extrabold text-white tracking-widest uppercase text-xs mb-1 group-hover:text-brand-cyan transition-colors truncate max-w-full px-2">{primaryCity.name}</h3>
+            <p className={`font-bold text-3xl tracking-tighter ${color} drop-shadow-[0_0_10px_currentColor] mb-2 font-mono`}>
+              {Math.round(weather.temperature)}°
+            </p>
+            
+            <div className="flex flex-col items-center gap-1.5 w-full">
+              <span className="text-[10px] font-mono uppercase tracking-widest text-slate-300 bg-black/40 px-2 py-0.5 rounded border border-brand-cyan/20 truncate max-w-full">
+                {text}
+              </span>
+              <span className="text-[10px] font-mono text-brand-cyan/60 flex items-center mt-0.5 font-bold">
+                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1">
+                  <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                </svg>
+                Wind: {weather.windspeed} mph
+              </span>
+            </div>
+          </motion.div>
+        </AnimatePresence>
       </div>
     );
   }
