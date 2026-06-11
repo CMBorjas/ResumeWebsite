@@ -57,5 +57,19 @@ export const projects: Project[] = [
     repoUrl: 'https://github.com/CMBorjas/ResumeWebsite',
     liveUrl: '/projects/pomodoro',
     techStack: ['React', 'Next.js', 'Tailwind', 'Framer Motion']
+  },
+  {
+    title: 'Markdown.sys',
+    description: 'A cyberpunk-styled, browser-based Markdown editor with live preview compilation, syntax highlighting, and persistent local storage.',
+    repoUrl: 'https://github.com/CMBorjas/ResumeWebsite',
+    liveUrl: '/projects/markdown-notes',
+    techStack: ['React', 'Next.js', 'Tailwind', 'react-markdown', 'remark-gfm']
+  },
+  {
+    title: 'LinkCompressor',
+    description: 'A URL shortening utility utilizing the is.gd API to compress long web addresses into bite-sized links. Features a history log and quick-copy functionality.',
+    repoUrl: 'https://github.com/CMBorjas/ResumeWebsite',
+    liveUrl: '/projects/url-shortener',
+    techStack: ['React', 'Next.js', 'Tailwind', 'Framer Motion', 'REST API']
   }
 ]

@@ -260,6 +260,16 @@ The next phase of development focuses on polishing the portfolio to showcase arc
       <summary><b>Detailed Explanation</b></summary>
       Built a fully interactive Pomodoro timer in Next.js and Tailwind CSS featuring three distinct tracking states (Deep Work, Short Rest, Long Recovery). It includes glowing, animated SVG progress rings, customizable hover states, and seamless integration into the main project feed.
       </details>
+- ~~[x] **Markdown.sys Editor** - A robust in-browser Markdown editor.~~
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      Engineered a cyberpunk-themed split-pane Markdown editor utilizing React-Markdown and remark-gfm. It features live compilation of Markdown into formatted HTML elements (with custom Tailwind typography), real-time syntax highlighting for code blocks, and persistent saving of drafts to `localStorage`.
+      </details>
+- ~~[x] **LinkCompressor URL Shortener** - A micro-utility for shortening web addresses.~~
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      Developed an interactive URL minimization tool that hooks into the free `is.gd` REST API to compress long URLs. Features include robust error handling, history tracking via `localStorage`, 1-click clipboard copying, and a visually engaging compression sequence.
+      </details>
 </details>
 <details>
 <summary><b>Current Goals</b></summary>
@@ -289,17 +299,7 @@ The next phase of development focuses on polishing the portfolio to showcase arc
       We will need to implement a photo gallery 24hr story feature for the website, which will display a list of photos.
       </details>
 
-- [] **URL Shortener** - A URL shortener is a tool that shortens long URLs to shorter, more manageable ones.
-   - <details>
-      <summary><b>Detailed Explanation</b></summary>
-      We will need to implement a URL shortener for the website, which will shorten long URLs to shorter, more manageable ones.
-      </details>
 
-- [] **Markdown Note taking app** - A markdown note taking app is a app that allows users to take notes in markdown format.
-   - <details>
-      <summary><b>Detailed Explanation</b></summary>
-      We will need to implement a markdown note taking app for the website, which will allow users to take notes in markdown format.
-      </details>
 - [] **Currency converter** - A currency converter is a tool that converts currencies from one currency to another.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
@@ -411,9 +411,9 @@ The next phase of development focuses on polishing the portfolio to showcase arc
 * [x] 13. Weather Widget (home page/Seperate repo)
 * [x] 14. Pomodoro Timer (Project feed/Seperate repo)
 * [ ] 15. Personal Blog Page (blog page/Seperate repo)
-* [ ] 16. Markdown Note Taking App (blog page/Seperate repo)
+* [x] 16. Markdown Note Taking App (blog page/Seperate repo)
 * [ ] 17. Photo Gallery 24hr Story Feature (blog page/Seperate repo)
-* [ ] 18. URL Shortener (blog page/Seperate repo)
+* [x] 18. URL Shortener (blog page/Seperate repo)
 ---
 
 # Thank you for your time and consideration! 
