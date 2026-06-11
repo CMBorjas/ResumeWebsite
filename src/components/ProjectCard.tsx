@@ -1,6 +1,7 @@
 import { Project } from '../lib/projects'
 import { useTheme } from './ThemeProvider'
 import Link from 'next/link'
+import { SiLangchain } from 'react-icons/si'
 
 const techIcons: { [key: string]: string } = {
   Python: 'devicon-python-plain colored',
@@ -194,6 +195,15 @@ export default function ProjectCard({ project }: { project: Project }) {
 
               const iconClass = getIconClass(tech)
               const color = getColor(tech)
+
+              if (tech.toLowerCase() === 'langchain') {
+                return (
+                  <div key={tech} className="flex items-center gap-1 transition-opacity hover:opacity-80" title={tech}>
+                    <SiLangchain style={{ color }} className="w-3.5 h-3.5" />
+                    <span style={{ color }}>{tech}</span>
+                  </div>
+                )
+              }
 
               if (iconClass) {
                 return (
