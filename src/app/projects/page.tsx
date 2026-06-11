@@ -15,7 +15,7 @@ type GitHubRepo = {
 
 async function getRepos() {
   const res = await fetch('https://api.github.com/users/CMBorjas/repos?sort=updated&per_page=100', {
-    cache: 'force-cache'
+    next: { revalidate: 3600 } // Revalidate every hour
   })
 
   if (!res.ok) {
@@ -66,7 +66,7 @@ export default async function ProjectsPage() {
       allProjectsMap.set(key, {
         ...existing,
         ...mp,
-        techStack: mp.techStack && mp.techStack.length > 0 ? mp.techStack : existing.techStack,
+        techStack: Array.from(new Set([...(mp.techStack || []), ...(existing.techStack || [])])),
         description: mp.description || existing.description,
       })
     } else {

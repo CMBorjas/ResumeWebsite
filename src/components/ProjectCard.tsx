@@ -227,7 +227,7 @@ export default function ProjectCard({ project }: { project: Project }) {
                   <div className="flex items-center justify-center w-4 h-4 shrink-0">
                     <span className="w-2 h-2 rounded-full" style={{ backgroundColor: color }}></span>
                   </div>
-                  <span className="max-w-0 overflow-hidden group-hover:max-w-[100px] group-hover:ml-1 transition-all duration-300 ease-in-out whitespace-nowrap opacity-0 group-hover:opacity-100 text-[10px] font-bold tracking-wider pr-1" style={{ color }}>
+                  <span className="ml-1 whitespace-nowrap text-[10px] font-bold tracking-wider pr-1" style={{ color }}>
                     {tech}
                   </span>
                 </div>
@@ -238,7 +238,7 @@ export default function ProjectCard({ project }: { project: Project }) {
               <div className="flex items-center justify-center w-4 h-4 shrink-0">
                 <span className="w-2 h-2 rounded-full bg-slate-500"></span>
               </div>
-              <span className="max-w-0 overflow-hidden group-hover:max-w-[100px] group-hover:ml-1 transition-all duration-300 ease-in-out whitespace-nowrap opacity-0 group-hover:opacity-100 text-[10px] font-bold tracking-wider pr-1 text-slate-400">
+              <span className="ml-1 whitespace-nowrap text-[10px] font-bold tracking-wider pr-1 text-slate-400">
                 other
               </span>
             </div>
