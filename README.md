@@ -290,115 +290,118 @@ The next phase of development focuses on polishing the portfolio to showcase arc
 <summary><b>Current Goals</b></summary>
 
 
-- [] **Photo showcase** - In this project, you are required to create a photo showcase using only HTML and CSS. The photo showcase should display a grid of photos that can be clicked to view a larger version of the photo. 
+#### Planned for Deployment (Project Feed)
+
+- [ ] **Currency converter** - A currency converter is a tool that converts currencies from one currency to another.
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      We will need to implement a currency converter for the website, which will convert currencies from one currency to another.
+      </details>
+- [ ] **Unit Converter** - A unit converter is a tool that converts units from one unit to another.
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      We will need to implement a unit converter for the website, which will convert units from one unit to another.
+      </details>
+- [ ] **Data Visualization** - Data visualization is the representation of data in a graphical format.
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      We will need to implement data visualization for the website, which will display data in a graphical format.
+      </details>
+- [ ] **Stock Price Analysis** - Stock price analysis is the process of analyzing stock prices to determine their value.
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      We will need to implement stock price analysis for the website, which will analyze stock prices to determine their value.
+      </details>
+- [ ] **Crypto Price Analysis** - Crypto price analysis is the process of analyzing crypto prices to determine their value.
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      We will need to implement crypto price analysis for the website, which will analyze crypto prices to determine their value.
+      </details>
+- [ ] **Real-time leaderboard** - Real-time leaderboard is a leaderboard that displays the scores of users in real-time.
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      We will need to implement a real-time leaderboard for the website, which will display the scores of users in real-time.
+      </details>
+- [ ] **Flash Cards** - 
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      We will need to implement a flash card system for the website, which will display flash cards.
+      </details>
+- [ ] **Quiz App** - 
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      We will need to implement a quiz app for the website, which will allow users to take quizzes.
+      </details>
+
+#### Pending Integration (Socials Registry)
+
+- [ ] **Photo showcase** - In this project, you are required to create a photo showcase using only HTML and CSS. The photo showcase should display a grid of photos that can be clicked to view a larger version of the photo. 
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       Photo showcases are a common UI pattern used on marketing and SaaS websites to display photos in a grid layout. The photo showcase should display a grid of photos that can be clicked to view a larger version of the photo. We try to source these from the social media pages of the owner of the website, so that the photos are relevant to the website.
       </details>
-- [] **Testimonial Cards** - Testimonials are quotes or statements from satisfied customers or users, often used on websites to build credibility and trust.
+- [ ] **Testimonial Cards** - Testimonials are quotes or statements from satisfied customers or users, often used on websites to build credibility and trust.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement the testimonials of the website, which are currently stored in a JSON file. These testimonials should be displayed in a carousel or grid format, with each testimonial having its own card.
       </details>
-
-- [] **Personal Blog page** - A blog page is a page that displays a list of blog posts.
+- [ ] **Personal Blog page** - A blog page is a page that displays a list of blog posts.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement a blog page for the website, which will display a list of blog posts.
       </details>
-
-
-- [] **Photo gallery 24hr story feature** - 
+- [ ] **Photo gallery 24hr story feature** - 
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement a photo gallery 24hr story feature for the website, which will display a list of photos.
       </details>
 
+#### Backlog
 
-- [] **Currency converter** - A currency converter is a tool that converts currencies from one currency to another.
-   - <details>
-      <summary><b>Detailed Explanation</b></summary>
-      We will need to implement a currency converter for the website, which will convert currencies from one currency to another.
-      </details>
-- [] **Unit Converter** - A unit converter is a tool that converts units from one unit to another.
-   - <details>
-      <summary><b>Detailed Explanation</b></summary>
-      We will need to implement a unit converter for the website, which will convert units from one unit to another.
-      </details>
-- [] **Numberguessing game** - A numberguessing game is a game that allows users to guess a random number.
+- [ ] **Numberguessing game** - A numberguessing game is a game that allows users to guess a random number.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement a numberguessing game for the website, which will allow users to guess a random number.
       </details>
-- [] **Github user activity** - A github user activity is a section that displays a list of github user activities.
+- [ ] **Github user activity** - A github user activity is a section that displays a list of github user activities.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement a github user activity section for the website, which will display a list of github user activities.
       </details>
-- [] **Job list scraper** - A job list scraper is a tool that scrapes job listings from a website.
+- [ ] **Job list scraper** - A job list scraper is a tool that scrapes job listings from a website.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement a job list scraper for the website, which will scrape job listings from a website.
       </details>
-- [] **Data Visualization** - Data visualization is the representation of data in a graphical format.
-   - <details>
-      <summary><b>Detailed Explanation</b></summary>
-      We will need to implement data visualization for the website, which will display data in a graphical format.
-      </details>
-- [] **Stock Price Analysis** - Stock price analysis is the process of analyzing stock prices to determine their value.
-   - <details>
-      <summary><b>Detailed Explanation</b></summary>
-      We will need to implement stock price analysis for the website, which will analyze stock prices to determine their value.
-      </details>
-- [] **Crypto Price Analysis** - Crypto price analysis is the process of analyzing crypto prices to determine their value.
-   - <details>
-      <summary><b>Detailed Explanation</b></summary>
-      We will need to implement crypto price analysis for the website, which will analyze crypto prices to determine their value.
-      </details>
-- [] **File integretiy Checker** - A file integretiy checker is a tool that checks the integrity of a file.
+- [ ] **File integretiy Checker** - A file integretiy checker is a tool that checks the integrity of a file.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement a file integretiy checker for the website, which will check the integrity of a file.
       </details>
-- [] **Image processing services** - Image processing services are a set of tools that allow users to process images.
+- [ ] **Image processing services** - Image processing services are a set of tools that allow users to process images.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement image processing services for the website, which will allow users to process images.
       </details>
-- [] **Real-time leaderboard** - Real-time leaderboard is a leaderboard that displays the scores of users in real-time.
-   - <details>
-      <summary><b>Detailed Explanation</b></summary>
-      We will need to implement a real-time leaderboard for the website, which will display the scores of users in real-time.
-      </details>
-- [] **Movie Scraper and Resevation system** - Movie scraper and reservation system is a system that allows users to reserve movies.
+- [ ] **Movie Scraper and Resevation system** - Movie scraper and reservation system is a system that allows users to reserve movies.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement a movie scraper and reservation system for the website, which will allow users to reserve movies.
       </details>
-- [] **Server performance statistics** - 
+- [ ] **Server performance statistics** - 
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement a server performance statistics system for the website, which will display the performance statistics of a server.
       </details>
-- [] **Tool to Clean Csv files** - 
+- [ ] **Tool to Clean Csv files** - 
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement a tool to clean csv files for the website, which will clean csv files.
       </details>
-- [] **Flash Cards** - 
-   - <details>
-      <summary><b>Detailed Explanation</b></summary>
-      We will need to implement a flash card system for the website, which will display flash cards.
-      </details>
-- [] **Flash Card Editor** - 
+- [ ] **Flash Card Editor** - 
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement a flash card editor for the website, which will allow users to edit flash cards.
-      </details>
-- [] **Quiz App** - 
-   - <details>
-      <summary><b>Detailed Explanation</b></summary>
-      We will need to implement a quiz app for the website, which will allow users to take quizzes.
       </details>
 
 
