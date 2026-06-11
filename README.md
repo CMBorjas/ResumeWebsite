@@ -240,6 +240,11 @@ The next phase of development focuses on polishing the portfolio to showcase arc
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement a QR code generator for the website, which will generate QR codes for a given URL or text.
       </details>
+- ~~[x] **Random github repo shoutout** - Random github repo shoutout is a section that displays a list of random github repositories.~~
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      We will need to implement a random github repo shoutout section for the website, which will display a list of random github repositories.
+      </details>
 </details>
 <details>
 <summary><b>Current Goals</b></summary>
@@ -261,11 +266,7 @@ The next phase of development focuses on polishing the portfolio to showcase arc
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement a blog page for the website, which will display a list of blog posts.
       </details>
-- [] **Random github repo shoutout** - Random github repo shoutout is a section that displays a list of random github repositories.
-   - <details>
-      <summary><b>Detailed Explanation</b></summary>
-      We will need to implement a random github repo shoutout section for the website, which will display a list of random github repositories.
-      </details>
+
 - [] **Weather widget** - Weather widget is a widget that displays the current weather conditions for a specific location.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
@@ -399,7 +400,7 @@ The next phase of development focuses on polishing the portfolio to showcase arc
 * [ ] 9. Testimonial Cards (home page)
 * [ ] 10. Photo Showcase (projects feed page - Github API - Imported from instagram/facebook)
 * [x] 11. QR Code Generator (projects page/Seperate repo/API)
-* [ ] 12. Random GitHub Repo Shoutout (Home page/Seperate repo)
+* [x] 12. Random GitHub Repo Shoutout (Home page/Seperate repo)
 * [ ] 13. Weather Widget (home page/Seperate repo)
 * [ ] 14. Pomodoro Timer (Project feed/Seperate repo)
 * [ ] 15. Personal Blog Page (blog page/Seperate repo)

@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { FaPython, FaJava, FaReact, FaNodeJs, FaDocker, FaAws, FaLinux } from 'react-icons/fa';
 import { SiCplusplus, SiTypescript, SiNextdotjs, SiTailwindcss, SiMysql } from 'react-icons/si';
 import Tooltip from '../components/Tooltip';
+import RandomRepoShoutout from '../components/RandomRepoShoutout';
 
 const paragraphs = [
   "I am Christian Mandujano Borjas, an aspiring software engineer currently pursuing a degree in Computer Science at the University of Colorado Denver. With a strong foundation in programming languages like Python, Java, and C++, I have a passion for solving complex problems and building efficient systems.",
@@ -223,6 +224,11 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </BentoBox>
+
+        {/* Random Repo Box */}
+        <BentoBox className="order-7 md:order-7 md:col-span-2 md:row-span-1 !p-0 !bg-black/80" delay={0.7} title="~/RANDOM_REPO">
+          <RandomRepoShoutout />
         </BentoBox>
 
       </div>
