@@ -255,6 +255,11 @@ The next phase of development focuses on polishing the portfolio to showcase arc
       <summary><b>Detailed Explanation</b></summary>
       Implemented a robust weather widget utilizing the Open-Meteo API. The widget features a minimized view that intelligently carousels through saved cities with manual navigation arrows and smooth AnimatePresence transitions. When maximized, it expands into a full dashboard with an integrated geocoding search engine, allowing users to add and manage multiple cities worldwide with persistent state via localStorage.
       </details>
+- ~~[x] **NeuroFocus Pomodoro Timer** - A cyberpunk-themed productivity timer.~~
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      Built a fully interactive Pomodoro timer in Next.js and Tailwind CSS featuring three distinct tracking states (Deep Work, Short Rest, Long Recovery). It includes glowing, animated SVG progress rings, customizable hover states, and seamless integration into the main project feed.
+      </details>
 </details>
 <details>
 <summary><b>Current Goals</b></summary>
@@ -283,11 +288,7 @@ The next phase of development focuses on polishing the portfolio to showcase arc
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement a photo gallery 24hr story feature for the website, which will display a list of photos.
       </details>
-- [] **Pomodoro timer** - A pomodoro timer is a timer that is used to keep track of time while working on a task.
-   - <details>
-      <summary><b>Detailed Explanation</b></summary>
-      We will need to implement a pomodoro timer for the website, which will keep track of time while working on a task.
-      </details>
+
 - [] **URL Shortener** - A URL shortener is a tool that shortens long URLs to shorter, more manageable ones.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
@@ -408,7 +409,7 @@ The next phase of development focuses on polishing the portfolio to showcase arc
 * [x] 11. QR Code Generator (projects page/Seperate repo/API)
 * [x] 12. Random GitHub Repo Shoutout (Home page/Seperate repo)
 * [x] 13. Weather Widget (home page/Seperate repo)
-* [ ] 14. Pomodoro Timer (Project feed/Seperate repo)
+* [x] 14. Pomodoro Timer (Project feed/Seperate repo)
 * [ ] 15. Personal Blog Page (blog page/Seperate repo)
 * [ ] 16. Markdown Note Taking App (blog page/Seperate repo)
 * [ ] 17. Photo Gallery 24hr Story Feature (blog page/Seperate repo)
