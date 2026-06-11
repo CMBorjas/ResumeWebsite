@@ -8,6 +8,7 @@ import TechStackPanel from './TechStackPanel'
 export default function ProjectFeedClient({ allProjects }: { allProjects: Project[] }) {
   const [selectedTechs, setSelectedTechs] = useState<string[]>([])
   const [sortBy, setSortBy] = useState<'default' | 'stars' | 'forks'>('default')
+  const [liveFilter, setLiveFilter] = useState<'all' | 'live' | 'non-live'>('all')
 
   const toggleTech = (tech: string) => {
     setSelectedTechs(prev =>
@@ -15,7 +16,13 @@ export default function ProjectFeedClient({ allProjects }: { allProjects: Projec
     )
   }
 
-  const filteredProjects = allProjects.filter(project => {
+  const projectsMatchingLiveFilter = allProjects.filter(project => {
+    if (liveFilter === 'live' && !project.liveUrl) return false;
+    if (liveFilter === 'non-live' && project.liveUrl) return false;
+    return true;
+  });
+
+  const filteredProjects = projectsMatchingLiveFilter.filter(project => {
     if (selectedTechs.length === 0) return true
     
     // Check if the project matches ALL selected techs
@@ -35,6 +42,7 @@ export default function ProjectFeedClient({ allProjects }: { allProjects: Projec
   })
 
   const availableTechs = React.useMemo(() => Array.from(new Set(allProjects.flatMap(p => p.techStack || []))), [allProjects])
+  const activeTechs = React.useMemo(() => Array.from(new Set(projectsMatchingLiveFilter.flatMap(p => p.techStack || []))), [projectsMatchingLiveFilter])
 
   return (
     <>
@@ -64,7 +72,7 @@ export default function ProjectFeedClient({ allProjects }: { allProjects: Projec
               <select 
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as any)}
-                className="bg-[#0d1117] border border-brand-cyan/50 text-brand-cyan text-xs rounded px-2 py-1.5 outline-none focus:shadow-[0_0_8px_color-mix(in srgb, var(--color-brand-cyan) 40%, transparent)] transition-all cursor-pointer"
+                className="bg-[#0d1117] border border-brand-cyan/50 text-brand-cyan text-[10px] font-bold uppercase tracking-wide rounded px-2 py-1 outline-none focus:shadow-[0_0_8px_color-mix(in srgb, var(--color-brand-cyan) 40%, transparent)] hover:shadow-[0_0_8px_color-mix(in srgb, var(--color-brand-cyan) 40%, transparent)] transition-all cursor-pointer"
               >
                 <option value="default">Sort: Default</option>
                 <option value="stars">Sort: Stars</option>
@@ -101,7 +109,14 @@ export default function ProjectFeedClient({ allProjects }: { allProjects: Projec
 
       {/* ── Right Panel: Tech Stack ── */}
       <aside className="order-3">
-        <TechStackPanel selectedTechs={selectedTechs} onToggleTech={toggleTech} availableTechs={availableTechs} />
+        <TechStackPanel 
+          selectedTechs={selectedTechs} 
+          onToggleTech={toggleTech} 
+          availableTechs={availableTechs} 
+          activeTechs={activeTechs}
+          liveFilter={liveFilter}
+          setLiveFilter={setLiveFilter}
+        />
       </aside>
     </>
   )

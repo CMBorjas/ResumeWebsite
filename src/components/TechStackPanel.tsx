@@ -42,11 +42,17 @@ const TECH_MAP: Record<string, { icon: string, category: string, hoverGlow?: str
 export default function TechStackPanel({
   selectedTechs = [],
   availableTechs = [],
-  onToggleTech = () => {}
+  activeTechs = [],
+  onToggleTech = () => {},
+  liveFilter = 'all',
+  setLiveFilter = () => {}
 }: {
   selectedTechs?: string[]
   availableTechs?: string[]
+  activeTechs?: string[]
   onToggleTech?: (tech: string) => void
+  liveFilter?: 'all' | 'live' | 'non-live'
+  setLiveFilter?: (filter: 'all' | 'live' | 'non-live') => void
 }) {
   const techsToShow = availableTechs && availableTechs.length > 0 
     ? availableTechs 
@@ -69,6 +75,29 @@ export default function TechStackPanel({
     <div className="bg-slate-900/70 backdrop-blur-md rounded-xl p-4 h-fit lg:sticky lg:top-8 border-2 border-brand-cyan/50 shadow-[0_0_10px_color-mix(in srgb, var(--color-brand-cyan) 40%, transparent)]">
       <h3 className="text-lg font-bold text-brand-cyan mb-4 text-center">Tech Stack</h3>
 
+      {/* Live Status Filter */}
+      <div className="flex bg-[#0d1117] border border-brand-cyan/30 rounded-lg p-1 mb-6 gap-1">
+        <button 
+          onClick={() => setLiveFilter('all')} 
+          className={`flex-1 text-[10px] uppercase font-bold tracking-widest py-1.5 rounded-md transition-all ${liveFilter === 'all' ? 'bg-brand-cyan/20 text-brand-cyan shadow-[0_0_8px_color-mix(in srgb, var(--color-brand-cyan) 40%, transparent)]' : 'text-slate-400 hover:text-slate-200 hover:bg-white/5'}`}
+        >
+          All
+        </button>
+        <button 
+          onClick={() => setLiveFilter('live')} 
+          className={`flex-1 flex items-center justify-center gap-1.5 text-[10px] uppercase font-bold tracking-widest py-1.5 rounded-md transition-all ${liveFilter === 'live' ? 'bg-brand-pink/20 text-brand-pink shadow-[0_0_8px_color-mix(in srgb, var(--color-brand-pink) 40%, transparent)]' : 'text-slate-400 hover:text-slate-200 hover:bg-white/5'}`}
+        >
+          <span className={`w-1.5 h-1.5 rounded-full ${liveFilter === 'live' ? 'bg-brand-pink shadow-[0_0_5px_currentColor] animate-pulse' : 'bg-slate-500'}`}></span>
+          Live
+        </button>
+        <button 
+          onClick={() => setLiveFilter('non-live')} 
+          className={`flex-1 text-[10px] uppercase font-bold tracking-widest py-1.5 rounded-md transition-all ${liveFilter === 'non-live' ? 'bg-slate-700 text-white shadow-[0_0_8px_rgba(255,255,255,0.2)]' : 'text-slate-400 hover:text-slate-200 hover:bg-white/5'}`}
+        >
+          Non-Live
+        </button>
+      </div>
+
       {techCategories.map((cat) => (
         <div key={cat.label} className="mb-5 last:mb-0">
           <p className="text-[11px] uppercase tracking-widest text-slate-400 mb-2 font-semibold">
@@ -77,12 +106,14 @@ export default function TechStackPanel({
           <div className="grid grid-cols-3 gap-2">
             {cat.items.map((item) => {
               const isSelected = selectedTechs.includes(item.name)
+              const isActive = activeTechs.includes(item.name)
               return (
                 <div
                   key={item.name}
                   onClick={() => onToggleTech(item.name)}
                   className={`tech-logo-item flex flex-col items-center gap-1 p-2 rounded-lg
-                             transition-all duration-200 cursor-pointer group border
+                             transition-all duration-300 cursor-pointer group border
+                             ${!isActive && !isSelected ? 'opacity-30 grayscale hover:opacity-70 hover:grayscale-[50%]' : ''}
                              ${isSelected 
                                 ? 'bg-brand-cyan/20 border-brand-cyan/80 shadow-[0_0_15px_color-mix(in srgb, var(--color-brand-cyan) 60%, transparent)] scale-105' 
                                 : 'border-transparent hover:bg-brand-cyan/10 hover:border-brand-cyan/50 hover:shadow-[0_0_10px_color-mix(in srgb, var(--color-brand-cyan) 40%, transparent)]'}`}
