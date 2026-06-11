@@ -245,6 +245,11 @@ The next phase of development focuses on polishing the portfolio to showcase arc
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement a random github repo shoutout section for the website, which will display a list of random github repositories.
       </details>
+- ~~[x] **Trending GitHub Repo Shoutout** - Trending GitHub Repo Shoutout is a section that displays a randomly selected trending repository from GitHub.~~
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      We will need to implement a trending github repo shoutout section for the website, which will display a list of trending github repositories updated in the last 7 days.
+      </details>
 </details>
 <details>
 <summary><b>Current Goals</b></summary>
