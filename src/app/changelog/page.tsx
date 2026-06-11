@@ -1,4 +1,4 @@
-import ChangelogComponent from "@/components/ChangelogComponent";
+import ChangelogComponent from "../../components/ChangelogComponent";
 
 export default function ChangelogPage() {
   return (
