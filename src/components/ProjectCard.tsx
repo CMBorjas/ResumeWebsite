@@ -37,6 +37,7 @@ const techIcons: { [key: string]: string } = {
   React: 'devicon-react-original colored',
   Node: 'devicon-nodejs-plain colored',
   'Node.js': 'devicon-nodejs-plain colored',
+  Numpy: 'devicon-numpy-original colored',
 }
 
 const techColors: { [key: string]: string } = {
@@ -79,6 +80,8 @@ const techColors: { [key: string]: string } = {
   Tailwind:           '#38BDF8',
   TailwindCSS:        '#38BDF8',
   'Data Parsing':     '#10B981',
+  Numpy:              '#4DABCF',
+  'PDF.js':           '#FF0000',
 }
 
 export default function ProjectCard({ project }: { project: Project }) {
@@ -164,6 +167,7 @@ export default function ProjectCard({ project }: { project: Project }) {
                 if (lower === 'csharp') return techIcons['C#']
                 if (lower === 'vuejs') return 'devicon-vuejs-plain colored'
                 if (lower === 'tailwindcss' || lower === 'tailwind') return 'devicon-tailwindcss-plain colored'
+                if (lower === 'numpy') return techIcons['Numpy']
                 return undefined
               }
 
@@ -178,7 +182,9 @@ export default function ProjectCard({ project }: { project: Project }) {
                 if (lower === 'cpp') return techColors['C++']
                 if (lower === 'csharp') return techColors['C#']
                 if (lower === 'vuejs') return techColors['Vue']
-                if (lower === 'tailwindcss') return techColors['TailwindCSS']
+                if (lower === 'tailwindcss' || lower === 'tailwind') return techColors['TailwindCSS']
+                if (lower === 'numpy') return techColors['Numpy']
+                if (lower === 'pdf.js') return techColors['PDF.js']
                 return '#94a3b8' // slate-400 fallback
               }
 

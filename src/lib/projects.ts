@@ -35,20 +35,20 @@ export const projects: Project[] = [
     description: 'A web-based PDF splitting tool that allows users to upload a PDF, preview its pages, and extract or split specific pages into separate files.',
     repoUrl: 'https://github.com/CMBorjas/pdf_splitter',
     liveUrl: '/ResumeWebsite/projects/pdf-splitter',
-    techStack: ['React', 'PDF.js', 'pdf-lib', 'Node.js', 'CSS']
+    techStack: ['Next.js', 'React', 'TypeScript', 'Tailwind', 'PDF.js']
   },
   {
     title: 'social_sent_score',
     description: 'A robust sentiment analysis engine that parses the Stanford SocialSent dataset to evaluate user-uploaded texts. Originally engineered in Rust for memory-safe CLI processing, and subsequently ported to a serverless Next.js architecture with a dynamic, cyberpunk-themed UI.',
     repoUrl: 'https://github.com/CMBorjas/CSCI_3415-Homework004',
     liveUrl: '/ResumeWebsite/projects/social-sent-score',
-    techStack: ['Rust', 'TypeScript', 'Next.js', 'Tailwind', 'Data Parsing']
+    techStack: ['Rust', 'TypeScript', 'Next.js', 'React', 'Tailwind', 'Data Parsing']
   },
   {
     title: 'neuron_from_scratch_vz',
     description: 'A faithful, from-scratch implementation of a 2-2-1 neural network described by Victor Zhou. This project features a full Python testing and documentation suite alongside an interactive web port demonstrating real-time training and inference.',
     repoUrl: 'https://github.com/CMBorjas/neuron-from-scratch-vz',
     liveUrl: '/ResumeWebsite/projects/neuron-from-scratch',
-    techStack: ['Python', 'Numpy', 'TypeScript', 'React', 'Next.js']
+    techStack: ['Python', 'Numpy', 'TypeScript', 'React', 'Next.js', 'Tailwind']
   }
 ]
