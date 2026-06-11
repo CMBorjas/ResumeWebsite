@@ -18,7 +18,7 @@ const paragraphs = [
 
 let hasPlayedAnimation = false;
 
-const BentoBox = ({ children, className, delay = 0, title }: { children: React.ReactNode, className?: string, delay?: number, title?: string }) => {
+const BentoBox = ({ children, className, delay = 0, title }: { children: React.ReactNode | ((isMaximized: boolean) => React.ReactNode), className?: string, delay?: number, title?: string }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [isMinimized, setIsMinimized] = useState(false);
   const [isMaximized, setIsMaximized] = useState(false);
@@ -53,7 +53,7 @@ const BentoBox = ({ children, className, delay = 0, title }: { children: React.R
             </div>
           )}
           <div className={`flex-1 overflow-y-auto custom-scrollbar relative flex flex-col ${isMinimized ? 'hidden' : ''}`}>
-            {children}
+            {typeof children === 'function' ? children(isMaximized) : children}
           </div>
         </div>
       </motion.div>
@@ -125,8 +125,8 @@ export default function Home() {
         </BentoBox>
 
         {/* Location/Weather Box */}
-        <BentoBox className="order-4 md:order-2 md:col-span-1 md:row-span-1 !p-0 !bg-black/80" delay={0.2} title="~/DENVER_TELEMETRY">
-          <WeatherWidget />
+        <BentoBox className="order-4 md:order-2 md:col-span-1 md:row-span-1 !p-0 !bg-black/80" delay={0.2} title="~/WEATHER">
+          {(isMaximized) => <WeatherWidget isMaximized={isMaximized} />}
         </BentoBox>
 
         {/* Quick Contact Box */}
