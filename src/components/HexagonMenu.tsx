@@ -214,6 +214,22 @@ export default function HexagonMenu() {
         },
         {
             index: 8,
+            path: '/qr-code',
+            label: 'QR CODE',
+            innerSvg: (
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`absolute inset-0 m-auto text-brand-cyan group-hover:text-white transition-all duration-300 drop-shadow-[0_0_5px_color-mix(in srgb, var(--color-brand-cyan) 80%, transparent)] z-20 pointer-events-none ${iconOffsetClass}`}>
+                    <rect x="3" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="3" width="7" height="7"></rect>
+                    <rect x="3" y="14" width="7" height="7"></rect>
+                    <path d="M14 14h1v1h-1z"></path>
+                    <path d="M18 18h1v1h-1z"></path>
+                    <path d="M14 18h1v1h-1z"></path>
+                    <path d="M18 14h1v1h-1z"></path>
+                </svg>
+            )
+        },
+        {
+            index: 9,
             path: '/settings',
             label: 'SETTINGS',
             innerSvg: (
@@ -224,7 +240,7 @@ export default function HexagonMenu() {
             )
         },
         {
-            index: 9,
+            index: 10,
             path: '',
             label: '',
             onClick: toggleNavPosition,
@@ -312,7 +328,7 @@ export default function HexagonMenu() {
 
                 {/* Sub-menu Hexagons */}
                 {menuItems.map((item) => {
-                    const isLink = item.index !== 9;
+                    const isLink = item.index !== 10;
                     const ContentWrapper = isLink ? Link : 'div';
                     const wrapperProps = isLink ? { href: item.path } : { onClick: item.onClick };
                     const active = isActive(item.path);
@@ -355,7 +371,7 @@ export default function HexagonMenu() {
                                             <polygon points={hexPoints}></polygon>
                                         </svg>
                                         {item.innerSvg}
-                                        {item.index !== 9 ? (
+                                        {item.index !== 10 ? (
                                             <span className={getTextClasses(item.path, item.index)}>
                                                 <span className={getInnerMarqueeClasses(item.path, item.index)}>
                                                     <span className={((isLocked || active) && hoveredHex !== item.index) ? "pr-8" : ""}>{item.label}</span>

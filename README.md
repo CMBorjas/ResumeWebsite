@@ -235,6 +235,11 @@ The next phase of development focuses on polishing the portfolio to showcase arc
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement the changelog of the website, which is currently stored in a JSON file. These changelogs should be displayed in a list format, with each changelog having its own card.
       </details>
+- ~~[x] **QR Code Generator** - A QR code generator is a tool that generates QR codes for a given URL or text.~~
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      We will need to implement a QR code generator for the website, which will generate QR codes for a given URL or text.
+      </details>
 </details>
 <details>
 <summary><b>Current Goals</b></summary>
@@ -281,11 +286,7 @@ The next phase of development focuses on polishing the portfolio to showcase arc
       <summary><b>Detailed Explanation</b></summary>
       We will need to implement a URL shortener for the website, which will shorten long URLs to shorter, more manageable ones.
       </details>
-- [] **QR Code Generator** - A QR code generator is a tool that generates QR codes for a given URL or text.
-   - <details>
-      <summary><b>Detailed Explanation</b></summary>
-      We will need to implement a QR code generator for the website, which will generate QR codes for a given URL or text.
-      </details>
+
 - [] **Markdown Note taking app** - A markdown note taking app is a app that allows users to take notes in markdown format.
    - <details>
       <summary><b>Detailed Explanation</b></summary>
@@ -397,7 +398,7 @@ The next phase of development focuses on polishing the portfolio to showcase arc
 * [x] 8. Changelog Component
 * [ ] 9. Testimonial Cards
 * [ ] 10. Photo Showcase 
-* [ ] 11. QR Code Generator 
+* [x] 11. QR Code Generator 
 * [ ] 12. Random GitHub Repo Shoutout 
 * [ ] 13. Weather Widget 
 * [ ] 14. Pomodoro Timer 
