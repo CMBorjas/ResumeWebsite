@@ -79,6 +79,13 @@ export const projects: Project[] = [
     techStack: ['Rust', 'Tokio', 'Async/Await', 'TCP']
   },
   {
+    title: 'QR Code Generator',
+    description: 'A cyberpunk-themed QR code utility that encodes custom text and URLs into downloadable images.',
+    repoUrl: 'https://github.com/CMBorjas/ResumeWebsite',
+    liveUrl: '/qr-code',
+    techStack: ['React', 'Next.js', 'Tailwind', 'qrcode']
+  },
+  {
     title: 'Currency & Unit Converters',
     description: 'Real-time conversion utility widgets. (Planned for deployment)',
     techStack: ['React', 'Next.js', 'Tailwind']
