@@ -219,20 +219,22 @@ The next phase of development focuses on polishing the portfolio to showcase arc
       <summary><b>Detailed Explanation</b></summary>
       Replaced the existing contact section with an interactive, validated React form, complete with simulated submission states.
       </details>
-</details>
-<details>
-<summary><b>Current Goals</b></summary>
-
 - ~~[x] **Homescreen Three Dots Menu** - Add functionality to the three dots on the homescreen.~~
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       We need to implement interactive functionality for the three dots menu on the homescreen, linking it to the newly integrated centralized Settings tab or other relevant options.
       </details>
+
 - ~~[x]**Pricing cards for users to send money** - In this project, you are required to create a row of pricing cards using only HTML and CSS.~~
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       Pricing cards are a common UI pattern used on marketing and SaaS websites to compare plans side by side and guide users to the right tier. The pricing page should display three distinct pricing plans: Thumbs up, dollar, and 5 bucks. Each plan should have its own card with a clear title, price, list of features, and a call-to-action (CTA) button. The three cards should share a base style and the middle one should stand out as the recommended plan, slightly larger and visually emphasized. Each card has a plan name, a price, a short tagline, a list of included features, and a button.
       </details>
+</details>
+<details>
+<summary><b>Current Goals</b></summary>
+
+
 - [] **Photo showcase** - In this project, you are required to create a photo showcase using only HTML and CSS. The photo showcase should display a grid of photos that can be clicked to view a larger version of the photo. 
    - <details>
       <summary><b>Detailed Explanation</b></summary>
