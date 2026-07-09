@@ -15,6 +15,8 @@ Welcome to the Resume Website of Christian Mandujano Borjas. This repository con
 
 ## Overview
 
+> **Note on Documentation**: The documentation, including the project's knowledge graph and README, is explicitly made to explain what the code does and how it flows through the set of operations to provide a clear understanding of the application's architecture.
+
 This website serves as a digital resume and portfolio for Christian Mandujano Borjas. It includes pages for:
 
 - **About Me**: Introduction and summary of professional background.

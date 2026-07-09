@@ -1,4 +1,5 @@
 # Resume Website Project Knowledge Graph
+**Purpose:** This documentation and knowledge graph are explicitly made to explain what the code does and how data and control flow through the set of operations across the application.
 
 This document provides a high-level overview of the project architecture using a Mermaid.js diagram and component breakdown.
 
