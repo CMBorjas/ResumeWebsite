@@ -88,6 +88,7 @@ export const projects: Project[] = [
   {
     title: 'Currency & Unit Converters',
     description: 'Real-time conversion utility widgets. (Planned for deployment)',
+    liveUrl: '/projects/converters',
     techStack: ['React', 'Next.js', 'Tailwind']
   },
   {

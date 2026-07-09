@@ -289,6 +289,16 @@ The next phase of development focuses on polishing the portfolio to showcase arc
       <summary><b>Detailed Explanation</b></summary>
       Implemented a client-side Testimonial Cards component using framer-motion for smooth carousel transitions, displaying quotes from satisfied colleagues or customers in a Bento Box on the home page.
       </details>
+- ~~[x] **Github User Activity** - Displays a list of github user activities in a terminal-themed timeline UI.~~
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      Implemented a Github Activity Feed component that securely fetches real-time events from the GitHub REST API and displays them as a glowing timeline inside a glassmorphic Bento Box. It balances the layout of the Projects page while providing active proof-of-work.
+      </details>
+- ~~[x] **Currency Converter** - Real-time currency exchange utility.~~
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      Built a client-side Currency Converter that leverages a daily-cached Server Component to fetch the latest USD exchange rates from ER-API. The tool features instantaneous conversions between top global currencies, fully adhering to the site's neon, glassmorphic aesthetic.
+      </details>
 </details>
 
 ## Upcoming Features

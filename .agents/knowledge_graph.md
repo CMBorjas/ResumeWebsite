@@ -25,6 +25,7 @@ graph TD
         WorkExp[work-experience/page.tsx]
         QRCode[qr-code/page.tsx]
         Pricing[pricing/page.tsx]
+        Converters[projects/converters/page.tsx]
     end
     
     %% Components
@@ -34,12 +35,18 @@ graph TD
         ProjectFeed[ProjectFeedClient.tsx]
         TechStack[TechStackPanel.tsx]
         TestimonialCards[TestimonialCards.tsx]
+        ProfileStats[ProfileStatsPanel.tsx]
+        GithubFeed[GithubActivityFeed.tsx]
+        CurrencyConv[CurrencyConverter.tsx]
     end
     
     %% Connections
     Layout --> HexMenu
     Projects --> ProjectFeed
+    Projects --> ProfileStats
+    Projects --> GithubFeed
     ProjectFeed --> ProjectCard
+    Converters --> CurrencyConv
     Skills --> TechStack
     
     %% Data & State

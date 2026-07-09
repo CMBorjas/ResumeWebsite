@@ -9,6 +9,7 @@ This is a cyberpunk-themed personal portfolio for Christian Mandujano Borjas bui
 3. **Animations**: Next.js page route changes should be fluid. Utilize `framer-motion` and `<AnimatePresence>` for seamless transitions.
 4. **State Management**: Use React Context for global states (e.g., the Dynamic Theme Engine) and `localStorage` for persisting user preferences.
 5. **Data Handling**: Always cross-reference `src/lib/projects.ts` when modifying project data or GitHub feeds to maintain data integrity.
+6. **Utility Widgets & APIs**: When building utility converters (e.g. Currency Converter) or feeds that rely on public external APIs, fetch data in a Next.js Server Component utilizing Incremental Static Regeneration (ISR) (`next: { revalidate: <seconds> }`) to prevent rate limiting, and pass the data down to a Client Component for interactive UI rendering and math operations.
 
 ## Agent Instructions
 - **File Integrity**: Preserve all existing comments and docstrings unless explicitly told to remove them.

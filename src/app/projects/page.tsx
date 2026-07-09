@@ -1,6 +1,7 @@
 import { projects as manualProjects, type Project } from '../../lib/projects'
 import ProjectFeedClient from '../../components/ProjectFeedClient'
 import ProfileStatsPanel from '../../components/ProfileStatsPanel'
+import GithubActivityFeed, { type GitHubEvent } from '../../components/GithubActivityFeed'
 
 type GitHubRepo = {
   id: number
@@ -28,8 +29,22 @@ async function getRepos() {
   return repos
 }
 
+async function getEvents() {
+  const res = await fetch('https://api.github.com/users/CMBorjas/events/public?per_page=15', {
+    next: { revalidate: 1800 } // Revalidate every 30 mins
+  })
+
+  if (!res.ok) {
+    console.error('Failed to fetch events')
+    return []
+  }
+
+  const events: GitHubEvent[] = await res.json()
+  return events
+}
+
 export default async function ProjectsPage() {
-  const repos = await getRepos()
+  const [repos, events] = await Promise.all([getRepos(), getEvents()])
 
   const githubProjects = repos.map(repo => {
     const stack = new Set<string>()
@@ -157,6 +172,11 @@ export default async function ProjectsPage() {
         </aside>
 
         <ProjectFeedClient allProjects={allProjects} />
+
+        {/* ── Right Panel: GitHub Activity Feed ── */}
+        <aside className="order-3 lg:order-3">
+          <GithubActivityFeed events={events} />
+        </aside>
 
       </div>
     </div>
