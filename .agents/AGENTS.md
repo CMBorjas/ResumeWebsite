@@ -13,3 +13,4 @@ This is a cyberpunk-themed personal portfolio for Christian Mandujano Borjas bui
 ## Agent Instructions
 - **File Integrity**: Preserve all existing comments and docstrings unless explicitly told to remove them.
 - **Self-Maintenance**: If you make architectural changes, add new pages, or achieve roadmap goals, you MUST update the project's documentation, including the `README.md` and `.agents/knowledge_graph.md`.
+- **Knowledge Vault**: Whenever you modify or create significant files, you MUST create or update the corresponding Markdown file inside the `knowledge-vault/` Obsidian directory. Each vault file should explain what the file is, why it was modified, how it works, its requirements, and its outbound data flow.
