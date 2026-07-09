@@ -18,7 +18,6 @@ This document tracks upcoming features, pending integrations, and the backlog fo
 <summary><b>Pending Integration (Socials Registry)</b></summary>
 
 - [ ] **Photo showcase** - Grid of photos that can be clicked to view a larger version. *(Est: 4h, Tokens: ~1000, Priority: Medium)*
-- [x] **Testimonial Cards** - Quotes or statements from satisfied customers/users, displayed in a carousel/grid. *(Est: 4h, Tokens: ~1000, Priority: Medium)*
 - [ ] **Personal Blog page** - A page that displays a list of blog posts. *(Est: 8h, Tokens: ~2500, Priority: Low)*
 - [ ] **Photo gallery 24hr story feature** - A feature that displays a list of photos. *(Est: 4h, Tokens: ~1000, Priority: Medium)*
 </details>
@@ -47,6 +46,7 @@ This document tracks upcoming features, pending integrations, and the backlog fo
       To support the planned Cyberpunk, furthur in the future we will add more themes such as Forestpunk, and Corporate, a robust `<ThemeProvider>` needs to be implemented to hold the current, future theme colors, styles and animations for each theme. This engine will allow the user to switch between themes on the client side, in order to switch between themes we will use React Context and CSS custom properties (variables) to control the entire color palette, typography, and border styles. This approach will ensure that the application can instantly switch between themes on the client side without any performance penalty or page reloads. Hopefully it shows an understanding of modern CSS architecture and React state management.
       </details>
 -~~[x]**Data Visualization**: Data visualization is the representation of data in a graphical format. Built with Recharts.~~
+-~~[x]**Testimonial Cards**: Quotes or statements from satisfied customers/users, displayed in a carousel/grid.~~
 ---
 ### Prioritized Goal Roadmap:
 ---
