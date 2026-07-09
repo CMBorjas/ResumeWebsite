@@ -1,22 +1,22 @@
-# Testimonial Cards
+# TestimonialCards Component
 
-**File:** `src/components/TestimonialCards.tsx`
+## What is it?
+The `TestimonialCards.tsx` component displays an animated, rotating carousel of quotes or statements from satisfied clients, colleagues, or users. It resides in `src/components/TestimonialCards.tsx`.
 
-## Overview
-The `TestimonialCards` component displays a rotating carousel of quotes or statements from satisfied customers, colleagues, or users. It uses `framer-motion` for smooth animated transitions between testimonials and is designed to fit inside the Bento Box layout of the home page.
+## Why was it modified/created?
+It was built to fulfill the "Testimonial Cards" requirement in the priority roadmap. Displaying testimonials adds social proof and credibility to the portfolio. It was designed to fit seamlessly into the "Bento Box" layout on the main index page.
 
-## Why it was created
-This component was created to satisfy the "Testimonial Cards" objective from the project's TODO roadmap. Displaying testimonials adds social proof and credibility to the portfolio, highlighting the author's professional reputation.
-
-## How it works
-1. **Data Structure:** Testimonials are stored in a static array containing a `quote`, `author`, and `role`.
-2. **State Management:** Uses React `useState` to track the `currentIndex` of the active testimonial and `isPaused` to stop rotation on hover.
-3. **Animations:** Integrates `AnimatePresence` and `motion.div` from `framer-motion` to create a smooth fade and slide transition when switching between testimonials.
-4. **Auto-Rotation:** Uses a `useEffect` hook with a `setInterval` to automatically rotate the testimonials every 5 seconds. Hovering over the component pauses the rotation.
+## How it works?
+1. **Data Structure**: Testimonials are currently stored in an internal static array containing `quote`, `author`, and `role`.
+2. **State**: The component uses React `useState` to track the `currentIndex` of the visible quote and an `isPaused` boolean to halt the carousel on mouse hover.
+3. **Animations**: It integrates `AnimatePresence` and `motion.div` from `framer-motion` to create a smooth crossfade and slide transition between array indices.
+4. **Auto-Rotation**: A `useEffect` hook initializes a `setInterval` that automatically increments the `currentIndex` every 5 seconds, provided `isPaused` is false.
 
 ## Requirements
-- `react` (useState, useEffect)
-- `framer-motion` (AnimatePresence, motion)
+- React hooks (`useState`, `useEffect`).
+- `framer-motion` for `<AnimatePresence>` carousel physics.
+- Tailwind CSS for the glassmorphic styling inside the bento grid.
 
 ## Outbound Data Flow
-The component is fully self-contained and currently uses static internal data. It is imported and rendered directly in the home page (`src/app/page.tsx`) within a `BentoBox` wrapper. No external API calls are made.
+- **Input**: Internal static array of quotes.
+- **Output**: Emits DOM structure and animation states. Fully self-contained. It does not ping external APIs or mutate global state.

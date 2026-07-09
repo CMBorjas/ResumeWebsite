@@ -1,30 +1,21 @@
----
-file: .agents/knowledge_graph.md (and README.md)
-type: documentation
-tags: [docs, architecture, mermaid]
----
-
 # Knowledge Graph & Documentation Updates
 
-## Overview
-This file documents the recent updates applied to the core documentation files of the project, primarily `.agents/knowledge_graph.md` and `README.md`.
+## What is it?
+This documents the recent structural changes to the core documentation files of the project: `.agents/knowledge_graph.md` and `README.md`. These files provide an explicit mapping of component hierarchies and feature tracking.
 
-## What Was Modified
-1. **Explicit Purpose Statement**: Both the `README.md` and `.agents/knowledge_graph.md` files were updated to explicitly state their purpose: "This documentation and knowledge graph are explicitly made to explain what the code does and how data and control flow through the set of operations across the application."
-2. **Architecture Updates**: Added the `Data Visualization` page to the `Pages` subgraph in the Mermaid.js diagram and added `Recharts` to the Component Breakdown section.
+## Why was it modified/created?
+The documentation was updated to eliminate ambiguity for both human developers and autonomous AI agents. The graph actively tracks the topology of the Next.js application, ensuring that any new feature (like the recent additions of Data Visualization, Flash Cards, CSV Cleaner, etc.) is visually represented in the architectural flow.
 
-## Why It Was Modified
-- **Explicit Purpose**: To eliminate ambiguity for both human developers and autonomous AI agents reading the repository. It firmly establishes that these docs are the source of truth for understanding the operational flow and intent behind the codebase.
-- **Architecture Updates**: To keep the knowledge graph accurately synchronized with the latest deployed features.
-
-## How It Works
-- The Knowledge Graph utilizes Mermaid.js syntax (`graph TD`) to render a visual node-based representation of the Next.js app router structure, component hierarchy, and global state (like the Theme Engine and LocalStorage).
-- The `README.md` leverages standard GitHub Flavored Markdown (GFM) and collapsible `<details>` tags to present a clean, easily navigable project overview.
+## How it works?
+1. **Mermaid.js**: The `.agents/knowledge_graph.md` utilizes Mermaid.js syntax (`graph TD`) to render a visual node-based representation of the Next.js App Router structure, linking pages to their respective UI components.
+2. **README.md**: Uses standard GitHub Flavored Markdown (GFM) and `<details>` tags to present a clean overview of completed, active, and upcoming features.
+3. Agents are strictly instructed (via `AGENTS.md`) to append newly created components and routes to these documents upon task completion.
 
 ## Requirements
-- **Mermaid.js**: Markdown viewers must support Mermaid.js code block rendering to display the architecture graph.
-- **Maintenance Discipline**: The `maintain-project-docs` skill mandates that developers/agents *must* update this graph whenever architectural changes (like adding new pages or features) occur.
+- Standard Markdown and GitHub Flavored Markdown (GFM) parser.
+- Mermaid.js support for visualizing the code block node graph.
+- Strict adherence to the `AGENTS.md` ruleset when modifying system topography.
 
-## Data Flow (Outbound)
-**None.** 
-These are static Markdown documents. They do not send or receive data programmatically, but they *inform* the workflow of developers and AI agents operating within the workspace.
+## Outbound Data Flow
+- **Input**: Human or Agent text edits to track system state.
+- **Output**: Static documentation rendering. These files inform the workflow and contextual understanding of developers and AI agents but do not emit programmatic data to the codebase.

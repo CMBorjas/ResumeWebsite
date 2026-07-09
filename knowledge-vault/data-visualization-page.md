@@ -1,33 +1,23 @@
----
-file: src/app/projects/data-visualization/page.tsx
-type: component
-tags: [react, nextjs, recharts, framer-motion, frontend, ui]
----
+# Data Visualization Route & Component
 
-# Data Visualization Page
+## What is it?
+The `data-visualization-page.md` documents the `src/app/projects/data-visualization/page.tsx` page and any corresponding visualization components. It serves as a graphical representation hub for complex datasets, built on `recharts`.
 
-## Overview
-This file (`src/app/projects/data-visualization/page.tsx`) contains the main React component for the Data Visualization project on the ResumeWebsite.
+## Why was it modified/created?
+It was created as part of the "Data Visualization" task on the roadmap. It gives users visual insight into analytical data within the application using interactive SVGs instead of standard HTML elements, enhancing the dashboard and portfolio experience.
 
-## What Was Modified
-This file was **created** to introduce a new route (`/projects/data-visualization`). It implements an interactive dashboard featuring a Line Chart, a Bar Chart, and a Radar Chart.
-
-## Why It Was Modified
-The Data Visualization project was listed as a High Priority goal in the `TODO.md` roadmap. It serves to showcase the ability to render complex data sets graphically in a visually appealing, responsive manner.
-
-## How It Works
-- **Layout**: It utilizes a CSS Grid ("Bento Box" style) to organize the charts into responsive cards.
-- **Animations**: It uses `framer-motion` (`<motion.div>`) to apply subtle staggered entrance animations (fade and scale up) when the page loads.
-- **Charts**: It utilizes the `recharts` library (`<LineChart>`, `<BarChart>`, `<RadarChart>`) to render SVG-based interactive charts.
-- **Theming**: The charts pull color values directly from the site's global CSS variables (e.g., `var(--primary)`, `var(--foreground)`). This ensures the charts instantly recolor themselves when the user swaps the global theme (e.g., Cyberpunk to Forestpunk) without requiring a page reload or state drill-down.
+## How it works?
+1. The route `src/app/projects/data-visualization/page.tsx` acts as the primary layout.
+2. It imports `Recharts` library components (`LineChart`, `BarChart`, etc.) to map numerical and categorical data arrays into interactive visuals.
+3. The charts use `framer-motion` for entrance micro-animations to align with the site's aesthetic.
+4. Navigation utilizes `lucide-react` icons (like `<ArrowLeft>`) to navigate back to the main projects feed.
 
 ## Requirements
-- **Dependencies**: 
-  - `recharts`: For rendering the SVG data visualizations.
-  - `framer-motion`: For the entrance micro-animations.
-  - `lucide-react`: For the back arrow icon (`<ArrowLeft>`).
-- **Styles**: Requires the global CSS variables defined in the `Dynamic Theme Engine Context` to render correctly.
+- `recharts` for SVG-based charts.
+- `framer-motion` for component mount animations.
+- `lucide-react` for iconography.
+- Global CSS variables from the Dynamic Theme Engine to style chart elements consistently.
 
-## Data Flow (Outbound)
-**None.** 
-This component is purely presentational and client-side. It relies entirely on static, hardcoded mock data for demonstration purposes. It does not send any HTTP requests, does not mutate global state, and does not emit data to other parts of the application.
+## Outbound Data Flow
+- **Input**: Hardcoded mock datasets simulating API ingestion.
+- **Output**: Purely presentational rendering to the DOM. It does not send any HTTP requests, does not mutate global state, and does not emit data out of the component.

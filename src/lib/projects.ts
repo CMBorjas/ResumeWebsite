@@ -104,10 +104,46 @@ export const projects: Project[] = [
     techStack: ['React', 'Next.js', 'Tailwind', 'Framer Motion']
   },
   {
+    title: 'Data Sanitizer',
+    description: 'A client-side CSV processing utility. Instantly parse, clean, and export massive datasets directly in your browser.',
+    liveUrl: '/projects/csv-cleaner',
+    techStack: ['React', 'Next.js', 'Tailwind', 'PapaParse']
+  },
+  {
+    title: 'Neural_Imprint (Flash Cards)',
+    description: 'A high-performance flash card system built with framer-motion for fluid 3D transformations. Progress is persistently tracked locally via the browser.',
+    liveUrl: '/projects/flash-cards',
+    techStack: ['React', 'Next.js', 'Tailwind', 'Framer Motion']
+  },
+  {
+    title: 'Visual_Assets (Photo Showcase)',
+    description: 'A dynamic CSS masonry grid showcasing photography. Features a built-in animated Lightbox component.',
+    liveUrl: '/projects/photo-showcase',
+    techStack: ['React', 'Next.js', 'Tailwind', 'Framer Motion']
+  },
+  {
+    title: 'Target_Acquisition (Job Scraper)',
+    description: 'A server-side web scraper utility using cheerio and Next.js API routes to monitor job feeds.',
+    liveUrl: '/projects/job-scraper',
+    techStack: ['React', 'Next.js', 'Tailwind', 'Cheerio']
+  },
+  {
+    title: 'Global_Rankings (Leaderboard)',
+    description: 'A real-time data visualization component showcasing dynamic ranking swaps utilizing framer-motion layout engine.',
+    liveUrl: '/projects/leaderboard',
+    techStack: ['React', 'Next.js', 'Tailwind', 'Framer Motion']
+  },
+  {
     title: 'Data Visualization',
     description: 'Graphical representation of complex datasets. (Planned for deployment)',
     liveUrl: '/projects/data-visualization',
     techStack: ['React', 'Recharts', 'Tailwind']
+  },
+  {
+    title: 'Stock Price Analysis',
+    description: 'Proof of concept full-stack analytical dashboard simulating an external API stream. Visualizes 30-day historical OHLC trends with Recharts.',
+    liveUrl: '/projects/stock-analysis',
+    techStack: ['React', 'Next.js', 'Recharts', 'Tailwind']
   },
   {
     title: 'Stock & Crypto Analysis',

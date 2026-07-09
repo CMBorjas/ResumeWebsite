@@ -314,6 +314,36 @@ The next phase of development focuses on polishing the portfolio to showcase arc
       <summary><b>Detailed Explanation</b></summary>
       Developed a cyberpunk-themed number guessing mini-game called "Terminal_Link". Built natively with React hooks and `framer-motion` for fluid animations, it acts as a fun interactive piece that tasks the user with finding a randomly generated number between 1 and 100 via binary search logic, complete with a guess history feed.
       </details>
+- ~~[x] **CSV Cleaner** - Client-side Data Sanitizer.~~
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      Built a powerful client-side utility using `papaparse` to instantly parse, clean, and export CSV files in the browser. It features toggles for removing empty rows, trimming whitespace, and dropping duplicates, complete with a virtualized live preview table and zero server communication.
+      </details>
+- ~~[x] **Flash Cards** - Neural_Imprint Study Tool.~~
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      Developed a 3D animated flash card system ("Neural_Imprint") utilizing `framer-motion` for fluid CSS flip transforms. The app comes preloaded with a Tech Interview deck and leverages the browser's `localStorage` to persistently track the user's memorization progress across sessions.
+      </details>
+- ~~[x] **Photo Showcase** - Dynamic Masonry Grid.~~
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      Built a responsive CSS masonry image grid powered by Unsplash. Integrated a custom `framer-motion` Lightbox modal to view full-resolution assets with seamless entrance and exit spring animations.
+      </details>
+- ~~[x] **Job Scraper** - Target Acquisition API.~~
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      Created a full-stack Next.js solution using API routes (`route.ts`) and `cheerio` to fetch and parse the Hacker News job board server-side. The client-side `JobFeed` component polls this internal endpoint, avoiding CORS issues and rendering the data with staggered animations.
+      </details>
+- ~~[x] **Real-Time Leaderboard** - Live Telemetry UI.~~
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      Developed a "Global Rankings" component simulating a live WebSocket stream. It leverages `framer-motion`'s `layout` property to automatically and smoothly reorder DOM nodes in real-time as player scores and ranks update asynchronously.
+      </details>
+- ~~[x] **Stock Price Analysis** - Financial Dashboard.~~
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      Created a full-stack proof-of-concept analytical dashboard. A Next.js API route (`/api/stocks`) securely checks for an Alpha Vantage API key, falling back to a realistic random-walk algorithm to stream 30-day OHLC data. The client-side UI uses `recharts` to render a responsive, glassmorphic gradient `AreaChart` and calculates realtime metrics like 30D Highs and Lows.
+      </details>
 </details>
 
 ## Upcoming Features

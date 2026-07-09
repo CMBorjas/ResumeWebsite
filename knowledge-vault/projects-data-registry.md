@@ -1,31 +1,20 @@
----
-file: src/lib/projects.ts
-type: data-registry
-tags: [data, typescript, configuration]
----
-
 # Projects Data Registry
 
-## Overview
-This file (`src/lib/projects.ts`) acts as the centralized data store for all projects featured on the ResumeWebsite. It defines the TypeScript types and exports an array of project objects.
+## What is it?
+This file (`src/lib/projects.ts`) acts as the centralized data store (registry) for all projects featured on the ResumeWebsite. It exports an array of `Project` objects.
 
-## What Was Modified
-The `Data Visualization` entry within the `projects` array was modified. 
-- The `liveUrl` property was added (`'/projects/data-visualization'`).
-- The `techStack` array was updated to reflect the new implementation (swapped `'D3.js'` for `'Recharts'`).
+## Why was it modified/created?
+It was created to decouple data from the UI. Instead of hardcoding 15+ project cards into the `ProjectFeedClient.tsx`, this central registry ensures that adding a new feature only requires a simple JSON-like object insertion. It was modified recently to include live routes to components like Data Visualization, CSV Cleaner, and Job Scraper.
 
-## Why It Was Modified
-This change was necessary to link the global project feed (the cards displayed on the `/projects` page) directly to the newly created Data Visualization route. Without this update, the user would not be able to navigate to the new feature from the main feed.
-
-## How It Works
-It exports a static TypeScript array: `export const projects: Project[]`. 
-When the Next.js application builds or renders, components import this array to map over the data and generate UI elements dynamically.
+## How it works?
+1. It defines a rigorous TypeScript interface: `type Project = { title: string, description: string, liveUrl: string, techStack: string[] }`.
+2. It exports a static array: `export const projects: Project[]`.
+3. When the Next.js application builds or renders, components import this array, map over it, and dynamically instantiate `<ProjectCard>` elements.
 
 ## Requirements
-- **TypeScript**: Requires standard TypeScript typings (the `Project` type definition at the top of the file).
-- **Data Integrity**: Must conform precisely to the `Project` type schema. All image URLs and Live URLs must point to valid internal or external routes.
+- Valid TypeScript interface adherence.
+- All `liveUrl` paths must map directly to valid Next.js App Router folders (e.g., `/projects/[slug]`).
 
-## Data Flow (Outbound)
-**Provides Data To:**
-- `ProjectFeedClient.tsx`: Consumes this array to render the interactive, animated grid of project cards.
-- The `Projects` page layout: Determines what tech stacks are available for filtering/display.
+## Outbound Data Flow
+- **Input**: Hardcoded developer additions to the array.
+- **Output**: Feeds structural data to `ProjectFeedClient.tsx` and the main Projects page layout, dictating exactly how many cards spawn and what routing links they contain.

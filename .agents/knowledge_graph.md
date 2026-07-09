@@ -28,6 +28,12 @@ graph TD
         Converters[projects/converters/page.tsx]
         FileIntegrity[projects/file-integrity/page.tsx]
         TerminalLink[projects/number-guessing-game/page.tsx]
+        CsvCleanerPage[projects/csv-cleaner/page.tsx]
+        FlashCardsPage[projects/flash-cards/page.tsx]
+        PhotoShowcasePage[projects/photo-showcase/page.tsx]
+        JobScraperPage[projects/job-scraper/page.tsx]
+        LeaderboardPage[projects/leaderboard/page.tsx]
+        StockAnalysisPage[projects/stock-analysis/page.tsx]
     end
     
     %% Components
@@ -43,6 +49,13 @@ graph TD
         UnitConv[UnitConverter.tsx]
         FileChecker[FileIntegrityChecker.tsx]
         NumGame[NumberGuessingGame.tsx]
+        CsvSanitizer[CsvCleaner.tsx]
+        FlashCard[FlashCard.tsx]
+        FlashCardDeck[FlashCardDeck.tsx]
+        PhotoMasonry[PhotoMasonry.tsx]
+        JobFeed[JobFeed.tsx]
+        LiveLeaderboard[LiveLeaderboard.tsx]
+        StockAnalysis[StockAnalysis.tsx]
     end
     
     %% Connections
@@ -55,6 +68,13 @@ graph TD
     Converters --> UnitConv
     FileIntegrity --> FileChecker
     TerminalLink --> NumGame
+    CsvCleanerPage --> CsvSanitizer
+    FlashCardsPage --> FlashCardDeck
+    FlashCardDeck --> FlashCard
+    PhotoShowcasePage --> PhotoMasonry
+    JobScraperPage --> JobFeed
+    LeaderboardPage --> LiveLeaderboard
+    StockAnalysisPage --> StockAnalysis
     Skills --> TechStack
     
     %% Data & State
