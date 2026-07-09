@@ -9,6 +9,7 @@ import Tooltip from '../components/Tooltip';
 import RandomRepoShoutout from '../components/RandomRepoShoutout';
 import TrendingRepoShoutout from '../components/TrendingRepoShoutout';
 import WeatherWidget from '../components/WeatherWidget';
+import TestimonialCards from '../components/TestimonialCards';
 
 const paragraphs = [
   "I am Christian Mandujano Borjas, an aspiring software engineer currently pursuing a degree in Computer Science at the University of Colorado Denver. With a strong foundation in programming languages like Python, Java, and C++, I have a passion for solving complex problems and building efficient systems.",
@@ -227,6 +228,11 @@ export default function Home() {
         {/* Trending Repo Box */}
         <BentoBox className="order-8 md:order-8 md:col-span-2 md:row-span-1 !p-0 !bg-black/80" delay={0.8} title="~/TRENDING_NOW">
           <TrendingRepoShoutout />
+        </BentoBox>
+
+        {/* Testimonials Box */}
+        <BentoBox className="order-9 md:order-9 md:col-span-4 md:row-span-1 !p-0 !bg-black/80" delay={0.9} title="~/TESTIMONIALS">
+          <TestimonialCards />
         </BentoBox>
 
       </div>

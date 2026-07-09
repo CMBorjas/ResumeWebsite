@@ -18,7 +18,7 @@ This document tracks upcoming features, pending integrations, and the backlog fo
 <summary><b>Pending Integration (Socials Registry)</b></summary>
 
 - [ ] **Photo showcase** - Grid of photos that can be clicked to view a larger version. *(Est: 4h, Tokens: ~1000, Priority: Medium)*
-- [ ] **Testimonial Cards** - Quotes or statements from satisfied customers/users, displayed in a carousel/grid. *(Est: 4h, Tokens: ~1000, Priority: Medium)*
+- [x] **Testimonial Cards** - Quotes or statements from satisfied customers/users, displayed in a carousel/grid. *(Est: 4h, Tokens: ~1000, Priority: Medium)*
 - [ ] **Personal Blog page** - A page that displays a list of blog posts. *(Est: 8h, Tokens: ~2500, Priority: Low)*
 - [ ] **Photo gallery 24hr story feature** - A feature that displays a list of photos. *(Est: 4h, Tokens: ~1000, Priority: Medium)*
 </details>
@@ -58,7 +58,7 @@ This document tracks upcoming features, pending integrations, and the backlog fo
 * [x] 6. Homescreen Three Dots Menu (Blog page entry[After being deployed, the Homescreen Three Dots Menu can be added])
 * [x] 7. Pricing Cards (Blog page entry[After being deployed, the Pricing Cards can be added])
 * [x] 8. Changelog Component (Blog page entry[After being deployed, the Changelog Component can be added])
-* [ ] 9. Testimonial Cards (home page) *(Est: 4h, Tokens: ~1000, Priority: Medium)*
+* [x] 9. Testimonial Cards (home page) *(Est: 4h, Tokens: ~1000, Priority: Medium)*
 * [ ] 10. Photo Showcase (projects feed page - Github API - Imported from instagram/facebook) *(Est: 4h, Tokens: ~1000, Priority: Medium)*
 * [x] 11. QR Code Generator (projects page/Seperate repo/API)
 * [x] 12. Random GitHub Repo Shoutout (Home page/Seperate repo)

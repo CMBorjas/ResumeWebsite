@@ -284,6 +284,11 @@ The next phase of development focuses on polishing the portfolio to showcase arc
       <summary><b>Detailed Explanation</b></summary>
       Engineered an interactive, futuristic Data Visualization page utilizing Recharts. Features dynamic theme-responsive charts (Line, Bar, Radar) representing mock cyberpunk datasets.
       </details>
+- ~~[x] **Testimonial Cards** - Quotes or statements from satisfied customers/users, displayed in a carousel/grid.~~
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      Implemented a client-side Testimonial Cards component using framer-motion for smooth carousel transitions, displaying quotes from satisfied colleagues or customers in a Bento Box on the home page.
+      </details>
 </details>
 
 ## Upcoming Features

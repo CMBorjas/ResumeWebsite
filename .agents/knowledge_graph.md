@@ -33,6 +33,7 @@ graph TD
         ProjectCard[ProjectCard.tsx]
         ProjectFeed[ProjectFeedClient.tsx]
         TechStack[TechStackPanel.tsx]
+        TestimonialCards[TestimonialCards.tsx]
     end
     
     %% Connections
