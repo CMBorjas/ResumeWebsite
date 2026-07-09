@@ -5,7 +5,6 @@ This document tracks upcoming features, pending integrations, and the backlog fo
 <details open>
 <summary><b>Planned for Deployment (Project Feed)</b></summary>
 
-- [ ] **Crypto Price Analysis** - Crypto price analysis is the process of analyzing crypto prices to determine their value. *(Est: 5h, Tokens: ~1500, Priority: High)*
 - [ ] **Quiz App** - We will need to implement a quiz app for the website. *(Est: 8h, Tokens: ~2500, Priority: Low)*
 </details>
 
@@ -46,7 +45,7 @@ This document tracks upcoming features, pending integrations, and the backlog fo
 -~~[x]**Photo Showcase**: Dynamic CSS masonry grid with framer-motion Lightbox.~~
 -~~[x]**Job Scraper**: Full-stack Next.js API route using Cheerio to scrape HN.~~
 -~~[x]**Real-time Leaderboard**: Animated simulated WebSocket data stream utilizing framer-motion layout features.~~
--~~[x]**Stock Price Analysis**: Full-stack Recharts dashboard simulating a financial API (PoC).~~
+-~~[x]**Market Price Analysis**: Full-stack Recharts dashboard simulating a financial API for Stocks and Crypto (PoC).~~
 ---
 ### Prioritized Goal Roadmap:
 ---

@@ -339,10 +339,10 @@ The next phase of development focuses on polishing the portfolio to showcase arc
       <summary><b>Detailed Explanation</b></summary>
       Developed a "Global Rankings" component simulating a live WebSocket stream. It leverages `framer-motion`'s `layout` property to automatically and smoothly reorder DOM nodes in real-time as player scores and ranks update asynchronously.
       </details>
-- ~~[x] **Stock Price Analysis** - Financial Dashboard.~~
+- ~~[x] **Market Price Analysis** - Financial Dashboard.~~
    - <details>
       <summary><b>Detailed Explanation</b></summary>
-      Created a full-stack proof-of-concept analytical dashboard. A Next.js API route (`/api/stocks`) securely checks for an Alpha Vantage API key, falling back to a realistic random-walk algorithm to stream 30-day OHLC data. The client-side UI uses `recharts` to render a responsive, glassmorphic gradient `AreaChart` and calculates realtime metrics like 30D Highs and Lows.
+      Created a full-stack proof-of-concept analytical dashboard for both Stocks and Crypto. A Next.js API route (`/api/markets`) securely checks for an Alpha Vantage API key, falling back to a realistic random-walk algorithm to stream 30-day OHLC data. The client-side UI uses `recharts` to render a responsive, glassmorphic gradient `AreaChart` and calculates realtime metrics like 30D Highs and Lows.
       </details>
 </details>
 

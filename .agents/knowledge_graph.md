@@ -33,7 +33,7 @@ graph TD
         PhotoShowcasePage[projects/photo-showcase/page.tsx]
         JobScraperPage[projects/job-scraper/page.tsx]
         LeaderboardPage[projects/leaderboard/page.tsx]
-        StockAnalysisPage[projects/stock-analysis/page.tsx]
+        MarketAnalysisPage[projects/market-analysis/page.tsx]
     end
     
     %% Components
@@ -55,7 +55,7 @@ graph TD
         PhotoMasonry[PhotoMasonry.tsx]
         JobFeed[JobFeed.tsx]
         LiveLeaderboard[LiveLeaderboard.tsx]
-        StockAnalysis[StockAnalysis.tsx]
+        MarketAnalysis[MarketAnalysis.tsx]
     end
     
     %% Connections
@@ -74,7 +74,7 @@ graph TD
     PhotoShowcasePage --> PhotoMasonry
     JobScraperPage --> JobFeed
     LeaderboardPage --> LiveLeaderboard
-    StockAnalysisPage --> StockAnalysis
+    MarketAnalysisPage --> MarketAnalysis
     Skills --> TechStack
     
     %% Data & State

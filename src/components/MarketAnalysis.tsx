@@ -14,10 +14,14 @@ type StockDataPoint = {
   volume: number
 }
 
-const TICKERS = ['AAPL', 'MSFT', 'NVDA', 'GOOGL', 'TSLA']
+const STOCK_TICKERS = ['AAPL', 'MSFT', 'NVDA', 'GOOGL', 'TSLA']
+const CRYPTO_TICKERS = ['BTC', 'ETH', 'SOL', 'ADA', 'DOGE']
 
-export default function StockAnalysis() {
-  const [activeTicker, setActiveTicker] = useState(TICKERS[0])
+export default function MarketAnalysis() {
+  const [mode, setMode] = useState<'STOCKS' | 'CRYPTO'>('STOCKS')
+  const tickers = mode === 'STOCKS' ? STOCK_TICKERS : CRYPTO_TICKERS
+  
+  const [activeTicker, setActiveTicker] = useState(tickers[0])
   const [data, setData] = useState<StockDataPoint[]>([])
   const [loading, setLoading] = useState(true)
   const [source, setSource] = useState<'API' | 'MOCK'>('MOCK')
@@ -28,7 +32,7 @@ export default function StockAnalysis() {
 
     const fetchStockData = async () => {
       try {
-        const res = await fetch(`/api/stocks/${activeTicker}`)
+        const res = await fetch(`/api/markets/${activeTicker}`)
         if (!res.ok) throw new Error('Failed to fetch data')
         
         const json = await res.json()
@@ -49,6 +53,11 @@ export default function StockAnalysis() {
       isMounted = false
     }
   }, [activeTicker])
+
+  // Auto-switch ticker when mode changes
+  useEffect(() => {
+    setActiveTicker(mode === 'STOCKS' ? STOCK_TICKERS[0] : CRYPTO_TICKERS[0])
+  }, [mode])
 
   // Analytics Calculations
   const metrics = useMemo(() => {
@@ -83,9 +92,23 @@ export default function StockAnalysis() {
           <div>
             <h2 className="text-2xl font-bold text-white flex items-center gap-2">
               <Activity className="w-6 h-6 text-brand-purple" />
-              Terminal_Ticker
+              Terminal_Markets
             </h2>
-            <div className="flex items-center gap-2 mt-1">
+            <div className="flex items-center gap-2 mt-2">
+              <button 
+                onClick={() => setMode('STOCKS')}
+                className={`text-xs font-mono font-bold px-3 py-1 rounded-l-md transition-colors ${mode === 'STOCKS' ? 'bg-brand-purple text-white' : 'bg-slate-800 text-slate-400 hover:bg-slate-700'}`}
+              >
+                STOCKS
+              </button>
+              <button 
+                onClick={() => setMode('CRYPTO')}
+                className={`text-xs font-mono font-bold px-3 py-1 rounded-r-md transition-colors ${mode === 'CRYPTO' ? 'bg-brand-cyan text-slate-900' : 'bg-slate-800 text-slate-400 hover:bg-slate-700'}`}
+              >
+                CRYPTO
+              </button>
+            </div>
+            <div className="flex items-center gap-2 mt-2">
               <span className="text-xs font-mono text-slate-400">DATA SOURCE:</span>
               <span className={`text-xs font-mono font-bold px-2 py-0.5 rounded-full ${source === 'API' ? 'bg-green-500/20 text-green-400 border border-green-500/50' : 'bg-amber-500/20 text-amber-400 border border-amber-500/50'}`}>
                 {source} {source === 'MOCK' && '(PoC)'}
@@ -94,13 +117,13 @@ export default function StockAnalysis() {
           </div>
 
           <div className="flex flex-wrap gap-2">
-            {TICKERS.map(ticker => (
+            {tickers.map(ticker => (
               <button
                 key={ticker}
                 onClick={() => setActiveTicker(ticker)}
                 className={`px-4 py-2 rounded-lg font-mono text-sm font-bold transition-all border ${
                   activeTicker === ticker 
-                    ? 'bg-brand-purple/20 border-brand-purple text-brand-purple shadow-[0_0_10px_rgba(139,92,246,0.3)]' 
+                    ? mode === 'STOCKS' ? 'bg-brand-purple/20 border-brand-purple text-brand-purple shadow-[0_0_10px_rgba(139,92,246,0.3)]' : 'bg-brand-cyan/20 border-brand-cyan text-brand-cyan shadow-[0_0_10px_rgba(34,211,238,0.3)]'
                     : 'bg-slate-900/50 border-slate-800 text-slate-400 hover:border-slate-600 hover:text-white'
                 }`}
               >

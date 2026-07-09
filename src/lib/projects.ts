@@ -140,15 +140,10 @@ export const projects: Project[] = [
     techStack: ['React', 'Recharts', 'Tailwind']
   },
   {
-    title: 'Stock Price Analysis',
-    description: 'Proof of concept full-stack analytical dashboard simulating an external API stream. Visualizes 30-day historical OHLC trends with Recharts.',
-    liveUrl: '/projects/stock-analysis',
+    title: 'Market Price Analysis',
+    description: 'Proof of concept full-stack analytical dashboard simulating an external API stream. Visualizes 30-day historical OHLC trends for Stocks & Crypto with Recharts.',
+    liveUrl: '/projects/market-analysis',
     techStack: ['React', 'Next.js', 'Recharts', 'Tailwind']
-  },
-  {
-    title: 'Stock & Crypto Analysis',
-    description: 'Financial market tracking and analysis tools. (Planned for deployment)',
-    techStack: ['React', 'Next.js', 'WebSockets']
   },
   {
     title: 'Real-time Leaderboard',

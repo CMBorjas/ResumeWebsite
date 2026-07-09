@@ -15,15 +15,24 @@ function generateMockData(ticker: string, days: number = 30): StockDataPoint[] {
   
   // Base prices to make tickers look different
   const basePrices: Record<string, number> = {
+    // Stocks
     'AAPL': 185.50,
     'MSFT': 410.20,
     'TSLA': 175.80,
     'NVDA': 880.10,
-    'GOOGL': 145.30
+    'GOOGL': 145.30,
+    // Crypto
+    'BTC': 64200.00,
+    'ETH': 3450.00,
+    'SOL': 145.00,
+    'ADA': 0.45,
+    'DOGE': 0.16
   }
   
   let currentPrice = basePrices[ticker] || 100.00
-  let volatility = currentPrice * 0.02 // 2% daily volatility
+  // Crypto has higher volatility (4%) compared to stocks (2%)
+  const isCrypto = ['BTC', 'ETH', 'SOL', 'ADA', 'DOGE'].includes(ticker)
+  let volatility = currentPrice * (isCrypto ? 0.04 : 0.02)
 
   // Generate backwards from today
   const today = new Date()
@@ -31,8 +40,8 @@ function generateMockData(ticker: string, days: number = 30): StockDataPoint[] {
   for (let i = days - 1; i >= 0; i--) {
     const d = new Date(today)
     d.setDate(d.getDate() - i)
-    // Skip weekends
-    if (d.getDay() === 0 || d.getDay() === 6) continue
+    // Skip weekends for stocks, but crypto trades 24/7
+    if (!isCrypto && (d.getDay() === 0 || d.getDay() === 6)) continue
 
     const dateStr = d.toISOString().split('T')[0]
     
@@ -60,11 +69,8 @@ function generateMockData(ticker: string, days: number = 30): StockDataPoint[] {
 
 export async function generateStaticParams() {
   return [
-    { ticker: 'AAPL' },
-    { ticker: 'MSFT' },
-    { ticker: 'NVDA' },
-    { ticker: 'GOOGL' },
-    { ticker: 'TSLA' }
+    { ticker: 'AAPL' }, { ticker: 'MSFT' }, { ticker: 'NVDA' }, { ticker: 'GOOGL' }, { ticker: 'TSLA' },
+    { ticker: 'BTC' }, { ticker: 'ETH' }, { ticker: 'SOL' }, { ticker: 'ADA' }, { ticker: 'DOGE' }
   ]
 }
 
