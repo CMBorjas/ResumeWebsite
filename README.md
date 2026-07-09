@@ -309,6 +309,11 @@ The next phase of development focuses on polishing the portfolio to showcase arc
       <summary><b>Detailed Explanation</b></summary>
       Created a fully client-side file integrity checker using the native Web Crypto API (`crypto.subtle`). It allows users to drag-and-drop files to instantly compute SHA-1, SHA-256, SHA-384, or SHA-512 hashes entirely within the browser's memory, ensuring zero-trust privacy and maximum speed without uploading files to a server.
       </details>
+- ~~[x] **Numberguessing Game** - Terminal_Link.~~
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      Developed a cyberpunk-themed number guessing mini-game called "Terminal_Link". Built natively with React hooks and `framer-motion` for fluid animations, it acts as a fun interactive piece that tasks the user with finding a randomly generated number between 1 and 100 via binary search logic, complete with a guess history feed.
+      </details>
 </details>
 
 ## Upcoming Features

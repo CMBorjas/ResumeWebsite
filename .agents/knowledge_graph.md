@@ -27,6 +27,7 @@ graph TD
         Pricing[pricing/page.tsx]
         Converters[projects/converters/page.tsx]
         FileIntegrity[projects/file-integrity/page.tsx]
+        TerminalLink[projects/number-guessing-game/page.tsx]
     end
     
     %% Components
@@ -41,6 +42,7 @@ graph TD
         CurrencyConv[CurrencyConverter.tsx]
         UnitConv[UnitConverter.tsx]
         FileChecker[FileIntegrityChecker.tsx]
+        NumGame[NumberGuessingGame.tsx]
     end
     
     %% Connections
@@ -52,6 +54,7 @@ graph TD
     Converters --> CurrencyConv
     Converters --> UnitConv
     FileIntegrity --> FileChecker
+    TerminalLink --> NumGame
     Skills --> TechStack
     
     %% Data & State

@@ -98,6 +98,12 @@ export const projects: Project[] = [
     techStack: ['React', 'Next.js', 'Tailwind']
   },
   {
+    title: 'Terminal_Link',
+    description: 'A client-side neural decryption mini-game. Utilize binary search principles to narrow down a target sequence.',
+    liveUrl: '/projects/number-guessing-game',
+    techStack: ['React', 'Next.js', 'Tailwind', 'Framer Motion']
+  },
+  {
     title: 'Data Visualization',
     description: 'Graphical representation of complex datasets. (Planned for deployment)',
     liveUrl: '/projects/data-visualization',
