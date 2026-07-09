@@ -299,6 +299,11 @@ The next phase of development focuses on polishing the portfolio to showcase arc
       <summary><b>Detailed Explanation</b></summary>
       Built a client-side Currency Converter that leverages a daily-cached Server Component to fetch the latest USD exchange rates from ER-API. The tool features instantaneous conversions between top global currencies, fully adhering to the site's neon, glassmorphic aesthetic.
       </details>
+- ~~[x] **Unit Converter** - Multi-category unit conversion utility.~~
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      Engineered a highly responsive, client-side Unit Converter that handles instantaneous conversions across Length, Weight, and Temperature categories. The logic relies purely on React state and `useMemo` for zero-latency math, styled with a distinct purple cyberpunk aesthetic to contrast with the Currency Converter.
+      </details>
 </details>
 
 ## Upcoming Features

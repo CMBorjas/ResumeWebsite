@@ -5,7 +5,6 @@ This document tracks upcoming features, pending integrations, and the backlog fo
 <details open>
 <summary><b>Planned for Deployment (Project Feed)</b></summary>
 
-- [ ] **Unit Converter** - A unit converter is a tool that converts units from one unit to another. *(Est: 3h, Tokens: ~800, Priority: Medium)*
 - [ ] **Stock Price Analysis** - Stock price analysis is the process of analyzing stock prices to determine their value. *(Est: 5h, Tokens: ~1500, Priority: High)*
 - [ ] **Crypto Price Analysis** - Crypto price analysis is the process of analyzing crypto prices to determine their value. *(Est: 5h, Tokens: ~1500, Priority: High)*
 - [ ] **Real-time leaderboard** - Real-time leaderboard is a leaderboard that displays the scores of users in real-time. *(Est: 4h, Tokens: ~1000, Priority: Medium)*
@@ -47,6 +46,7 @@ This document tracks upcoming features, pending integrations, and the backlog fo
 -~~[x]**Testimonial Cards**: Quotes or statements from satisfied customers/users, displayed in a carousel/grid.~~
 -~~[x]**Github user activity**: Displays a list of github user activities in a terminal-themed timeline UI.~~
 -~~[x]**Currency converter**: Real-time currency exchange utility using ER-API.~~
+-~~[x]**Unit Converter**: Client-side multi-category unit converter.~~
 ---
 ### Prioritized Goal Roadmap:
 ---

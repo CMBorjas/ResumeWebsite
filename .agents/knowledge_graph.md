@@ -38,6 +38,7 @@ graph TD
         ProfileStats[ProfileStatsPanel.tsx]
         GithubFeed[GithubActivityFeed.tsx]
         CurrencyConv[CurrencyConverter.tsx]
+        UnitConv[UnitConverter.tsx]
     end
     
     %% Connections
@@ -47,6 +48,7 @@ graph TD
     Projects --> GithubFeed
     ProjectFeed --> ProjectCard
     Converters --> CurrencyConv
+    Converters --> UnitConv
     Skills --> TechStack
     
     %% Data & State
