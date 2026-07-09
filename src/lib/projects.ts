@@ -86,6 +86,12 @@ export const projects: Project[] = [
     techStack: ['React', 'Next.js', 'Tailwind', 'qrcode']
   },
   {
+    title: 'File Integrity Checker',
+    description: 'A client-side utility leveraging Web Crypto API to compute SHA hashes for file verification.',
+    liveUrl: '/projects/file-integrity',
+    techStack: ['React', 'Next.js', 'Tailwind', 'Web Crypto API']
+  },
+  {
     title: 'Currency & Unit Converters',
     description: 'Real-time conversion utility widgets. (Planned for deployment)',
     liveUrl: '/projects/converters',

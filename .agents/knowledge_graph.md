@@ -26,6 +26,7 @@ graph TD
         QRCode[qr-code/page.tsx]
         Pricing[pricing/page.tsx]
         Converters[projects/converters/page.tsx]
+        FileIntegrity[projects/file-integrity/page.tsx]
     end
     
     %% Components
@@ -39,6 +40,7 @@ graph TD
         GithubFeed[GithubActivityFeed.tsx]
         CurrencyConv[CurrencyConverter.tsx]
         UnitConv[UnitConverter.tsx]
+        FileChecker[FileIntegrityChecker.tsx]
     end
     
     %% Connections
@@ -49,6 +51,7 @@ graph TD
     ProjectFeed --> ProjectCard
     Converters --> CurrencyConv
     Converters --> UnitConv
+    FileIntegrity --> FileChecker
     Skills --> TechStack
     
     %% Data & State

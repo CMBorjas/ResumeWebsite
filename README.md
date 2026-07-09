@@ -304,6 +304,11 @@ The next phase of development focuses on polishing the portfolio to showcase arc
       <summary><b>Detailed Explanation</b></summary>
       Engineered a highly responsive, client-side Unit Converter that handles instantaneous conversions across Length, Weight, and Temperature categories. The logic relies purely on React state and `useMemo` for zero-latency math, styled with a distinct purple cyberpunk aesthetic to contrast with the Currency Converter.
       </details>
+- ~~[x] **File Integrity Checker** - Cryptographic file hashing utility.~~
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      Created a fully client-side file integrity checker using the native Web Crypto API (`crypto.subtle`). It allows users to drag-and-drop files to instantly compute SHA-1, SHA-256, SHA-384, or SHA-512 hashes entirely within the browser's memory, ensuring zero-trust privacy and maximum speed without uploading files to a server.
+      </details>
 </details>
 
 ## Upcoming Features

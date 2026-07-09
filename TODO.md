@@ -25,7 +25,6 @@ This document tracks upcoming features, pending integrations, and the backlog fo
 
 - [ ] **Numberguessing game** - A numberguessing game. *(Est: 8h, Tokens: ~2500, Priority: Low)*
 - [ ] **Job list scraper** - A tool that scrapes job listings from a website. *(Est: 3h, Tokens: ~800, Priority: Medium)*
-- [ ] **File integretiy Checker** - A tool that checks the integrity of a file. *(Est: 2h, Tokens: ~600, Priority: Low)*
 - [ ] **Image processing services** - Tools to process images. *(Est: 2h, Tokens: ~600, Priority: Low)*
 - [ ] **Movie Scraper and Resevation system** - System to reserve movies. *(Est: 3h, Tokens: ~800, Priority: Medium)*
 - [ ] **Server performance statistics** - Displays the performance statistics of a server. *(Est: 5h, Tokens: ~1500, Priority: High)*
@@ -47,6 +46,7 @@ This document tracks upcoming features, pending integrations, and the backlog fo
 -~~[x]**Github user activity**: Displays a list of github user activities in a terminal-themed timeline UI.~~
 -~~[x]**Currency converter**: Real-time currency exchange utility using ER-API.~~
 -~~[x]**Unit Converter**: Client-side multi-category unit converter.~~
+-~~[x]**File Integrity Checker**: Client-side Web Crypto API hashing tool.~~
 ---
 ### Prioritized Goal Roadmap:
 ---
