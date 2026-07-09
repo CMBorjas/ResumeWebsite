@@ -344,6 +344,11 @@ The next phase of development focuses on polishing the portfolio to showcase arc
       <summary><b>Detailed Explanation</b></summary>
       Created a full-stack proof-of-concept analytical dashboard for both Stocks and Crypto. A Next.js API route (`/api/markets`) securely checks for an Alpha Vantage API key, falling back to a realistic random-walk algorithm to stream 30-day OHLC data. The client-side UI uses `recharts` to render a responsive, glassmorphic gradient `AreaChart` and calculates realtime metrics like 30D Highs and Lows.
       </details>
+- ~~[x] **Personal Blog Engine** - Static Markdown Pipeline.~~
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      Developed a custom, fully static markdown rendering pipeline utilizing `react-markdown` and `generateStaticParams()`. It compiles raw markdown strings from a local registry (`blog.ts`) into fully styled DOM nodes matching the project's cyberpunk aesthetic. Included 4 pre-authored technical deep dives detailing the architecture of previously built components.
+      </details>
 </details>
 
 ## Upcoming Features

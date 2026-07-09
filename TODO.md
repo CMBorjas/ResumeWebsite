@@ -11,7 +11,6 @@ This document tracks upcoming features, pending integrations, and the backlog fo
 <details open>
 <summary><b>Pending Integration (Socials Registry)</b></summary>
 
-- [ ] **Personal Blog page** - A page that displays a list of blog posts. *(Est: 8h, Tokens: ~2500, Priority: Low)*
 - [ ] **Photo gallery 24hr story feature** - A feature that displays a list of photos. *(Est: 4h, Tokens: ~1000, Priority: Medium)*
 </details>
 
@@ -46,6 +45,7 @@ This document tracks upcoming features, pending integrations, and the backlog fo
 -~~[x]**Job Scraper**: Full-stack Next.js API route using Cheerio to scrape HN.~~
 -~~[x]**Real-time Leaderboard**: Animated simulated WebSocket data stream utilizing framer-motion layout features.~~
 -~~[x]**Market Price Analysis**: Full-stack Recharts dashboard simulating a financial API for Stocks and Crypto (PoC).~~
+-~~[x]**Personal Blog Engine**: Fully static markdown rendering pipeline using react-markdown.~~
 ---
 ### Prioritized Goal Roadmap:
 ---
@@ -63,7 +63,7 @@ This document tracks upcoming features, pending integrations, and the backlog fo
 * [x] 12. Random GitHub Repo Shoutout (Home page/Seperate repo)
 * [x] 13. Weather Widget (home page/Seperate repo)
 * [x] 14. Pomodoro Timer (Project feed/Seperate repo)
-* [ ] 15. Personal Blog Page (blog page/Seperate repo) *(Est: 8h, Tokens: ~2500, Priority: Low)*
+* [x] 15. Personal Blog Page (blog page/Seperate repo) *(Est: 8h, Tokens: ~2500, Priority: Low)*
 * [x] 16. Markdown Note Taking App (blog page/Seperate repo)
 * [ ] 17. Photo Gallery 24hr Story Feature (blog page/Seperate repo) *(Est: 4h, Tokens: ~1000, Priority: Medium)*
 * [x] 18. URL Shortener (blog page/Seperate repo)

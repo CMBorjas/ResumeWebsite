@@ -34,6 +34,8 @@ graph TD
         JobScraperPage[projects/job-scraper/page.tsx]
         LeaderboardPage[projects/leaderboard/page.tsx]
         MarketAnalysisPage[projects/market-analysis/page.tsx]
+        BlogFeedPage[blog/page.tsx]
+        BlogPostReaderPage[blog/[slug]/page.tsx]
     end
     
     %% Components
@@ -75,6 +77,10 @@ graph TD
     JobScraperPage --> JobFeed
     LeaderboardPage --> LiveLeaderboard
     MarketAnalysisPage --> MarketAnalysis
+    BlogFeedPage --> BlogFeed
+    BlogPostReaderPage --> BlogPostReader
+    BlogFeedPage --> BlogRegistry
+    BlogPostReaderPage --> BlogRegistry
     Skills --> TechStack
     
     %% Data & State
@@ -82,6 +88,7 @@ graph TD
         ThemeEngine[Dynamic Theme Engine Context]
         ProjectData[lib/projects.ts]
         LocalStorage[(localStorage)]
+        BlogRegistry[lib/blog.ts]
     end
 
     %% Project Management
