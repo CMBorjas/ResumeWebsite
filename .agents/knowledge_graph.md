@@ -16,6 +16,7 @@ graph TD
         Contact[contact/page.tsx]
         Education[education/page.tsx]
         Projects[projects/page.tsx]
+        DataViz[projects/data-visualization/page.tsx]
         Resume[resume/page.tsx]
         Settings[settings/page.tsx]
         Skills[skills/page.tsx]
@@ -68,7 +69,7 @@ graph TD
 
 ## Component Breakdown
 - **Frontend Framework**: Next.js 16 (App Router), React 19.
-- **Styling & Animations**: Tailwind CSS 4, framer-motion.
+- **Styling & Animations**: Tailwind CSS 4, framer-motion, Recharts (Data Visualization).
 - **Layout Approach**: Bento Box layout (CSS Grid), responsive, glassmorphic UI.
 - **State Management**: React Context (Theme Engine) and `localStorage`.
 - **Infrastructure**: Hosted on GitHub Pages via static export. Local development supported by Docker + Nginx.

@@ -7,7 +7,6 @@ This document tracks upcoming features, pending integrations, and the backlog fo
 
 - [ ] **Currency converter** - A currency converter is a tool that converts currencies from one currency to another. *(Est: 3h, Tokens: ~800, Priority: Medium)*
 - [ ] **Unit Converter** - A unit converter is a tool that converts units from one unit to another. *(Est: 3h, Tokens: ~800, Priority: Medium)*
-- [ ] **Data Visualization** - Data visualization is the representation of data in a graphical format. *(Est: 5h, Tokens: ~1500, Priority: High)*
 - [ ] **Stock Price Analysis** - Stock price analysis is the process of analyzing stock prices to determine their value. *(Est: 5h, Tokens: ~1500, Priority: High)*
 - [ ] **Crypto Price Analysis** - Crypto price analysis is the process of analyzing crypto prices to determine their value. *(Est: 5h, Tokens: ~1500, Priority: High)*
 - [ ] **Real-time leaderboard** - Real-time leaderboard is a leaderboard that displays the scores of users in real-time. *(Est: 4h, Tokens: ~1000, Priority: Medium)*
@@ -47,6 +46,7 @@ This document tracks upcoming features, pending integrations, and the backlog fo
       <summary><b>Detailed Explanation</b></summary>
       To support the planned Cyberpunk, furthur in the future we will add more themes such as Forestpunk, and Corporate, a robust `<ThemeProvider>` needs to be implemented to hold the current, future theme colors, styles and animations for each theme. This engine will allow the user to switch between themes on the client side, in order to switch between themes we will use React Context and CSS custom properties (variables) to control the entire color palette, typography, and border styles. This approach will ensure that the application can instantly switch between themes on the client side without any performance penalty or page reloads. Hopefully it shows an understanding of modern CSS architecture and React state management.
       </details>
+-~~[x]**Data Visualization**: Data visualization is the representation of data in a graphical format. Built with Recharts.~~
 ---
 ### Prioritized Goal Roadmap:
 ---

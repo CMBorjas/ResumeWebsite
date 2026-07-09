@@ -93,7 +93,8 @@ export const projects: Project[] = [
   {
     title: 'Data Visualization',
     description: 'Graphical representation of complex datasets. (Planned for deployment)',
-    techStack: ['React', 'D3.js', 'Tailwind']
+    liveUrl: '/projects/data-visualization',
+    techStack: ['React', 'Recharts', 'Tailwind']
   },
   {
     title: 'Stock & Crypto Analysis',

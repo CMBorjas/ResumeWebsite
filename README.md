@@ -277,6 +277,11 @@ The next phase of development focuses on polishing the portfolio to showcase arc
       <summary><b>Detailed Explanation</b></summary>
       Optimized the global Hexagon Navigation Menu by relocating secondary modules (QR Code, Changelog) to a new centralized Settings page and future goals to a dedicated Socials roadmap page. This significantly reduced visual clutter and improved menu legibility through staggered animation delays.
       </details>
+- ~~[x] **Data Visualization** - Data visualization is the representation of data in a graphical format. Built with Recharts.~~
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      Engineered an interactive, futuristic Data Visualization page utilizing Recharts. Features dynamic theme-responsive charts (Line, Bar, Radar) representing mock cyberpunk datasets.
+      </details>
 </details>
 
 ## Upcoming Features
