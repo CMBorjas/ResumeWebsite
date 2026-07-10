@@ -32,6 +32,7 @@ graph TD
         TerminalLink[projects/number-guessing-game/page.tsx]
         CsvCleanerPage[projects/csv-cleaner/page.tsx]
         FlashCardsPage[projects/flash-cards/page.tsx]
+        FlashCardEditorPage[projects/flash-cards/editor/page.tsx]
         PhotoShowcasePage[projects/photo-showcase/page.tsx]
         JobScraperPage[projects/job-scraper/page.tsx]
         LeaderboardPage[projects/leaderboard/page.tsx]
@@ -58,6 +59,7 @@ graph TD
         CsvSanitizer[CsvCleaner.tsx]
         FlashCard[FlashCard.tsx]
         FlashCardDeck[FlashCardDeck.tsx]
+        FlashCardEditor[FlashCardEditor.tsx]
         PhotoMasonry[PhotoMasonry.tsx]
         JobFeed[JobFeed.tsx]
         LiveLeaderboard[LiveLeaderboard.tsx]
@@ -79,6 +81,7 @@ graph TD
     TerminalLink --> NumGame
     CsvCleanerPage --> CsvSanitizer
     FlashCardsPage --> FlashCardDeck
+    FlashCardEditorPage --> FlashCardEditor
     FlashCardDeck --> FlashCard
     PhotoShowcasePage --> PhotoMasonry
     JobScraperPage --> JobFeed
