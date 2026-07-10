@@ -324,7 +324,9 @@ The next phase of development focuses on polishing the portfolio to showcase arc
 - ~~[x] **Flash Cards** - Neural_Imprint Study Tool.~~
    - <details>
       <summary><b>Detailed Explanation</b></summary>
-      Developed a 3D animated flash card system ("Neural_Imprint") utilizing `framer-motion` for fluid CSS flip transforms. The app comes preloaded with a Tech Interview deck and leverages the browser's `localStorage` to persistently track the user's memorization progress across sessions.
+      A high-performance flash card system built with `framer-motion` for fluid 3D transformations. It includes **Neural_Forge**, a custom Flash Card Editor allowing users to create their own cards with Markdown support and advanced keyboard shortcuts. 
+      
+      > **Note:** Because this is a static site export (`output: 'export'`), progress and custom cards are persistently tracked locally via the browser's `localStorage` engine. If site data is cleared, custom cards will be lost.
       </details>
 - ~~[x] **Photo Showcase** - Dynamic Masonry Grid.~~
    - <details>

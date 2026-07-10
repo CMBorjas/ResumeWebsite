@@ -1,7 +1,9 @@
 'use client'
 
-import React, { useState } from 'react'
+import React from 'react'
 import { motion } from 'framer-motion'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 
 interface FlashCardProps {
   frontContent: string
@@ -24,7 +26,9 @@ export default function FlashCard({ frontContent, backContent, isFlipped, onFlip
           <div className="absolute top-4 left-4 text-xs font-mono text-brand-purple tracking-widest uppercase opacity-70">
             [ FRONT ]
           </div>
-          <h3 className="text-2xl font-bold text-white mb-4">{frontContent}</h3>
+          <div className="prose prose-invert prose-p:text-2xl prose-p:font-bold prose-p:mb-4 max-w-none text-white">
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>{frontContent}</ReactMarkdown>
+          </div>
           <div className="absolute bottom-4 right-4 text-brand-purple animate-pulse">
             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
@@ -40,8 +44,8 @@ export default function FlashCard({ frontContent, backContent, isFlipped, onFlip
           <div className="absolute top-4 left-4 text-xs font-mono text-brand-cyan tracking-widest uppercase opacity-70">
             [ BACK ]
           </div>
-          <div className="text-lg text-slate-300 leading-relaxed font-mono">
-            {backContent}
+          <div className="prose prose-invert prose-pre:bg-black/50 prose-pre:border prose-pre:border-gray-700 max-w-none text-left text-sm md:text-base text-slate-300 font-mono w-full">
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>{backContent}</ReactMarkdown>
           </div>
         </div>
       </motion.div>

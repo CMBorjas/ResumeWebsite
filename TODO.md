@@ -39,11 +39,11 @@ This document tracks upcoming features, pending integrations, and the backlog fo
 
 </details>
 
-<details open>
+<details>
 <summary><b>Backlog</b></summary>
 
 - [ ] **Image processing services** - Tools to process images. *(Est: 2h, Tokens: ~600, Priority: Low)*
-- [ ] **Flash Card Editor** - Allows users to edit flash cards. *(Est: 8h, Tokens: ~2500, Priority: Low)*
+- [x] **Flash Card Editor** - Allows users to edit flash cards. *(Est: 8h, Tokens: ~2500, Priority: Low)*
 
 </details>
 

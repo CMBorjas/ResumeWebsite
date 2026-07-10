@@ -1,7 +1,9 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
+import Link from 'next/link'
 import FlashCard from './FlashCard'
+import { Edit3 } from 'lucide-react'
 
 export interface CardData {
   id: string
@@ -18,7 +20,9 @@ const DEFAULT_DECK: CardData[] = [
 ]
 
 export default function FlashCardDeck() {
+  const [activeDeckType, setActiveDeckType] = useState<'default' | 'custom'>('default')
   const [deck, setDeck] = useState<CardData[]>([])
+  const [customDeck, setCustomDeck] = useState<CardData[]>([])
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isFlipped, setIsFlipped] = useState(false)
   const [memorizedIds, setMemorizedIds] = useState<Set<string>>(new Set())
@@ -34,8 +38,28 @@ export default function FlashCardDeck() {
         console.error('Failed to parse memorized flashcards from localStorage')
       }
     }
+    const savedCustom = localStorage.getItem('custom_flashcards')
+    if (savedCustom) {
+      try {
+        setCustomDeck(JSON.parse(savedCustom))
+      } catch (e) {
+        console.error('Failed to parse custom flashcards')
+      }
+    }
+    
     setDeck(DEFAULT_DECK)
   }, [])
+  
+  // Handle deck switching
+  useEffect(() => {
+    setCurrentIndex(0)
+    setIsFlipped(false)
+    if (activeDeckType === 'default') {
+      setDeck(DEFAULT_DECK)
+    } else {
+      setDeck(customDeck)
+    }
+  }, [activeDeckType, customDeck])
 
   // Save to local storage
   useEffect(() => {
@@ -69,6 +93,27 @@ export default function FlashCardDeck() {
     setMemorizedIds(newSet)
   }
 
+  if (activeDeckType === 'custom' && customDeck.length === 0) {
+    return (
+      <div className="w-full max-w-2xl mx-auto flex flex-col gap-8 text-center items-center justify-center py-20">
+        <h2 className="text-xl font-mono text-brand-purple uppercase tracking-widest mb-4">No Custom Nodes Found</h2>
+        <p className="text-slate-400 font-mono mb-8">Access the Neural Forge to initialize your custom deck.</p>
+        <Link 
+          href="/projects/flash-cards/editor"
+          className="px-8 py-3 bg-brand-purple text-black font-bold uppercase tracking-widest font-mono rounded-lg hover:bg-white transition-colors"
+        >
+          Open Neural Forge
+        </Link>
+        <button 
+          onClick={() => setActiveDeckType('default')}
+          className="mt-4 text-sm text-slate-500 hover:text-white underline font-mono"
+        >
+          Return to Default Deck
+        </button>
+      </div>
+    )
+  }
+
   if (deck.length === 0) {
     return <div className="text-brand-cyan animate-pulse font-mono text-center">Loading Neural Deck...</div>
   }
@@ -81,13 +126,38 @@ export default function FlashCardDeck() {
       
       {/* Header & Progress */}
       <div className="flex flex-col gap-2">
-        <div className="flex justify-between items-end">
-          <h2 className="text-xl font-bold text-white flex items-center gap-2 font-mono uppercase">
-            Tech_Interview_Deck
-          </h2>
-          <span className="text-xs font-mono text-slate-400">
-            {currentIndex + 1} / {deck.length}
-          </span>
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+          <div className="flex items-center gap-4">
+            <h2 className="text-xl font-bold text-white flex items-center gap-2 font-mono uppercase">
+              {activeDeckType === 'default' ? 'Tech_Interview_Deck' : 'Custom_Neural_Deck'}
+            </h2>
+            <Link href="/projects/flash-cards/editor" className="p-2 bg-slate-800 hover:bg-brand-purple text-slate-300 hover:text-black rounded-lg transition-colors flex items-center gap-2">
+              <Edit3 className="w-4 h-4" />
+              <span className="text-xs font-mono font-bold hidden md:inline">Neural Forge</span>
+            </Link>
+          </div>
+          
+          <div className="flex items-center gap-4">
+            {/* Deck Toggle */}
+            <div className="flex bg-slate-900 rounded-lg p-1 border border-slate-700">
+              <button 
+                onClick={() => setActiveDeckType('default')}
+                className={`px-3 py-1 text-xs font-mono font-bold rounded-md transition-colors ${activeDeckType === 'default' ? 'bg-brand-cyan text-black' : 'text-slate-400 hover:text-white'}`}
+              >
+                DEFAULT
+              </button>
+              <button 
+                onClick={() => setActiveDeckType('custom')}
+                className={`px-3 py-1 text-xs font-mono font-bold rounded-md transition-colors ${activeDeckType === 'custom' ? 'bg-brand-purple text-black' : 'text-slate-400 hover:text-white'}`}
+              >
+                CUSTOM
+              </button>
+            </div>
+            
+            <span className="text-xs font-mono text-slate-400">
+              {currentIndex + 1} / {deck.length}
+            </span>
+          </div>
         </div>
         <div className="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
           <div 
