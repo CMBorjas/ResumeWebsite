@@ -24,6 +24,8 @@ This website serves as a digital resume and portfolio for Christian Mandujano Bo
 - **Skills**: Technical skills and areas of expertise.
 - **Work Experience**: Professional experience and roles held.
 - **Projects**: Live GitHub repository feed with tech stack detection.
+- **Live Projects**: A dedicated feed highlighting only fully deployed and active projects.
+- **Blog**: A static markdown rendering engine (Neural Logs) containing technical architecture breakdowns.
 - **Resume**: Embedded PDF viewer with a downloadable resume.
 - **Settings**: Configuration for theme preferences and navigation behavior.
 - **Socials**: Future-facing registry of upcoming features and integrations.
@@ -348,6 +350,28 @@ The next phase of development focuses on polishing the portfolio to showcase arc
    - <details>
       <summary><b>Detailed Explanation</b></summary>
       Developed a custom, fully static markdown rendering pipeline utilizing `react-markdown` and `generateStaticParams()`. It compiles raw markdown strings from a local registry (`blog.ts`) into fully styled DOM nodes matching the project's cyberpunk aesthetic. Included 4 pre-authored technical deep dives detailing the architecture of previously built components.
+      </details>
+- ~~[x] **Navigation Expansion** - Live Projects & Neural Logs.~~
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      Added a dedicated Live Projects route that wraps the existing project feed to only display deployed applications. Integrated both the Live Projects page and the Blog into the primary Hexagon Menu and global footer, expanding the portfolio's navigational footprint while maintaining seamless `framer-motion` page transitions.
+      </details>
+- ~~[x] **Server Performance Statistics** - Nexus Core.~~
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      Engineered and deployed a highly realistic client-side telemetry dashboard (Nexus_Core) since a real Node.js backend cannot run dynamically on GitHub Pages (`output: 'export'`). It uses a React `useEffect` interval to simulate real-time metrics (CPU Usage, Memory Allocation, Network I/O) every 1000ms. Integrated Recharts for fluid, neon-styled `AreaChart` visualizations and framer-motion for micro-interactions (progress bars, status alerts).
+      </details>
+
+- ~~[x] **Movie Scraper and Reservation System** - Cinema Nexus.~~
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      Built a client-side simulated movie scraping and point-of-sale reservation system. It utilizes `localStorage` to emulate a backend database, saving user seat selections persistently across sessions. The UI features a cyberpunk aesthetic with glowing borders based on movie themes, genre filtering, and an interactive CSS grid for seat selection.
+      </details>
+
+- ~~[x] **Neural Hacker Quiz** - Neural_Quiz.~~
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      A cyberpunk-styled interactive quiz simulation designed to test knowledge of Data Structures and Algorithms. It features an interactive terminal interface that supports both multiple-choice options and strict string-matching for fill-in-the-blank code snippets. The application leverages `framer-motion` for fluid state transitions and includes an adjustable countdown timer ("Pressure Mode") to simulate high-pressure technical interviews.
       </details>
 </details>
 

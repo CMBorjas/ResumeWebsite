@@ -11,6 +11,7 @@ It was created to fulfill the "Personal Blog page" roadmap goal and to provide a
 2. **Blog Feed (`/blog/page.tsx`)**: The main page maps over the `BLOG_POSTS` registry, generating interactive cards with `framer-motion` entrance animations.
 3. **Blog Reader (`/blog/[slug]/page.tsx`)**: Next.js `generateStaticParams()` pre-compiles a static route for every slug in the registry. When visited, the route uses `react-markdown` and `remark-gfm` to parse the raw markdown. 
 4. **Styling**: Standard Tailwind arbitrary variant selectors (`[&>h1]`, `[&>p]`) are utilized on the parent wrapper to inject the project's cyberpunk aesthetic into the raw markdown elements without needing the `@tailwindcss/typography` plugin.
+5. **Navigation Integration**: The route is globally accessible via the `HexagonMenu` and the footer in `layout.tsx`.
 
 ## Requirements
 - `react-markdown` and `remark-gfm` for parsing.

@@ -17,8 +17,10 @@ graph TD
         Contact[contact/page.tsx]
         Education[education/page.tsx]
         Projects[projects/page.tsx]
+        LiveProjects[live-projects/page.tsx]
         DataViz[projects/data-visualization/page.tsx]
-        Resume[resume/page.tsx]
+        ServerStatsPage[projects/server-stats/page.tsx]
+        CinemaNexusPage[projects/cinema-nexus/page.tsx]
         Settings[settings/page.tsx]
         Skills[skills/page.tsx]
         Socials[socials/page.tsx]
@@ -34,6 +36,7 @@ graph TD
         JobScraperPage[projects/job-scraper/page.tsx]
         LeaderboardPage[projects/leaderboard/page.tsx]
         MarketAnalysisPage[projects/market-analysis/page.tsx]
+        QuizAppPage[projects/quiz-app/page.tsx]
         BlogFeedPage[blog/page.tsx]
         BlogPostReaderPage[blog/[slug]/page.tsx]
     end
@@ -46,6 +49,7 @@ graph TD
         TechStack[TechStackPanel.tsx]
         TestimonialCards[TestimonialCards.tsx]
         ProfileStats[ProfileStatsPanel.tsx]
+        ServerStats[ServerStats.tsx]
         GithubFeed[GithubActivityFeed.tsx]
         CurrencyConv[CurrencyConverter.tsx]
         UnitConv[UnitConverter.tsx]
@@ -58,6 +62,8 @@ graph TD
         JobFeed[JobFeed.tsx]
         LiveLeaderboard[LiveLeaderboard.tsx]
         MarketAnalysis[MarketAnalysis.tsx]
+        QuizInterface[QuizInterface.tsx]
+        ScoreScreen[ScoreScreen.tsx]
     end
     
     %% Connections
@@ -65,6 +71,7 @@ graph TD
     Projects --> ProjectFeed
     Projects --> ProfileStats
     Projects --> GithubFeed
+    LiveProjects --> ProjectFeed
     ProjectFeed --> ProjectCard
     Converters --> CurrencyConv
     Converters --> UnitConv
@@ -77,6 +84,8 @@ graph TD
     JobScraperPage --> JobFeed
     LeaderboardPage --> LiveLeaderboard
     MarketAnalysisPage --> MarketAnalysis
+    QuizAppPage --> QuizInterface
+    QuizAppPage --> ScoreScreen
     BlogFeedPage --> BlogFeed
     BlogPostReaderPage --> BlogPostReader
     BlogFeedPage --> BlogRegistry
@@ -89,6 +98,7 @@ graph TD
         ProjectData[lib/projects.ts]
         LocalStorage[(localStorage)]
         BlogRegistry[lib/blog.ts]
+        QuizData[lib/quiz-data.ts]
     end
 
     %% Project Management
@@ -100,6 +110,7 @@ graph TD
     ThemeEngine -.-> Layout
     ProjectData -.-> ProjectFeed
     ThemeEngine -.-> LocalStorage
+    QuizData -.-> QuizAppPage
     
     %% Deployment
     subgraph Deployment

@@ -96,6 +96,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                                     </Link>
                                 </li>
                                 <li>
+                                    <Link href="/live-projects" className="relative flex items-center justify-center w-20 h-8 group">
+                                        <svg className="absolute w-6 h-6 text-brand-cyan transition-all duration-300 transform group-hover:-translate-y-4 group-hover:opacity-0 drop-shadow-[0_0_5px_color-mix(in srgb, var(--color-brand-cyan) 50%, transparent)]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                                        </svg>
+                                        <span className="absolute text-[10px] tracking-widest font-bold uppercase text-white opacity-0 transform translate-y-4 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap drop-shadow-[0_0_8px_rgba(255,255,255,0.6)]">Live</span>
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/blog" className="relative flex items-center justify-center w-20 h-8 group">
+                                        <svg className="absolute w-6 h-6 text-brand-cyan transition-all duration-300 transform group-hover:-translate-y-4 group-hover:opacity-0 drop-shadow-[0_0_5px_color-mix(in srgb, var(--color-brand-cyan) 50%, transparent)]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
+                                        </svg>
+                                        <span className="absolute text-[10px] tracking-widest font-bold uppercase text-white opacity-0 transform translate-y-4 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap drop-shadow-[0_0_8px_rgba(255,255,255,0.6)]">Blog</span>
+                                    </Link>
+                                </li>
+                                <li>
                                     <Link href="/settings" className="relative flex items-center justify-center w-20 h-8 group">
                                         <svg className="absolute w-6 h-6 text-brand-cyan transition-all duration-300 transform group-hover:-translate-y-4 group-hover:opacity-0 drop-shadow-[0_0_5px_color-mix(in srgb, var(--color-brand-cyan) 50%, transparent)]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                             <circle cx="12" cy="12" r="3"></circle>

@@ -50,7 +50,8 @@ export default function TechStackPanel({
   setLiveFilter = () => {},
   isMinimizedProp,
   setIsMinimizedProp,
-  onClose
+  onClose,
+  hideLiveFilter = false
 }: {
   selectedTechs?: string[]
   availableTechs?: string[]
@@ -61,6 +62,7 @@ export default function TechStackPanel({
   isMinimizedProp?: boolean
   setIsMinimizedProp?: (val: boolean) => void
   onClose?: () => void
+  hideLiveFilter?: boolean
 }) {
   const [localIsMinimized, setLocalIsMinimized] = useState(false)
   const isMinimized = isMinimizedProp !== undefined ? isMinimizedProp : localIsMinimized
@@ -98,27 +100,29 @@ export default function TechStackPanel({
 
         <div className={`flex-1 p-4 overflow-y-auto custom-scrollbar ${isMinimized ? 'hidden' : ''}`}>
           {/* Live Status Filter */}
-          <div className="flex bg-[#0d1117] border border-brand-cyan/30 rounded-lg p-1 mb-6 gap-1 shrink-0">
-            <button 
-              onClick={() => setLiveFilter('all')} 
-              className={`flex-1 text-[10px] uppercase font-bold tracking-widest py-1.5 rounded-md transition-all ${liveFilter === 'all' ? 'bg-brand-cyan/20 text-brand-cyan shadow-[0_0_8px_color-mix(in srgb, var(--color-brand-cyan) 40%, transparent)]' : 'text-slate-400 hover:text-slate-200 hover:bg-white/5'}`}
-            >
-              All
-            </button>
-            <button 
-              onClick={() => setLiveFilter('live')} 
-              className={`flex-1 flex items-center justify-center gap-1.5 text-[10px] uppercase font-bold tracking-widest py-1.5 rounded-md transition-all ${liveFilter === 'live' ? 'bg-brand-pink/20 text-brand-pink shadow-[0_0_8px_color-mix(in srgb, var(--color-brand-pink) 40%, transparent)]' : 'text-slate-400 hover:text-slate-200 hover:bg-white/5'}`}
-            >
-              <span className={`w-1.5 h-1.5 rounded-full ${liveFilter === 'live' ? 'bg-brand-pink shadow-[0_0_5px_currentColor] animate-pulse' : 'bg-slate-500'}`}></span>
-              Live
-            </button>
-            <button 
-              onClick={() => setLiveFilter('non-live')} 
-              className={`flex-1 text-[10px] uppercase font-bold tracking-widest py-1.5 rounded-md transition-all ${liveFilter === 'non-live' ? 'bg-slate-700 text-white shadow-[0_0_8px_rgba(255,255,255,0.2)]' : 'text-slate-400 hover:text-slate-200 hover:bg-white/5'}`}
-            >
-              Non-Live
-            </button>
-          </div>
+          {!hideLiveFilter && (
+            <div className="flex bg-[#0d1117] border border-brand-cyan/30 rounded-lg p-1 mb-6 gap-1 shrink-0">
+              <button 
+                onClick={() => setLiveFilter('all')} 
+                className={`flex-1 text-[10px] uppercase font-bold tracking-widest py-1.5 rounded-md transition-all ${liveFilter === 'all' ? 'bg-brand-cyan/20 text-brand-cyan shadow-[0_0_8px_color-mix(in srgb, var(--color-brand-cyan) 40%, transparent)]' : 'text-slate-400 hover:text-slate-200 hover:bg-white/5'}`}
+              >
+                All
+              </button>
+              <button 
+                onClick={() => setLiveFilter('live')} 
+                className={`flex-1 flex items-center justify-center gap-1.5 text-[10px] uppercase font-bold tracking-widest py-1.5 rounded-md transition-all ${liveFilter === 'live' ? 'bg-brand-pink/20 text-brand-pink shadow-[0_0_8px_color-mix(in srgb, var(--color-brand-pink) 40%, transparent)]' : 'text-slate-400 hover:text-slate-200 hover:bg-white/5'}`}
+              >
+                <span className={`w-1.5 h-1.5 rounded-full ${liveFilter === 'live' ? 'bg-brand-pink shadow-[0_0_5px_currentColor] animate-pulse' : 'bg-slate-500'}`}></span>
+                Live
+              </button>
+              <button 
+                onClick={() => setLiveFilter('non-live')} 
+                className={`flex-1 text-[10px] uppercase font-bold tracking-widest py-1.5 rounded-md transition-all ${liveFilter === 'non-live' ? 'bg-slate-700 text-white shadow-[0_0_8px_rgba(255,255,255,0.2)]' : 'text-slate-400 hover:text-slate-200 hover:bg-white/5'}`}
+              >
+                Non-Live
+              </button>
+            </div>
+          )}
 
           {techCategories.map((cat) => (
             <div key={cat.label} className="mb-5 last:mb-0">

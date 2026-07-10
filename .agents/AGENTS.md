@@ -10,6 +10,7 @@ This is a cyberpunk-themed personal portfolio for Christian Mandujano Borjas bui
 4. **State Management**: Use React Context for global states (e.g., the Dynamic Theme Engine) and `localStorage` for persisting user preferences.
 5. **Data Handling**: Always cross-reference `src/lib/projects.ts` when modifying project data or GitHub feeds to maintain data integrity.
 6. **Utility Widgets & APIs**: When building utility converters (e.g. Currency Converter) or feeds that rely on public external APIs, fetch data in a Next.js Server Component utilizing Incremental Static Regeneration (ISR) (`next: { revalidate: <seconds> }`) to prevent rate limiting, and pass the data down to a Client Component for interactive UI rendering and math operations.
+7. **Static Export Data Simulation**: Since the site relies on `output: 'export'` for GitHub Pages, you cannot run an active Node.js backend. All dynamic backend data simulations (like telemetry or server stats) MUST be built entirely on the client side using React `useEffect` intervals or realistic randomized data generation techniques to maintain a "live" feel.
 
 ## Agent Instructions
 - **File Integrity**: Preserve all existing comments and docstrings unless explicitly told to remove them.
@@ -21,3 +22,4 @@ This is a cyberpunk-themed personal portfolio for Christian Mandujano Borjas bui
   - `## Requirements`: Dependencies, APIs, or required context.
   - `## Outbound Data Flow`: Where the data goes or what it mutates.
 - **Task Tracking**: Whenever you stage and push changes to GitHub, you MUST ensure that `TODO.md` is fully updated, verifying that all completed objectives are checked off correctly and moved to the appropriate completed sections if necessary.
+- **Visual Bug Tracking**: If you discover, fix, or encounter any visual bugs (UI layout breaks, responsive design flaws, etc.), you MUST update `VISUAL_BUGS.md` in the repository root. Ensure you use the provided tables to log active bugs or document resolved ones.

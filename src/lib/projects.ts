@@ -93,7 +93,7 @@ export const projects: Project[] = [
   },
   {
     title: 'Currency & Unit Converters',
-    description: 'Real-time conversion utility widgets. (Planned for deployment)',
+    description: 'Real-time conversion utility widgets.',
     liveUrl: '/projects/converters',
     techStack: ['React', 'Next.js', 'Tailwind']
   },
@@ -134,8 +134,14 @@ export const projects: Project[] = [
     techStack: ['React', 'Next.js', 'Tailwind', 'Framer Motion']
   },
   {
+    title: 'Nexus_Core (Server Telemetry)',
+    description: 'A cyberpunk-themed real-time server performance dashboard. Simulates live hardware metrics (CPU, RAM, Network I/O) using Recharts and Framer Motion.',
+    liveUrl: '/projects/server-stats',
+    techStack: ['React', 'Next.js', 'Tailwind', 'Recharts', 'Framer Motion']
+  },
+  {
     title: 'Data Visualization',
-    description: 'Graphical representation of complex datasets. (Planned for deployment)',
+    description: 'Graphical representation of complex datasets.',
     liveUrl: '/projects/data-visualization',
     techStack: ['React', 'Recharts', 'Tailwind']
   },
@@ -146,13 +152,15 @@ export const projects: Project[] = [
     techStack: ['React', 'Next.js', 'Recharts', 'Tailwind']
   },
   {
-    title: 'Real-time Leaderboard',
-    description: 'Live scoring system for interactive components. (Planned for deployment)',
-    techStack: ['React', 'Node.js', 'Redis']
+    title: 'Cinema_Nexus (Movie Scraper & Reservation)',
+    description: 'A cyberpunk-themed terminal for scraping movies and reserving seats. Simulates a backend point-of-sale system entirely on the client side using localStorage and framer-motion micro-interactions.',
+    liveUrl: '/projects/cinema-nexus',
+    techStack: ['React', 'Next.js', 'Tailwind', 'Framer Motion']
   },
   {
-    title: 'Quiz & Flash Cards',
-    description: 'Educational tools for learning and memory retention. (Planned for deployment)',
-    techStack: ['React', 'Next.js', 'PostgreSQL']
+    title: 'Neural_Quiz (LeetCode Challenges)',
+    description: 'A cyberpunk-styled hacker quiz testing Data Structures and Algorithms. Features multiple choice, code snippet fill-in-the-blanks, and an adjustable countdown timer.',
+    liveUrl: '/projects/quiz-app',
+    techStack: ['React', 'Next.js', 'Tailwind', 'Framer Motion']
   }
 ]

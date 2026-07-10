@@ -5,7 +5,7 @@ import { Project } from '../lib/projects'
 import ProjectCard from './ProjectCard'
 import TechStackPanel from './TechStackPanel'
 
-export default function ProjectFeedClient({ allProjects }: { allProjects: Project[] }) {
+export default function ProjectFeedClient({ allProjects, hideLiveFilter = false }: { allProjects: Project[], hideLiveFilter?: boolean }) {
   const [selectedTechs, setSelectedTechs] = useState<string[]>([])
   const [sortBy, setSortBy] = useState<'default' | 'stars' | 'forks'>('default')
   const [liveFilter, setLiveFilter] = useState<'all' | 'live' | 'non-live'>('all')
@@ -201,6 +201,7 @@ export default function ProjectFeedClient({ allProjects }: { allProjects: Projec
           isMinimizedProp={isTechStackMinimized}
           setIsMinimizedProp={setIsTechStackMinimized}
           onClose={handleCloseTechStack}
+          hideLiveFilter={hideLiveFilter}
         />
       </aside>
     </>
