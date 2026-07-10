@@ -22,6 +22,26 @@ This document tracks upcoming features, pending integrations, and the backlog fo
 * [X] 16. Markdown Note Taking App (blog page/Seperate repo)
 * [ ] 17. Photo Gallery 24hr Story Feature (blog page/Seperate repo) *(Est: 4h, Tokens: ~1000, Priority: Medium)*
 * [X] 18. URL Shortener (blog page/Seperate repo)
+* [ ] 19. Interactive Terminal Resume (projects page) *(Est: 6h, Tokens: ~1500, Priority: High)*
+* [ ] 20. Interactive System Architecture Diagram (about page) *(Est: 5h, Tokens: ~1200, Priority: Medium)*
+* [ ] 21. Regular Expression (Regex) Sandbox (projects page) *(Est: 3h, Tokens: ~800, Priority: Low)*
+* [ ] 22. GitHub Contribution 3D Visualizer (home page) *(Est: 6h, Tokens: ~1500, Priority: High)*
+* [ ] 23. REST API Endpoint Sandbox (projects page) *(Est: 5h, Tokens: ~1200, Priority: Medium)*
+* [ ] 24. Global Sync Time Zone Matrix (contact page) *(Est: 2h, Tokens: ~600, Priority: Low)*
+* [ ] 25. JSON Formatter and Validator (projects page) *(Est: 3h, Tokens: ~800, Priority: Low)*
+* [ ] 26. Simulated "System Override" Easter Egg (global) *(Est: 2h, Tokens: ~600, Priority: Low)*
+* [ ] 27. Code Snippet Vault / Gist Feed (projects page) *(Est: 4h, Tokens: ~1000, Priority: Medium)*
+* [ ] 28. Cyberpunk Typing Speed Test (projects page) *(Est: 4h, Tokens: ~1000, Priority: Medium)*
+* [ ] 29. CSS Glassmorphism Generator (projects page) *(Est: 3h, Tokens: ~800, Priority: Low)*
+* [ ] 30. Interactive Skill Radar Chart (skills page) *(Est: 4h, Tokens: ~1000, Priority: Medium)*
+* [ ] 31. Local Storage Note Pad (global) *(Est: 2h, Tokens: ~600, Priority: Low)*
+* [ ] 32. Base64 Encoder/Decoder Utility (projects page) *(Est: 1h, Tokens: ~400, Priority: Low)*
+* [ ] 33. Password Generator (projects page) *(Est: 1h, Tokens: ~400, Priority: Low)*
+* [ ] 34. Scroll-Driven Work Experience Timeline (work experience page) *(Est: 5h, Tokens: ~1200, Priority: High)*
+* [ ] 35. Device/Browser Fingerprint Scanner (home page) *(Est: 2h, Tokens: ~600, Priority: Low)*
+* [ ] 36. Spotify/Apple Music "Currently Playing" Mockup (home page) *(Est: 3h, Tokens: ~800, Priority: Low)*
+* [ ] 37. Color Palette Extractor (projects page) *(Est: 4h, Tokens: ~1000, Priority: Medium)*
+* [ ] 38. Version Control Commit Visualizer (projects page) *(Est: 6h, Tokens: ~1500, Priority: High)*
 
 ---
 <details>
