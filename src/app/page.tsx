@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import headshotImage from '../../public/images/profile/Headshot_nobg.png';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaEnvelope, FaPython, FaJava, FaReact, FaNodeJs, FaDocker, FaAws, FaLinux } from 'react-icons/fa';
@@ -388,7 +389,7 @@ export default function Home() {
 
           {/* Bottom Right: Headshot & Spinning Badge */}
           <div className="relative w-full max-w-[400px] md:max-w-[500px] lg:max-w-[700px] flex justify-end items-end h-[60vh] md:h-[80vh]">
-            <Image src="/images/profile/Headshot_nobg.png" alt="Christian Mandujano Borjas" fill className="object-contain object-bottom drop-shadow-[0_0_50px_rgba(0,0,0,0.8)] pointer-events-none scale-[2.0] origin-bottom" priority />
+            <Image src={headshotImage} alt="Christian Mandujano Borjas" fill className="object-contain object-bottom drop-shadow-[0_0_50px_rgba(0,0,0,0.8)] pointer-events-none scale-[2.0] origin-bottom" priority />
 
           </div>
         </div>
@@ -403,7 +404,7 @@ export default function Home() {
         {/* Top: Avatar & Status */}
         <div className="flex flex-col items-center mt-4">
           <div className="w-48 h-48 rounded-full overflow-hidden border-2 border-brand-cyan/30 mb-6 relative shadow-[0_0_25px_color-mix(in srgb, var(--color-brand-cyan) 15%, transparent)]">
-            <Image src="/images/profile/Headshot_nobg.png" alt="Christian Mandujano Borjas" fill className="object-cover" priority />
+            <Image src={headshotImage} alt="Christian Mandujano Borjas" fill className="object-cover" priority />
           </div>
           <div className="flex items-center gap-2 mb-8 bg-white/5 px-4 py-1.5 rounded-full border border-white/10">
             <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_color-mix(in srgb, var(--color-green-500) 80%, transparent)]"></span>
