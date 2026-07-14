@@ -97,7 +97,7 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
   );
 
   return (
-    <div className="w-full overflow-hidden relative py-4 flex items-center -mx-4 px-4 md:-mx-10 md:px-10 xl:-mx-16 xl:px-16">
+    <div className="group/carousel w-full overflow-hidden relative py-4 flex items-center -mx-4 px-4 md:-mx-10 md:px-10 xl:-mx-16 xl:px-16">
       <style>{`
         @keyframes smooth-marquee {
           0% { transform: translateX(0%); }
@@ -106,14 +106,17 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
         .run-marquee {
           animation: smooth-marquee 120s linear infinite;
         }
+        .run-marquee:hover {
+          animation-play-state: paused;
+        }
       `}</style>
       
       {/* Gradients to fade edges */}
-      <div className="absolute left-0 top-0 w-8 md:w-16 xl:w-24 h-full bg-gradient-to-r from-[#0a0f18] to-transparent z-10 pointer-events-none" />
-      <div className="absolute right-0 top-0 w-8 md:w-16 xl:w-24 h-full bg-gradient-to-l from-[#0a0f18] to-transparent z-10 pointer-events-none" />
+      <div className="absolute left-0 top-0 w-8 md:w-16 xl:w-24 h-full bg-gradient-to-r from-[#0a0f18] to-transparent z-10 pointer-events-none transition-opacity duration-500 group-hover/carousel:opacity-0" />
+      <div className="absolute right-0 top-0 w-8 md:w-16 xl:w-24 h-full bg-gradient-to-l from-[#0a0f18] to-transparent z-10 pointer-events-none transition-opacity duration-500 group-hover/carousel:opacity-0" />
 
       {/* Marquee Container */}
-      <div className="flex w-max run-marquee hover:[animation-play-state:paused]">
+      <div className="flex w-max run-marquee">
         <div className="flex gap-6 pr-6 shrink-0">
           {renderCards(projects)}
         </div>

@@ -67,6 +67,8 @@ graph TD
         MarketAnalysis[MarketAnalysis.tsx]
         QuizInterface[QuizInterface.tsx]
         ScoreScreen[ScoreScreen.tsx]
+        MyGoals[MyGoals.tsx]
+        ServicesSection[ServicesSection.tsx]
     end
     
     %% Connections

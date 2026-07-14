@@ -13,14 +13,10 @@ import WeatherWidget from '../components/WeatherWidget';
 import TestimonialCards from '../components/TestimonialCards';
 import ProjectCarousel from '../components/ProjectCarousel';
 import { projects } from '../lib/projects';
+import MyGoals from '../components/MyGoals';
+import ServicesSection from '../components/ServicesSection';
 
-const paragraphs = [
-  "I am Christian Mandujano Borjas, an aspiring software engineer currently pursuing a degree in Computer Science at the University of Colorado Denver. With a strong foundation in programming languages like Python, Java, and C++, I have a passion for solving complex problems and building efficient systems.",
-  "I am currently working on a full stack web development project using HTML, CSS, and JavaScript. I have experience with database management using MySQL and SQLite, and I am familiar with cloud services like Google Firebase and Amazon Web Services.",
-  "My experience as an I.T. Technician at The Monarch Casino and as a CIS Lab Assistant at the Community College of Denver has given me hands-on experience in hardware maintenance, networking, and team collaboration."
-];
 
-let hasPlayedAnimation = false;
 
 const BentoBox = ({ children, className, delay = 0, title }: { children: React.ReactNode | ((isMaximized: boolean) => React.ReactNode), className?: string, delay?: number, title?: string }) => {
   const [isVisible, setIsVisible] = useState(true);
@@ -140,33 +136,12 @@ const ProgressBar = ({ label, percentage }: { label: string, percentage: number 
 );
 
 export default function Home() {
-  const [displayedText, setDisplayedText] = useState("");
-  const [isTypingDone, setIsTypingDone] = useState(false);
-  const fullText = paragraphs.join("\n\n");
+
 
   // Fetch the 10 most recently added projects from the array
   const recentProjects = [...projects].reverse().slice(0, 10);
 
-  useEffect(() => {
-    if (hasPlayedAnimation) {
-      setDisplayedText(fullText);
-      setIsTypingDone(true);
-      return;
-    }
 
-    let i = 0;
-    const interval = setInterval(() => {
-      setDisplayedText(fullText.substring(0, i));
-      i += 3; 
-      if (i > fullText.length) {
-        clearInterval(interval);
-        setDisplayedText(fullText);
-        setIsTypingDone(true);
-        hasPlayedAnimation = true;
-      }
-    }, 10);
-    return () => clearInterval(interval);
-  }, [fullText]);
 
   return (
     <div className="w-full bg-transparent">
@@ -319,27 +294,29 @@ export default function Home() {
             <ProjectCarousel projects={recentProjects} />
           </div>
 
-          {/* SECTION 3: BENTO GRID (THE REST) */}
+          {/* SECTION 3: TESTIMONIALS */}
+          <div className="mb-16">
+            <h2 className="text-3xl font-extrabold text-white mb-8 tracking-widest uppercase flex items-center gap-4">
+              Testimonials
+              <div className="h-px bg-gradient-to-r from-brand-cyan/50 to-transparent flex-1" />
+            </h2>
+            <TestimonialCards />
+          </div>
+
+          {/* SECTION 4: GOALS & SERVICES */}
           <h2 className="text-2xl font-bold text-white mb-8 tracking-wider uppercase flex items-center gap-4 mt-8">
-            Overview
+            Goals
             <div className="h-px bg-gradient-to-r from-brand-pink/50 to-transparent flex-1" />
           </h2>
 
+          <div className="mb-8 w-full">
+            <MyGoals />
+          </div>
+
+          <ServicesSection />
+
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 w-full auto-rows-[minmax(180px,auto)] pb-24">
             
-            {/* Terminal / About Me Box */}
-            <BentoBox className="order-1 md:col-span-2 md:row-span-2 !p-0 !bg-black/80 font-mono" delay={0.1} title="~/ABOUT_ME">
-              <div className="p-6 flex-grow overflow-y-auto custom-scrollbar h-[300px]">
-                <p className="whitespace-pre-wrap leading-relaxed text-sm text-brand-cyan/90">
-                  <span className="text-brand-pink mr-2 font-bold">&gt;</span>
-                  {displayedText.split(/(Christian Mandujano Borjas)/).map((part, i) =>
-                    part === "Christian Mandujano Borjas" ? <span key={i} translate="no" className="notranslate text-brand-cyan">{part}</span> : part
-                  )}
-                  <span className={`${isTypingDone ? 'animate-pulse' : ''} inline-block w-2.5 h-4 bg-brand-cyan align-middle ml-1 shadow-[0_0_8px_color-mix(in srgb, var(--color-brand-cyan) 80%, transparent)]`}></span>
-                </p>
-              </div>
-            </BentoBox>
-
             {/* Location/Weather Box */}
             <BentoBox className="order-2 md:col-span-1 md:row-span-1 !p-0 !bg-black/80" delay={0.2} title="~/WEATHER">
               {(isMaximized) => <WeatherWidget isMaximized={isMaximized} />}
@@ -371,7 +348,7 @@ export default function Home() {
 
 
             {/* Roles/Experience Box */}
-            <BentoBox className="order-5 md:col-span-2 md:row-span-1 !p-0 !bg-black/80" delay={0.5} title="~/EXPERIENCE">
+            <BentoBox className="order-4 md:col-span-2 md:row-span-1 !p-0 !bg-black/80" delay={0.4} title="~/EXPERIENCE">
               <div className="p-6 h-full flex flex-col justify-center">
                 <h3 className="text-xs font-bold text-white mb-4 uppercase tracking-widest flex items-center gap-2">
                   <svg className="w-4 h-4 text-brand-pink" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
@@ -397,18 +374,13 @@ export default function Home() {
             </BentoBox>
 
             {/* Project Feed Box */}
-            <BentoBox className="order-6 md:col-span-2 md:row-span-1 !p-0 !bg-black/80" delay={0.6} title="~/PROJECT_FEED">
+            <BentoBox className="order-5 md:col-span-4 md:row-span-1 !p-0 !bg-black/80" delay={0.5} title="~/PROJECT_FEED">
               <RandomRepoShoutout />
             </BentoBox>
 
             {/* Trending Repo Box */}
-            <BentoBox className="order-7 md:col-span-4 md:row-span-1 !p-0 !bg-black/80" delay={0.7} title="~/TRENDING_NOW">
+            <BentoBox className="order-6 md:col-span-4 md:row-span-1 !p-0 !bg-black/80" delay={0.6} title="~/TRENDING_NOW">
               <TrendingRepoShoutout />
-            </BentoBox>
-
-            {/* Testimonials Box */}
-            <BentoBox className="order-8 md:col-span-4 md:row-span-1 !p-0 !bg-black/80" delay={0.8} title="~/TESTIMONIALS">
-              <TestimonialCards />
             </BentoBox>
 
           </div>
