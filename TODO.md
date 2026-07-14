@@ -73,6 +73,9 @@ This document tracks upcoming features, pending integrations, and the backlog fo
 - ~~[x] **Hybrid Landing Page Redesign**:~~
   - ~~Overhauled `src/app/page.tsx` with a full-viewport Hero section and scroll-driven framer-motion animations for the Bento Box grid.~~
 
+- ~~[x] **Infinite Project Carousel**:~~
+  - ~~Replaced the static project grid on the homepage with an infinite scrolling marquee of the top 10 recent projects, featuring interactive tech brand logos.~~
+
 - ~~[x] **Landing Page UX Refinements**:~~
   - ~~Fixed missing profile picture on static exports using `next/image`.~~
   - ~~Moved and restyled the SKILLS section to match the top-level sections.~~

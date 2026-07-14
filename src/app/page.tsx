@@ -11,6 +11,7 @@ import RandomRepoShoutout from '../components/RandomRepoShoutout';
 import TrendingRepoShoutout from '../components/TrendingRepoShoutout';
 import WeatherWidget from '../components/WeatherWidget';
 import TestimonialCards from '../components/TestimonialCards';
+import ProjectCarousel from '../components/ProjectCarousel';
 import { projects } from '../lib/projects';
 
 const paragraphs = [
@@ -143,8 +144,8 @@ export default function Home() {
   const [isTypingDone, setIsTypingDone] = useState(false);
   const fullText = paragraphs.join("\n\n");
 
-  // Fetch the 4 most recently added projects from the array
-  const recentProjects = [...projects].reverse().slice(0, 4);
+  // Fetch the 10 most recently added projects from the array
+  const recentProjects = [...projects].reverse().slice(0, 10);
 
   useEffect(() => {
     if (hasPlayedAnimation) {
@@ -315,30 +316,7 @@ export default function Home() {
               <div className="h-px bg-gradient-to-r from-brand-cyan/50 to-transparent flex-1" />
             </h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {recentProjects.map((project, idx) => (
-                <BentoBox key={idx} delay={idx * 0.1} className="!p-0 !bg-black/80">
-                  <div className="p-6 flex flex-col h-full group">
-                    <h3 className="text-lg font-bold text-white mb-2 group-hover:text-brand-cyan transition-colors">{project.title}</h3>
-                    <p className="text-sm text-slate-400 mb-6 flex-1 line-clamp-3">{project.description}</p>
-                    <div className="flex justify-between items-center mt-auto">
-                      <div className="flex flex-wrap gap-2">
-                        {project.techStack?.slice(0, 3).map((tech, i) => (
-                          <span key={i} className="text-[10px] bg-white/5 border border-white/10 px-2 py-1 rounded text-slate-300 font-mono">
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                      {(project.liveUrl || project.repoUrl) && (
-                        <Link href={project.liveUrl || project.repoUrl!} className="w-10 h-10 rounded-full bg-brand-cyan/10 border border-brand-cyan/30 flex items-center justify-center text-brand-cyan hover:bg-brand-cyan hover:text-[#0a0f18] transition-all shrink-0">
-                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                        </Link>
-                      )}
-                    </div>
-                  </div>
-                </BentoBox>
-              ))}
-            </div>
+            <ProjectCarousel projects={recentProjects} />
           </div>
 
           {/* SECTION 3: BENTO GRID (THE REST) */}

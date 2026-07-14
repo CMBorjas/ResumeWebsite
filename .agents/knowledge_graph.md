@@ -46,6 +46,7 @@ graph TD
     subgraph Components
         HexMenu[HexagonMenu.tsx]
         ProjectCard[ProjectCard.tsx]
+        ProjectCarousel[ProjectCarousel.tsx]
         ProjectFeed[ProjectFeedClient.tsx]
         TechStack[TechStackPanel.tsx]
         TestimonialCards[TestimonialCards.tsx]
@@ -71,10 +72,12 @@ graph TD
     %% Connections
     Layout --> HexMenu
     Projects --> ProjectFeed
+    Projects --> ProjectCarousel
     Projects --> ProfileStats
     Projects --> GithubFeed
     LiveProjects --> ProjectFeed
     ProjectFeed --> ProjectCard
+    ProjectCarousel --> ProjectCard
     Converters --> CurrencyConv
     Converters --> UnitConv
     FileIntegrity --> FileChecker

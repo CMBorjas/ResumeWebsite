@@ -181,6 +181,12 @@ The next phase of development focuses on polishing the portfolio to showcase arc
       Redesigned `src/app/page.tsx` to fuse the Cyberpunk Bento Box structure with premium portfolio layouts. Implemented a full-viewport Hero section with massive typography and integrated `framer-motion` `whileInView` directives so the Bento Grid components fluidly reveal themselves as the user scrolls down the page.
       </details>
 
+- ~~[x] **Infinite Project Carousel** - Seamless Marquee Display.~~
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      Replaced the standard static project grid on the homepage with an infinite, seamless scrolling marquee (`ProjectCarousel.tsx`) featuring the top 10 most recent projects. Built using responsive CSS Flexbox algorithms and direct keyframe injection to prevent layout jumps, complete with hover-pause functionality, absolute-centered interactive action buttons, and mapped interactive brand logos for the tech stack.
+      </details>
+
 - ~~[x]**Fluid Page Transitions**: Integrate `framer-motion` to wrap the Next.js application in an `<AnimatePresence>`, creating seamless desktop-like fade and slide animations when navigating between routes.~~
    - <details>
       <summary><b>Detailed Explanation</b></summary>
