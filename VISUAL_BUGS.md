@@ -17,6 +17,7 @@ It operates in tandem with the `.github/ISSUE_TEMPLATE/visual_bug_report.md` for
 |---|---|---|---|---|
 | (Example) | YYYY-MM-DD | YYYY-MM-DD | `HexagonMenu.tsx` | Fixed z-index overlap preventing tooltips from rendering over the canvas background. |
 | VB-002 | 2026-07-14 | 2026-07-14 | `/page.tsx` | Fixed missing profile picture on GitHub pages by replacing `<img>` tags with Next.js `<Image>` which automatically handles `basePath`. |
+| VB-003 | 2026-07-14 | 2026-07-14 | `CircularText` | Fixed text overlap (spelling mistake) and border intersecting text by adjusting font size, reducing component width, and pushing border to a negative inset. |
 
 ---
 *Note for AI Agents: Always append new open bugs to the "Active Bugs" table. When resolving, move the row to the "Resolved Bugs" table and summarize the fix.*

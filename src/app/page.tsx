@@ -86,8 +86,8 @@ const SkillBadge = ({ children, icon: Icon, color = '#00ffe1' }: { children: Rea
 // Circular Text Component for "hire me"
 const CircularText = () => {
   return (
-    <div className="relative w-32 h-32 flex items-center justify-center">
-      <div className="absolute inset-0 rounded-full border-2 border-brand-cyan/20 border-t-brand-cyan animate-[spin_3s_linear_infinite]" />
+    <div className="relative w-24 h-24 flex items-center justify-center">
+      <div className="absolute -inset-3 rounded-full border-2 border-brand-cyan/20 border-t-brand-cyan animate-[spin_3s_linear_infinite]" />
       <motion.div 
         animate={{ rotate: 360 }} 
         transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
@@ -99,18 +99,18 @@ const CircularText = () => {
             d="M 50, 50 m -42, 0 a 42,42 0 1,1 84,0 a 42,42 0 1,1 -84,0"
             fill="transparent"
           />
-          <text className="text-[9.5px] font-bold tracking-[0.3em] uppercase fill-brand-cyan drop-shadow-[0_0_5px_rgba(0,255,225,0.8)]">
+          <text className="text-[11px] font-bold tracking-[0.3em] uppercase fill-brand-cyan drop-shadow-[0_0_5px_rgba(0,255,225,0.8)]">
             <textPath href="#circlePath" startOffset="0%">
-              HIRE ME • HIRE ME • HIRE ME • HIRE ME • 
+              HIRE ME • HIRE ME • HIRE ME • 
             </textPath>
           </text>
         </svg>
       </motion.div>
-      <div className="absolute w-12 h-12 rounded-full bg-gradient-to-br from-brand-cyan to-brand-pink opacity-20 blur-xl animate-pulse" />
+      <div className="absolute w-10 h-10 rounded-full bg-gradient-to-br from-brand-cyan to-brand-pink opacity-20 blur-xl animate-pulse" />
       
       {/* Animated Scroll Arrows */}
       <div className="absolute flex flex-col items-center justify-center pointer-events-none">
-        <svg className="w-6 h-6 text-brand-cyan animate-bounce drop-shadow-[0_0_8px_rgba(0,255,225,0.8)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-5 h-5 text-brand-cyan animate-bounce drop-shadow-[0_0_8px_rgba(0,255,225,0.8)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
         </svg>
       </div>
