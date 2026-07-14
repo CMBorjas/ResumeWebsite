@@ -70,6 +70,9 @@ This document tracks upcoming features, pending integrations, and the backlog fo
 <details>
 <summary><b>Past Goals</b></summary>
 
+- ~~[x] **Hybrid Landing Page Redesign**:~~
+  - ~~Overhauled `src/app/page.tsx` with a full-viewport Hero section and scroll-driven framer-motion animations for the Bento Box grid.~~
+
 - ~~[X] **Movie Scraper and Resevation system**:~~
   - ~~System to reserve movies. *(Est: 3h, Tokens: ~800, Priority: Medium)~~
   - ~~[x]**Server Performance Statistics**:~~ 

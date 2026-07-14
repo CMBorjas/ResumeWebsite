@@ -175,6 +175,11 @@ For questions, suggestions, or collaboration, please reach out:
 
 The next phase of development focuses on polishing the portfolio to showcase architecture, UX, and animations.
 
+- ~~[x] **Hybrid Landing Page Redesign** - Architectural overhaul.~~
+   - <details>
+      <summary><b>Detailed Explanation</b></summary>
+      Redesigned `src/app/page.tsx` to fuse the Cyberpunk Bento Box structure with premium portfolio layouts. Implemented a full-viewport Hero section with massive typography and integrated `framer-motion` `whileInView` directives so the Bento Grid components fluidly reveal themselves as the user scrolls down the page.
+      </details>
 
 - ~~[x]**Fluid Page Transitions**: Integrate `framer-motion` to wrap the Next.js application in an `<AnimatePresence>`, creating seamless desktop-like fade and slide animations when navigating between routes.~~
    - <details>

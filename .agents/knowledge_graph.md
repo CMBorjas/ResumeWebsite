@@ -136,3 +136,4 @@ graph TD
 - Cyberpunk aesthetic, neon accents, dark mode base.
 - HTML5 Canvas for interactive backgrounds (particles/grids).
 - Fluid route transitions via `AnimatePresence`.
+- Scroll-driven reveal animations and distinct full-viewport Hero sections via `framer-motion`.
