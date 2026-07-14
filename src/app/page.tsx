@@ -315,6 +315,14 @@ export default function Home() {
 
           <ServicesSection />
 
+          <div className="w-full mb-16 mt-16">
+            <h2 className="text-3xl font-extrabold text-white mb-8 tracking-widest uppercase flex items-center gap-4">
+              Portfolio
+              <div className="h-px bg-gradient-to-r from-brand-cyan/50 to-transparent flex-1" />
+            </h2>
+            <RandomRepoShoutout />
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 w-full auto-rows-[minmax(180px,auto)] pb-24">
             
             {/* Location/Weather Box */}
@@ -373,10 +381,6 @@ export default function Home() {
               </div>
             </BentoBox>
 
-            {/* Project Feed Box */}
-            <BentoBox className="order-5 md:col-span-4 md:row-span-1 !p-0 !bg-black/80" delay={0.5} title="~/PROJECT_FEED">
-              <RandomRepoShoutout />
-            </BentoBox>
 
             {/* Trending Repo Box */}
             <BentoBox className="order-6 md:col-span-4 md:row-span-1 !p-0 !bg-black/80" delay={0.6} title="~/TRENDING_NOW">

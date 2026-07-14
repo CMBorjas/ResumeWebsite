@@ -73,6 +73,9 @@ This document tracks upcoming features, pending integrations, and the backlog fo
 - ~~[x] **Hybrid Landing Page Redesign**:~~
   - ~~Overhauled `src/app/page.tsx` with a full-viewport Hero section and scroll-driven framer-motion animations for the Bento Box grid.~~
 
+- ~~[x] **Hybrid Project Showcase Redesign**:~~
+  - ~~Overhauled the `RandomRepoShoutout` component to display a vertically stacked, animated portfolio feed with massive dynamic typography, glassmorphic floating action buttons, and scroll-reveal transitions.~~
+
 - ~~[x] **Infinite Project Carousel**:~~
   - ~~Replaced the static project grid on the homepage with an infinite scrolling marquee of the top 10 recent projects, featuring interactive tech brand logos.~~
 
