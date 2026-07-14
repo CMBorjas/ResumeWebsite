@@ -8,7 +8,7 @@ import { FaGithub, FaLinkedin, FaEnvelope, FaPython, FaJava, FaReact, FaNodeJs, 
 import { SiBluesky, SiCplusplus, SiTypescript, SiNextdotjs, SiTailwindcss, SiMysql } from 'react-icons/si';
 import Tooltip from '../components/Tooltip';
 import RandomRepoShoutout from '../components/RandomRepoShoutout';
-import TrendingRepoShoutout from '../components/TrendingRepoShoutout';
+
 import TestimonialCards from '../components/TestimonialCards';
 import ProjectCarousel from '../components/ProjectCarousel';
 import { projects } from '../lib/projects';
@@ -541,10 +541,7 @@ export default function Home() {
 
 
 
-            {/* Trending Repo Box */}
-            <BentoBox className="order-6 md:col-span-4 md:row-span-1 !p-0 !bg-black/80" delay={0.6} title="~/TRENDING_NOW">
-              <TrendingRepoShoutout />
-            </BentoBox>
+
 
           </div>
         </div>

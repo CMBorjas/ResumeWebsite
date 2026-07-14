@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Project } from '../lib/projects';
 import WeatherWidget from './WeatherWidget';
+import TrendingRepoShoutout from './TrendingRepoShoutout';
 import { 
   FaPython, FaJava, FaReact, FaNodeJs, FaDocker, FaAws, FaLinux, FaRust, FaChartBar
 } from 'react-icons/fa';
@@ -39,15 +40,17 @@ const getTechIconAndColor = (tech: string) => {
 
 /** Check if a project should render a live embedded widget instead of generic text */
 const isWeatherProject = (project: Project) => project.title === 'Weather Widget';
+const isTrendingProject = (project: Project) => project.title === '~/trending';
 
 export default function ProjectCarousel({ projects }: { projects: Project[] }) {
   const renderCards = (list: Project[]) => (
     list.map((project, idx) => {
       const targetUrl = project.liveUrl || project.repoUrl || "#";
       const isLiveWidget = isWeatherProject(project);
+      const isTrendingWidget = isTrendingProject(project);
 
-      /* Weather Widget gets a special non-link card with the live component */
-      if (isLiveWidget) {
+      /* Special Widget gets a special non-link card with the live component */
+      if (isLiveWidget || isTrendingWidget) {
         return (
           <div key={idx} className="block w-[280px] md:w-[320px] shrink-0 outline-none">
             <motion.div 
@@ -69,9 +72,9 @@ export default function ProjectCarousel({ projects }: { projects: Project[] }) {
                 </span>
               </div>
 
-              {/* Live Weather Widget */}
+              {/* Live Embedded Widget */}
               <div className="flex-1 relative z-10 overflow-hidden rounded-xl">
-                <WeatherWidget isMaximized={false} />
+                {isLiveWidget ? <WeatherWidget isMaximized={false} /> : <TrendingRepoShoutout />}
               </div>
             </motion.div>
           </div>

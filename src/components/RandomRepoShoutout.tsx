@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { projects } from "../lib/projects";
 import Link from 'next/link';
 import WeatherWidget from './WeatherWidget';
+import TrendingRepoShoutout from './TrendingRepoShoutout';
 
 export default function RandomRepoShoutout() {
   const showcaseProjects = projects.filter(p => p.repoUrl || p.liveUrl);
@@ -22,6 +23,8 @@ export default function RandomRepoShoutout() {
     <div className="flex flex-col gap-12 w-full">
       {showcaseProjects.map((project, idx) => {
         const isWeather = project.title === 'Weather Widget';
+        const isTrending = project.title === '~/trending';
+        const isSpecialWidget = isWeather || isTrending;
 
         return (
         <motion.div 
@@ -40,7 +43,7 @@ export default function RandomRepoShoutout() {
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:50px_50px] opacity-20 pointer-events-none z-0" style={{ maskImage: 'linear-gradient(to bottom, transparent, black, transparent)', WebkitMaskImage: 'linear-gradient(to bottom, transparent, black, transparent)' }} />
 
           {/* Dynamic Background Typography */}
-          {!isWeather && (
+          {!isSpecialWidget && (
             <div className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none opacity-5 select-none z-0">
               <h2 className="text-[15vw] md:text-[10vw] font-black text-white text-center leading-none whitespace-nowrap overflow-visible drop-shadow-2xl">
                 {project.title.toUpperCase()}
@@ -81,6 +84,10 @@ export default function RandomRepoShoutout() {
               <div className="mt-8 md:mt-12 flex-1 -mx-8 -mb-8 md:-mx-12 md:-mb-12 relative z-40 overflow-hidden flex flex-col">
                 <WeatherWidget isMaximized={true} />
               </div>
+            ) : isTrending ? (
+              <div className="mt-8 md:mt-12 flex-1 -mx-8 -mb-8 md:-mx-12 md:-mb-12 relative z-40 overflow-hidden flex flex-col">
+                <TrendingRepoShoutout />
+              </div>
             ) : (
               <div className="mt-8 md:mt-12 max-w-2xl bg-black/40 backdrop-blur-sm p-6 rounded-2xl border border-white/5">
                 <p className="text-slate-300 text-base md:text-lg leading-relaxed font-light">
@@ -91,7 +98,7 @@ export default function RandomRepoShoutout() {
           </div>
 
           {/* Floating Action Button (Centered on Hover) */}
-          {!isWeather && (
+          {!isSpecialWidget && (
             <div className="absolute inset-0 z-30 flex items-center justify-center pointer-events-none">
                 <div className="opacity-0 group-hover:opacity-100 transition-all duration-500 scale-95 group-hover:scale-100 pointer-events-auto">
                   <Link

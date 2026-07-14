@@ -168,5 +168,11 @@ export const projects: Project[] = [
     description: 'A live weather dashboard fetching real-time conditions, temperature, wind, and humidity for any city via public weather APIs. Embedded directly into the portfolio homepage.',
     liveUrl: '/#weather-widget',
     techStack: ['React', 'Next.js', 'TypeScript', 'Tailwind']
+  },
+  {
+    title: '~/trending',
+    description: 'A live feed of trending GitHub repositories. Embedded directly into the portfolio.',
+    liveUrl: '/#trending',
+    techStack: ['React', 'Next.js', 'TypeScript', 'Tailwind', 'Framer Motion']
   }
 ]

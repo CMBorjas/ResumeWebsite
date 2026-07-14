@@ -70,6 +70,7 @@ graph TD
         MyGoals[MyGoals.tsx]
         ServicesSection[ServicesSection.tsx]
         RandomRepoShoutout[RandomRepoShoutout.tsx]
+        TrendingRepoShoutout[TrendingRepoShoutout.tsx]
         WeatherWidget[WeatherWidget.tsx]
     end
     
@@ -124,6 +125,9 @@ graph TD
     QuizData -.-> QuizAppPage
     Home --> RandomRepoShoutout
     RandomRepoShoutout --> WeatherWidget
+    RandomRepoShoutout --> TrendingRepoShoutout
+    ProjectCarousel --> TrendingRepoShoutout
+    ProjectCarousel --> WeatherWidget
     WeatherCitiesData -.-> WeatherWidget
     WeatherWidget -.-> LocalStorage
     
