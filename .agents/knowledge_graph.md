@@ -72,6 +72,7 @@ graph TD
         RandomRepoShoutout[RandomRepoShoutout.tsx]
         TrendingRepoShoutout[TrendingRepoShoutout.tsx]
         WeatherWidget[WeatherWidget.tsx]
+        ContactSection[ContactSection.tsx]
     end
     
     %% Connections
@@ -124,6 +125,7 @@ graph TD
     ThemeEngine -.-> LocalStorage
     QuizData -.-> QuizAppPage
     Home --> RandomRepoShoutout
+    Home --> ContactSection
     RandomRepoShoutout --> WeatherWidget
     RandomRepoShoutout --> TrendingRepoShoutout
     ProjectCarousel --> TrendingRepoShoutout

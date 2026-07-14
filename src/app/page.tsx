@@ -15,6 +15,7 @@ import { projects } from '../lib/projects';
 import { workEntries, educationEntries, type ExperienceEntry } from '../lib/experience';
 import MyGoals from '../components/MyGoals';
 import ServicesSection from '../components/ServicesSection';
+import ContactSection from '../components/ContactSection';
 
 
 
@@ -360,23 +361,23 @@ export default function Home() {
         <div className="relative z-20 flex justify-between items-end p-8 lg:p-12 h-full">
           
           {/* Bottom Left: Badge & Socials */}
-          <div className="flex flex-col justify-end gap-16 md:gap-20 pb-8 items-start relative z-30">
+          <div className="flex flex-col justify-end gap-16 md:gap-20 pb-24 md:pb-32 items-start relative z-30">
             {/* Hovering Circular Badge */}
             <div className="scale-[1.5] md:scale-[2] ml-12 md:ml-16 mb-4">
               <CircularText />
             </div>
 
             <div className="flex gap-6">
-              <a href="https://github.com/CMBorjas" target="_blank" rel="noreferrer" className="text-slate-400 hover:text-brand-cyan hover:scale-110 hover:drop-shadow-[0_0_10px_color-mix(in srgb, var(--color-brand-cyan) 80%, transparent)] transition-all duration-300">
+              <a href="https://github.com/CMBorjas" target="_blank" rel="noreferrer" className="text-white hover:text-brand-cyan hover:scale-110 hover:drop-shadow-[0_0_10px_color-mix(in_srgb,var(--color-brand-cyan)_80%,transparent)] transition-all duration-300">
                 <FaGithub className="w-8 h-8" />
               </a>
-              <a href="https://linkedin.com/in/christian-mandujano-borjas" target="_blank" rel="noreferrer" className="text-slate-400 hover:text-[#0077b5] hover:scale-110 hover:drop-shadow-[0_0_10px_rgba(0,119,181,0.8)] transition-all duration-300">
+              <a href="https://linkedin.com/in/christian-mandujano-borjas" target="_blank" rel="noreferrer" className="text-[#0077b5] hover:text-[#00a0dc] hover:scale-110 hover:drop-shadow-[0_0_10px_rgba(0,119,181,0.8)] transition-all duration-300">
                 <FaLinkedin className="w-8 h-8" />
               </a>
-              <a href="#" className="text-slate-400 hover:text-[#05a0fa] hover:scale-110 hover:drop-shadow-[0_0_10px_rgba(5,160,250,0.8)] transition-all duration-300" title="Bluesky (Pending)">
+              <a href="#" className="text-[#05a0fa] hover:text-[#38bdf8] hover:scale-110 hover:drop-shadow-[0_0_10px_rgba(5,160,250,0.8)] transition-all duration-300" title="Bluesky (Pending)">
                 <SiBluesky className="w-8 h-8" />
               </a>
-              <a href="mailto:C.mandujano.borjas@gmail.com" className="text-slate-400 hover:text-brand-pink hover:scale-110 hover:drop-shadow-[0_0_10px_color-mix(in srgb, var(--color-brand-pink) 80%, transparent)] transition-all duration-300">
+              <a href="mailto:C.mandujano.borjas@gmail.com" className="text-brand-pink hover:text-brand-cyan hover:scale-110 hover:drop-shadow-[0_0_10px_color-mix(in_srgb,var(--color-brand-cyan)_80%,transparent)] transition-all duration-300">
                 <FaEnvelope className="w-8 h-8" />
               </a>
             </div>
@@ -513,40 +514,12 @@ export default function Home() {
           {/* ═══════════════════════════════════════════════════════════ */}
           <ExperienceTimeline />
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 w-full auto-rows-[minmax(180px,auto)] pb-24">
-
-            {/* Quick Contact Box */}
-            <BentoBox className="order-3 md:col-span-1 md:row-span-1 !p-0 !bg-black/80" delay={0.3} title="~/CONTACT">
-              <div className="p-6 flex flex-col justify-between h-full bg-gradient-to-br hover:from-brand-pink/5 hover:to-transparent transition-colors duration-500">
-                <div className="flex justify-between items-start">
-                  <div className="w-12 h-12 rounded-full bg-brand-pink/10 border border-brand-pink/30 flex items-center justify-center group-hover:shadow-[0_0_15px_color-mix(in srgb, var(--color-brand-pink) 40%, transparent)] transition-all duration-300">
-                    <svg className="w-6 h-6 text-brand-pink" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                  </div>
-                  <span className="flex h-3 w-3 relative">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-pink opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-3 w-3 bg-brand-pink shadow-[0_0_8px_color-mix(in srgb, var(--color-brand-pink) 80%, transparent)]"></span>
-                  </span>
-                </div>
-                <div className="mt-4">
-                  <p className="text-slate-400 text-[10px] uppercase tracking-widest mb-1 font-bold">Let's work together</p>
-                  <a href="mailto:C.mandujano.borjas@gmail.com" className="text-white font-bold text-sm hover:text-brand-pink transition-colors truncate block">
-                    Send an Email ↗
-                  </a>
-                </div>
-              </div>
-            </BentoBox>
-
-
-
-
-
-
-          </div>
         </div>
       </main>
-          </div>
+      </div>
+
+      {/* FULL BLEED CONTACT SECTION */}
+      <ContactSection />
     </div>
   )
 }
