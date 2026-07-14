@@ -76,11 +76,47 @@ export default function InteractiveCanvas() {
 
       draw() {
         if (!ctx) return;
+        
+        const dx = mouse.x - this.x;
+        const dy = mouse.y - this.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        
         ctx.fillStyle = this.color;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.closePath();
-        ctx.fill();
+        
+        if (distance < mouse.radius) {
+          const intensity = 1 - (distance / mouse.radius);
+          // Increased brightness by ~50%
+          ctx.shadowBlur = 25 * intensity;
+          ctx.shadowColor = this.color;
+          
+          // Draw particle core
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size * (1 + intensity * 2.25), 0, Math.PI * 2);
+          ctx.fill();
+          
+          // Draw light star streaks (anamorphic flare style)
+          const streakLength = 20 * intensity;
+          ctx.beginPath();
+          ctx.lineWidth = 1.5 * intensity;
+          ctx.strokeStyle = this.color;
+          
+          // Horizontal streak (longer)
+          ctx.moveTo(this.x - streakLength * 1.5, this.y);
+          ctx.lineTo(this.x + streakLength * 1.5, this.y);
+          // Vertical streak
+          ctx.moveTo(this.x, this.y - streakLength);
+          ctx.lineTo(this.x, this.y + streakLength);
+          
+          ctx.stroke();
+        } else {
+          ctx.shadowBlur = 0;
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        
+        // Reset shadow for lines and other particles
+        ctx.shadowBlur = 0;
       }
 
       update() {

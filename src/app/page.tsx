@@ -86,7 +86,10 @@ const SkillBadge = ({ children, icon: Icon, color = '#00ffe1' }: { children: Rea
 // Circular Text Component for "hire me"
 const CircularText = () => {
   return (
-    <div className="relative w-24 h-24 flex items-center justify-center">
+    <div 
+      className="relative w-24 h-24 flex items-center justify-center cursor-pointer hover:scale-105 transition-transform"
+      onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+    >
       <div className="absolute -inset-3 rounded-full border-2 border-brand-cyan/20 border-t-brand-cyan animate-[spin_3s_linear_infinite]" />
       <motion.div 
         animate={{ rotate: 360 }} 

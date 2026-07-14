@@ -24,7 +24,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section className="w-full relative z-10 pt-24 pb-12 overflow-hidden bg-[#0a0f18] border-t border-white/5">
+    <section id="contact" className="w-full relative z-10 pt-24 pb-12 overflow-hidden bg-[#0a0f18] border-t border-white/5">
       {/* Background gradients */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[800px] h-[400px] bg-brand-cyan/5 rounded-full blur-[150px] pointer-events-none" />
 

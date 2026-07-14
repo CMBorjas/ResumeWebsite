@@ -83,6 +83,8 @@ This document tracks upcoming features, pending integrations, and the backlog fo
   - ~~Removed redundant CircularText (HIRE ME) instances.~~
   - ~~Redesigned "About Me" into a structured "MyGoals" component with icons.~~
   - ~~Added a custom, highly styled "Services" accordion section below the goals.~~
+  - ~~Made the CircularText (HIRE ME) button scroll down smoothly to the contact section.~~
+  - ~~Enhanced the InteractiveCanvas background particles to light up with anamorphic star streaks on hover.~~
 
 - ~~[X] **Movie Scraper and Resevation system**:~~
   - ~~System to reserve movies. *(Est: 3h, Tokens: ~800, Priority: Medium)~~
