@@ -162,5 +162,11 @@ export const projects: Project[] = [
     description: 'A cyberpunk-styled hacker quiz testing Data Structures and Algorithms. Features multiple choice, code snippet fill-in-the-blanks, and an adjustable countdown timer.',
     liveUrl: '/projects/quiz-app',
     techStack: ['React', 'Next.js', 'Tailwind', 'Framer Motion']
+  },
+  {
+    title: 'Weather Widget',
+    description: 'A live weather dashboard fetching real-time conditions, temperature, wind, and humidity for any city via public weather APIs. Embedded directly into the portfolio homepage.',
+    liveUrl: '/#weather-widget',
+    techStack: ['React', 'Next.js', 'TypeScript', 'Tailwind']
   }
 ]

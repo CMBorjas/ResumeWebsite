@@ -2,6 +2,7 @@ import { Project } from '../lib/projects'
 import { useTheme } from './ThemeProvider'
 import Link from 'next/link'
 import { SiLangchain } from 'react-icons/si'
+import WeatherWidget from './WeatherWidget'
 
 const techIcons: { [key: string]: string } = {
   Python: 'devicon-python-plain colored',
@@ -91,6 +92,7 @@ const techColors: { [key: string]: string } = {
 
 export default function ProjectCard({ project }: { project: Project }) {
   const { theme } = useTheme()
+  const isWeather = project.title === 'Weather Widget'
 
   let resolvedLiveUrl = project.liveUrl
   if (resolvedLiveUrl && resolvedLiveUrl.includes('cmborjas.github.io/pdf_splitter')) {
@@ -133,9 +135,16 @@ export default function ProjectCard({ project }: { project: Project }) {
       </div>
 
       <div className="flex-grow overflow-y-auto mb-3 custom-scrollbar pr-1 flex flex-col gap-2">
-        <p className="text-xs text-slate-300 leading-relaxed break-words">
-          {project.description}
-        </p>
+        {isWeather ? (
+          /* Live Weather Widget embedded directly in the card */
+          <div className="flex-1 min-h-[120px] rounded-lg overflow-hidden">
+            <WeatherWidget isMaximized={false} />
+          </div>
+        ) : (
+          <p className="text-xs text-slate-300 leading-relaxed break-words">
+            {project.description}
+          </p>
+        )}
         <div className="mt-auto flex gap-3 flex-wrap">
 
           {project.repoUrl && (

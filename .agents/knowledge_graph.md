@@ -69,6 +69,8 @@ graph TD
         ScoreScreen[ScoreScreen.tsx]
         MyGoals[MyGoals.tsx]
         ServicesSection[ServicesSection.tsx]
+        RandomRepoShoutout[RandomRepoShoutout.tsx]
+        WeatherWidget[WeatherWidget.tsx]
     end
     
     %% Connections
@@ -107,6 +109,7 @@ graph TD
         LocalStorage[(localStorage)]
         BlogRegistry[lib/blog.ts]
         QuizData[lib/quiz-data.ts]
+        WeatherCitiesData[lib/weatherCities.ts]
     end
 
     %% Project Management
@@ -119,6 +122,10 @@ graph TD
     ProjectData -.-> ProjectFeed
     ThemeEngine -.-> LocalStorage
     QuizData -.-> QuizAppPage
+    Home --> RandomRepoShoutout
+    RandomRepoShoutout --> WeatherWidget
+    WeatherCitiesData -.-> WeatherWidget
+    WeatherWidget -.-> LocalStorage
     
     %% Deployment
     subgraph Deployment

@@ -7,16 +7,16 @@ The `WeatherWidget.tsx` is an environmental UI component that displays current w
 Created to fulfill the "Weather Widget" goal. It provides a humanizing, localized touch to the portfolio, often displaying the weather at the developer's current location (e.g., "Currently 72° in San Francisco"). 
 
 ## How it works?
-1. **API Integration**: Makes a server-side fetch request to a free tier weather API (like OpenWeatherMap or WeatherAPI).
-2. **Data Mapping**: Extracts the `temperature`, `condition` (e.g., cloudy, rain, clear), and location name from the JSON response.
-3. **Caching**: Uses ISR (`next: { revalidate: 1800 }`) to fetch new data every 30 minutes, keeping it accurate without exhausting API limits.
-4. **Visuals**: Uses conditional rendering based on the `condition` string to display an appropriate `lucide-react` icon (e.g., `<CloudRain>`, `<Sun>`) alongside the temperature data inside a cyberpunk-styled badge.
+1. **API Integration**: Makes client-side fetch requests to the free tier `api.open-meteo.com` for weather data and `geocoding-api.open-meteo.com` for searching new cities.
+2. **Data Model**: Iterates over a combined array of cities. The array consists of hardcoded `DEFAULT_CITIES` (imported from `src/lib/weatherCities.ts`) and custom cities retrieved from the browser's `localStorage`.
+3. **State Management**: Uses React `useEffect` to poll for weather updates every 10 minutes. Custom cities added via the search bar are dynamically appended and persisted in `localStorage`. Default cities cannot be removed.
+4. **Visuals**: Uses framer-motion for smooth list transitions and conditional rendering based on weather codes to display appropriate `lucide-react` icons and temperature data. The maximized view displays an interactive Global Telemetry dashboard.
 
 ## Requirements
-- Valid API Key for the chosen weather service stored in `.env.local`.
+- Access to the public `open-meteo` and `geocoding-api.open-meteo` APIs (no keys required).
 - `lucide-react` for weather icons.
-- Internet access on the deployment server.
+- `framer-motion` for animations.
 
 ## Outbound Data Flow
-- **Input**: None from the client.
-- **Output**: The server makes an outbound HTTP GET request to the weather API using a secure backend token. Renders the data to the DOM.
+- **Input**: User can search for cities via the search bar input.
+- **Output**: Makes outbound HTTP GET requests to Open-Meteo APIs. Saves custom city data to the client's `localStorage`.

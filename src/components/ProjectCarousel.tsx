@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Project } from '../lib/projects';
+import WeatherWidget from './WeatherWidget';
 import { 
   FaPython, FaJava, FaReact, FaNodeJs, FaDocker, FaAws, FaLinux, FaRust, FaChartBar
 } from 'react-icons/fa';
@@ -36,10 +37,47 @@ const getTechIconAndColor = (tech: string) => {
   }
 }
 
+/** Check if a project should render a live embedded widget instead of generic text */
+const isWeatherProject = (project: Project) => project.title === 'Weather Widget';
+
 export default function ProjectCarousel({ projects }: { projects: Project[] }) {
   const renderCards = (list: Project[]) => (
     list.map((project, idx) => {
       const targetUrl = project.liveUrl || project.repoUrl || "#";
+      const isLiveWidget = isWeatherProject(project);
+
+      /* Weather Widget gets a special non-link card with the live component */
+      if (isLiveWidget) {
+        return (
+          <div key={idx} className="block w-[280px] md:w-[320px] shrink-0 outline-none">
+            <motion.div 
+              whileHover={{ scale: 1.02, y: -5 }}
+              className="bg-[#0a0f18]/80 backdrop-blur-xl border border-brand-cyan/20 rounded-3xl p-4 shadow-[0_4px_30px_rgba(0,0,0,0.5)] h-full flex flex-col group hover:shadow-[0_0_30px_color-mix(in srgb, var(--color-brand-cyan) 15%, transparent)] hover:border-brand-cyan/40 transition-all duration-300 relative overflow-hidden min-h-[200px]"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-brand-cyan/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              
+              <div className="flex items-center justify-between mb-2 relative z-10">
+                <h3 className="text-sm font-bold text-white group-hover:text-brand-cyan transition-colors truncate">
+                  {project.title}
+                </h3>
+                <span className="flex items-center gap-1.5 text-[10px] text-green-400 bg-green-400/10 border border-green-400/20 rounded-full px-2 py-0.5 font-bold tracking-wider shrink-0">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400 shadow-[0_0_6px_rgba(74,222,128,0.8)]"></span>
+                  </span>
+                  LIVE
+                </span>
+              </div>
+
+              {/* Live Weather Widget */}
+              <div className="flex-1 relative z-10 overflow-hidden rounded-xl">
+                <WeatherWidget isMaximized={false} />
+              </div>
+            </motion.div>
+          </div>
+        );
+      }
+
       return (
         <Link 
           href={targetUrl} 

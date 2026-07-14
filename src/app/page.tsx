@@ -3,16 +3,16 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaEnvelope, FaPython, FaJava, FaReact, FaNodeJs, FaDocker, FaAws, FaLinux } from 'react-icons/fa';
 import { SiBluesky, SiCplusplus, SiTypescript, SiNextdotjs, SiTailwindcss, SiMysql } from 'react-icons/si';
 import Tooltip from '../components/Tooltip';
 import RandomRepoShoutout from '../components/RandomRepoShoutout';
 import TrendingRepoShoutout from '../components/TrendingRepoShoutout';
-import WeatherWidget from '../components/WeatherWidget';
 import TestimonialCards from '../components/TestimonialCards';
 import ProjectCarousel from '../components/ProjectCarousel';
 import { projects } from '../lib/projects';
+import { workEntries, educationEntries, type ExperienceEntry } from '../lib/experience';
 import MyGoals from '../components/MyGoals';
 import ServicesSection from '../components/ServicesSection';
 
@@ -134,6 +134,190 @@ const ProgressBar = ({ label, percentage }: { label: string, percentage: number 
     </div>
   </div>
 );
+
+/* ═══════════════════════════════════════════════════════════════════════════
+ * TimelineEntry — A single row in the Experience timeline.
+ * Date range on the left, content card on the right, with inline accordion.
+ * ═══════════════════════════════════════════════════════════════════════════ */
+const TAG_COLORS: Record<string, { text: string; bg: string; border: string }> = {
+  cyan:   { text: 'text-brand-cyan', bg: 'bg-brand-cyan/10', border: 'border-brand-cyan/20' },
+  pink:   { text: 'text-brand-pink', bg: 'bg-brand-pink/10', border: 'border-brand-pink/20' },
+  green:  { text: 'text-green-400',  bg: 'bg-green-400/10',  border: 'border-green-400/20' },
+  yellow: { text: 'text-yellow-400', bg: 'bg-yellow-400/10', border: 'border-yellow-400/20' },
+};
+
+const TimelineEntry = ({ entry, index, delay }: { entry: ExperienceEntry; index: number; delay: number }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const tagStyle = TAG_COLORS[entry.tagColor] || TAG_COLORS.cyan;
+  const seqNumber = String(index + 1).padStart(2, '0');
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ duration: 0.6, delay, type: 'spring', bounce: 0.15 }}
+      className="flex gap-4 md:gap-8 items-stretch group"
+    >
+      {/* Left: Date Range Box */}
+      <div className="hidden md:flex flex-col items-center w-[180px] shrink-0">
+        <div className="border border-dashed border-white/20 rounded-2xl px-5 py-4 text-center group-hover:border-brand-cyan/40 transition-colors duration-300">
+          <span className="text-brand-cyan font-mono text-sm tracking-wider font-bold">{entry.dateRange}</span>
+        </div>
+      </div>
+
+      {/* Right: Content Card */}
+      <div className="flex-1 bg-white/[0.03] border border-white/5 rounded-2xl overflow-hidden hover:border-brand-cyan/20 hover:bg-white/[0.05] transition-all duration-300">
+        <div className="p-5 md:p-6">
+          {/* Mobile-only date */}
+          <span className="md:hidden text-brand-cyan font-mono text-xs tracking-wider font-bold mb-2 block">{entry.dateRange}</span>
+          
+          <div className="flex justify-between items-start gap-4">
+            <div className="flex-1 min-w-0">
+              <h4 className="text-white font-bold text-base md:text-lg uppercase tracking-wide leading-tight">{entry.title}</h4>
+              <p className="text-slate-400 text-xs md:text-sm mt-1">{entry.organization} — {entry.location}</p>
+            </div>
+            <div className="flex items-center gap-3 shrink-0">
+              <span className={`text-[10px] ${tagStyle.text} ${tagStyle.bg} px-3 py-1 rounded-full border ${tagStyle.border} font-bold tracking-wider hidden sm:inline-block`}>
+                {entry.tag}
+              </span>
+              <span className="text-white/10 text-2xl md:text-3xl font-black tabular-nums select-none">{seqNumber}</span>
+            </div>
+          </div>
+
+          {/* KNOW MORE toggle */}
+          <button
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="mt-4 text-[11px] text-slate-500 uppercase tracking-[0.2em] font-bold hover:text-brand-cyan transition-colors flex items-center gap-2 group/btn"
+          >
+            <span>{isExpanded ? 'SHOW LESS' : 'KNOW MORE'}</span>
+            <motion.svg
+              animate={{ rotate: isExpanded ? 180 : 0 }}
+              transition={{ duration: 0.3 }}
+              className="w-3 h-3 group-hover/btn:text-brand-cyan transition-colors"
+              fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+            </motion.svg>
+          </button>
+
+          {/* Accordion Content */}
+          <AnimatePresence>
+            {isExpanded && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.35, ease: 'easeInOut' }}
+                className="overflow-hidden"
+              >
+                <ul className="mt-4 space-y-2 border-t border-white/5 pt-4">
+                  {entry.bullets.map((bullet, i) => (
+                    <motion.li
+                      key={i}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.3, delay: i * 0.08 }}
+                      className="text-slate-400 text-xs md:text-sm leading-relaxed flex gap-2"
+                    >
+                      <span className="text-brand-cyan mt-1 shrink-0">▸</span>
+                      <span>{bullet}</span>
+                    </motion.li>
+                  ))}
+                </ul>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+/* ═══════════════════════════════════════════════════════════════════════════
+ * ExperienceTimeline — Full section with massive typographic header,
+ * icon dividers, and staggered timeline entries for work + education.
+ * ═══════════════════════════════════════════════════════════════════════════ */
+const ExperienceTimeline = () => {
+  return (
+    <section className="w-full mt-24 mb-16 relative">
+      {/* ── Massive Typographic Header ── */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="text-center mb-16 md:mb-24 relative"
+      >
+        <p className="text-brand-cyan text-xs md:text-sm uppercase tracking-[0.3em] font-bold mb-4">
+          My Studying &amp; Working Experience
+        </p>
+        {/* Massive section title */}
+        <h2 className="text-[14vw] md:text-[8vw] lg:text-[7vw] font-black text-white/[0.06] leading-none tracking-tighter select-none pointer-events-none">
+          EXPERIENCE
+        </h2>
+      </motion.div>
+
+      {/* ── Work Experience Sub-section ── */}
+      {/* Icon Divider: Briefcase */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.5 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="flex justify-center mb-12"
+      >
+        <div className="w-20 h-20 rounded-full border-2 border-dashed border-white/15 flex items-center justify-center bg-white/[0.02]">
+          <svg className="w-8 h-8 text-white/60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+        </div>
+      </motion.div>
+
+      {/* Timeline: Work Entries */}
+      <div className="relative">
+        {/* Vertical dashed line */}
+        <div className="hidden md:block absolute left-[90px] top-0 bottom-0 w-px border-l border-dashed border-white/10" />
+
+        <div className="space-y-6 md:space-y-8">
+          {workEntries.map((entry, i) => (
+            <TimelineEntry key={entry.id} entry={entry} index={i} delay={i * 0.15} />
+          ))}
+        </div>
+      </div>
+
+      {/* ── Education Sub-section ── */}
+      {/* Icon Divider: Graduation Cap */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.5 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="flex justify-center my-16"
+      >
+        <div className="w-20 h-20 rounded-full border-2 border-dashed border-white/15 flex items-center justify-center bg-white/[0.02]">
+          <svg className="w-8 h-8 text-white/60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 14l9-5-9-5-9 5 9 5z" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 14l9-5-9-5-9 5 9 5zm0 0v6.5" />
+          </svg>
+        </div>
+      </motion.div>
+
+      {/* Timeline: Education Entries */}
+      <div className="relative">
+        {/* Vertical dashed line */}
+        <div className="hidden md:block absolute left-[90px] top-0 bottom-0 w-px border-l border-dashed border-white/10" />
+
+        <div className="space-y-6 md:space-y-8">
+          {educationEntries.map((entry, i) => (
+            <TimelineEntry key={entry.id} entry={entry} index={i} delay={i * 0.15} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
 
 export default function Home() {
 
@@ -315,6 +499,7 @@ export default function Home() {
 
           <ServicesSection />
 
+
           <div className="w-full mb-16 mt-16">
             <h2 className="text-3xl font-extrabold text-white mb-8 tracking-widest uppercase flex items-center gap-4">
               Portfolio
@@ -323,12 +508,12 @@ export default function Home() {
             <RandomRepoShoutout />
           </div>
 
+          {/* ═══════════════════════════════════════════════════════════ */}
+          {/* SECTION: EXPERIENCE TIMELINE                               */}
+          {/* ═══════════════════════════════════════════════════════════ */}
+          <ExperienceTimeline />
+
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 w-full auto-rows-[minmax(180px,auto)] pb-24">
-            
-            {/* Location/Weather Box */}
-            <BentoBox className="order-2 md:col-span-1 md:row-span-1 !p-0 !bg-black/80" delay={0.2} title="~/WEATHER">
-              {(isMaximized) => <WeatherWidget isMaximized={isMaximized} />}
-            </BentoBox>
 
             {/* Quick Contact Box */}
             <BentoBox className="order-3 md:col-span-1 md:row-span-1 !p-0 !bg-black/80" delay={0.3} title="~/CONTACT">
@@ -354,32 +539,6 @@ export default function Home() {
             </BentoBox>
 
 
-
-            {/* Roles/Experience Box */}
-            <BentoBox className="order-4 md:col-span-2 md:row-span-1 !p-0 !bg-black/80" delay={0.4} title="~/EXPERIENCE">
-              <div className="p-6 h-full flex flex-col justify-center">
-                <h3 className="text-xs font-bold text-white mb-4 uppercase tracking-widest flex items-center gap-2">
-                  <svg className="w-4 h-4 text-brand-pink" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-                  Recent Experience
-                </h3>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center border-b border-white/5 pb-3 hover:bg-white/5 p-2 -mx-2 rounded-lg transition-colors">
-                    <div>
-                      <p className="text-white font-bold text-sm">I.T. Technician</p>
-                      <p className="text-slate-400 text-xs mt-0.5">The Monarch Casino</p>
-                    </div>
-                    <span className="text-[10px] text-brand-cyan bg-brand-cyan/10 px-3 py-1 rounded-full border border-brand-cyan/20 font-bold tracking-wider">HARDWARE</span>
-                  </div>
-                  <div className="flex justify-between items-center hover:bg-white/5 p-2 -mx-2 rounded-lg transition-colors">
-                    <div>
-                      <p className="text-white font-bold text-sm">CIS Lab Assistant</p>
-                      <p className="text-slate-400 text-xs mt-0.5">Community College of Denver</p>
-                    </div>
-                    <span className="text-[10px] text-brand-pink bg-brand-pink/10 px-3 py-1 rounded-full border border-brand-pink/20 font-bold tracking-wider">SUPPORT</span>
-                  </div>
-                </div>
-              </div>
-            </BentoBox>
 
 
             {/* Trending Repo Box */}

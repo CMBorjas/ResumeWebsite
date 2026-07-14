@@ -2,15 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
-interface City {
-  id: string;
-  name: string;
-  latitude: number;
-  longitude: number;
-  country?: string;
-  admin1?: string;
-}
+import { City, DEFAULT_CITIES } from '../lib/weatherCities';
 
 interface WeatherData {
   temperature: number;
@@ -19,9 +11,8 @@ interface WeatherData {
 }
 
 export default function WeatherWidget({ isMaximized = false }: { isMaximized?: boolean }) {
-  const [cities, setCities] = useState<City[]>([
-    { id: "denver", name: "Denver", latitude: 39.7392, longitude: -104.9847, country: "United States", admin1: "Colorado" }
-  ]);
+  const [customCities, setCustomCities] = useState<City[]>([]);
+  const cities = [...DEFAULT_CITIES, ...customCities];
   const [weatherMap, setWeatherMap] = useState<Record<string, WeatherData>>({});
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
@@ -67,17 +58,17 @@ export default function WeatherWidget({ isMaximized = false }: { isMaximized?: b
     const saved = localStorage.getItem("weather_cities");
     if (saved) {
       try {
-        setCities(JSON.parse(saved));
+        setCustomCities(JSON.parse(saved));
       } catch (e) {
         console.error("Failed to parse saved cities", e);
       }
     }
   }, []);
 
-  // Save cities to localStorage when they change
+  // Save custom cities to localStorage when they change
   useEffect(() => {
-    localStorage.setItem("weather_cities", JSON.stringify(cities));
-  }, [cities]);
+    localStorage.setItem("weather_cities", JSON.stringify(customCities));
+  }, [customCities]);
 
   // Fetch weather for all cities
   useEffect(() => {
@@ -133,7 +124,7 @@ export default function WeatherWidget({ isMaximized = false }: { isMaximized?: b
         
         // Prevent duplicates
         if (!cities.some(c => c.name === newCity.name && c.country === newCity.country)) {
-          setCities(prev => [...prev, newCity]);
+          setCustomCities(prev => [...prev, newCity]);
         }
         setSearchQuery("");
       } else {
@@ -147,11 +138,7 @@ export default function WeatherWidget({ isMaximized = false }: { isMaximized?: b
   };
 
   const removeCity = (id: string) => {
-    if (cities.length <= 1) {
-      alert("You must have at least one city!");
-      return;
-    }
-    setCities(prev => prev.filter(c => c.id !== id));
+    setCustomCities(prev => prev.filter(c => c.id !== id));
     // clean up map
     setWeatherMap(prev => {
       const newMap = { ...prev };
@@ -257,7 +244,7 @@ export default function WeatherWidget({ isMaximized = false }: { isMaximized?: b
 
   // MAXIMIZED VIEW (Shows all cities and add form)
   return (
-    <div className="p-8 flex flex-col h-full bg-[#0a0f18] relative overflow-y-auto custom-scrollbar">
+    <div className="p-8 flex flex-col h-full bg-transparent relative overflow-y-auto custom-scrollbar">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 border-b border-brand-cyan/20 pb-6 gap-4">
         <div>
           <h2 className="text-2xl font-bold text-white flex items-center gap-3">
@@ -303,16 +290,18 @@ export default function WeatherWidget({ isMaximized = false }: { isMaximized?: b
                 transition={{ duration: 0.3, delay: index * 0.05 }}
                 className="bg-black/40 border border-white/5 hover:border-brand-cyan/30 rounded-2xl p-6 relative group transition-colors shadow-lg"
               >
-                <button 
-                  onClick={() => removeCity(city.id)}
-                  className="absolute top-3 right-3 text-slate-500 hover:text-red-400 opacity-0 group-hover:opacity-100 transition-opacity p-1"
-                  title="Remove Node"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                  </svg>
-                </button>
+                  {/* Delete Button (Only for custom cities) */}
+                  {!DEFAULT_CITIES.some(dc => dc.id === city.id) && (
+                    <button 
+                      onClick={(e) => { e.stopPropagation(); removeCity(city.id); }}
+                      className="absolute top-4 right-4 w-8 h-8 rounded-full bg-red-500/10 text-red-400 opacity-0 group-hover:opacity-100 transition-all flex items-center justify-center hover:bg-red-500/20"
+                      title="Remove city"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </button>
+                  )}
 
                 <div className="flex justify-between items-start mb-4">
                   <div className="flex flex-col">

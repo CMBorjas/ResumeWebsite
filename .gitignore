@@ -53,3 +53,7 @@ coverage/
 
 # Static-pages archive (if you keep an archive folder)
 static-pages/
+
+
+#  Theme Refrences
+/Themes_Examples/*

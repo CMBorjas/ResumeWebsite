@@ -16,8 +16,7 @@ This document tracks upcoming features, pending integrations, and the backlog fo
 * [X] 10. Photo Showcase (projects feed page - Unsplash API Mock) *(Est: 4h, Tokens: ~1000, Priority: Medium)*
 * [X] 11. QR Code Generator (projects page/Seperate repo/API)
 * [X] 12. Random GitHub Repo Shoutout (Home page/Seperate repo)
-* [X] 13. Weather Widget (home page/Seperate repo)
-* [X] 14. Pomodoro Timer (Project feed/Seperate repo)
+* [X] 13. Pomodoro Timer (Project feed/Seperate repo)
 * [X] 15. Personal Blog Page (blog page/Seperate repo) *(Est: 8h, Tokens: ~2500, Priority: Low)*
 * [X] 16. Markdown Note Taking App (blog page/Seperate repo)
 * [ ] 17. Photo Gallery 24hr Story Feature (blog page/Seperate repo) *(Est: 4h, Tokens: ~1000, Priority: Medium)*
@@ -143,6 +142,9 @@ This document tracks upcoming features, pending integrations, and the backlog fo
 
 -~~[x]**Testimonial Cards:**~~
   - ~~Quotes or statements from satisfied customers/users, displayed in a carousel/grid.~~
+
+-~~[x]**Weather Widget:**~~
+  - ~~Live weather dashboard fetching real-time conditions via API. Separated configuration for default and local browser storage.~~
 
 ---
 
