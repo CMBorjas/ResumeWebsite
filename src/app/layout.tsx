@@ -27,22 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <body className="body-bg bg-slate-900 text-slate-100 antialiased min-h-screen flex flex-col relative">
                 <ThemeProvider>
                     <InteractiveCanvas />
-                    <header className="header-bg text-white py-8 relative z-10" style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('${basePath}/images/header/skyscrapers-6990425.jpg')` }}>
-                    <div className="container mx-auto flex flex-col items-center justify-center gap-2">
-                        <div className="text-center">
-                            <h1 translate="no" className="text-3xl font-extrabold text-[#B2153C] drop-shadow-[0_0_12px_#C7F2E5] hover:text-[#DFCCC8] hover:drop-shadow-[0_0_15px_#C7F2E5] selection:bg-[#DFCCC8] selection:text-[#B2153C] transition-all duration-300 notranslate cursor-default">Christian Mandujano Borjas</h1>
-                            <p className="text-sm text-brand-cyan mt-1">
-                                <a
-                                    href="mailto:C.mandujano.borjas@gmail.com"
-                                    className="text-brand-cyan hover:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-brand-cyan"
-                                >
-                                    C.mandujano.borjas@gmail.com
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                </header>
-                
+
                 <HexagonMenu />
 
                 <main className="flex-1 w-full px-4 md:px-28 py-8">
