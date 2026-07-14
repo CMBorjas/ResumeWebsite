@@ -73,6 +73,11 @@ This document tracks upcoming features, pending integrations, and the backlog fo
 - ~~[x] **Hybrid Landing Page Redesign**:~~
   - ~~Overhauled `src/app/page.tsx` with a full-viewport Hero section and scroll-driven framer-motion animations for the Bento Box grid.~~
 
+- ~~[x] **Landing Page UX Refinements**:~~
+  - ~~Fixed missing profile picture on static exports using `next/image`.~~
+  - ~~Moved and restyled the SKILLS section to match the top-level sections.~~
+  - ~~Removed redundant CircularText (HIRE ME) instances.~~
+
 - ~~[X] **Movie Scraper and Resevation system**:~~
   - ~~System to reserve movies. *(Est: 3h, Tokens: ~800, Priority: Medium)~~
   - ~~[x]**Server Performance Statistics**:~~ 

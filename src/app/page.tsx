@@ -276,12 +276,35 @@ export default function Home() {
           {/* SECTION 1: STATS HEADER */}
           <div className="flex flex-col md:flex-row items-center gap-12 mb-16 pt-8">
             <div className="flex-1 w-full">
+              {/* Skills Section */}
+              <div className="mb-12">
+                <h2 className="text-3xl font-extrabold text-white mb-8 tracking-widest uppercase flex items-center gap-4">
+                  Skills
+                  <div className="h-px bg-gradient-to-r from-brand-cyan/50 to-transparent flex-1" />
+                </h2>
+                <Tooltip text="Filter the projects by skill" position="top" align="left">
+                  <Link href="/projects" className="block">
+                    <div className="flex flex-wrap gap-2.5 cursor-pointer">
+                      <SkillBadge icon={FaPython} color="#FFD43B">Python</SkillBadge>
+                      <SkillBadge icon={FaJava} color="#ED8B00">Java</SkillBadge>
+                      <SkillBadge icon={SiCplusplus} color="#00599C">C++</SkillBadge>
+                      <SkillBadge icon={SiTypescript} color="#3178C6">TypeScript</SkillBadge>
+                      <SkillBadge icon={SiNextdotjs} color="#FFFFFF">Next.js</SkillBadge>
+                      <SkillBadge icon={FaReact} color="#61DAFB">React</SkillBadge>
+                      <SkillBadge icon={SiTailwindcss} color="#38BDF8">Tailwind CSS</SkillBadge>
+                      <SkillBadge icon={FaNodeJs} color="#339933">Node.js</SkillBadge>
+                      <SkillBadge icon={SiMysql} color="#4479A1">MySQL</SkillBadge>
+                      <SkillBadge icon={FaDocker} color="#2496ED">Docker</SkillBadge>
+                      <SkillBadge icon={FaAws} color="#FF9900">AWS</SkillBadge>
+                      <SkillBadge icon={FaLinux} color="#FCC624">Linux</SkillBadge>
+                    </div>
+                  </Link>
+                </Tooltip>
+              </div>
+
               <ProgressBar label="Full Stack" percentage={95} />
               <ProgressBar label="Information Technology" percentage={88} />
               <ProgressBar label="Artificial Intelligence" percentage={80} />
-            </div>
-            <div className="hidden md:flex justify-center items-center px-12 border-l border-white/10">
-              <CircularText />
             </div>
           </div>
 
@@ -367,33 +390,7 @@ export default function Home() {
               </div>
             </BentoBox>
 
-            {/* Skills Box */}
-            <BentoBox className="order-4 md:col-span-2 md:row-span-1 !p-0 !bg-black/80" delay={0.4} title="~/SKILLS">
-              <div className="p-6 h-full flex flex-col justify-center">
-                <h3 className="text-xs font-bold text-white mb-4 uppercase tracking-widest flex items-center gap-2">
-                  <svg className="w-4 h-4 text-brand-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
-                  Core Tech Stack
-                </h3>
-                <Tooltip text="Filter the projects by skill" position="top" align="right">
-                  <Link href="/projects" className="block">
-                    <div className="flex flex-wrap gap-2.5 cursor-pointer">
-                      <SkillBadge icon={FaPython} color="#FFD43B">Python</SkillBadge>
-                      <SkillBadge icon={FaJava} color="#ED8B00">Java</SkillBadge>
-                      <SkillBadge icon={SiCplusplus} color="#00599C">C++</SkillBadge>
-                      <SkillBadge icon={SiTypescript} color="#3178C6">TypeScript</SkillBadge>
-                      <SkillBadge icon={SiNextdotjs} color="#FFFFFF">Next.js</SkillBadge>
-                      <SkillBadge icon={FaReact} color="#61DAFB">React</SkillBadge>
-                      <SkillBadge icon={SiTailwindcss} color="#38BDF8">Tailwind CSS</SkillBadge>
-                      <SkillBadge icon={FaNodeJs} color="#339933">Node.js</SkillBadge>
-                      <SkillBadge icon={SiMysql} color="#4479A1">MySQL</SkillBadge>
-                      <SkillBadge icon={FaDocker} color="#2496ED">Docker</SkillBadge>
-                      <SkillBadge icon={FaAws} color="#FF9900">AWS</SkillBadge>
-                      <SkillBadge icon={FaLinux} color="#FCC624">Linux</SkillBadge>
-                    </div>
-                  </Link>
-                </Tooltip>
-              </div>
-            </BentoBox>
+
 
             {/* Roles/Experience Box */}
             <BentoBox className="order-5 md:col-span-2 md:row-span-1 !p-0 !bg-black/80" delay={0.5} title="~/EXPERIENCE">
