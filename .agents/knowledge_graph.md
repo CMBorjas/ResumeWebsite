@@ -1,4 +1,5 @@
 # Resume Website Project Knowledge Graph
+
 **Purpose:** This documentation and knowledge graph are explicitly made to explain what the code does and how data and control flow through the set of operations across the application.
 
 This document provides a high-level overview of the project architecture using a Mermaid.js diagram and component breakdown.
@@ -9,13 +10,13 @@ This document provides a high-level overview of the project architecture using a
 graph TD
     %% Core Framework
     NextJS[Next.js App Router] --> Pages
-    
+  
     %% Pages
     subgraph Pages
         Layout[layout.tsx - Global Nav]
         Home[page.tsx - About Me]
         Contact[contact/page.tsx]
-        Education[education/page.tsx - Academics & Clubs]
+        Education["education/page.tsx - Academics and Clubs"]
         Projects[projects/page.tsx]
         LiveProjects[live-projects/page.tsx]
         DataViz[projects/data-visualization/page.tsx]
@@ -39,9 +40,9 @@ graph TD
         MarketAnalysisPage[projects/market-analysis/page.tsx]
         QuizAppPage[projects/quiz-app/page.tsx]
         BlogFeedPage[blog/page.tsx]
-        BlogPostReaderPage[blog/[slug]/page.tsx]
+        BlogPostReaderPage["blog/[slug]/page.tsx"]
     end
-    
+  
     %% Components
     subgraph Components
         HexMenu[HexagonMenu.tsx]
@@ -74,7 +75,7 @@ graph TD
         WeatherWidget[WeatherWidget.tsx]
         ContactSection[ContactSection.tsx]
     end
-    
+  
     %% Connections
     Layout --> HexMenu
     Projects --> ProjectFeed
@@ -103,10 +104,10 @@ graph TD
     BlogFeedPage --> BlogRegistry
     BlogPostReaderPage --> BlogRegistry
     Skills --> TechStack
-    
+  
     %% Data & State
-    subgraph Data & State
-        ThemeEngine[Dynamic Theme Engine Context - Default: corporate]
+    subgraph Data and State
+        ThemeEngine["Dynamic Theme Engine Context - Default: corporate"]
         ProjectData[lib/projects.ts]
         LocalStorage[(localStorage)]
         BlogRegistry[lib/blog.ts]
@@ -119,7 +120,7 @@ graph TD
         TODO[TODO.md - Roadmap & Backlog]
         README[README.md - Main Docs]
     end
-    
+  
     ThemeEngine -.-> Layout
     ProjectData -.-> ProjectFeed
     ThemeEngine -.-> LocalStorage
@@ -132,18 +133,19 @@ graph TD
     ProjectCarousel --> WeatherWidget
     WeatherCitiesData -.-> WeatherWidget
     WeatherWidget -.-> LocalStorage
-    
+  
     %% Deployment
     subgraph Deployment
         Docker[Dockerfile / Nginx]
         GHPages[GitHub Pages / Static Export]
     end
-    
+  
     NextJS -- "npm run build (out/)" --> Docker
     NextJS -- "npm run build (out/)" --> GHPages
 ```
 
 ## Component Breakdown
+
 - **Frontend Framework**: Next.js 16 (App Router), React 19.
 - **Styling & Animations**: Tailwind CSS 4, framer-motion, Recharts (Data Visualization).
 - **Layout Approach**: Bento Box layout (CSS Grid), responsive, glassmorphic UI (with backdrop-blur transparency to reveal the interactive canvas background).
@@ -151,6 +153,7 @@ graph TD
 - **Infrastructure**: Hosted on GitHub Pages via static export. Local development supported by Docker + Nginx.
 
 ## Key Design Principles
+
 - Cyberpunk aesthetic, neon accents, dark mode base.
 - HTML5 Canvas for interactive backgrounds (particles/grids).
 - Fluid route transitions via `AnimatePresence`.
