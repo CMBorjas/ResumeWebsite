@@ -5,7 +5,7 @@
 
 export interface ExperienceEntry {
   id: string;
-  type: 'work' | 'education';
+  type: 'work' | 'education' | 'activity';
   title: string;
   organization: string;
   location: string;
@@ -79,6 +79,39 @@ export const experienceEntries: ExperienceEntry[] = [
       'Hands-on lab work in hardware maintenance and IT support systems.',
     ],
   },
+
+  // ── Clubs and School Activities ──────────────────────────────────
+  {
+    id: 'ai-student-association',
+    type: 'activity',
+    title: 'Technology Officer',
+    organization: 'Artificial Intelligence Student Association',
+    location: 'University of Colorado Denver',
+    dateRange: '2024 – 2026',
+    tag: 'CLUB',
+    tagColor: 'pink',
+    bullets: [
+      'Led a team of 6 members to develop a RAG agent system presentation for the student organization, which resulted in 50+ members engaging in the presentation.',
+      'Helped organize a competition and competed with 50+ students in the field of Artificial Intelligence for the betterment of society.',
+      'Participated in weekly meetings discussing recent changes in the field of Artificial Intelligence.',
+      'Engaged in hands-on projects and competitions to understand and implement AI concepts.',
+      'Maintain the AI Student Association website and social media presence.',
+    ],
+  },
+  {
+    id: 'lynx-robotics-club',
+    type: 'activity',
+    title: 'Secretary',
+    organization: 'Lynx Robotics Club',
+    location: 'University of Colorado Denver',
+    dateRange: 'TBD',
+    tag: 'CLUB',
+    tagColor: 'yellow',
+    bullets: [
+      'Placeholder description point 1.',
+      'Placeholder description point 2.',
+    ],
+  },
 ];
 
 /** Helper: get only work entries */
@@ -86,3 +119,6 @@ export const workEntries = experienceEntries.filter((e) => e.type === 'work');
 
 /** Helper: get only education entries */
 export const educationEntries = experienceEntries.filter((e) => e.type === 'education');
+
+/** Helper: get only activity entries */
+export const activityEntries = experienceEntries.filter((e) => e.type === 'activity');

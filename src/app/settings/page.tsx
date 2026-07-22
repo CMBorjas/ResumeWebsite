@@ -36,32 +36,38 @@ export default function SettingsPage() {
 
             {/* Forestpunk */}
             <div 
-              className="flex flex-col items-center gap-3 p-4 rounded-lg border-2 border-slate-800 bg-[#0d1117] opacity-50 cursor-not-allowed"
-              title="Under Construction"
+              onClick={() => setTheme('forestpunk')}
+              className={`flex flex-col items-center gap-3 p-4 rounded-lg border-2 transition-all cursor-pointer ${
+                theme === 'forestpunk' 
+                  ? 'border-brand-cyan bg-brand-cyan/10 shadow-[0_0_15px_color-mix(in srgb, var(--color-brand-cyan) 40%, transparent)] scale-105' 
+                  : 'border-slate-700 bg-[#0d1117] hover:border-brand-cyan/50'
+              }`}
             >
               <div 
-                className="w-12 h-12 rounded-full"
+                className="w-12 h-12 rounded-full shadow-lg"
                 style={{ background: "linear-gradient(135deg, #00ff88, #ff9900)" }}
               />
-              <span className="font-bold text-sm uppercase tracking-wider text-slate-500">
+              <span className={`font-bold text-sm uppercase tracking-wider ${theme === 'forestpunk' ? 'text-brand-cyan' : 'text-slate-300'}`}>
                 Forestpunk
               </span>
-              <span className="text-[10px] text-yellow-500 uppercase font-bold px-2 py-0.5 border border-yellow-500/30 rounded-full bg-yellow-500/10">WIP</span>
             </div>
 
             {/* Corporate */}
             <div 
-              className="flex flex-col items-center gap-3 p-4 rounded-lg border-2 border-slate-800 bg-[#0d1117] opacity-50 cursor-not-allowed"
-              title="Under Construction"
+              onClick={() => setTheme('corporate')}
+              className={`flex flex-col items-center gap-3 p-4 rounded-lg border-2 transition-all cursor-pointer ${
+                theme === 'corporate' 
+                  ? 'border-brand-cyan bg-brand-cyan/10 shadow-[0_0_15px_color-mix(in srgb, var(--color-brand-cyan) 40%, transparent)] scale-105' 
+                  : 'border-slate-700 bg-[#0d1117] hover:border-brand-cyan/50'
+              }`}
             >
               <div 
-                className="w-12 h-12 rounded-full"
-                style={{ background: "linear-gradient(135deg, #ffffff, #0066cc)" }}
+                className="w-12 h-12 rounded-full shadow-lg"
+                style={{ background: "linear-gradient(135deg, #3C6288, #D47C43)" }}
               />
-              <span className="font-bold text-sm uppercase tracking-wider text-slate-500">
+              <span className={`font-bold text-sm uppercase tracking-wider ${theme === 'corporate' ? 'text-brand-cyan' : 'text-slate-300'}`}>
                 Corporate
               </span>
-              <span className="text-[10px] text-yellow-500 uppercase font-bold px-2 py-0.5 border border-yellow-500/30 rounded-full bg-yellow-500/10">WIP</span>
             </div>
           </div>
         </section>

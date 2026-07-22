@@ -3,16 +3,22 @@
 :root, [data-theme="cyberpunk"] {
     --color-brand-pink: #ff0f4d;
     --color-brand-cyan: #00ffe1;
+    --bg-base: #0f172a; /* slate-900 */
+    --text-base: #f1f5f9; /* slate-100 */
 }
 
 [data-theme="forestpunk"] {
     --color-brand-pink: #ff9900;
     --color-brand-cyan: #00ff88;
+    --bg-base: #0f172a;
+    --text-base: #f1f5f9;
 }
 
 [data-theme="corporate"] {
-    --color-brand-pink: #666666;
-    --color-brand-cyan: #0066cc;
+    --color-brand-pink: #D47C43;
+    --color-brand-cyan: #3C6288;
+    --bg-base: #ffffff;
+    --text-base: #1f2937; /* gray-800 */
 }
 
 @theme {

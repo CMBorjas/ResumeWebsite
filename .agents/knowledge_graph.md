@@ -15,7 +15,7 @@ graph TD
         Layout[layout.tsx - Global Nav]
         Home[page.tsx - About Me]
         Contact[contact/page.tsx]
-        Education[education/page.tsx]
+        Education[education/page.tsx - Academics & Clubs]
         Projects[projects/page.tsx]
         LiveProjects[live-projects/page.tsx]
         DataViz[projects/data-visualization/page.tsx]
@@ -106,7 +106,7 @@ graph TD
     
     %% Data & State
     subgraph Data & State
-        ThemeEngine[Dynamic Theme Engine Context]
+        ThemeEngine[Dynamic Theme Engine Context - Default: corporate]
         ProjectData[lib/projects.ts]
         LocalStorage[(localStorage)]
         BlogRegistry[lib/blog.ts]
@@ -146,7 +146,7 @@ graph TD
 ## Component Breakdown
 - **Frontend Framework**: Next.js 16 (App Router), React 19.
 - **Styling & Animations**: Tailwind CSS 4, framer-motion, Recharts (Data Visualization).
-- **Layout Approach**: Bento Box layout (CSS Grid), responsive, glassmorphic UI.
+- **Layout Approach**: Bento Box layout (CSS Grid), responsive, glassmorphic UI (with backdrop-blur transparency to reveal the interactive canvas background).
 - **State Management**: React Context (Theme Engine) and `localStorage`.
 - **Infrastructure**: Hosted on GitHub Pages via static export. Local development supported by Docker + Nginx.
 

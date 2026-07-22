@@ -13,7 +13,7 @@ import RandomRepoShoutout from '../components/RandomRepoShoutout';
 import TestimonialCards from '../components/TestimonialCards';
 import ProjectCarousel from '../components/ProjectCarousel';
 import { projects } from '../lib/projects';
-import { workEntries, educationEntries, type ExperienceEntry } from '../lib/experience';
+import { workEntries, educationEntries, activityEntries, type ExperienceEntry } from '../lib/experience';
 import MyGoals from '../components/MyGoals';
 import ServicesSection from '../components/ServicesSection';
 import ContactSection from '../components/ContactSection';
@@ -87,13 +87,13 @@ const SkillBadge = ({ children, icon: Icon, color = '#00ffe1' }: { children: Rea
 // Circular Text Component for "hire me"
 const CircularText = () => {
   return (
-    <div 
+    <div
       className="relative w-24 h-24 flex items-center justify-center cursor-pointer hover:scale-105 transition-transform"
       onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
     >
       <div className="absolute -inset-3 rounded-full border-2 border-brand-cyan/20 border-t-brand-cyan animate-[spin_3s_linear_infinite]" />
-      <motion.div 
-        animate={{ rotate: 360 }} 
+      <motion.div
+        animate={{ rotate: 360 }}
         transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
         className="w-full h-full relative"
       >
@@ -105,13 +105,13 @@ const CircularText = () => {
           />
           <text className="text-[11px] font-bold tracking-[0.3em] uppercase fill-brand-cyan drop-shadow-[0_0_5px_rgba(0,255,225,0.8)]">
             <textPath href="#circlePath" startOffset="0%">
-              HIRE ME • HIRE ME • HIRE ME • 
+              HIRE ME • HIRE ME • HIRE ME •
             </textPath>
           </text>
         </svg>
       </motion.div>
       <div className="absolute w-10 h-10 rounded-full bg-gradient-to-br from-brand-cyan to-brand-pink opacity-20 blur-xl animate-pulse" />
-      
+
       {/* Animated Scroll Arrows */}
       <div className="absolute flex flex-col items-center justify-center pointer-events-none">
         <svg className="w-5 h-5 text-brand-cyan animate-bounce drop-shadow-[0_0_8px_rgba(0,255,225,0.8)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -129,12 +129,12 @@ const ProgressBar = ({ label, percentage }: { label: string, percentage: number 
       <span className="text-xs text-brand-cyan font-mono">{percentage}%</span>
     </div>
     <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
-      <motion.div 
+      <motion.div
         initial={{ width: 0 }}
         whileInView={{ width: `${percentage}%` }}
         transition={{ duration: 1.5, ease: "easeOut" }}
         viewport={{ once: true }}
-        className="h-full bg-gradient-to-r from-brand-cyan to-brand-pink shadow-[0_0_10px_color-mix(in srgb, var(--color-brand-cyan) 80%, transparent)]" 
+        className="h-full bg-gradient-to-r from-brand-cyan to-brand-pink shadow-[0_0_10px_color-mix(in srgb, var(--color-brand-cyan) 80%, transparent)]"
       />
     </div>
   </div>
@@ -145,9 +145,9 @@ const ProgressBar = ({ label, percentage }: { label: string, percentage: number 
  * Date range on the left, content card on the right, with inline accordion.
  * ═══════════════════════════════════════════════════════════════════════════ */
 const TAG_COLORS: Record<string, { text: string; bg: string; border: string }> = {
-  cyan:   { text: 'text-brand-cyan', bg: 'bg-brand-cyan/10', border: 'border-brand-cyan/20' },
-  pink:   { text: 'text-brand-pink', bg: 'bg-brand-pink/10', border: 'border-brand-pink/20' },
-  green:  { text: 'text-green-400',  bg: 'bg-green-400/10',  border: 'border-green-400/20' },
+  cyan: { text: 'text-brand-cyan', bg: 'bg-brand-cyan/10', border: 'border-brand-cyan/20' },
+  pink: { text: 'text-brand-pink', bg: 'bg-brand-pink/10', border: 'border-brand-pink/20' },
+  green: { text: 'text-green-400', bg: 'bg-green-400/10', border: 'border-green-400/20' },
   yellow: { text: 'text-yellow-400', bg: 'bg-yellow-400/10', border: 'border-yellow-400/20' },
 };
 
@@ -176,7 +176,7 @@ const TimelineEntry = ({ entry, index, delay }: { entry: ExperienceEntry; index:
         <div className="p-5 md:p-6">
           {/* Mobile-only date */}
           <span className="md:hidden text-brand-cyan font-mono text-xs tracking-wider font-bold mb-2 block">{entry.dateRange}</span>
-          
+
           <div className="flex justify-between items-start gap-4">
             <div className="flex-1 min-w-0">
               <h4 className="text-white font-bold text-base md:text-lg uppercase tracking-wide leading-tight">{entry.title}</h4>
@@ -320,6 +320,34 @@ const ExperienceTimeline = () => {
           ))}
         </div>
       </div>
+
+      {/* ── Clubs & Activities Sub-section ── */}
+      {/* Icon Divider: Users/Groups */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.5 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="flex justify-center my-16"
+      >
+        <div className="w-20 h-20 rounded-full border-2 border-dashed border-white/15 flex items-center justify-center bg-white/[0.02]">
+          <svg className="w-8 h-8 text-white/60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
+        </div>
+      </motion.div>
+
+      {/* Timeline: Activity Entries */}
+      <div className="relative">
+        {/* Vertical dashed line */}
+        <div className="hidden md:block absolute left-[90px] top-0 bottom-0 w-px border-l border-dashed border-white/10" />
+
+        <div className="space-y-6 md:space-y-8">
+          {activityEntries.map((entry, i) => (
+            <TimelineEntry key={entry.id} entry={entry} index={i} delay={i * 0.15} />
+          ))}
+        </div>
+      </div>
     </section>
   );
 };
@@ -334,7 +362,7 @@ export default function Home() {
 
   return (
     <div className="w-full bg-transparent">
-      
+
       {/* 100vh HERO SPLASH SECTION */}
       <section className="relative w-full h-screen flex flex-col justify-between overflow-hidden z-0">
         {/* Background Effects */}
@@ -351,19 +379,19 @@ export default function Home() {
 
         {/* Center/Background: Massive Title */}
         <div className="absolute inset-0 flex items-center justify-center z-0 pointer-events-none overflow-hidden">
-          <h2 className="text-[10vw] md:text-[8vw] lg:text-[7vw] font-black text-white/5 text-center w-full px-4 whitespace-normal tracking-tighter leading-[0.9] select-none break-words">
-            COMPUTER SCIENCE<br/>GRADUATE
+          <h2 className="text-[10vw] md:text-[8vw] lg:text-[7vw] font-black text-[var(--text-base)] opacity-5 text-center w-full px-4 whitespace-normal tracking-tighter leading-[0.9] select-none break-words">
+            COMPUTER SCIENCE<br />GRADUATE
           </h2>
         </div>
         <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none px-4">
-          <h2 className="text-[10vw] md:text-[8vw] lg:text-[7vw] font-black text-white/90 text-center w-full px-4 whitespace-normal tracking-tighter leading-[0.9] select-none mix-blend-overlay break-words">
-            COMPUTER SCIENCE<br/>GRADUATE
+          <h2 className="text-[10vw] md:text-[8vw] lg:text-[7vw] font-black text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-pink opacity-80 text-center w-full px-4 whitespace-normal tracking-tighter leading-[0.9] select-none break-words">
+            COMPUTER SCIENCE<br />GRADUATE
           </h2>
         </div>
 
         {/* Bottom Area: Socials & Headshot */}
         <div className="relative z-20 flex justify-between items-end p-8 lg:p-12 h-full">
-          
+
           {/* Bottom Left: Badge & Socials */}
           <div className="flex flex-col justify-end gap-16 md:gap-20 pb-24 md:pb-32 items-start relative z-30">
             {/* Hovering Circular Badge */}
@@ -396,130 +424,130 @@ export default function Home() {
       </section>
 
       {/* SPLIT LAYOUT SECTION */}
-      <div className="w-full min-h-screen flex flex-col lg:flex-row bg-[#0a0f18] relative z-20 shadow-[0_-20px_50px_rgba(0,0,0,0.8)]">
-      
-      {/* LEFT SIDEBAR (STICKY ON DESKTOP) */}
-      <aside className="w-full lg:w-[350px] xl:w-[400px] lg:h-screen lg:sticky lg:top-0 bg-[#05080f] border-b lg:border-b-0 lg:border-r border-white/5 flex flex-col justify-between p-8 z-30 shadow-[4px_0_24px_rgba(0,0,0,0.6)]">
-        
-        {/* Top: Avatar & Status */}
-        <div className="flex flex-col items-center mt-4">
-          <div className="w-48 h-48 rounded-full overflow-hidden border-2 border-brand-cyan/30 mb-6 relative shadow-[0_0_25px_color-mix(in srgb, var(--color-brand-cyan) 15%, transparent)]">
-            <Image src={headshotImage} alt="Christian Mandujano Borjas" fill className="object-cover" priority />
-          </div>
-          <div className="flex items-center gap-2 mb-8 bg-white/5 px-4 py-1.5 rounded-full border border-white/10">
-            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_color-mix(in srgb, var(--color-green-500) 80%, transparent)]"></span>
-            <span className="text-[10px] text-slate-300 tracking-[0.2em] uppercase font-bold">Available For Hire</span>
-          </div>
-        </div>
+      <div className="w-full min-h-screen flex flex-col lg:flex-row bg-[#0a0f18]/80 backdrop-blur-sm relative z-20 shadow-[0_-20px_50px_rgba(0,0,0,0.8)]">
 
-        {/* Middle: Name & Title */}
-        <div className="text-center my-6 flex-1 flex flex-col justify-center">
-          <h1 className="text-3xl xl:text-4xl font-extrabold text-white mb-4 leading-tight tracking-tight">Christian<br/>Mandujano Borjas</h1>
-          <p className="text-sm text-slate-400 font-mono tracking-widest leading-relaxed">
-            I build <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-pink font-bold drop-shadow-[0_0_8px_color-mix(in srgb, var(--color-brand-cyan) 40%, transparent)]">digital experiences</span>
-          </p>
-        </div>
+        {/* LEFT SIDEBAR (STICKY ON DESKTOP) */}
+        <aside className="w-full lg:w-[350px] xl:w-[400px] lg:h-screen lg:sticky lg:top-0 bg-[#05080f] border-b lg:border-b-0 lg:border-r border-white/5 flex flex-col justify-between p-8 z-30 shadow-[4px_0_24px_rgba(0,0,0,0.6)]">
 
-        {/* Bottom: CTAs */}
-        <div className="flex flex-col gap-4 mt-8">
-          <a href="mailto:C.mandujano.borjas@gmail.com" className="w-full py-4 bg-gradient-to-r from-brand-cyan to-brand-pink text-white rounded-full font-bold text-center hover:scale-[1.02] hover:shadow-[0_0_20px_color-mix(in srgb, var(--color-brand-cyan) 40%, transparent)] transition-all duration-300 tracking-wider flex items-center justify-center gap-2 text-sm">
-            HIRE ME
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-          </a>
-          <Link href="/resume" className="w-full py-4 bg-transparent border border-brand-cyan/30 text-brand-cyan rounded-full font-bold text-center hover:bg-brand-cyan/10 hover:border-brand-cyan/60 transition-all duration-300 tracking-wider flex items-center justify-center gap-2 text-sm">
-            RESUME
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-          </Link>
-        </div>
-      </aside>
-
-      {/* RIGHT MAIN CONTENT AREA (SCROLLABLE) */}
-      <main className="flex-1 min-h-screen p-4 lg:p-10 xl:p-16 relative overflow-x-hidden">
-        
-        <div className="max-w-[1200px] mx-auto w-full">
-          
-          {/* SECTION 1: STATS HEADER */}
-          <div className="flex flex-col md:flex-row items-center gap-12 mb-16 pt-8">
-            <div className="flex-1 w-full">
-              {/* Skills Section */}
-              <div className="mb-12">
-                <h2 className="text-3xl font-extrabold text-white mb-8 tracking-widest uppercase flex items-center gap-4">
-                  Skills
-                  <div className="h-px bg-gradient-to-r from-brand-cyan/50 to-transparent flex-1" />
-                </h2>
-                <Tooltip text="Filter the projects by skill" position="top" align="left">
-                  <Link href="/projects" className="block">
-                    <div className="flex flex-wrap gap-2.5 cursor-pointer">
-                      <SkillBadge icon={FaPython} color="#FFD43B">Python</SkillBadge>
-                      <SkillBadge icon={FaJava} color="#ED8B00">Java</SkillBadge>
-                      <SkillBadge icon={SiCplusplus} color="#00599C">C++</SkillBadge>
-                      <SkillBadge icon={SiTypescript} color="#3178C6">TypeScript</SkillBadge>
-                      <SkillBadge icon={SiNextdotjs} color="#FFFFFF">Next.js</SkillBadge>
-                      <SkillBadge icon={FaReact} color="#61DAFB">React</SkillBadge>
-                      <SkillBadge icon={SiTailwindcss} color="#38BDF8">Tailwind CSS</SkillBadge>
-                      <SkillBadge icon={FaNodeJs} color="#339933">Node.js</SkillBadge>
-                      <SkillBadge icon={SiMysql} color="#4479A1">MySQL</SkillBadge>
-                      <SkillBadge icon={FaDocker} color="#2496ED">Docker</SkillBadge>
-                      <SkillBadge icon={FaAws} color="#FF9900">AWS</SkillBadge>
-                      <SkillBadge icon={FaLinux} color="#FCC624">Linux</SkillBadge>
-                    </div>
-                  </Link>
-                </Tooltip>
-              </div>
-
-              <ProgressBar label="Full Stack" percentage={95} />
-              <ProgressBar label="Information Technology" percentage={88} />
-              <ProgressBar label="Artificial Intelligence" percentage={80} />
+          {/* Top: Avatar & Status */}
+          <div className="flex flex-col items-center mt-4">
+            <div className="w-48 h-48 rounded-full overflow-hidden border-2 border-brand-cyan/30 mb-6 relative shadow-[0_0_25px_color-mix(in srgb, var(--color-brand-cyan) 15%, transparent)]">
+              <Image src={headshotImage} alt="Christian Mandujano Borjas" fill className="object-cover" priority />
+            </div>
+            <div className="flex items-center gap-2 mb-8 bg-white/5 px-4 py-1.5 rounded-full border border-white/10">
+              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_color-mix(in srgb, var(--color-green-500) 80%, transparent)]"></span>
+              <span className="text-[10px] text-slate-300 tracking-[0.2em] uppercase font-bold">Available For Hire</span>
             </div>
           </div>
 
-          {/* SECTION 2: RECENT PROJECTS */}
-          <div className="mb-16">
-            <h2 className="text-3xl font-extrabold text-white mb-8 tracking-widest uppercase flex items-center gap-4">
-              Recent Projects
-              <div className="h-px bg-gradient-to-r from-brand-cyan/50 to-transparent flex-1" />
+          {/* Middle: Name & Title */}
+          <div className="text-center my-6 flex-1 flex flex-col justify-center">
+            <h1 className="text-3xl xl:text-4xl font-extrabold text-white mb-4 leading-tight tracking-tight">Christian<br />Mandujano Borjas</h1>
+            <p className="text-sm text-slate-400 font-mono tracking-widest leading-relaxed">
+              I build <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-pink font-bold drop-shadow-[0_0_8px_color-mix(in srgb, var(--color-brand-cyan) 40%, transparent)]">digital experiences</span>
+            </p>
+          </div>
+
+          {/* Bottom: CTAs */}
+          <div className="flex flex-col gap-4 mt-8">
+            <a href="mailto:C.mandujano.borjas@gmail.com" className="w-full py-4 bg-gradient-to-r from-brand-cyan to-brand-pink text-white rounded-full font-bold text-center hover:scale-[1.02] hover:shadow-[0_0_20px_color-mix(in srgb, var(--color-brand-cyan) 40%, transparent)] transition-all duration-300 tracking-wider flex items-center justify-center gap-2 text-sm">
+              HIRE ME
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </a>
+            <Link href="/resume" className="w-full py-4 bg-transparent border border-brand-cyan/30 text-brand-cyan rounded-full font-bold text-center hover:bg-brand-cyan/10 hover:border-brand-cyan/60 transition-all duration-300 tracking-wider flex items-center justify-center gap-2 text-sm">
+              RESUME
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+            </Link>
+          </div>
+        </aside>
+
+        {/* RIGHT MAIN CONTENT AREA (SCROLLABLE) */}
+        <main className="flex-1 min-h-screen p-4 lg:p-10 xl:p-16 relative overflow-x-hidden">
+
+          <div className="max-w-[1200px] mx-auto w-full">
+
+            {/* SECTION 1: STATS HEADER */}
+            <div className="flex flex-col md:flex-row items-center gap-12 mb-16 pt-8">
+              <div className="flex-1 w-full">
+                {/* Skills Section */}
+                <div className="mb-12">
+                  <h2 className="text-3xl font-extrabold text-white mb-8 tracking-widest uppercase flex items-center gap-4">
+                    Skills
+                    <div className="h-px bg-gradient-to-r from-brand-cyan/50 to-transparent flex-1" />
+                  </h2>
+                  <Tooltip text="Filter the projects by skill" position="top" align="left">
+                    <Link href="/projects" className="block">
+                      <div className="flex flex-wrap gap-2.5 cursor-pointer">
+                        <SkillBadge icon={FaPython} color="#FFD43B">Python</SkillBadge>
+                        <SkillBadge icon={FaJava} color="#ED8B00">Java</SkillBadge>
+                        <SkillBadge icon={SiCplusplus} color="#00599C">C++</SkillBadge>
+                        <SkillBadge icon={SiTypescript} color="#3178C6">TypeScript</SkillBadge>
+                        <SkillBadge icon={SiNextdotjs} color="#FFFFFF">Next.js</SkillBadge>
+                        <SkillBadge icon={FaReact} color="#61DAFB">React</SkillBadge>
+                        <SkillBadge icon={SiTailwindcss} color="#38BDF8">Tailwind CSS</SkillBadge>
+                        <SkillBadge icon={FaNodeJs} color="#339933">Node.js</SkillBadge>
+                        <SkillBadge icon={SiMysql} color="#4479A1">MySQL</SkillBadge>
+                        <SkillBadge icon={FaDocker} color="#2496ED">Docker</SkillBadge>
+                        <SkillBadge icon={FaAws} color="#FF9900">AWS</SkillBadge>
+                        <SkillBadge icon={FaLinux} color="#FCC624">Linux</SkillBadge>
+                      </div>
+                    </Link>
+                  </Tooltip>
+                </div>
+
+                <ProgressBar label="Full Stack" percentage={95} />
+                <ProgressBar label="Information Technology" percentage={88} />
+                <ProgressBar label="Artificial Intelligence" percentage={95} />
+              </div>
+            </div>
+
+            {/* SECTION 2: RECENT PROJECTS */}
+            <div className="mb-16">
+              <h2 className="text-3xl font-extrabold text-white mb-8 tracking-widest uppercase flex items-center gap-4">
+                Recent Projects
+                <div className="h-px bg-gradient-to-r from-brand-cyan/50 to-transparent flex-1" />
+              </h2>
+
+              <ProjectCarousel projects={recentProjects} />
+            </div>
+
+            {/* SECTION 3: TESTIMONIALS */}
+            <div className="mb-16">
+              <h2 className="text-3xl font-extrabold text-white mb-8 tracking-widest uppercase flex items-center gap-4">
+                Testimonials
+                <div className="h-px bg-gradient-to-r from-brand-cyan/50 to-transparent flex-1" />
+              </h2>
+              <TestimonialCards />
+            </div>
+
+            {/* SECTION 4: GOALS & SERVICES */}
+            <h2 className="text-2xl font-bold text-white mb-8 tracking-wider uppercase flex items-center gap-4 mt-8">
+              Goals
+              <div className="h-px bg-gradient-to-r from-brand-pink/50 to-transparent flex-1" />
             </h2>
-            
-            <ProjectCarousel projects={recentProjects} />
+
+            <div className="mb-8 w-full">
+              <MyGoals />
+            </div>
+
+            <ServicesSection />
+
+
+            <div className="w-full mb-16 mt-16">
+              <h2 className="text-3xl font-extrabold text-white mb-8 tracking-widest uppercase flex items-center gap-4">
+                Portfolio
+                <div className="h-px bg-gradient-to-r from-brand-cyan/50 to-transparent flex-1" />
+              </h2>
+              <RandomRepoShoutout />
+            </div>
+
+            {/* ═══════════════════════════════════════════════════════════ */}
+            {/* SECTION: EXPERIENCE TIMELINE                               */}
+            {/* ═══════════════════════════════════════════════════════════ */}
+            <ExperienceTimeline />
+
           </div>
-
-          {/* SECTION 3: TESTIMONIALS */}
-          <div className="mb-16">
-            <h2 className="text-3xl font-extrabold text-white mb-8 tracking-widest uppercase flex items-center gap-4">
-              Testimonials
-              <div className="h-px bg-gradient-to-r from-brand-cyan/50 to-transparent flex-1" />
-            </h2>
-            <TestimonialCards />
-          </div>
-
-          {/* SECTION 4: GOALS & SERVICES */}
-          <h2 className="text-2xl font-bold text-white mb-8 tracking-wider uppercase flex items-center gap-4 mt-8">
-            Goals
-            <div className="h-px bg-gradient-to-r from-brand-pink/50 to-transparent flex-1" />
-          </h2>
-
-          <div className="mb-8 w-full">
-            <MyGoals />
-          </div>
-
-          <ServicesSection />
-
-
-          <div className="w-full mb-16 mt-16">
-            <h2 className="text-3xl font-extrabold text-white mb-8 tracking-widest uppercase flex items-center gap-4">
-              Portfolio
-              <div className="h-px bg-gradient-to-r from-brand-cyan/50 to-transparent flex-1" />
-            </h2>
-            <RandomRepoShoutout />
-          </div>
-
-          {/* ═══════════════════════════════════════════════════════════ */}
-          {/* SECTION: EXPERIENCE TIMELINE                               */}
-          {/* ═══════════════════════════════════════════════════════════ */}
-          <ExperienceTimeline />
-
-        </div>
-      </main>
+        </main>
       </div>
 
       {/* FULL BLEED CONTACT SECTION */}

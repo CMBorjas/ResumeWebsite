@@ -11,8 +11,8 @@ module.exports = {
     extend: {
       colors: {
         brand: {
-          pink: '#ff0f4d',
-          cyan: '#00ffe1'
+          pink: 'var(--color-brand-pink)',
+          cyan: 'var(--color-brand-cyan)'
         }
       },
       animation: {

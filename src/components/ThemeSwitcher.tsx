@@ -19,20 +19,24 @@ export default function ThemeSwitcher() {
         />
       </Tooltip>
       
-      <Tooltip text="Forestpunk (Under Construction)" position="top" align="right">
+      <Tooltip text="Forestpunk" position="top" align="right">
         <button
-          disabled
-          className={`w-6 h-6 rounded-full border-2 transition-all duration-300 border-transparent opacity-30 cursor-not-allowed`}
+          onClick={() => setTheme("forestpunk")}
+          className={`w-6 h-6 rounded-full border-2 transition-all duration-300 cursor-pointer ${
+            theme === "forestpunk" ? "border-brand-cyan scale-110" : "border-transparent opacity-50 hover:opacity-100"
+          }`}
           style={{ background: "linear-gradient(135deg, #00ff88, #ff9900)" }}
           aria-label="Forestpunk"
         />
       </Tooltip>
       
-      <Tooltip text="Corporate (Under Construction)" position="top" align="right">
+      <Tooltip text="Corporate" position="top" align="right">
         <button
-          disabled
-          className={`w-6 h-6 rounded-full border-2 transition-all duration-300 border-transparent opacity-30 cursor-not-allowed`}
-          style={{ background: "linear-gradient(135deg, #ffffff, #0066cc)" }}
+          onClick={() => setTheme("corporate")}
+          className={`w-6 h-6 rounded-full border-2 transition-all duration-300 cursor-pointer ${
+            theme === "corporate" ? "border-brand-cyan scale-110" : "border-transparent opacity-50 hover:opacity-100"
+          }`}
+          style={{ background: "linear-gradient(135deg, #3C6288, #D47C43)" }}
           aria-label="Corporate"
         />
       </Tooltip>

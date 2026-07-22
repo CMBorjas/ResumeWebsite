@@ -21,7 +21,7 @@ export default function InteractiveCanvas() {
 
     let animationFrameId: number;
     let particles: Particle[] = [];
-    
+
     // Mouse tracking
     const mouse = {
       x: -1000,
@@ -76,37 +76,37 @@ export default function InteractiveCanvas() {
 
       draw() {
         if (!ctx) return;
-        
+
         const dx = mouse.x - this.x;
         const dy = mouse.y - this.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
-        
+
         ctx.fillStyle = this.color;
-        
+
         if (distance < mouse.radius) {
           const intensity = 1 - (distance / mouse.radius);
           // Increased brightness by ~50%
           ctx.shadowBlur = 25 * intensity;
           ctx.shadowColor = this.color;
-          
+
           // Draw particle core
           ctx.beginPath();
           ctx.arc(this.x, this.y, this.size * (1 + intensity * 2.25), 0, Math.PI * 2);
           ctx.fill();
-          
+
           // Draw light star streaks (anamorphic flare style)
           const streakLength = 20 * intensity;
           ctx.beginPath();
           ctx.lineWidth = 1.5 * intensity;
           ctx.strokeStyle = this.color;
-          
+
           // Horizontal streak (longer)
           ctx.moveTo(this.x - streakLength * 1.5, this.y);
           ctx.lineTo(this.x + streakLength * 1.5, this.y);
           // Vertical streak
           ctx.moveTo(this.x, this.y - streakLength);
           ctx.lineTo(this.x, this.y + streakLength);
-          
+
           ctx.stroke();
         } else {
           ctx.shadowBlur = 0;
@@ -114,7 +114,7 @@ export default function InteractiveCanvas() {
           ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
           ctx.fill();
         }
-        
+
         // Reset shadow for lines and other particles
         ctx.shadowBlur = 0;
       }
@@ -132,14 +132,14 @@ export default function InteractiveCanvas() {
         const dx = mouse.x - this.x;
         const dy = mouse.y - this.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
-        
+
         if (distance < mouse.radius) {
           const forceDirectionX = dx / distance;
           const forceDirectionY = dy / distance;
           const force = (mouse.radius - distance) / mouse.radius;
           const directionX = forceDirectionX * force * this.density;
           const directionY = forceDirectionY * force * this.density;
-          
+
           this.x -= directionX;
           this.y -= directionY;
         } else {
@@ -214,7 +214,8 @@ export default function InteractiveCanvas() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 z-0 pointer-events-none opacity-50"
+      className={`fixed inset-0 z-0 pointer-events-none transition-all duration-500 ${theme === 'corporate' ? 'bg-white opacity-100' : 'bg-transparent opacity-50'
+        }`}
     />
   );
 }
