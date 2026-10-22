@@ -391,16 +391,16 @@ export default function Home() {
         </div>
 
         {/* Bottom Area: Socials & Headshot */}
-        <div className="relative z-20 flex justify-between items-end p-8 lg:p-12 h-full">
+        <div className="relative z-20 flex justify-between items-end p-6 sm:p-8 lg:p-12 h-full">
 
           {/* Bottom Left: Badge & Socials */}
-          <div className="flex flex-col justify-end gap-16 md:gap-20 pb-24 md:pb-32 items-start relative z-30">
+          <div className="flex flex-col justify-end gap-12 sm:gap-16 md:gap-20 pb-16 sm:pb-24 md:pb-32 items-start relative z-30">
             {/* Hovering Circular Badge */}
-            <div className="scale-[1.5] md:scale-[2] ml-12 md:ml-16 mb-4">
+            <div className="scale-[1.3] sm:scale-[1.5] md:scale-[2] ml-8 sm:ml-12 md:ml-16 mb-4">
               <CircularText />
             </div>
 
-            <div className="flex gap-6">
+            <div className="flex gap-4 sm:gap-6">
               <a href="https://github.com/CMBorjas" target="_blank" rel="noreferrer" className="text-white hover:text-brand-cyan hover:scale-110 hover:drop-shadow-[0_0_10px_color-mix(in_srgb,var(--color-brand-cyan)_80%,transparent)] transition-all duration-300">
                 <FaGithub className="w-8 h-8" />
               </a>
@@ -416,8 +416,8 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Bottom Right: Headshot */}
-          <div className="absolute bottom-0 right-0 z-20 pointer-events-none flex justify-end items-end w-auto h-[42vh] sm:h-[52vh] md:h-[68vh] lg:h-[80vh] xl:h-[86vh] max-w-[65vw] md:max-w-[50vw] aspect-square">
+          {/* Bottom Right: Headshot (Compact corner anchor on mobile; Large grand scale on web/desktop) */}
+          <div className="absolute bottom-0 right-0 z-20 pointer-events-none flex justify-end items-end w-[135px] h-[135px] sm:w-[170px] sm:h-[170px] md:w-auto md:h-[68vh] lg:h-[80vh] xl:h-[86vh] md:max-w-[50vw] aspect-square">
             <Image 
               src={headshotImage} 
               alt="Christian Mandujano Borjas" 
