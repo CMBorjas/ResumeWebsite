@@ -150,6 +150,9 @@ This document tracks upcoming features, pending integrations, and the backlog fo
 - ~~[x] **Contact Page Reform:**~~
   - ~~Created a massive animated ticker tape for the contact section, replaced the Quick Contact bento box, and implemented a mailto: form following the provided hybrid theme screenshots.~~
 
+- ~~[x] **Official Resume PDF Refresh:**~~
+  - ~~Updated downloadable curriculum vitae and in-browser PDF viewer asset with latest single-page document.~~
+
 ---
 
 
