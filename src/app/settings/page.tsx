@@ -10,22 +10,21 @@ export default function SettingsPage() {
     <div className="w-full max-w-4xl mx-auto px-4 py-8">
       <div className="bg-slate-900/70 backdrop-blur-md rounded-xl p-8 border-2 border-brand-cyan/50 shadow-[0_0_15px_color-mix(in srgb, var(--color-brand-cyan) 40%, transparent)]">
         <h1 className="text-3xl font-extrabold text-brand-cyan mb-8 border-b border-brand-cyan/20 pb-4">Settings</h1>
-        
+
         <section className="mb-10">
           <h2 className="text-xl font-bold text-white mb-4">Theme Preferences</h2>
           <p className="text-sm text-slate-400 mb-6">Select a visual theme for the entire portfolio. Currently, only the Cyberpunk theme is fully implemented.</p>
-          
+
           <div className="flex flex-wrap gap-6">
             {/* Cyberpunk */}
-            <div 
+            <div
               onClick={() => setTheme('cyberpunk')}
-              className={`flex flex-col items-center gap-3 p-4 rounded-lg border-2 transition-all cursor-pointer ${
-                theme === 'cyberpunk' 
-                  ? 'border-brand-cyan bg-brand-cyan/10 shadow-[0_0_15px_color-mix(in srgb, var(--color-brand-cyan) 40%, transparent)] scale-105' 
+              className={`flex flex-col items-center gap-3 p-4 rounded-lg border-2 transition-all cursor-pointer ${theme === 'cyberpunk'
+                  ? 'border-brand-cyan bg-brand-cyan/10 shadow-[0_0_15px_color-mix(in srgb, var(--color-brand-cyan) 40%, transparent)] scale-105'
                   : 'border-slate-700 bg-[#0d1117] hover:border-brand-cyan/50'
-              }`}
+                }`}
             >
-              <div 
+              <div
                 className="w-12 h-12 rounded-full shadow-lg"
                 style={{ background: "linear-gradient(135deg, #00ffe1, #ff0f4d)" }}
               />
@@ -35,15 +34,14 @@ export default function SettingsPage() {
             </div>
 
             {/* Forestpunk */}
-            <div 
+            <div
               onClick={() => setTheme('forestpunk')}
-              className={`flex flex-col items-center gap-3 p-4 rounded-lg border-2 transition-all cursor-pointer ${
-                theme === 'forestpunk' 
-                  ? 'border-brand-cyan bg-brand-cyan/10 shadow-[0_0_15px_color-mix(in srgb, var(--color-brand-cyan) 40%, transparent)] scale-105' 
+              className={`flex flex-col items-center gap-3 p-4 rounded-lg border-2 transition-all cursor-pointer ${theme === 'forestpunk'
+                  ? 'border-brand-cyan bg-brand-cyan/10 shadow-[0_0_15px_color-mix(in srgb, var(--color-brand-cyan) 40%, transparent)] scale-105'
                   : 'border-slate-700 bg-[#0d1117] hover:border-brand-cyan/50'
-              }`}
+                }`}
             >
-              <div 
+              <div
                 className="w-12 h-12 rounded-full shadow-lg"
                 style={{ background: "linear-gradient(135deg, #00ff88, #ff9900)" }}
               />
@@ -53,15 +51,14 @@ export default function SettingsPage() {
             </div>
 
             {/* Corporate */}
-            <div 
+            <div
               onClick={() => setTheme('corporate')}
-              className={`flex flex-col items-center gap-3 p-4 rounded-lg border-2 transition-all cursor-pointer ${
-                theme === 'corporate' 
-                  ? 'border-brand-cyan bg-brand-cyan/10 shadow-[0_0_15px_color-mix(in srgb, var(--color-brand-cyan) 40%, transparent)] scale-105' 
+              className={`flex flex-col items-center gap-3 p-4 rounded-lg border-2 transition-all cursor-pointer ${theme === 'corporate'
+                  ? 'border-brand-cyan bg-brand-cyan/10 shadow-[0_0_15px_color-mix(in srgb, var(--color-brand-cyan) 40%, transparent)] scale-105'
                   : 'border-slate-700 bg-[#0d1117] hover:border-brand-cyan/50'
-              }`}
+                }`}
             >
-              <div 
+              <div
                 className="w-12 h-12 rounded-full shadow-lg"
                 style={{ background: "linear-gradient(135deg, #3C6288, #D47C43)" }}
               />

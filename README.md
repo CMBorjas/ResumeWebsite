@@ -19,7 +19,7 @@ Welcome to the Resume Website of Christian Mandujano Borjas. This repository con
 
 This website serves as a digital resume and portfolio for Christian Mandujano Borjas. It includes pages for:
 
-- **About Me**: Introduction and summary of professional background.
+- **About Me**: Introduction and summary of professional background with responsive full-viewport Hero section and anchored portrait.
 - **Education**: Academic background and qualifications.
 - **Skills**: Technical skills and areas of expertise.
 - **Work Experience**: Professional experience and roles held.
@@ -27,7 +27,7 @@ This website serves as a digital resume and portfolio for Christian Mandujano Bo
 - **Live Projects**: A dedicated feed highlighting only fully deployed and active projects.
 - **Blog**: A static markdown rendering engine (Neural Logs) containing technical architecture breakdowns.
 - **Resume**: Embedded PDF viewer with a downloadable resume.
-- **Settings**: Configuration for theme preferences and navigation behavior.
+- **Settings**: Configuration for theme preferences, navigation behavior, and visitor telemetry webhook diagnostics.
 - **Socials**: Future-facing registry of upcoming features and integrations.
 - **Contact**: Contact details and links.
 
@@ -88,8 +88,11 @@ ResumeWebsite/
 │   │   ├── ProjectCard.tsx                        # GitHub project card
 │   │   ├── ProjectFeedClient.tsx                  # Client-side project feed
 │   │   └── TechStackPanel.tsx                     # Tech stack display panel
+│   ├── hooks/
+│   │   └── useVisitorTelemetry.ts                 # Anonymous landing page visitor telemetry hook
 │   ├── lib/
-│   │   └── projects.ts                            # Project data & types
+│   │   ├── projects.ts                            # Project data & types
+│   │   └── telemetry.ts                           # Client telemetry parser & webhook broadcaster
 │   └── styles/
 │       └── globals.css                            # Global CSS & design tokens
 ├── Dockerfile                                     # Multi-stage Docker build (Node → Nginx)

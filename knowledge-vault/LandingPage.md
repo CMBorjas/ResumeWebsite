@@ -6,14 +6,20 @@ It was modified to combine the existing Cyberpunk Bento Box grid with premium, s
 
 ## How it works?
 The page is split into two primary sections:
-1. **Hero Section**: A `min-h-[95vh]` container using flexbox to center massive typography and call-to-action buttons. It includes a scroll indicator with an infinite `framer-motion` bounce loop.
+1. **Hero Section**: A `min-h-[95vh]` container featuring:
+   - Fullscreen interactive typography ("CHRISTIAN MANDUJANO BORJAS" and watermark "COMPUTER SCIENCE GRADUATE").
+   - Bottom-left action column: circular spinning SVG badge ("HIRE ME") and cybernetic social icon links.
+   - Bottom-right anchored headshot: A cropped, transparent-background portrait of Christian Mandujano Borjas (`public/images/profile/Headshot_nobg.png`) set inside an `absolute bottom-0 right-0 z-20 pointer-events-none` container with `aspect-square`, responsive heights (`h-[42vh]` on mobile scaling smoothly up to `h-[86vh]` on desktop, capped at `max-w-[50vw]`), utilizing `object-contain object-right-bottom` to guarantee zero clipping of facial features while maintaining a commanding, professional corner anchor across all viewports.
+   - Visitor telemetry integration: Executes the `useVisitorTelemetry()` hook on component mount, logging client environment parameters and broadcasting to configurable webhooks (e.g. Discord).
 2. **Bento Grid Section**: A CSS Grid layout containing various modules (Skills, Experience, Weather, etc.). Each `BentoBox` is wrapped in a `framer-motion` `<motion.div>` utilizing `whileInView` with a `viewport={{ once: true, margin: "-50px" }}` parameter, causing the boxes to spring up organically as the user scrolls them into the viewport.
 
 ## Requirements
-- Next.js (App Router)
-- React hooks (`useState`, `useEffect`)
+- Next.js 16 (App Router)
+- React 19 hooks (`useState`, `useEffect`)
 - `framer-motion` for scroll and hover animations
-- Tailwind CSS for layout and typography
+- Tailwind CSS 4 for layout and typography
+- `@/hooks/useVisitorTelemetry` for anonymous telemetry pings
 
 ## Outbound Data Flow
-The landing page does not mutate external data but aggregates and displays several client components (WeatherWidget, TestimonialCards, GithubActivityFeed, etc.). State is maintained locally within the `BentoBox` for minimize/maximize functionality.
+The landing page aggregates and displays several client components (WeatherWidget, TestimonialCards, GithubActivityFeed, etc.). State is maintained locally within the `BentoBox` for minimize/maximize functionality. On mount, `useVisitorTelemetry()` emits anonymized visit metadata to configured endpoints (Discord webhook / custom HTTP receiver).
+

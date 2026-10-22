@@ -36,7 +36,7 @@ This document tracks upcoming features, pending integrations, and the backlog fo
 * [ ] 32. Base64 Encoder/Decoder Utility (projects page) *(Est: 1h, Tokens: ~400, Priority: Low)*
 * [ ] 33. Password Generator (projects page) *(Est: 1h, Tokens: ~400, Priority: Low)*
 * [ ] 34. Scroll-Driven Work Experience Timeline (work experience page) *(Est: 5h, Tokens: ~1200, Priority: High)*
-* [ ] 35. Device/Browser Fingerprint Scanner (home page) *(Est: 2h, Tokens: ~600, Priority: Low)*
+* [X] 35. Device/Browser Fingerprint Scanner & Visitor Telemetry (home page & /settings) *(Est: 2h, Tokens: ~600, Priority: Low)*
 * [ ] 36. Spotify/Apple Music "Currently Playing" Mockup (home page) *(Est: 3h, Tokens: ~800, Priority: Low)*
 * [ ] 37. Color Palette Extractor (projects page) *(Est: 4h, Tokens: ~1000, Priority: Medium)*
 * [ ] 38. Version Control Commit Visualizer (projects page) *(Est: 6h, Tokens: ~1500, Priority: High)*
@@ -67,6 +67,16 @@ This document tracks upcoming features, pending integrations, and the backlog fo
 
 <details>
 <summary><b>Past Goals</b></summary>
+
+- ~~[x] **Hero Headshot Scale & Corner Anchor Enhancement**:~~
+  - ~~Cropped `Headshot_nobg.png` to a balanced 1:1 silhouette (1530x1532), eliminating 760px of asymmetrical dead margin.~~
+  - ~~Anchored headshot firmly to bottom-right corner (`bottom-0 right-0`) with fluid `aspect-square` responsive sizing (`h-[42vh]` mobile to `h-[86vh]` desktop, `max-w-[50vw]`), preserving full headshot visibility without decapitation or clipping.~~
+  - ~~Automatically centered Christian's face in the circular sidebar avatar (`rounded-full`).~~
+
+- ~~[x] **Visitor Telemetry Subsystem & Admin Console**:~~
+  - ~~Implemented client-side telemetry engine (`src/lib/telemetry.ts`) extracting device, OS, browser, resolution, timezone, and referrer.~~
+  - ~~Created automated landing page trigger (`src/hooks/useVisitorTelemetry.ts`) with `sessionStorage` spam prevention.~~
+  - ~~Built Cyberpunk diagnostics control panel in `/settings` for webhook configuration (`localStorage`), status toggle, diagnostic preview, and test ping.~~
 
 - ~~[x] **Hybrid Landing Page Redesign**:~~
   - ~~Overhauled `src/app/page.tsx` with a full-viewport Hero section and scroll-driven framer-motion animations for the Bento Box grid.~~

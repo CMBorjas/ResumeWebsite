@@ -110,9 +110,12 @@ graph TD
         ThemeEngine["Dynamic Theme Engine Context - Default: corporate"]
         ProjectData[lib/projects.ts]
         LocalStorage[(localStorage)]
+        SessionStorage[(sessionStorage)]
         BlogRegistry[lib/blog.ts]
         QuizData[lib/quiz-data.ts]
         WeatherCitiesData[lib/weatherCities.ts]
+        TelemetryEngine[lib/telemetry.ts]
+        VisitorHook[hooks/useVisitorTelemetry.ts]
     end
 
     %% Project Management
@@ -125,6 +128,11 @@ graph TD
     ProjectData -.-> ProjectFeed
     ThemeEngine -.-> LocalStorage
     QuizData -.-> QuizAppPage
+    Home --> VisitorHook
+    VisitorHook --> TelemetryEngine
+    VisitorHook -.-> SessionStorage
+    Settings --> TelemetryEngine
+    Settings -.-> LocalStorage
     Home --> RandomRepoShoutout
     Home --> ContactSection
     RandomRepoShoutout --> WeatherWidget

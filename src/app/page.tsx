@@ -17,6 +17,7 @@ import { workEntries, educationEntries, activityEntries, type ExperienceEntry } 
 import MyGoals from '../components/MyGoals';
 import ServicesSection from '../components/ServicesSection';
 import ContactSection from '../components/ContactSection';
+import { useVisitorTelemetry } from '../hooks/useVisitorTelemetry';
 
 
 
@@ -353,7 +354,7 @@ const ExperienceTimeline = () => {
 };
 
 export default function Home() {
-
+  useVisitorTelemetry();
 
   // Fetch the 10 most recently added projects from the array
   const recentProjects = [...projects].reverse().slice(0, 10);
@@ -415,10 +416,15 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Bottom Right: Headshot & Spinning Badge */}
-          <div className="relative w-full max-w-[400px] md:max-w-[500px] lg:max-w-[700px] flex justify-end items-end h-[60vh] md:h-[80vh]">
-            <Image src={headshotImage} alt="Christian Mandujano Borjas" fill className="object-contain object-bottom drop-shadow-[0_0_50px_rgba(0,0,0,0.8)] pointer-events-none scale-[2.0] origin-bottom" priority />
-
+          {/* Bottom Right: Headshot */}
+          <div className="absolute bottom-0 right-0 z-20 pointer-events-none flex justify-end items-end w-auto h-[42vh] sm:h-[52vh] md:h-[68vh] lg:h-[80vh] xl:h-[86vh] max-w-[65vw] md:max-w-[50vw] aspect-square">
+            <Image 
+              src={headshotImage} 
+              alt="Christian Mandujano Borjas" 
+              fill 
+              className="object-contain object-right-bottom drop-shadow-[0_0_50px_rgba(0,0,0,0.8)] pointer-events-none" 
+              priority 
+            />
           </div>
         </div>
       </section>
