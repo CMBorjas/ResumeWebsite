@@ -142,7 +142,7 @@ This document tracks upcoming features, pending integrations, and the backlog fo
   - ~~Cyberpunk-styled Hacker Quiz testing Data Structures and Algorithms.~~
 
 -~~[x]**Testimonial Cards:**~~
-  - ~~Quotes or statements from satisfied customers/users, displayed in a carousel/grid.~~
+  - ~~Quotes or statements from satisfied customers/users, displayed in a carousel/grid. Updated with authentic endorsements from Tanner Clites, Saul Hernandez, Alexis Smith, and Larry Brian.~~
 
 -~~[x]**Weather Widget:**~~
   - ~~Live weather dashboard fetching real-time conditions via API. Separated configuration for default and local browser storage.~~

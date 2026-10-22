@@ -1,22 +1,26 @@
 # TestimonialCards Component
 
 ## What is it?
-The `TestimonialCards.tsx` component displays an animated, rotating carousel of quotes or statements from satisfied clients, colleagues, or users. It resides in `src/components/TestimonialCards.tsx`.
+The `TestimonialCards.tsx` component renders an interactive, glassmorphic grid of endorsement quotes and professional recommendations from colleagues and engineering leaders (Tanner Clites, Saul Hernandez, Alexis Smith, Larry Brian). It resides in `src/components/TestimonialCards.tsx`.
 
 ## Why was it modified/created?
-It was built to fulfill the "Testimonial Cards" requirement in the priority roadmap. Displaying testimonials adds social proof and credibility to the portfolio. It was designed to fit seamlessly into the "Bento Box" layout on the main index page.
+Originally built to fulfill the "Testimonial Cards" requirement in the priority roadmap to provide social proof and credibility. It was updated to replace generic placeholders (Jane Doe, John Smith, etc.) with real endorsements from colleagues and supervisors. Additionally, the component was previously evolved from a single-card rotating carousel into a multi-card responsive Bento grid.
 
 ## How it works?
-1. **Data Structure**: Testimonials are currently stored in an internal static array containing `quote`, `author`, and `role`.
-2. **State**: The component uses React `useState` to track the `currentIndex` of the visible quote and an `isPaused` boolean to halt the carousel on mouse hover.
-3. **Animations**: It integrates `AnimatePresence` and `motion.div` from `framer-motion` to create a smooth crossfade and slide transition between array indices.
-4. **Auto-Rotation**: A `useEffect` hook initializes a `setInterval` that automatically increments the `currentIndex` every 5 seconds, provided `isPaused` is false.
+1. **Data Structure**: Testimonials are stored in an internal static array containing `quote`, `author`, and `role`:
+   - **Tanner Clites**: System Coordinator
+   - **Saul Hernandez**: Facilities Manager
+   - **Alexis Smith**: Project Engineer
+   - **Larry Brian**: Junior Systems Engineer
+2. **Responsive Layout**: Renders within a responsive grid (`grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6`) matching the cyberpunk bento aesthetic with backdrop blur (`backdrop-blur-xl`), dark slate tint (`bg-[#0a0f18]/80`), and neon border accents (`border-brand-cyan/20`).
+3. **Micro-Interactions**: Leverages `framer-motion`'s `motion.div` with `whileHover={{ scale: 1.02, y: -5 }}` and CSS gradient transitions to provide smooth, reactive elevation and glow on card hover.
+4. **Dynamic Avatar**: Extracts the author's initial dynamically (`testimonial.author.charAt(0)`) displayed within a gradient avatar badge.
 
 ## Requirements
-- React hooks (`useState`, `useEffect`).
-- `framer-motion` for `<AnimatePresence>` carousel physics.
-- Tailwind CSS for the glassmorphic styling inside the bento grid.
+- `framer-motion` for `motion.div` hover transitions.
+- Tailwind CSS for glassmorphic styling, responsive grid, and theme token blending.
 
 ## Outbound Data Flow
-- **Input**: Internal static array of quotes.
-- **Output**: Emits DOM structure and animation states. Fully self-contained. It does not ping external APIs or mutate global state.
+- **Input**: Internal static array of testimonial objects.
+- **Output**: Presentational DOM tree. Self-contained; does not ping external endpoints or mutate global context.
+

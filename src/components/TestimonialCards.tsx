@@ -5,23 +5,23 @@ import { motion } from 'framer-motion';
 const testimonials = [
   {
     quote: "Christian is an exceptional problem solver. His ability to break down complex issues into manageable tasks is impressive.",
-    author: "Jane Doe",
-    role: "Senior Developer",
+    author: "Tanner Clites",
+    role: "System Coordinator",
   },
   {
     quote: "Working with Christian was a breeze. He's a quick learner and brings great energy to the team.",
-    author: "John Smith",
-    role: "Project Manager",
+    author: "Saul Hernandez",
+    role: "Facilities Manager",
   },
   {
-    quote: "His attention to detail and dedication to writing clean, maintainable code sets him apart.",
-    author: "Alice Johnson",
-    role: "Tech Lead",
+    quote: "His attention to detail and dedication made him an invaluable asset to the team. I wish I could hire him again.",
+    author: "Alexis Smith",
+    role: "Project Engineer",
   },
   {
-    quote: "A true professional. Christian consistently delivers high-quality work and is always willing to go the extra mile.",
-    author: "Sarah Connor",
-    role: "Product Owner",
+    quote: "I miss having him in the office. It was a pleasure to work with him. A truly remarkable person and energy that fills a room.",
+    author: "Larry Brian",
+    role: "Junior Systems Engineer",
   }
 ];
 
@@ -35,13 +35,13 @@ export default function TestimonialCards() {
           className="bg-[#0a0f18]/80 backdrop-blur-xl border border-brand-cyan/20 rounded-3xl p-6 shadow-[0_4px_30px_rgba(0,0,0,0.5)] h-full flex flex-col group hover:shadow-[0_0_30px_color-mix(in srgb, var(--color-brand-cyan) 15%, transparent)] hover:border-brand-cyan/40 transition-all duration-300 relative overflow-hidden min-h-[200px]"
         >
           <div className="absolute inset-0 bg-gradient-to-br from-brand-cyan/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-          
+
           <span className="absolute -top-4 -left-2 text-6xl text-brand-cyan/20 font-serif z-0">"</span>
-          
+
           <p className="text-sm text-slate-300 italic mb-6 relative z-10 flex-1 pl-4 border-l-2 border-brand-pink/50 leading-relaxed mt-4">
             {testimonial.quote}
           </p>
-          
+
           <div className="flex items-center gap-3 relative z-10 mt-auto pt-4 border-t border-brand-cyan/10">
             <div className="w-10 h-10 rounded-full bg-gradient-to-br from-brand-cyan to-brand-pink p-[1px] shrink-0">
               <div className="w-full h-full rounded-full bg-[#0a0f18] flex items-center justify-center">
